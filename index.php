@@ -174,14 +174,14 @@
           <div class="u-heading-v2-3--bottom g-brd-primary g-mb-20">
             <h2 class="h4 u-heading-v2__title g-color-gray-dark-v2 g-font-weight-600 text-uppercase">Live Games played Globally</h2>
           </div>
-          <p class="g-font-size-16">Included Over 2000+ UI Components tvero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas moles.</p>
+          <p class="g-font-size-16">Have a look at our live game pool played globally, check the Leaderboard and who is in hall of fame.</p>
         </header>
 
         <div class="row">
           <div class="col-lg-4 col-md-6 g-mb-30 g-mb-0--lg">
             <article class="u-block-hover u-shadow-v21 rounded">
               <figure class="u-bg-overlay g-bg-black-opacity-0_4--after">
-                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="assets/img-temp/400x270/img17.jpg" alt="Image description">
+                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="https://lh4.ggpht.com/eKJNS2Pj-b5obfpU96n8diVSUVxiJ70Wx529FPkBtaGLJj6kJ7CWLkur8dJ_t8rm6w=h900" alt="Image description">
               </figure>
 
               <header class="u-bg-overlay__inner g-pos-abs g-top-30 g-right-30 g-left-30 g-color-white">
