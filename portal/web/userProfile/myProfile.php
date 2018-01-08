@@ -12,7 +12,7 @@ if(isset($_SESSION['userID'])){
 
 <head>
   <!-- Title -->
-  <title>Unify Profile Settings | | Unify - Responsive Website Template</title>
+  <title>Game X - Play the best of your life! | My Profile</title>
 
   <!-- Required Meta Tags Always Come First -->
   <meta charset="utf-8">
@@ -26,7 +26,8 @@ if(isset($_SESSION['userID'])){
   <!-- CSS Global Compulsory -->
   <link rel="stylesheet" href="../../../assets/vendor/bootstrap/bootstrap.min.css">
   <!-- CSS Global Icons -->
-  <link rel="stylesheet" href="../../../assets/vendor/icon-awesome/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="../../../assets/vendor/icon-awesome/css/font-awesome.min.css"> -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="../../../assets/vendor/icon-line/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../../assets/vendor/icon-etlinefont/style.css">
   <link rel="stylesheet" href="../../../assets/vendor/icon-line-pro/style.css">
@@ -207,7 +208,7 @@ if(isset($_SESSION['userID'])){
                 <span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-8">3</span>
               </a>
               <!-- End Settings -->
-              
+
               <!-- Logout -->
               <a href="../auth/controller/userLogout.php" class="list-group-item list-group-item-action justify-content-between">
                 <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> Logout</span>

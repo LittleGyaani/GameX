@@ -17,7 +17,8 @@
   <!-- CSS Global Compulsory -->
   <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
   <!-- CSS Global Icons -->
-  <link rel="stylesheet" href="assets/vendor/icon-awesome/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="assets/vendor/icon-awesome/css/font-awesome.min.css"> -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/vendor/icon-line/css/simple-line-icons.css">
   <link rel="stylesheet" href="assets/vendor/icon-etlinefont/style.css">
   <link rel="stylesheet" href="assets/vendor/icon-line-pro/style.css">
@@ -677,7 +678,7 @@
      "bottom": 15,
      "right": 15
    }' data-offset-top="400" data-compensation="#js-header" data-show-effect="zoomIn">
-      <i class="hs-icon hs-icon-arrow-top"></i>
+      <i class="fa fa-arrow-up"></i>
     </a>
   </main>
 

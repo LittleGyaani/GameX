@@ -1,7 +1,10 @@
 <?php
 session_start();
 if(isset($_SESSION['userID'])){
+
+  $userID = $_SESSION['userID'];
   // echo 'Welcome User'.$_SESSION['userNAME'];
+  $getUserDetails = "SELECT * FROM user_login WHERE user_id = '$userID";
 }else{
   echo 'You are not authorized to access the page without logging in.';
   header('Location:../auth/loginPage.php');
@@ -12,7 +15,7 @@ if(isset($_SESSION['userID'])){
 
 <head>
   <!-- Title -->
-  <title>Game X - Play the best of your life! | User Profile</title>
+  <title>Game X - Play the best of your life! | User Dashboard</title>
 
   <!-- Required Meta Tags Always Come First -->
   <meta charset="utf-8">
@@ -26,7 +29,8 @@ if(isset($_SESSION['userID'])){
   <!-- CSS Global Compulsory -->
   <link rel="stylesheet" href="../../../assets/vendor/bootstrap/bootstrap.min.css">
   <!-- CSS Global Icons -->
-  <link rel="stylesheet" href="../../../assets/vendor/icon-awesome/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="../../../assets/vendor/icon-awesome/css/font-awesome.min.css"> -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="../../../assets/vendor/icon-line/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../../assets/vendor/icon-etlinefont/style.css">
   <link rel="stylesheet" href="../../../assets/vendor/icon-line-pro/style.css">
