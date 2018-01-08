@@ -93,28 +93,21 @@
     <!-- Promo Block -->
     <section class="g-pos-rel">
       <div class="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll" data-options='{direction: "reverse", settings_mode_oneelement_max_offset: "150"}'>
-        <div class="divimage dzsparallaxer--target w-100 g-bg-cover g-bg-pos-top-center g-bg-img-hero g-bg-bluegray-opacity-0_2--after" style="height: 130%; background-image: url(assets/img-temp/1920x700/img3.jpg);"></div>
+        <div class="divimage dzsparallaxer--target w-100 g-bg-cover g-bg-pos-top-center g-bg-img-hero g-bg-bluegray-opacity-0_2--after" style="height: 130%; background-image: url(http://images.nintendolife.com/news/2017/10/injustice_2_director_on_the_possibility_of_bringing_the_game_to_switch/attachment/0/large.jpg);"></div>
 
         <div class="container g-bg-cover__inner g-py-100">
           <div class="row align-items-center">
             <div class="col-lg-6 g-mb-30 g-mb-0--lg">
               <h2 class="h1 text-uppercase g-color-white g-mb-30">
-                  <span class="g-bg-primary-dark-v3 g-px-5">Clean &amp; Fresh</span><br>
-                  <span class="g-bg-primary-dark-v3 g-px-5">Fully Responsive</span><br>
-                  <span class="g-bg-primary-dark-v3 g-px-5">Design</span>
+                  <span class="g-bg-primary-dark-v3 g-px-5">Let's &amp; Play!</span><br>
+                  <span class="g-bg-primary-dark-v3 g-px-5">Challenge Mode or</span><br>
+                  <span class="g-bg-primary-dark-v3 g-px-5">Head-ON</span>
                 </h2>
               <h3 class="h4 g-color-white">
-                  <span class="g-bg-black-opacity-0_6 g-px-5">Start a new project with easy</span><br>
-                  <span class="g-bg-black-opacity-0_6 g-px-5">to use 1610+ Reusable</span><br>
-                  <span class="g-bg-black-opacity-0_6 g-px-5">UI Components</span>
+                  <span class="g-bg-black-opacity-0_6 g-px-5">Ready for a new battle</span><br>
+                  <span class="g-bg-black-opacity-0_6 g-px-5">already registered 160+ globally</span><br>
+                  <span class="g-bg-black-opacity-0_6 g-px-5">CHALLENGE NOW.</span>
                 </h3>
-            </div>
-            <div class="col-lg-6">
-              <!-- Vimeo Example -->
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe src="https://player.vimeo.com/video/47911018" width="530" height="300" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-              </div>
-              <!-- End Vimeo Example -->
             </div>
           </div>
         </div>
@@ -302,9 +295,9 @@
           <!-- Section Content -->
           <div class="col-lg-6 order-2 order-sm-1 g-mb-0 g-mb-50--sm g-mb-0--lg">
             <div class="u-heading-v2-3--bottom g-brd-primary g-mb-30">
-              <h2 class="h4 u-heading-v2__title g-color-gray-dark-v2 g-font-weight-600 text-uppercase">Most Quality Solution</h2>
+              <h2 class="h4 u-heading-v2__title g-color-gray-dark-v2 g-font-weight-600 text-uppercase">Give a break to your life!</h2>
             </div>
-            <p class="g-font-size-16 g-line-height-2 g-mb-30">Morbi a suscipit ipsum. Suspendisse mollis libero ante. Pellentesque finibus convallis nulla vel placerat. Nulla ipsum dolor sit amet, consectetur adipiscing elitut eleifend nisl. Ullam elementum tincidunt massa, a pulvinar leo ultricies ut.</p>
+            <p class="g-font-size-16 g-line-height-2 g-mb-30">Play a challening head and game on to be the best among all. Prove your self! Let's challenge.</p>
 
             <div class="g-mb-30">
               <img class="u-block-hover__main--grayscale g-width-100 g-opacity-0_6 g-mr-40 g-mb-10 g-mb-0--sm" src="assets/img-temp/200x100/img8.png" alt="Image description">
@@ -313,7 +306,7 @@
             </div>
 
             <a href="home-default.html#!" class="btn btn-xl u-btn-primary text-uppercase g-font-weight-600 g-font-size-12 rounded g-mr-15 g-mb-15 g-mb-0--sm">Play a Match</a>
-            <small class="d-block d-sm-inline-block g-color-gray-dark-v5 g-font-size-12">*Exclusive item on Wrapboostrap Marketpalce</small>
+            <small class="d-block d-sm-inline-block g-color-gray-dark-v5 g-font-size-12">*Be the best and find yourself in the hall of fame.</small>
           </div>
           <!-- End Section Content -->
 
