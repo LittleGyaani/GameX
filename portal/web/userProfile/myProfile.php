@@ -1,10 +1,25 @@
 <?php
+
+//Calling Database file for estanlishing connection for performing operations
+include '../../../includes/config/dbConnectivity.php';
+
+//Initializing session
 session_start();
+
+//Validating if the session exists or not
 if(isset($_SESSION['userID'])){
+
   // echo 'Welcome User'.$_SESSION['userNAME'];
+  $userID = $_SESSION['userID'];
+  //Selecting all user information basing upon the user's session id
+  $getAllUserDetails = $conn -> query("SELECT * FROM user_info WHERE user_id = '$userID'");
+  $selectUserInformations = $getAllUserDetails -> fetch_assoc();
+
 }else{
+
   echo 'You are not authorized to access the page without logging in.';
   header('Location:../auth/loginPage.php');
+
 }
  ?>
 <!DOCTYPE html>
@@ -94,11 +109,11 @@ if(isset($_SESSION['userID'])){
       <div class="container">
         <ul class="u-list-inline">
           <li class="list-inline-item g-mr-7">
-            <a class="u-link-v5 g-color-main g-color-primary--hover" href="page-profile-settings-1.html#!">Home</a>
+            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">Home</a>
             <i class="fa fa-angle-right g-ml-7"></i>
           </li>
           <li class="list-inline-item g-mr-7">
-            <a class="u-link-v5 g-color-main g-color-primary--hover" href="page-profile-settings-1.html#!">Pages</a>
+            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">Pages</a>
             <i class="fa fa-angle-right g-ml-7"></i>
           </li>
           <li class="list-inline-item g-color-primary">
@@ -126,17 +141,17 @@ if(isset($_SESSION['userID'])){
                   <!-- Figure Social Icons -->
                   <ul class="list-inline text-center g-flex-middle-item--bottom g-mb-20">
                     <li class="list-inline-item align-middle g-mx-7">
-                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="page-profile-settings-1.html#!">
+                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="#!">
                         <i class="icon-note u-line-icon-pro"></i>
                       </a>
                     </li>
                     <li class="list-inline-item align-middle g-mx-7">
-                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="page-profile-settings-1.html#!">
+                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="#!">
                         <i class="icon-notebook u-line-icon-pro"></i>
                       </a>
                     </li>
                     <li class="list-inline-item align-middle g-mx-7">
-                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="page-profile-settings-1.html#!">
+                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="#!">
                         <i class="icon-settings u-line-icon-pro"></i>
                       </a>
                     </li>
@@ -148,8 +163,8 @@ if(isset($_SESSION['userID'])){
 
               <!-- User Info -->
               <span class="g-pos-abs g-top-20 g-left-0">
-                  <a class="btn btn-sm u-btn-primary rounded-0" href="page-profile-settings-1.html#!"><b><?=$_SESSION['userNAME']?></b></a>
-                  <small class="d-block g-bg-black g-color-white g-pa-5">Project Manager</small>
+                  <a class="btn btn-sm u-btn-primary rounded-0" href="#!"><b><?=$selectUserInformations['user_fullname']?></b></a>
+                  <small class="d-block g-bg-black g-color-white g-pa-5">Pro GAMER</small>
                 </span>
               <!-- End User Info -->
             </div>
@@ -203,7 +218,7 @@ if(isset($_SESSION['userID'])){
               <!-- End History -->
 
               <!-- Settings -->
-              <a href="page-profile-settings-1.html" class="list-group-item justify-content-between active">
+              <a href="myProfile.php" class="list-group-item justify-content-between active">
                 <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> Settings</span>
                 <span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-8">3</span>
               </a>
@@ -229,22 +244,22 @@ if(isset($_SESSION['userID'])){
                       <i class="icon-options-vertical g-pos-rel g-top-1"></i>
                     </span>
                   <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
-                    <a class="dropdown-item g-px-10" href="page-profile-settings-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-layers g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Projects
                     </a>
-                    <a class="dropdown-item g-px-10" href="page-profile-settings-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-wallet g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Wallets
                     </a>
-                    <a class="dropdown-item g-px-10" href="page-profile-settings-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-fire g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Reports
                     </a>
-                    <a class="dropdown-item g-px-10" href="page-profile-settings-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-settings g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Users Setting
                     </a>
 
                     <div class="dropdown-divider"></div>
 
-                    <a class="dropdown-item g-px-10" href="page-profile-settings-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
                     </a>
                   </div>
@@ -315,16 +330,16 @@ if(isset($_SESSION['userID'])){
             <!-- Nav tabs -->
             <ul class="nav nav-justified u-nav-v1-1 u-nav-primary g-brd-bottom--md g-brd-bottom-2 g-brd-primary g-mb-20" role="tablist" data-target="nav-1-1-default-hor-left-underline" data-tabs-mobile-type="slide-up-down" data-btn-classes="btn btn-md btn-block rounded-0 u-btn-outline-primary g-mb-20">
               <li class="nav-item">
-                <a class="nav-link g-py-10 active" data-toggle="tab" href="page-profile-settings-1.html#nav-1-1-default-hor-left-underline--1" role="tab">Edit Profile</a>
+                <a class="nav-link g-py-10 active" data-toggle="tab" href="myProfile.php#nav-1-1-default-hor-left-underline--1" role="tab">Edit Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link g-py-10" data-toggle="tab" href="page-profile-settings-1.html#nav-1-1-default-hor-left-underline--2" role="tab">Security Settings</a>
+                <a class="nav-link g-py-10" data-toggle="tab" href="myProfile.php#nav-1-1-default-hor-left-underline--2" role="tab">Security Settings</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link g-py-10" data-toggle="tab" href="page-profile-settings-1.html#nav-1-1-default-hor-left-underline--3" role="tab">Payment Options</a>
+                <a class="nav-link g-py-10" data-toggle="tab" href="myProfile.php#nav-1-1-default-hor-left-underline--3" role="tab">Payment Options</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link g-py-10" data-toggle="tab" href="page-profile-settings-1.html#nav-1-1-default-hor-left-underline--4" role="tab">Notification Settings</a>
+                <a class="nav-link g-py-10" data-toggle="tab" href="myProfile.php#nav-1-1-default-hor-left-underline--4" role="tab">Notification Settings</a>
               </li>
             </ul>
             <!-- End Nav tabs -->
@@ -341,7 +356,7 @@ if(isset($_SESSION['userID'])){
                   <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                     <div class="g-pr-10">
                       <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Name</strong>
-                      <span class="align-top"><?=$_SESSION['userNAME']?></span>
+                      <span class="align-top"><?=$selectUserInformations['user_fullname']?></span>
                     </div>
                     <span>
                         <i class="icon-pencil g-color-gray-dark-v5 g-color-primary--hover g-cursor-pointer g-pos-rel g-top-1"></i>
@@ -353,7 +368,7 @@ if(isset($_SESSION['userID'])){
                   <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                     <div class="g-pr-10">
                       <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Your ID</strong>
-                      <span class="align-top">GXID-<?=$_SESSION['userID']?></span>
+                      <span class="align-top">GXID-<?=$selectUserInformations['user_id']?></span>
                     </div>
                     <span>
                         <i class="icon-pencil g-color-gray-dark-v5 g-color-primary--hover g-cursor-pointer g-pos-rel g-top-1"></i>
@@ -361,23 +376,11 @@ if(isset($_SESSION['userID'])){
                   </li>
                   <!-- End Your ID -->
 
-                  <!-- Company Name -->
-                  <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
-                    <div class="g-pr-10">
-                      <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Company name</strong>
-                      <span class="align-top">Htmlstream</span>
-                    </div>
-                    <span>
-                        <i class="icon-pencil g-color-gray-dark-v5 g-color-primary--hover g-cursor-pointer g-pos-rel g-top-1"></i>
-                      </span>
-                  </li>
-                  <!-- End Company Name -->
-
                   <!-- Position -->
                   <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                     <div class="g-pr-10">
-                      <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Position</strong>
-                      <span class="align-top">Project Manager</span>
+                      <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Level</strong>
+                      <span class="align-top">Pro Gamer</span>
                     </div>
                     <span>
                         <i class="icon-pencil g-color-gray-dark-v5 g-color-primary--hover g-cursor-pointer g-pos-rel g-top-1"></i>
@@ -389,7 +392,7 @@ if(isset($_SESSION['userID'])){
                   <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                     <div class="g-pr-10">
                       <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Primary email address</strong>
-                      <span class="align-top">john.doe@htmlstream.com</span>
+                      <span class="align-top"><?=$selectUserInformations['email_id']?></span>
                     </div>
                     <span>
                         <i class="icon-pencil g-color-gray-dark-v5 g-color-primary--hover g-cursor-pointer g-pos-rel g-top-1"></i>
@@ -409,18 +412,6 @@ if(isset($_SESSION['userID'])){
                   </li>
                   <!-- End Linked Account -->
 
-                  <!-- Website -->
-                  <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
-                    <div class="g-pr-10">
-                      <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Website</strong>
-                      <span class="align-top">https://htmlstream.com</span>
-                    </div>
-                    <span>
-                        <i class="icon-pencil g-color-gray-dark-v5 g-color-primary--hover g-cursor-pointer g-pos-rel g-top-1"></i>
-                      </span>
-                  </li>
-                  <!-- End Website -->
-
                   <!-- Phone Number -->
                   <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                     <div class="g-pr-10">
@@ -432,18 +423,6 @@ if(isset($_SESSION['userID'])){
                       </span>
                   </li>
                   <!-- End Phone Number -->
-
-                  <!-- Office Number -->
-                  <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
-                    <div class="g-pr-10">
-                      <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Office number</strong>
-                      <span class="align-top">(+123) 456 7891</span>
-                    </div>
-                    <span>
-                        <i class="icon-pencil g-color-gray-dark-v5 g-color-primary--hover g-cursor-pointer g-pos-rel g-top-1"></i>
-                      </span>
-                  </li>
-                  <!-- End Office Number -->
 
                   <!-- Address -->
                   <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
@@ -459,8 +438,8 @@ if(isset($_SESSION['userID'])){
                 </ul>
 
                 <div class="text-sm-right">
-                  <a class="btn u-btn-darkgray rounded-0 g-py-12 g-px-25 g-mr-10" href="page-profile-settings-1.html#!">Cancel</a>
-                  <a class="btn u-btn-primary rounded-0 g-py-12 g-px-25" href="page-profile-settings-1.html#!">Save Changes</a>
+                  <a class="btn u-btn-darkgray rounded-0 g-py-12 g-px-25 g-mr-10" href="#!">Reset</a>
+                  <a class="btn u-btn-primary rounded-0 g-py-12 g-px-25" href="#!">Save Changes</a>
                 </div>
               </div>
               <!-- End Edit Profile -->
@@ -520,7 +499,7 @@ if(isset($_SESSION['userID'])){
                       <label class="form-check-inline u-check g-pl-25">
                         <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
                         <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
-                          <i class="fa" data-check-icon="&#xf00c"></i>
+                          <i class="fa" data-check-icon="&#xf00c;" aria-hidden="true"></i>
                         </div>
                         Verify login requests
                       </label>
@@ -536,7 +515,7 @@ if(isset($_SESSION['userID'])){
                       <label class="form-check-inline u-check g-pl-25">
                         <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
                         <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
-                          <i class="fa" data-check-icon="&#xf00c"></i>
+                          <i class="fa" data-check-icon="&#xf00c;"></i>
                         </div>
                         Require personal information to reset my password
                       </label>
@@ -563,8 +542,8 @@ if(isset($_SESSION['userID'])){
                   <hr class="g-brd-gray-light-v4 g-my-25">
 
                   <div class="text-sm-right">
-                    <a class="btn u-btn-darkgray rounded-0 g-py-12 g-px-25 g-mr-10" href="page-profile-settings-1.html#!">Cancel</a>
-                    <a class="btn u-btn-primary rounded-0 g-py-12 g-px-25" href="page-profile-settings-1.html#!">Save Changes</a>
+                    <a class="btn u-btn-darkgray rounded-0 g-py-12 g-px-25 g-mr-10" href="#!">Cancel</a>
+                    <a class="btn u-btn-primary rounded-0 g-py-12 g-px-25" href="#!">Save Changes</a>
                   </div>
                 </form>
               </div>
@@ -759,7 +738,7 @@ if(isset($_SESSION['userID'])){
                     <label class="u-check g-pl-25 mb-0">
                       <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
                       <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
-                        <i class="fa" data-check-icon="&#xf00c"></i>
+                        <i class="fa" data-check-icon="&#xf00c;"></i>
                       </div>
                       Same as shipping address?
                     </label>
@@ -769,8 +748,8 @@ if(isset($_SESSION['userID'])){
                   <hr class="g-brd-gray-light-v4 g-my-25">
 
                   <div class="text-sm-right">
-                    <a class="btn u-btn-darkgray rounded-0 g-py-12 g-px-25 g-mr-10" href="page-profile-settings-1.html#!">Cancel</a>
-                    <a class="btn u-btn-primary rounded-0 g-py-12 g-px-25" href="page-profile-settings-1.html#!">Save Changes</a>
+                    <a class="btn u-btn-darkgray rounded-0 g-py-12 g-px-25 g-mr-10" href="#!">Cancel</a>
+                    <a class="btn u-btn-primary rounded-0 g-py-12 g-px-25" href="#!">Save Changes</a>
                   </div>
                 </form>
               </div>
@@ -863,8 +842,8 @@ if(isset($_SESSION['userID'])){
                   <hr class="g-brd-gray-light-v4 g-my-25">
 
                   <div class="text-sm-right">
-                    <a class="btn u-btn-darkgray rounded-0 g-py-12 g-px-25 g-mr-10" href="page-profile-settings-1.html#!">Cancel</a>
-                    <a class="btn u-btn-primary rounded-0 g-py-12 g-px-25" href="page-profile-settings-1.html#!">Save Changes</a>
+                    <a class="btn u-btn-darkgray rounded-0 g-py-12 g-px-25 g-mr-10" href="#!">Cancel</a>
+                    <a class="btn u-btn-primary rounded-0 g-py-12 g-px-25" href="#!">Save Changes</a>
                   </div>
                 </form>
               </div>
@@ -899,7 +878,7 @@ if(isset($_SESSION['userID'])){
 
             <article>
               <h3 class="h6 g-mb-2">
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-settings-1.html#!">Incredible template</a>
+            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Incredible template</a>
           </h3>
               <div class="small g-color-white-opacity-0_6">May 8, 2017</div>
             </article>
@@ -908,7 +887,7 @@ if(isset($_SESSION['userID'])){
 
             <article>
               <h3 class="h6 g-mb-2">
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-settings-1.html#!">New features</a>
+            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">New features</a>
           </h3>
               <div class="small g-color-white-opacity-0_6">June 23, 2017</div>
             </article>
@@ -917,7 +896,7 @@ if(isset($_SESSION['userID'])){
 
             <article>
               <h3 class="h6 g-mb-2">
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-settings-1.html#!">New terms and conditions</a>
+            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">New terms and conditions</a>
           </h3>
               <div class="small g-color-white-opacity-0_6">September 15, 2017</div>
             </article>
@@ -934,31 +913,31 @@ if(isset($_SESSION['userID'])){
               <ul class="list-unstyled g-mt-minus-10 mb-0">
                 <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
                   <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-settings-1.html#!">About Us</a>
+                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">About Us</a>
                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
               </h4>
                 </li>
                 <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
                   <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-settings-1.html#!">Portfolio</a>
+                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Portfolio</a>
                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
               </h4>
                 </li>
                 <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
                   <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-settings-1.html#!">Our Services</a>
+                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Our Services</a>
                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
               </h4>
                 </li>
                 <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
                   <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-settings-1.html#!">Latest Jobs</a>
+                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Latest Jobs</a>
                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
               </h4>
                 </li>
                 <li class="g-pos-rel g-py-10">
                   <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-settings-1.html#!">Contact Us</a>
+                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Contact Us</a>
                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
               </h4>
                 </li>
@@ -1006,7 +985,7 @@ if(isset($_SESSION['userID'])){
             <p class="mb-0">
               <a class="g-color-white-opacity-0_8 g-color-white--hover" href="mailto:info@htmlstream.com">info@htmlstream.com</a>
               <br>
-              <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-settings-1.html#!">www.htmlstream.com</a>
+              <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">www.htmlstream.com</a>
             </p>
           </div>
           <!-- End Email and Website -->
@@ -1027,25 +1006,25 @@ if(isset($_SESSION['userID'])){
               <small class="d-block g-font-size-default g-mr-10 g-mb-10 g-mb-0--md">2017 © All Rights Reserved.</small>
               <ul class="u-list-inline">
                 <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-settings-1.html#!">Privacy Policy</a>
+                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Privacy Policy</a>
                 </li>
                 <li class="list-inline-item">
                   <span>|</span>
                 </li>
                 <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-settings-1.html#!">Terms of Use</a>
+                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Terms of Use</a>
                 </li>
                 <li class="list-inline-item">
                   <span>|</span>
                 </li>
                 <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-settings-1.html#!">License</a>
+                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">License</a>
                 </li>
                 <li class="list-inline-item">
                   <span>|</span>
                 </li>
                 <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-settings-1.html#!">Support</a>
+                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Support</a>
                 </li>
               </ul>
             </div>
@@ -1054,32 +1033,32 @@ if(isset($_SESSION['userID'])){
           <div class="col-md-4 align-self-center">
             <ul class="list-inline text-center text-md-right mb-0">
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Facebook">
-                <a href="page-profile-settings-1.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-facebook"></i>
                 </a>
               </li>
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Skype">
-                <a href="page-profile-settings-1.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-skype"></i>
                 </a>
               </li>
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Linkedin">
-                <a href="page-profile-settings-1.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-linkedin"></i>
                 </a>
               </li>
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Pinterest">
-                <a href="page-profile-settings-1.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-pinterest"></i>
                 </a>
               </li>
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Twitter">
-                <a href="page-profile-settings-1.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-twitter"></i>
                 </a>
               </li>
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Dribbble">
-                <a href="page-profile-settings-1.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-dribbble"></i>
                 </a>
               </li>
@@ -1089,7 +1068,7 @@ if(isset($_SESSION['userID'])){
       </div>
     </footer>
     <!-- End Copyright Footer -->
-    <a class="js-go-to u-go-to-v1" href="page-profile-settings-1.html#!" data-type="fixed" data-position='{
+    <a class="js-go-to u-go-to-v1" href="#!" data-type="fixed" data-position='{
      "bottom": 15,
      "right": 15
    }' data-offset-top="400" data-compensation="#js-header" data-show-effect="zoomIn">
@@ -1130,540 +1109,61 @@ if(isset($_SESSION['userID'])){
   <!-- JS Customization -->
   <script src="../../../assets/js/custom.js"></script>
 
+
   <!-- JS Plugins Init. -->
-  <script>
-    $(document).on('ready', function () {
-        $.HSCore.helpers.HSFocusState.init();
-        $.HSCore.helpers.HSNotEmptyState.init();
-
-        // initialization of go to
-        $.HSCore.components.HSGoTo.init('.js-go-to');
-
-        // initialization of tabs
-        $.HSCore.components.HSTabs.init('[role="tablist"]');
-
-        // initialization of input masking
-        $.HSCore.components.HSMaskedInput.init('[data-mask]');
-
-        // initialization of custom select
-        $.HSCore.components.HSSelect.init('.js-custom-select');
-
-        // initialization of HSScrollBar component
-        $.HSCore.components.HSScrollBar.init( $('.js-scrollbar') );
-      });
-
-      $(window).on('load', function () {
-        // initialization of header
-        $.HSCore.components.HSHeader.init($('#js-header'));
-        $.HSCore.helpers.HSHamburgers.init('.hamburger');
-
-        // initialization of HSMegaMenu component
-        $('.js-mega-menu').HSMegaMenu({
-          event: 'hover',
-          pageContainer: $('.container'),
-          breakpoint: 991
-        });
-
-        // initialization of horizontal progress bars
-        setTimeout(function () { // important in this case
-          var horizontalProgressBars = $.HSCore.components.HSProgressBar.init('.js-hr-progress-bar', {
-            direction: 'horizontal',
-            indicatorSelector: '.js-hr-progress-bar-indicator'
-          });
-        }, 1);
-      });
-
-      $(window).on('resize', function () {
-        setTimeout(function () {
-          $.HSCore.components.HSTabs.init('[role="tablist"]');
-        }, 200);
-      });
-  </script>
-
-
-
-
-
-
-
-  <!-- Style Switcher -->
-  <aside class="u-ss" data-cookies-prefix="unify" data-defaults='[{
-              "customColor": "#72c02c",
-              "outerSpaces": "0px",
-              "contentFont": "Open Sans, Helvetica, Arial, sans-serif",
-              "headingFont": "Open Sans, Helvetica, Arial, sans-serif"
-           }]'>
-    <div class="u-ss-wrap">
-      <header class="u-ss-header">
-        <button class="u-ss-toggler g-color-primary" type="button">
-          <i class="fa fa-cogs"></i>
-        </button>
-
-        <h2 class="u-ss__main-title">Style Switcher
-        <span class="u-label g-rounded-3 g-font-size-10 g-bg-lightred g-pos-rel g-top-minus-1 g-ml-5">Beta</span>
-      </h2>
-      </header>
-
-      <div class="js-ss-scrollbar u-ss-body">
-        <form>
-          <section class="u-ss-section">
-            <div class="u-ss-control-wrap">
-              <h3 class="u-ss-section__title">Predefined Styles</h3>
-              <select class="js-ss-select js-ss-predefined-style u-ss-select" name="predefined-style" style="width: 100%;" data-placeholder="Select style" data-disable-search="true" data-open-icon="fa fa-angle-down" data-close-icon="fa fa-angle-up">
-                <option></option>
-                <option id="preDefSMain" value='[{
-                    "checkIDs": {"custom-colors": "clr1", "heading-font": "hFnt1", "font": "fnt1", "layout-styles": "layS1", "outer-spaces": "outS1", "custom-bg": "", "predefined-style": "preDefS1"},
-                    "preDefStyle": "default"
-                  }]' selected>Main Style
-                </option>
-                <option id="preDefS1" value='[{
-                    "checkIDs": {"custom-colors": "clr2", "heading-font": "hFnt2", "font": "fnt2", "layout-styles": "layS2", "outer-spaces": "outS2", "custom-bg": "bg5", "predefined-style": "preDefS2"},
-                    "preDefStyle": "../../../assets/style-switcher-predefined-styles/style1.css"
-                  }]'>Style 1
-                </option>
-                <option id="preDefS2" value='[{
-                    "checkIDs": {"custom-colors": "clr3", "heading-font": "hFnt3", "font": "fnt3", "layout-styles": "layS3", "outer-spaces": "outS3", "custom-bg": "bg12", "predefined-style": "preDefS3"},
-                    "preDefStyle": "../../../assets/style-switcher-predefined-styles/style2.css"
-                  }]'>Style 2
-                </option>
-              </select>
-            </div>
-
-            <div class="u-ss-sub-section-wrap">
-              <div class="u-ss-sub-section_half">
-                <h3 class="u-ss-section__title">Heading Font</h3>
-                <select class="js-ss-select js-ss-heading-font u-ss-select" name="heading-font" style="width: 100%;" data-placeholder="Select font" data-disable-search="true" data-open-icon="fa fa-angle-down" data-close-icon="fa fa-angle-up">
-                  <option></option>
-                  <option id="hFnt1" value='[
-                              {"headingFont":"\"Open Sans\",Helvetica,Arial,sans-serif"}
-                            ]' selected>Open Sans
-                  </option>
-                  <option id="hFnt2" value='[
-                              {"headingFont":"\"Playfair Display\",Helvetica,Arial,serif"}
-                            ]'>Playfair Display
-                  </option>
-                  <option id="hFnt3" value='[
-                              {"headingFont":"\"Roboto\",Helvetica,Arial,sans-serif"}
-                            ]'>Roboto
-                  </option>
-                  <option id="hFnt4" value='[
-                              {"headingFont":"\"Raleway\",Helvetica,Arial,sans-serif"}
-                            ]'>Raleway
-                  </option>
-                  <option id="hFnt5" value='[
-                              {"headingFont":"\"Spectral\",Helvetica,Arial,serif"}
-                            ]'>Spectral
-                  </option>
-                  <option id="hFnt6" value='[
-                              {"headingFont":"\"Rubik\",Helvetica,Arial,sans-serif"}
-                            ]'>Rubik
-                  </option>
-                </select>
-              </div>
-
-              <div class="u-ss-sub-section_half">
-                <h3 class="u-ss-section__title">Content Font</h3>
-                <select class="js-ss-select js-ss-font u-ss-select" name="content-font" style="width: 100%;" data-placeholder="Select font" data-disable-search="true" data-open-icon="fa fa-angle-down" data-close-icon="fa fa-angle-up">
-                  <option></option>
-                  <option id="fnt1" value='[
-                              {"contentFont":"\"Open Sans\",Helvetica,Arial,sans-serif"}
-                            ]' selected>Open Sans
-                  </option>
-                  <option id="fnt2" value='[
-                              {"contentFont":"\"Playfair Display\",Helvetica,Arial,serif"}
-                            ]'>Playfair Display
-                  </option>
-                  <option id="fnt3" value='[
-                              {"contentFont":"\"Roboto\",Helvetica,Arial,sans-serif"}
-                            ]'>Roboto
-                  </option>
-                  <option id="fnt4" value='[
-                              {"contentFont":"\"Raleway\",Helvetica,Arial,sans-serif"}
-                            ]'>Raleway
-                  </option>
-                  <option id="fnt5" value='[
-                              {"contentFont":"\"Spectral\",Helvetica,Arial,serif"}
-                            ]'>Spectral
-                  </option>
-                  <option id="fnt6" value='[
-                              {"contentFont":"\"Rubik\",Helvetica,Arial,sans-serif"}
-                            ]'>Rubik
-                  </option>
-                </select>
-              </div>
-            </div>
-          </section>
-
-          <section class="u-ss-section u-ss-section--theme-colors">
-            <h3 class="u-ss-section__title">Theme Colors</h3>
-
-            <div id="customColors" class="u-ss-check-section">
-              <label class="u-ss-check">
-                <input id="clr1" class="js-ss-color" name="custom-colors" type="radio" value='[
-                      {"customColor":"#72c02c"}
-                    ]'>
-
-                <div class="u-ss-check__item" style="background-color: #72c02c;">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
-              </label>
-              <label class="u-ss-check">
-                <input id="clr2" class="js-ss-color" name="custom-colors" type="radio" value='[
-                      {"customColor":"#107ef4"}
-                    ]'>
-
-                <div class="u-ss-check__item" style="background-color: #107ef4;">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
-              </label>
-              <label class="u-ss-check">
-                <input id="clr3" class="js-ss-color" name="custom-colors" type="radio" value='[
-                      {"customColor":"#fd9233"}
-                    ]'>
-
-                <div class="u-ss-check__item" style="background-color: #fd9233;">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
-              </label>
-              <label class="u-ss-check">
-                <input id="clr4" class="js-ss-color" name="custom-colors" type="radio" value='[
-                      {"customColor":"#e74b3c"}
-                    ]'>
-
-                <div class="u-ss-check__item" style="background-color: #e74b3c;">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
-              </label>
-              <label class="u-ss-check">
-                <input id="clr5" class="js-ss-color" name="custom-colors" type="radio" value='[
-                      {"customColor":"#111111"}
-                    ]'>
-
-                <div class="u-ss-check__item" style="background-color: #111111;">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
-              </label>
-              <label class="u-ss-check">
-                <input id="clr6" class="js-ss-color" name="custom-colors" type="radio" value='[
-                      {"customColor":"#9b6bcc"}
-                    ]'>
-
-                <div class="u-ss-check__item" style="background-color: #9b6bcc;">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
-              </label>
-              <label class="u-ss-check">
-                <input id="clr7" class="js-ss-color" name="custom-colors" type="radio" value='[
-                      {"customColor":"#e81c62"}
-                    ]'>
-
-                <div class="u-ss-check__item" style="background-color: #e81c62;">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
-              </label>
-              <label class="u-ss-check">
-                <input id="clr8" class="js-ss-color" name="custom-colors" type="radio" value='[
-                      {"customColor":"#29d6e6"}
-                    ]'>
-
-                <div class="u-ss-check__item" style="background-color: #29d6e6;">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
-              </label>
-              <label class="u-ss-check">
-                <input id="clr9" class="js-ss-color" name="custom-colors" type="radio" value='[
-                      {"customColor":"#9c8061"}
-                    ]'>
-
-                <div class="u-ss-check__item" style="background-color: #9c8061;">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
-              </label>
-              <label class="u-ss-check">
-                <input id="clr10" class="js-ss-color" name="custom-colors" type="radio" value='[
-                      {"customColor":"#527bcc"}
-                    ]'>
-
-                <div class="u-ss-check__item" style="background-color: #527bcc;">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
-              </label>
-              <label class="u-ss-check">
-                <input id="clr11" class="js-ss-color" name="custom-colors" type="radio" value='[
-                      {"customColor":"#6639b6"}
-                    ]'>
-
-                <div class="u-ss-check__item" style="background-color: #6639b6;">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
-              </label>
-              <label class="u-ss-check">
-                <input id="clr12" class="js-ss-color" name="custom-colors" type="radio" value='[
-                      {"customColor":"#a10f2b"}
-                    ]'>
-
-                <div class="u-ss-check__item" style="background-color: #a10f2b;">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
-              </label>
-              <label class="u-ss-check">
-                <input id="clr13" class="js-ss-color" name="custom-colors" type="radio" value='[
-                      {"customColor":"#19ba9b"}
-                    ]'>
-
-                <div class="u-ss-check__item" style="background-color: #19ba9b;">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
-              </label>
-              <label class="u-ss-check">
-                <input id="clr14" class="js-ss-color" name="custom-colors" type="radio" value='[
-                      {"customColor":"#4025d0"}
-                    ]'>
-
-                <div class="u-ss-check__item" style="background-color: #4025d0;">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
-              </label>
-            </div>
-          </section>
-
-          <section class="u-ss-section">
-            <h3 class="u-ss-section__title">Custom Color Theme</h3>
-
-            <div id="userColor">
-              <div class="u-ss-control-wrap">
-                <input class="u-ss__control" type="text" placeholder="Enter your color">
-                <input class="js-ss-color-picker form-control" type="text">
-              </div>
-            </div>
-          </section>
-
-          <section class="u-ss-section">
-            <h3 class="u-ss-section__title">Layout Styles</h3>
-
-            <div class="u-ss-radio-wrap">
-              <div class="u-ss-radio-section">
-                <label>
-                  <input id="layS1" class="js-ss-classes js-ss-option-close" name="layout-styles" type="radio" value="" checked data-selectors="body" data-option-target="#customBG" data-check-item="#bg1">
-
-                  <div class="u-ss-radio">Wide</div>
-                </label>
-              </div>
-
-              <div class="u-ss-radio-section">
-                <label>
-                  <input id="layS2" class="js-ss-classes js-ss-option-open" name="layout-styles" type="radio" value="g-layout-boxed" data-selectors="body" data-option-target="#customBG">
-
-                  <div class="u-ss-radio">Boxed</div>
-                </label>
-              </div>
-
-              <div id="semiboxed" class="u-ss-radio-section" data-modal-target="#resolutionCaution" data-modal-effect="slide">
-                <label id="layS3">
-                  <input class="js-ss-classes js-ss-option-open" name="layout-styles" type="radio" value="g-layout-semiboxed" data-selectors="body" data-option-target="#customBG">
-
-                  <div class="u-ss-radio">SemiBoxed</div>
-                </label>
-              </div>
-            </div>
-
-            <h3 class="u-ss-section__title">Outer Spaces</h3>
-
-            <div class="u-ss-radio-wrap">
-              <div class="u-ss-radio-section">
-                <label>
-                  <input id="outS1" class="js-ss-classes" name="outer-spaces" type="radio" value="" checked data-selectors="html">
-
-                  <div class="u-ss-radio">None</div>
-                </label>
-              </div>
-
-              <div class="u-ss-radio-section">
-                <label>
-                  <input id="outS2" class="js-ss-classes" name="outer-spaces" type="radio" value="u-outer-space-v1" data-selectors="html">
-
-                  <div class="u-ss-radio">20px</div>
-                </label>
-              </div>
-
-              <div class="u-ss-radio-section">
-                <label>
-                  <input id="outS3" class="js-ss-classes" name="outer-spaces" type="radio" value="u-outer-space-v2" data-selectors="html">
-
-                  <div class="u-ss-radio">40px</div>
-                </label>
-              </div>
-            </div>
-          </section>
-
-          <div class="u-ss-option">
-            <section class="u-ss-section">
-              <h3 class="u-ss-section__title">Boxed Background</h3>
-
-              <div id="customBG" class="u-ss-check-section">
-                <label class="u-ss-check">
-                  <input id="bg1" class="js-ss-classes" name="custom-bg" type="radio" value="" data-selectors="body">
-
-                  <div class="u-ss-check__item" style="background-image: url(../../../assets/img/bg/none-bg.png);">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                  </div>
-                </label>
-                <label class="u-ss-check">
-                  <input id="bg2" class="js-ss-classes" name="custom-bg" type="radio" value="g-bgi-v2" data-selectors="body">
-
-                  <div class="u-ss-check__item" style="background-image: url(../../../assets/img-temp/1920x1080/img2.jpg);">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                  </div>
-                </label>
-                <label class="u-ss-check">
-                  <input id="bg3" class="js-ss-classes" name="custom-bg" type="radio" value="g-bgi-v3" data-selectors="body">
-
-                  <div class="u-ss-check__item" style="background-image: url(../../../assets/img-temp/1920x1080/img3.jpg);">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                  </div>
-                </label>
-                <label class="u-ss-check">
-                  <input id="bg4" class="js-ss-classes" name="custom-bg" type="radio" value="g-bgi-v4" data-selectors="body">
-
-                  <div class="u-ss-check__item" style="background-image: url(../../../assets/img-temp/1920x1080/img4.jpg);">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                  </div>
-                </label>
-                <label class="u-ss-check">
-                  <input id="bg5" class="js-ss-classes" name="custom-bg" type="radio" value="g-bgi-v5" data-selectors="body">
-
-                  <div class="u-ss-check__item" style="background-image: url(../../../assets/img-temp/1920x1080/img5.jpg);">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                  </div>
-                </label>
-                <label class="u-ss-check">
-                  <input id="bg6" class="js-ss-classes" name="custom-bg" type="radio" value="g-bgi-v6" data-selectors="body">
-
-                  <div class="u-ss-check__item" style="background-image: url(../../../assets/img-temp/1920x1080/img6.jpg);">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                  </div>
-                </label>
-                <label class="u-ss-check">
-                  <input id="bg7" class="js-ss-classes" name="custom-bg" type="radio" value="g-bgi-v7" data-selectors="body">
-
-                  <div class="u-ss-check__item" style="background-image: url(../../../assets/img-temp/1920x1080/img7.jpg);">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                  </div>
-                </label>
-                <label class="u-ss-check">
-                  <input id="bg8" class="js-ss-classes" name="custom-bg" type="radio" value="g-bgi-v8" data-selectors="body">
-
-                  <div class="u-ss-check__item" style="background-image: url(../../../assets/img/bg/pattern/bricks-white.png);">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                  </div>
-                </label>
-                <label class="u-ss-check">
-                  <input id="bg9" class="js-ss-classes" name="custom-bg" type="radio" value="g-bgi-v9" data-selectors="body">
-
-                  <div class="u-ss-check__item" style="background-image: url(../../../assets/img/bg/pattern/math-dark.png);">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                  </div>
-                </label>
-                <label class="u-ss-check">
-                  <input id="bg10" class="js-ss-classes" name="custom-bg" type="radio" value="g-bgi-v10" data-selectors="body">
-
-                  <div class="u-ss-check__item" style="background-image: url(../../../assets/img/bg/pattern/figures-light.png);">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                  </div>
-                </label>
-                <label class="u-ss-check">
-                  <input id="bg11" class="js-ss-classes" name="custom-bg" type="radio" value="g-bgi-v11" data-selectors="body">
-
-                  <div class="u-ss-check__item" style="background-image: url(../../../assets/img/bg/pattern/footer-lodyas.png);">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                  </div>
-                </label>
-                <label class="u-ss-check">
-                  <input id="bg12" class="js-ss-classes" name="custom-bg" type="radio" value="g-bgi-v12" data-selectors="body">
-
-                  <div class="u-ss-check__item" style="background-image: url(../../../assets/img/bg/pattern/doodles.png);">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                  </div>
-                </label>
-                <label class="u-ss-check">
-                  <input id="bg13" class="js-ss-classes" name="custom-bg" type="radio" value="g-bgi-v13" data-selectors="body">
-
-                  <div class="u-ss-check__item" style="background-image: url(../../../assets/img/bg/pattern/darkness.png);">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                  </div>
-                </label>
-                <label class="u-ss-check">
-                  <input id="bg14" class="js-ss-classes" name="custom-bg" type="radio" value="g-bgi-v14" data-selectors="body">
-
-                  <div class="u-ss-check__item" style="background-image: url(../../../assets/img/bg/pattern/memphis-colorful.png);">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                  </div>
-                </label>
-              </div>
-            </section>
-          </div>
-
-          <div class="u-ss-sub-section-wrap">
-            <div class="u-ss-sub-section_half">
-              <a id="getCSSSkin" class="u-ss-btn u-ss-btn--green" href="page-profile-settings-1.html#!" role="button" data-content-target="[id^='less']" data-modal-target="#copyModal" data-modal-effect="fadein">Get CSS
-            </a>
-            </div>
-
-            <div class="u-ss-sub-section_half">
-              <button class="js-ss-reset u-ss-btn" type="reset">Reset</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </aside>
-
-  <div id="resolutionCaution" class="text-left g-max-width-600 g-bg-white g-pa-20" style="display: none;">
-    <button type="button" class="close" onclick="Custombox.modal.close();">
-      <i class="hs-icon hs-icon-close"></i>
-    </button>
-    <h4 class="g-mb-20">Screen resolution less than 1400px</h4>
-  </div>
+ <script>
+   $(document).on('ready', function () {
+       $.HSCore.helpers.HSFocusState.init();
+       $.HSCore.helpers.HSNotEmptyState.init();
+
+       // initialization of go to
+       $.HSCore.components.HSGoTo.init('.js-go-to');
+
+       // initialization of tabs
+       $.HSCore.components.HSTabs.init('[role="tablist"]');
+
+       // initialization of input masking
+       $.HSCore.components.HSMaskedInput.init('[data-mask]');
+
+       // initialization of custom select
+       $.HSCore.components.HSSelect.init('.js-custom-select');
+
+       // initialization of HSScrollBar component
+       $.HSCore.components.HSScrollBar.init( $('.js-scrollbar') );
+     });
+
+     $(window).on('load', function () {
+       // initialization of header
+       $.HSCore.components.HSHeader.init($('#js-header'));
+       $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+       // initialization of HSMegaMenu component
+       $('.js-mega-menu').HSMegaMenu({
+         event: 'hover',
+         pageContainer: $('.container'),
+         breakpoint: 991
+       });
+
+       // initialization of horizontal progress bars
+       setTimeout(function () { // important in this case
+         var horizontalProgressBars = $.HSCore.components.HSProgressBar.init('.js-hr-progress-bar', {
+           direction: 'horizontal',
+           indicatorSelector: '.js-hr-progress-bar-indicator'
+         });
+       }, 1);
+     });
+
+     $(window).on('resize', function () {
+       setTimeout(function () {
+         $.HSCore.components.HSTabs.init('[role="tablist"]');
+       }, 200);
+     });
+ </script>
 
   <div id="copyModal" class="text-left modal-demo g-bg-white g-color-black g-pa-20" style="display: none;"></div>
 
   <!-- CSS -->
   <link rel="stylesheet" href="../../../assets/vendor/malihu-scrollbar/jquery.mCustomScrollbar.min.css">
-
-  <link rel="stylesheet" href="../../../assets/vendor/prism/themes/prism.css">
-  <link rel="stylesheet" href="../../../assets/vendor/custombox/custombox.min.css">
-  <link rel="stylesheet" href="../../../assets/style-switcher/vendor/spectrum/spectrum.css">
-  <link rel="stylesheet" href="../../../assets/style-switcher/vendor/spectrum/themes/sp-dark.css">
-  <link rel="stylesheet" href="../../../assets/style-switcher/style-switcher.css">
-  <!-- End CSS -->
-
-  <!-- Scripts -->
-
-
-  <script src="../../../assets/vendor/malihu-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-  <script src="../../../assets/vendor/custombox/custombox.min.js"></script>
-  <script src="../../../assets/vendor/clipboard/dist/clipboard.min.js"></script>
-
-  <!-- Prism -->
-  <script src="../../../assets/vendor/prism/prism.js"></script>
-  <script src="../../../assets/vendor/prism/components/prism-markup.min.js"></script>
-  <script src="../../../assets/vendor/prism/components/prism-css.min.js"></script>
-  <script src="../../../assets/vendor/prism/components/prism-clike.min.js"></script>
-  <script src="../../../assets/vendor/prism/components/prism-javascript.min.js"></script>
-  <script src="../../../assets/vendor/prism/plugins/toolbar/prism-toolbar.min.js"></script>
-  <script src="../../../assets/vendor/prism/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
-  <!-- End Prism -->
-
-  <script src="../../../assets/js/components/hs.scrollbar.js"></script>
-
-  <script src="../../../assets/js/components/hs.modal-window.js"></script>
-  <script src="../../../assets/js/components/hs.markup-copy.js"></script>
-
-  <script src="../../../assets/style-switcher/vendor/cookiejs/jquery.cookie.js"></script>
-  <script src="../../../assets/style-switcher/vendor/spectrum/spectrum.js"></script>
-  <script src="../../../assets/style-switcher/style-switcher.js"></script>
-  <!-- End Scripts -->
-  <!-- End Style Switcher -->
 
 </body>
 

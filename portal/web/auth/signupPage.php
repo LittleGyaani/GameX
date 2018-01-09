@@ -152,7 +152,7 @@ if(isset($_SESSION['userID'])){
                   <label class="form-check-inline u-check g-color-gray-dark-v5 g-font-size-13 g-pl-25">
                     <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox" id="termsCheck">
                     <div class="u-check-icon-checkbox-v6 g-absolute-centered--y g-left-0">
-                      <i class="fa g-rounded-2" data-check-icon="&#xf00c"></i>
+                      <i class="fa g-rounded-2" data-check-icon="&#xf00c;"></i>
                     </div>
                     I accept the <a href="signupPage.php#termsModal" data-modal-target="#termsModal" data-modal-effect="slide">Terms and Conditions</a>
                   </label>

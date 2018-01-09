@@ -108,7 +108,7 @@ if(!empty( $_SESSION['userID'])){
                       <label class="form-check-inline u-check g-color-gray-dark-v5 g-font-size-12 g-pl-25 mb-0">
                         <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
                         <div class="u-check-icon-checkbox-v6 g-absolute-centered--y g-left-0">
-                          <i class="fa" data-check-icon="&#xf00c"></i>
+                          <i class="fa" data-check-icon="&#xf00c;"></i>
                         </div>
                         Keep signed in
                       </label>
