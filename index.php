@@ -181,14 +181,14 @@
           <div class="col-lg-4 col-md-6 g-mb-30 g-mb-0--lg">
             <article class="u-block-hover u-shadow-v21 rounded">
               <figure class="u-bg-overlay g-bg-black-opacity-0_4--after">
-                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="https://lh4.ggpht.com/eKJNS2Pj-b5obfpU96n8diVSUVxiJ70Wx529FPkBtaGLJj6kJ7CWLkur8dJ_t8rm6w=h900" alt="Image description">
+                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="http://www.freemobagames.com/wp-content/uploads/2014/06/league-of-legends-feature.jpg" alt="Image description">
               </figure>
 
               <header class="u-bg-overlay__inner g-pos-abs g-top-30 g-right-30 g-left-30 g-color-white">
                 <h3 class="h4">
-                    <a class="g-color-white" href="home-default.html#!">Unify Template</a>
+                    <a class="g-color-white" href="#!">League of Legends</a>
                   </h3>
-                <p>Consectetur adipiscing elitut eleifend nisl</p>
+                <p>Game open for registration.</p>
               </header>
 
               <ul class="list-inline u-bg-overlay__inner g-pos-abs g-bottom-10 g-left-30 g-opacity-0_8">
@@ -215,14 +215,14 @@
           <div class="col-lg-4 col-md-6 g-mb-30 g-mb-0--lg">
             <article class="u-block-hover u-shadow-v21 rounded">
               <figure class="u-bg-overlay g-bg-black-opacity-0_4--after">
-                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="assets/img-temp/400x270/img13.jpg" alt="Image description">
+                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="http://www.freemobagames.com/wp-content/uploads/2014/06/league-of-legends-feature.jpg" alt="Image description">
               </figure>
 
               <header class="u-bg-overlay__inner g-pos-abs g-top-30 g-right-30 g-left-30 g-color-white">
                 <h3 class="h4">
-                    <a class="g-color-white" href="home-default.html#!">Htmlstream Freebies</a>
+                    <a class="g-color-white" href="#!">League of Legends</a>
                   </h3>
-                <p>Consectetur adipiscing elitut eleifend nisl</p>
+                <p>Game open for registration.</p>
               </header>
 
               <ul class="list-inline u-bg-overlay__inner g-pos-abs g-bottom-10 g-left-30 g-opacity-0_8">
@@ -249,14 +249,14 @@
           <div class="col-lg-4 col-md-6">
             <article class="u-block-hover u-shadow-v21 rounded">
               <figure class="u-bg-overlay g-bg-black-opacity-0_4--after">
-                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="assets/img-temp/400x270/img3.jpg" alt="Image description">
+                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="http://www.freemobagames.com/wp-content/uploads/2014/06/league-of-legends-feature.jpg" alt="Image description">
               </figure>
 
               <header class="u-bg-overlay__inner g-pos-abs g-top-30 g-right-30 g-left-30 g-color-white">
                 <h3 class="h4">
-                    <a class="g-color-white" href="home-default.html#!">Pixeel Ltd.</a>
+                    <a class="g-color-white" href="#!">League of Legends</a>
                   </h3>
-                <p>Consectetur adipiscing elitut eleifend nisl</p>
+                <p>Game open for registration.</p>
               </header>
 
               <ul class="list-inline u-bg-overlay__inner g-pos-abs g-bottom-10 g-left-30 g-opacity-0_8">
@@ -287,7 +287,7 @@
     <!-- Most Quality Solution -->
     <section class="dzsparallaxer auto-init height-is-based-on-content use-loading" data-options='{direction: "reverse", settings_mode_oneelement_max_offset: "150"}'>
       <!-- Parallax Image -->
-      <div class="divimage dzsparallaxer--target w-100 u-bg-overlay g-bg-img-hero g-bg-white-opacity-0_7--after" style="height: 140%; background-image: url(assets/img-temp/1920x1080/img7.jpg);"></div>
+      <div class="divimage dzsparallaxer--target w-100 u-bg-overlay g-bg-img-hero g-bg-white-opacity-0_7--after" style="height: 140%; background-image: url(assets/img/bg/intro_parallax_bg.jpg);"></div>
       <!-- End Parallax Image -->
 
       <div class="container u-bg-overlay__inner g-py-150--md g-py-80">
@@ -300,19 +300,19 @@
             <p class="g-font-size-16 g-line-height-2 g-mb-30">Play a challening head and game on to be the best among all. Prove your self! Let's challenge.</p>
 
             <div class="g-mb-30">
-              <img class="u-block-hover__main--grayscale g-width-100 g-opacity-0_6 g-mr-40 g-mb-10 g-mb-0--sm" src="assets/img-temp/200x100/img8.png" alt="Image description">
-              <img class="u-block-hover__main--grayscale g-width-100 g-opacity-0_6 g-mr-40 g-mb-10 g-mb-0--sm" src="assets/img-temp/200x100/img6.png" alt="Image description">
-              <img class="u-block-hover__main--grayscale g-width-100 g-opacity-0_6" src="assets/img-temp/200x100/img3.png" alt="Image description">
+              <img class="u-block-hover__main--grayscale g-width-100 g-opacity-0_6" src="http://gamerau.com/8-ball-pool-hack/images/logo.png" alt="Image description">
+              <img class="u-block-hover__main--grayscale g-width-100 g-opacity-0_6" src="https://k1.midasplayer.com/images/logos/kingLogoRebrand.svg?_v=13wlhey" alt="Image description">
+              <img class="u-block-hover__main--grayscale g-width-100 g-opacity-0_6" src="https://upload.wikimedia.org/wikipedia/en/4/46/Pokemon_Go.png" alt="Image description">
             </div>
 
-            <a href="home-default.html#!" class="btn btn-xl u-btn-primary text-uppercase g-font-weight-600 g-font-size-12 rounded g-mr-15 g-mb-15 g-mb-0--sm">Play a Match</a>
+            <a href="#!" class="btn btn-xl u-btn-primary text-uppercase g-font-weight-600 g-font-size-12 rounded g-mr-15 g-mb-15 g-mb-0--sm">Play a Match</a>
             <small class="d-block d-sm-inline-block g-color-gray-dark-v5 g-font-size-12">*Be the best and find yourself in the hall of fame.</small>
           </div>
           <!-- End Section Content -->
 
           <!-- Video Icon -->
           <div class="col-lg-6 order-1 order-sm-2 align-self-center text-center g-pos-rel g-mb-40 g-mb-0--sm">
-            <a class="js-fancybox d-block g-pos-rel" href="javascript:;" data-src="//vimeo.com/167434033" data-speed="350" data-caption="Lightbox Gallery">
+            <a class="js-fancybox d-block g-pos-rel" href="javascript:;" data-src="//youtube.com/embed/xhGNIySaqwg?ecver=2" data-speed="350" data-caption="Lightbox Gallery">
               <span class="u-icon-v3 u-icon-size--xl u-block-hover--scale u-shadow-v24 g-bg-white g-color-gray-dark-v1 g-color-primary--hover g-font-size-20 rounded-circle g-cursor-pointer g-mb-10">
                   <i class="fa fa-play g-pos-rel g-left-2"></i>
                 </span>
@@ -369,60 +369,12 @@
        <div class="row no-gutters g-mx-minus-10">
          <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
            <!-- Projects -->
-           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-purple--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
-             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="../../assets/img-temp/425x250/img1.png" alt="Image Description">
-             <span class="g-font-weight-600 g-font-size-12 text-uppercase">Mockups</span>
-             <h3 class="h4 g-font-weight-600 mb-0">Kitchen Tools</h3>
+           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-pink--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
+             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="http://www.afkmagazine.com/wp-content/uploads/2013/07/rockstar-logo.png" width="160px" height="160px" alt="Image Description">
+             <br/><span class="g-font-weight-600 g-font-size-22 text-uppercase">GTA Vice City</span>
+             <h3 class="h4 g-font-weight-600 mb-0">Registration Open : 09/01/2018</h3>
 
-             <a class="u-link-v2" href="index.html#!"></a>
-           </div>
-           <!-- End Projects -->
-         </div>
-
-         <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
-           <!-- Projects -->
-           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-cyan--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
-             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="../../assets/img-temp/425x250/img2.png" alt="Image Description">
-             <span class="g-font-weight-600 g-font-size-12 text-uppercase">Others</span>
-             <h3 class="h4 g-font-weight-600 mb-0">Brochure</h3>
-
-             <a class="u-link-v2" href="index.html#!"></a>
-           </div>
-           <!-- End Projects -->
-         </div>
-
-         <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
-           <!-- Projects -->
-           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-teal--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
-             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="../../assets/img-temp/425x250/img3.png" alt="Image Description">
-             <span class="g-font-weight-600 g-font-size-12 text-uppercase">Hi-Tech</span>
-             <h3 class="h4 g-font-weight-600 mb-0">MacBook Pro</h3>
-
-             <a class="u-link-v2" href="index.html#!"></a>
-           </div>
-           <!-- End Projects -->
-         </div>
-
-         <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
-           <!-- Projects -->
-           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-lightred--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
-             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="../../assets/img-temp/425x250/img4.png" alt="Image Description">
-             <span class="g-font-weight-600 g-font-size-12 text-uppercase">Hi-tech</span>
-             <h3 class="h4 g-font-weight-600 mb-0">Latest VR product</h3>
-
-             <a class="u-link-v2" href="index.html#!"></a>
-           </div>
-           <!-- End Projects -->
-         </div>
-
-         <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
-           <!-- Projects -->
-           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-primary--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
-             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="../../assets/img-temp/425x250/img5.png" alt="Image Description">
-             <span class="g-font-weight-600 g-font-size-12 text-uppercase">Others</span>
-             <h3 class="h4 g-font-weight-600 mb-0">Brochure</h3>
-
-             <a class="u-link-v2" href="index.html#!"></a>
+             <a class="u-link-v2" href="#!"></a>
            </div>
            <!-- End Projects -->
          </div>
@@ -430,11 +382,59 @@
          <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
            <!-- Projects -->
            <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-pink--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
-             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="../../assets/img-temp/425x250/img6.png" alt="Image Description">
-             <span class="g-font-weight-600 g-font-size-12 text-uppercase">Cosmetics</span>
-             <h3 class="h4 g-font-weight-600 mb-0">Spa Cosmetics</h3>
+             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="http://www.afkmagazine.com/wp-content/uploads/2013/07/rockstar-logo.png" width="160px" height="160px" alt="Image Description">
+             <br/><span class="g-font-weight-600 g-font-size-22 text-uppercase">GTA Vice City</span>
+             <h3 class="h4 g-font-weight-600 mb-0">Registration Open : 09/01/2018</h3>
 
-             <a class="u-link-v2" href="index.html#!"></a>
+             <a class="u-link-v2" href="#!"></a>
+           </div>
+           <!-- End Projects -->
+         </div>
+
+         <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
+           <!-- Projects -->
+           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-cyan--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
+             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="http://www.afkmagazine.com/wp-content/uploads/2013/07/rockstar-logo.png" width="160px" height="160px" alt="Image Description">
+             <br/><span class="g-font-weight-600 g-font-size-22 text-uppercase">GTA Vice City</span>
+             <h3 class="h4 g-font-weight-600 mb-0">Registration Open : 09/01/2018</h3>
+
+             <a class="u-link-v2" href="#!"></a>
+           </div>
+           <!-- End Projects -->
+         </div>
+
+         <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
+           <!-- Projects -->
+           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-blue--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
+             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="http://www.afkmagazine.com/wp-content/uploads/2013/07/rockstar-logo.png" width="160px" height="160px" alt="Image Description">
+             <br/><span class="g-font-weight-600 g-font-size-22 text-uppercase">GTA Vice City</span>
+             <h3 class="h4 g-font-weight-600 mb-0">Registration Open : 09/01/2018</h3>
+
+             <a class="u-link-v2" href="#!"></a>
+           </div>
+           <!-- End Projects -->
+         </div>
+
+         <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
+           <!-- Projects -->
+           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-green--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
+             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="http://www.afkmagazine.com/wp-content/uploads/2013/07/rockstar-logo.png" width="160px" height="160px" alt="Image Description">
+             <br/><span class="g-font-weight-600 g-font-size-22 text-uppercase">GTA Vice City</span>
+             <h3 class="h4 g-font-weight-600 mb-0">Registration Open : 09/01/2018</h3>
+
+             <a class="u-link-v2" href="#!"></a>
+           </div>
+           <!-- End Projects -->
+         </div>
+
+         <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
+           <!-- Projects -->
+           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-red--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
+             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="http://www.afkmagazine.com/wp-content/uploads/2013/07/rockstar-logo.png" width="160px" height="160px" alt="Image Description">
+             <br/><span class="g-font-weight-600 g-font-size-22 text-uppercase">GTA Vice City</span>
+             <h3 class="h4 g-font-weight-600 mb-0">Registration Open : 09/01/2018</h3>
+
+             <a class="u-link-v2" href="#!"></a>
            </div>
            <!-- End Projects -->
          </div>
@@ -477,7 +477,7 @@
 
             <article>
               <h3 class="h6 g-mb-2">
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="home-default.html#!">Incredible template</a>
+            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Incredible template</a>
           </h3>
               <div class="small g-color-white-opacity-0_6">May 8, 2017</div>
             </article>
@@ -486,7 +486,7 @@
 
             <article>
               <h3 class="h6 g-mb-2">
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="home-default.html#!">New features</a>
+            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">New features</a>
           </h3>
               <div class="small g-color-white-opacity-0_6">June 23, 2017</div>
             </article>
@@ -495,7 +495,7 @@
 
             <article>
               <h3 class="h6 g-mb-2">
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="home-default.html#!">New terms and conditions</a>
+            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">New terms and conditions</a>
           </h3>
               <div class="small g-color-white-opacity-0_6">September 15, 2017</div>
             </article>
@@ -518,25 +518,25 @@
                 </li>
                 <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
                   <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="home-default.html#!">Live Match</a>
+                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Live Match</a>
                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
               </h4>
                 </li>
                 <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
                   <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="home-default.html#!">Challenge Mode</a>
+                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Challenge Mode</a>
                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
               </h4>
                 </li>
                 <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
                   <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="home-default.html#!">Global Leader Board</a>
+                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Global Leader Board</a>
                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
               </h4>
                 </li>
                 <li class="g-pos-rel g-py-10">
                   <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="home-default.html#!">Contact Us</a>
+                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Contact Us</a>
                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
               </h4>
                 </li>
@@ -582,9 +582,9 @@
               </span>
             </div>
             <p class="mb-0">
-              <a class="g-color-white-opacity-0_8 g-color-white--hover" href="mailto:info@htmlstream.com">info@htmlstream.com</a>
+              <a class="g-color-white-opacity-0_8 g-color-white--hover" href="mailto:info@gamex.com">info@gamex.com</a>
               <br>
-              <a class="g-color-white-opacity-0_8 g-color-white--hover" href="home-default.html#!">www.htmlstream.com</a>
+              <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">www.gamex.com</a>
             </p>
           </div>
           <!-- End Email and Website -->
@@ -605,25 +605,25 @@
               <small class="d-block g-font-size-default g-mr-10 g-mb-10 g-mb-0--md">2017 © All Rights Reserved.</small>
               <ul class="u-list-inline">
                 <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="home-default.html#!">Privacy Policy</a>
+                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Privacy Policy</a>
                 </li>
                 <li class="list-inline-item">
                   <span>|</span>
                 </li>
                 <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="home-default.html#!">Terms of Use</a>
+                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Terms of Use</a>
                 </li>
                 <li class="list-inline-item">
                   <span>|</span>
                 </li>
                 <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="home-default.html#!">License</a>
+                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">License</a>
                 </li>
                 <li class="list-inline-item">
                   <span>|</span>
                 </li>
                 <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="home-default.html#!">Support</a>
+                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Support</a>
                 </li>
               </ul>
             </div>
@@ -632,32 +632,32 @@
           <div class="col-md-4 align-self-center">
             <ul class="list-inline text-center text-md-right mb-0">
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Facebook">
-                <a href="home-default.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-facebook"></i>
                 </a>
               </li>
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Skype">
-                <a href="home-default.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-skype"></i>
                 </a>
               </li>
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Linkedin">
-                <a href="home-default.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-linkedin"></i>
                 </a>
               </li>
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Pinterest">
-                <a href="home-default.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-pinterest"></i>
                 </a>
               </li>
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Twitter">
-                <a href="home-default.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-twitter"></i>
                 </a>
               </li>
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Dribbble">
-                <a href="home-default.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-dribbble"></i>
                 </a>
               </li>
@@ -667,7 +667,7 @@
       </div>
     </footer>
     <!-- End Copyright Footer -->
-    <a class="js-go-to u-go-to-v1" href="home-default.html#!" data-type="fixed" data-position='{
+    <a class="js-go-to u-go-to-v1" href="#!" data-type="fixed" data-position='{
      "bottom": 15,
      "right": 15
    }' data-offset-top="400" data-compensation="#js-header" data-show-effect="zoomIn">
