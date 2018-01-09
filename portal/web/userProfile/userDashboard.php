@@ -158,11 +158,11 @@ if(isset($_SESSION['userID'])){
       <div class="container">
         <ul class="u-list-inline">
           <li class="list-inline-item g-mr-7">
-            <a class="u-link-v5 g-color-main g-color-primary--hover" href="page-profile-main-1.html#!">Home</a>
+            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">Home</a>
             <i class="fa fa-angle-right g-ml-7"></i>
           </li>
           <li class="list-inline-item g-mr-7">
-            <a class="u-link-v5 g-color-main g-color-primary--hover" href="page-profile-main-1.html#!">Pages</a>
+            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">Pages</a>
             <i class="fa fa-angle-right g-ml-7"></i>
           </li>
           <li class="list-inline-item g-color-primary">
@@ -190,17 +190,17 @@ if(isset($_SESSION['userID'])){
                   <!-- Figure Social Icons -->
                   <ul class="list-inline text-center g-flex-middle-item--bottom g-mb-20">
                     <li class="list-inline-item align-middle g-mx-7">
-                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="page-profile-main-1.html#!">
+                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="#!">
                         <i class="icon-note u-line-icon-pro"></i>
                       </a>
                     </li>
                     <li class="list-inline-item align-middle g-mx-7">
-                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="page-profile-main-1.html#!">
+                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="#!">
                         <i class="icon-notebook u-line-icon-pro"></i>
                       </a>
                     </li>
                     <li class="list-inline-item align-middle g-mx-7">
-                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="page-profile-main-1.html#!">
+                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="#!">
                         <i class="icon-settings u-line-icon-pro"></i>
                       </a>
                     </li>
@@ -212,7 +212,7 @@ if(isset($_SESSION['userID'])){
 
               <!-- User Info -->
               <span class="g-pos-abs g-top-20 g-left-0">
-                  <a class="btn btn-sm u-btn-primary rounded-0" href="page-profile-main-1.html#!"><b><?=$_SESSION['userNAME'];?></b></a>
+                  <a class="btn btn-sm u-btn-primary rounded-0" href="#!"><b><?=$_SESSION['userNAME'];?></b></a>
                   <small class="d-block g-bg-red g-color-white g-pa-5">Pro Champ</small>
                 </span>
               <!-- End User Info -->
@@ -293,22 +293,22 @@ if(isset($_SESSION['userID'])){
                       <i class="icon-options-vertical g-pos-rel g-top-1"></i>
                     </span>
                   <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
-                    <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-layers g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Projects
                     </a>
-                    <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-wallet g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Wallets
                     </a>
-                    <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-fire g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Reports
                     </a>
-                    <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-settings g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Users Setting
                     </a>
 
                     <div class="dropdown-divider"></div>
 
-                    <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
                     </a>
                   </div>
@@ -392,22 +392,22 @@ if(isset($_SESSION['userID'])){
                           <i class="icon-options-vertical g-pos-rel g-top-1"></i>
                         </span>
                       <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-layers g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Projects
                         </a>
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-wallet g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Wallets
                         </a>
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-fire g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Reports
                         </a>
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-settings g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Users Setting
                         </a>
 
                         <div class="dropdown-divider"></div>
 
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
                         </a>
                       </div>
@@ -485,22 +485,22 @@ if(isset($_SESSION['userID'])){
                           <i class="icon-options-vertical g-pos-rel g-top-1"></i>
                         </span>
                       <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-layers g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Projects
                         </a>
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-wallet g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Wallets
                         </a>
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-fire g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Reports
                         </a>
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-settings g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Users Setting
                         </a>
 
                         <div class="dropdown-divider"></div>
 
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
                         </a>
                       </div>
@@ -610,22 +610,22 @@ if(isset($_SESSION['userID'])){
                           <i class="icon-options-vertical g-pos-rel g-top-1"></i>
                         </span>
                       <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-layers g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Projects
                         </a>
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-wallet g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Wallets
                         </a>
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-fire g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Reports
                         </a>
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-settings g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Users Setting
                         </a>
 
                         <div class="dropdown-divider"></div>
 
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
                         </a>
                       </div>
@@ -759,22 +759,22 @@ if(isset($_SESSION['userID'])){
                           <i class="icon-options-vertical g-pos-rel g-top-1"></i>
                         </span>
                       <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-layers g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Projects
                         </a>
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-wallet g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Wallets
                         </a>
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-fire g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Reports
                         </a>
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-settings g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Users Setting
                         </a>
 
                         <div class="dropdown-divider"></div>
 
-                        <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                        <a class="dropdown-item g-px-10" href="#!">
                           <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
                         </a>
                       </div>
@@ -784,18 +784,18 @@ if(isset($_SESSION['userID'])){
                   <div class="js-scrollbar card-block  u-info-v1-1 g-bg-white-gradient-v1--after g-height-300 g-pa-0">
                     <!-- Article -->
                     <article class="media g-mb-20">
-                      <a class="d-flex mr-3" href="page-profile-main-1.html#!">
+                      <a class="d-flex mr-3" href="#!">
                         <img class="rounded-circle g-width-40 g-height-40" src="../../../assets/img-temp/100x100/img1.jpg" alt="Image Description">
                       </a>
 
                       <div class="media-body">
                         <h3 class="h6">
                             <span class="g-color-black g-font-weight-600">Htmlstream</span>
-                            <a class="g-color-gray-dark-v4 g-mr-5" href="page-profile-main-1.html#!">@Htmlstream</a>
+                            <a class="g-color-gray-dark-v4 g-mr-5" href="#!">@Htmlstream</a>
                             <span class="g-color-gray-dark-v4">26m</span>
                           </h3>
                         <p class="g-color-gray-dark-v4 g-mb-5">Sed ultrices velit vitae tortor posuere ultrices. Aliquam laoreet lorem et vulputate porta.</p>
-                        <a href="page-profile-main-1.html#!">https://goo.gl/Zjd6Bj</a>
+                        <a href="#!">https://goo.gl/Zjd6Bj</a>
                       </div>
                     </article>
                     <!-- End Article -->
@@ -804,18 +804,18 @@ if(isset($_SESSION['userID'])){
 
                     <!-- Article -->
                     <article class="media g-mb-20">
-                      <a class="d-flex mr-3" href="page-profile-main-1.html#!">
+                      <a class="d-flex mr-3" href="#!">
                         <img class="rounded-circle g-width-40 g-height-40" src="../../../assets/img-temp/100x100/img3.jpg" alt="Image Description">
                       </a>
 
                       <div class="media-body">
                         <h3 class="h6">
                             <span class="g-color-black g-font-weight-600">Pixeel</span>
-                            <a class="g-color-gray-dark-v4 g-mr-5" href="page-profile-main-1.html#!">@PixeelStudio</a>
+                            <a class="g-color-gray-dark-v4 g-mr-5" href="#!">@PixeelStudio</a>
                             <span class="g-color-gray-dark-v4">3h</span>
                           </h3>
                         <p class="g-color-gray-dark-v4 g-mb-5">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis.</p>
-                        <a href="page-profile-main-1.html#!">https://goo.gl/Zjd6Bj</a>
+                        <a href="#!">https://goo.gl/Zjd6Bj</a>
                       </div>
                     </article>
                     <!-- End Article -->
@@ -824,18 +824,18 @@ if(isset($_SESSION['userID'])){
 
                     <!-- Article -->
                     <article class="media g-mb-20">
-                      <a class="d-flex mr-3" href="page-profile-main-1.html#!">
+                      <a class="d-flex mr-3" href="#!">
                         <img class="rounded-circle g-width-40 g-height-40" src="../../../assets/img-temp/100x100/img2.jpg" alt="Image Description">
                       </a>
 
                       <div class="media-body">
                         <h3 class="h6">
                             <span class="g-color-black g-font-weight-600">Wrapbootstrap</span>
-                            <a class="g-color-gray-dark-v4 g-mr-5" href="page-profile-main-1.html#!">@Wrapbootstrap</a>
+                            <a class="g-color-gray-dark-v4 g-mr-5" href="#!">@Wrapbootstrap</a>
                             <span class="g-color-gray-dark-v4">54m</span>
                           </h3>
                         <p class="g-color-gray-dark-v4 g-mb-5">Sed ultrices velit vitae tortor posuere ultrices. Aliquam laoreet lorem et vulputate porta.</p>
-                        <a href="page-profile-main-1.html#!">https://goo.gl/Zjd6Bj</a>
+                        <a href="#!">https://goo.gl/Zjd6Bj</a>
                       </div>
                     </article>
                     <!-- End Article -->
@@ -844,18 +844,18 @@ if(isset($_SESSION['userID'])){
 
                     <!-- Article -->
                     <article class="media g-mb-20">
-                      <a class="d-flex mr-3" href="page-profile-main-1.html#!">
+                      <a class="d-flex mr-3" href="#!">
                         <img class="rounded-circle g-width-40 g-height-40" src="../../../assets/img-temp/100x100/img4.jpg" alt="Image Description">
                       </a>
 
                       <div class="media-body">
                         <h3 class="h6">
                             <span class="g-color-black g-font-weight-600">Karina</span>
-                            <a class="g-color-gray-dark-v4 g-mr-5" href="page-profile-main-1.html#!">@Karina</a>
+                            <a class="g-color-gray-dark-v4 g-mr-5" href="#!">@Karina</a>
                             <span class="g-color-gray-dark-v4">7h</span>
                           </h3>
                         <p class="g-color-gray-dark-v4 g-mb-5">Sed ultrices velit vitae tortor posuere ultrices. Aliquam laoreet lorem et vulputate porta.</p>
-                        <a href="page-profile-main-1.html#!">https://goo.gl/Zjd6Bj</a>
+                        <a href="#!">https://goo.gl/Zjd6Bj</a>
                       </div>
                     </article>
                     <!-- End Article -->
@@ -871,29 +871,29 @@ if(isset($_SESSION['userID'])){
               <!-- Panel Header -->
               <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
                 <h3 class="h6 mb-0">
-                    <i class="icon-notebook g-pos-rel g-top-1 g-mr-5"></i> Last PLayed Games
+                    <i class="icon-notebook g-pos-rel g-top-1 g-mr-5"></i> Last Played Games with Players
                   </h3>
                 <div class="dropdown g-mb-10 g-mb-0--md">
                   <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="icon-options-vertical g-pos-rel g-top-1"></i>
                     </span>
                   <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
-                    <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-layers g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Projects
                     </a>
-                    <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-wallet g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Wallets
                     </a>
-                    <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-fire g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Reports
                     </a>
-                    <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-settings g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Users Setting
                     </a>
 
                     <div class="dropdown-divider"></div>
 
-                    <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
                     </a>
                   </div>
@@ -929,17 +929,17 @@ if(isset($_SESSION['userID'])){
                       <!-- Figure List -->
                       <ul class="row list-inline g-py-20 g-ma-0">
                         <li class="col g-brd-right g-brd-gray-light-v4">
-                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-cyan--hover" href="page-profile-main-1.html#!">
+                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-cyan--hover" href="#!">
                             <i class="icon-speech"></i>
                           </a>
                         </li>
                         <li class="col g-brd-right g-brd-gray-light-v4">
-                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-red--hover" href="page-profile-main-1.html#!">
+                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-red--hover" href="#!">
                             <i class="icon-envelope-letter"></i>
                           </a>
                         </li>
                         <li class="col">
-                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-purple--hover" href="page-profile-main-1.html#!">
+                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-purple--hover" href="#!">
                             <i class="icon-screen-smartphone"></i>
                           </a>
                         </li>
@@ -973,17 +973,17 @@ if(isset($_SESSION['userID'])){
                       <!-- Figure List -->
                       <ul class="row list-inline g-py-20 g-ma-0">
                         <li class="col g-brd-right g-brd-gray-light-v4">
-                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-cyan--hover" href="page-profile-main-1.html#!">
+                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-cyan--hover" href="#!">
                             <i class="icon-speech"></i>
                           </a>
                         </li>
                         <li class="col g-brd-right g-brd-gray-light-v4">
-                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-red--hover" href="page-profile-main-1.html#!">
+                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-red--hover" href="#!">
                             <i class="icon-envelope-letter"></i>
                           </a>
                         </li>
                         <li class="col">
-                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-purple--hover" href="page-profile-main-1.html#!">
+                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-purple--hover" href="#!">
                             <i class="icon-screen-smartphone"></i>
                           </a>
                         </li>
@@ -1017,17 +1017,17 @@ if(isset($_SESSION['userID'])){
                       <!-- Figure List -->
                       <ul class="row list-inline g-py-20 g-ma-0">
                         <li class="col g-brd-right g-brd-gray-light-v4">
-                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-cyan--hover" href="page-profile-main-1.html#!">
+                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-cyan--hover" href="#!">
                             <i class="icon-speech"></i>
                           </a>
                         </li>
                         <li class="col g-brd-right g-brd-gray-light-v4">
-                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-red--hover" href="page-profile-main-1.html#!">
+                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-red--hover" href="#!">
                             <i class="icon-envelope-letter"></i>
                           </a>
                         </li>
                         <li class="col">
-                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-purple--hover" href="page-profile-main-1.html#!">
+                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-purple--hover" href="#!">
                             <i class="icon-screen-smartphone"></i>
                           </a>
                         </li>
@@ -1054,22 +1054,22 @@ if(isset($_SESSION['userID'])){
                       <i class="icon-options-vertical g-pos-rel g-top-1"></i>
                     </span>
                   <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
-                    <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-layers g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Projects
                     </a>
-                    <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-wallet g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Wallets
                     </a>
-                    <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-fire g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Reports
                     </a>
-                    <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-settings g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Users Setting
                     </a>
 
                     <div class="dropdown-divider"></div>
 
-                    <a class="dropdown-item g-px-10" href="page-profile-main-1.html#!">
+                    <a class="dropdown-item g-px-10" href="#!">
                       <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
                     </a>
                   </div>
@@ -1102,7 +1102,7 @@ if(isset($_SESSION['userID'])){
                           </div>
                         </td>
                         <td class="align-middle">
-                          <a class="btn btn-block u-btn-primary g-rounded-50 g-py-5" href="page-profile-main-1.html#!">
+                          <a class="btn btn-block u-btn-primary g-rounded-50 g-py-5" href="#!">
                             <i class="fa fa-arrows-v g-mr-5"></i> Middle
                           </a>
                         </td>
@@ -1128,7 +1128,7 @@ if(isset($_SESSION['userID'])){
                           </div>
                         </td>
                         <td class="align-middle">
-                          <a class="btn btn-block u-btn-pink g-rounded-50 g-py-5" href="page-profile-main-1.html#!">
+                          <a class="btn btn-block u-btn-pink g-rounded-50 g-py-5" href="#!">
                             <i class="fa fa-level-up g-mr-5"></i> High
                           </a>
                         </td>
@@ -1154,7 +1154,7 @@ if(isset($_SESSION['userID'])){
                           </div>
                         </td>
                         <td class="align-middle">
-                          <a class="btn btn-block u-btn-cyan g-rounded-50 g-py-5" href="page-profile-main-1.html#!">
+                          <a class="btn btn-block u-btn-cyan g-rounded-50 g-py-5" href="#!">
                             <i class="fa fa-sort-amount-desc g-mr-5"></i> Deep
                           </a>
                         </td>
@@ -1180,7 +1180,7 @@ if(isset($_SESSION['userID'])){
                           </div>
                         </td>
                         <td class="align-middle">
-                          <a class="btn btn-block u-btn-purple g-rounded-50 g-py-5" href="page-profile-main-1.html#!">
+                          <a class="btn btn-block u-btn-purple g-rounded-50 g-py-5" href="#!">
                             <i class="fa fa-level-down g-mr-5"></i> Down
                           </a>
                         </td>
@@ -1206,7 +1206,7 @@ if(isset($_SESSION['userID'])){
                           </div>
                         </td>
                         <td class="align-middle">
-                          <a class="btn btn-block u-btn-deeporange g-rounded-50 g-py-5" href="page-profile-main-1.html#!">
+                          <a class="btn btn-block u-btn-deeporange g-rounded-50 g-py-5" href="#!">
                             <i class="fa fa-bolt g-mr-5"></i> Stabile
                           </a>
                         </td>
@@ -1254,7 +1254,7 @@ if(isset($_SESSION['userID'])){
 
             <article>
               <h3 class="h6 g-mb-2">
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-main-1.html#!">Incredible template</a>
+            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Incredible template</a>
           </h3>
               <div class="small g-color-white-opacity-0_6">May 8, 2017</div>
             </article>
@@ -1263,7 +1263,7 @@ if(isset($_SESSION['userID'])){
 
             <article>
               <h3 class="h6 g-mb-2">
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-main-1.html#!">New features</a>
+            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">New features</a>
           </h3>
               <div class="small g-color-white-opacity-0_6">June 23, 2017</div>
             </article>
@@ -1272,7 +1272,7 @@ if(isset($_SESSION['userID'])){
 
             <article>
               <h3 class="h6 g-mb-2">
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-main-1.html#!">New terms and conditions</a>
+            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">New terms and conditions</a>
           </h3>
               <div class="small g-color-white-opacity-0_6">September 15, 2017</div>
             </article>
@@ -1289,31 +1289,31 @@ if(isset($_SESSION['userID'])){
               <ul class="list-unstyled g-mt-minus-10 mb-0">
                 <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
                   <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-main-1.html#!">About Us</a>
+                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">About Us</a>
                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
               </h4>
                 </li>
                 <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
                   <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-main-1.html#!">Portfolio</a>
+                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Portfolio</a>
                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
               </h4>
                 </li>
                 <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
                   <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-main-1.html#!">Our Services</a>
+                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Our Services</a>
                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
               </h4>
                 </li>
                 <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
                   <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-main-1.html#!">Latest Jobs</a>
+                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Latest Jobs</a>
                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
               </h4>
                 </li>
                 <li class="g-pos-rel g-py-10">
                   <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-main-1.html#!">Contact Us</a>
+                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Contact Us</a>
                 <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
               </h4>
                 </li>
@@ -1359,9 +1359,9 @@ if(isset($_SESSION['userID'])){
               </span>
             </div>
             <p class="mb-0">
-              <a class="g-color-white-opacity-0_8 g-color-white--hover" href="mailto:info@htmlstream.com">info@htmlstream.com</a>
+              <a class="g-color-white-opacity-0_8 g-color-white--hover" href="mailto:info@gamex.com">info@gamex.com</a>
               <br>
-              <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-main-1.html#!">www.htmlstream.com</a>
+              <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">www.gamex.com</a>
             </p>
           </div>
           <!-- End Email and Website -->
@@ -1382,25 +1382,25 @@ if(isset($_SESSION['userID'])){
               <small class="d-block g-font-size-default g-mr-10 g-mb-10 g-mb-0--md">2017 © All Rights Reserved.</small>
               <ul class="u-list-inline">
                 <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-main-1.html#!">Privacy Policy</a>
+                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Privacy Policy</a>
                 </li>
                 <li class="list-inline-item">
                   <span>|</span>
                 </li>
                 <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-main-1.html#!">Terms of Use</a>
+                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Terms of Use</a>
                 </li>
                 <li class="list-inline-item">
                   <span>|</span>
                 </li>
                 <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-main-1.html#!">License</a>
+                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">License</a>
                 </li>
                 <li class="list-inline-item">
                   <span>|</span>
                 </li>
                 <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="page-profile-main-1.html#!">Support</a>
+                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Support</a>
                 </li>
               </ul>
             </div>
@@ -1409,32 +1409,32 @@ if(isset($_SESSION['userID'])){
           <div class="col-md-4 align-self-center">
             <ul class="list-inline text-center text-md-right mb-0">
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Facebook">
-                <a href="page-profile-main-1.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-facebook"></i>
                 </a>
               </li>
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Skype">
-                <a href="page-profile-main-1.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-skype"></i>
                 </a>
               </li>
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Linkedin">
-                <a href="page-profile-main-1.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-linkedin"></i>
                 </a>
               </li>
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Pinterest">
-                <a href="page-profile-main-1.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-pinterest"></i>
                 </a>
               </li>
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Twitter">
-                <a href="page-profile-main-1.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-twitter"></i>
                 </a>
               </li>
               <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Dribbble">
-                <a href="page-profile-main-1.html#!" class="g-color-white-opacity-0_5 g-color-white--hover">
+                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
                   <i class="fa fa-dribbble"></i>
                 </a>
               </li>
@@ -1444,7 +1444,7 @@ if(isset($_SESSION['userID'])){
       </div>
     </footer>
     <!-- End Copyright Footer -->
-    <a class="js-go-to u-go-to-v1" href="page-profile-main-1.html#!" data-type="fixed" data-position='{
+    <a class="js-go-to u-go-to-v1" href="#!" data-type="fixed" data-position='{
      "bottom": 15,
      "right": 15
    }' data-offset-top="400" data-compensation="#js-header" data-show-effect="zoomIn">
