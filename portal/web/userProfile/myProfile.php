@@ -43,7 +43,7 @@ if(isset($_SESSION['userID'])){
   <!-- CSS Global Icons -->
   <!-- <link rel="stylesheet" href="../../../assets/vendor/icon-awesome/css/font-awesome.min.css"> -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  <link rel="stylesheet" href="../../../assets/vendor/icon-line/css/simple-line-icons.css">
+  <link rel="stylesheet" href="http://simplelineicons.com/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../../assets/vendor/icon-etlinefont/style.css">
   <link rel="stylesheet" href="../../../assets/vendor/icon-line-pro/style.css">
   <link rel="stylesheet" href="../../../assets/vendor/icon-hs/style.css">
@@ -83,18 +83,8 @@ if(isset($_SESSION['userID'])){
             <!-- End Responsive Toggle Button -->
 
             <!-- Logo -->
-            <a href="../../../index.html" class="navbar-brand d-flex">
-              <svg width="86px" height="32px" viewBox="0 0 86 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-78.000000, -19.000000)">
-                    <g transform="translate(78.000000, 19.000000)">
-                      <path class="g-fill-primary" d="M0,0 L19.2941176,0 L19.2941176,0 C23.7123956,-8.11624501e-16 27.2941176,3.581722 27.2941176,8 L27.2941176,27.2941176 L8,27.2941176 L8,27.2941176 C3.581722,27.2941176 5.41083001e-16,23.7123956 0,19.2941176 L0,0 Z"></path>
-                      <path class="g-fill-white" d="M21.036662,24.8752523 L20.5338647,22.6659916 L20.3510293,22.6659916 C19.8533083,23.4481246 19.1448284,24.0626484 18.2255681,24.5095816 C17.3063079,24.9565147 16.2575544,25.1799779 15.0792761,25.1799779 C13.0376043,25.1799779 11.5139914,24.672107 10.5083918,23.6563498 C9.50279224,22.6405927 9,21.1017437 9,19.0397567 L9,8.02392554 L12.6109986,8.02392554 L12.6109986,18.4150692 C12.6109986,19.7050808 12.8750915,20.6725749 13.4032852,21.3175807 C13.9314789,21.9625865 14.7593086,22.2850846 15.886799,22.2850846 C17.3901196,22.2850846 18.4947389,21.8356188 19.2006901,20.9366737 C19.9066413,20.0377286 20.2596117,18.5318912 20.2596117,16.4191164 L20.2596117,8.02392554 L23.855374,8.02392554 L23.855374,24.8752523 L21.036662,24.8752523 Z"></path>
-                      <path class="g-fill-main" d="M44.4764678,24.4705882 L40.8807055,24.4705882 L40.8807055,14.1099172 C40.8807055,12.809748 40.6191519,11.8397145 40.096037,11.1997875 C39.5729221,10.5598605 38.7425531,10.2399018 37.6049051,10.2399018 C36.0914269,10.2399018 34.9842682,10.6868282 34.2833958,11.5806945 C33.5825234,12.4745608 33.2320924,13.9727801 33.2320924,16.0753974 L33.2320924,24.4705882 L29.6515664,24.4705882 L29.6515664,7.61926145 L32.4550421,7.61926145 L32.9578394,9.8285222 L33.1406747,9.8285222 C33.6485533,9.02607405 34.3697301,8.40647149 35.3042266,7.96969592 C36.2387232,7.53292034 37.27478,7.31453583 38.412428,7.31453583 C42.4551414,7.31453583 44.4764678,9.3714132 44.4764678,13.4852296 L44.4764678,24.4705882 Z M53.7357283,24.4705882 L50.1552023,24.4705882 L50.1552023,7.61926145 L53.7357283,7.61926145 L53.7357283,24.4705882 Z M49.9418944,3.15503112 C49.9418944,2.51510412 50.1171098,2.0224693 50.467546,1.67711187 C50.8179823,1.33175444 51.3182351,1.15907831 51.9683197,1.15907831 C52.5980892,1.15907831 53.0881846,1.33175444 53.4386208,1.67711187 C53.7890571,2.0224693 53.9642725,2.51510412 53.9642725,3.15503112 C53.9642725,3.76448541 53.7890571,4.24442346 53.4386208,4.59485968 C53.0881846,4.94529589 52.5980892,5.12051137 51.9683197,5.12051137 C51.3182351,5.12051137 50.8179823,4.94529589 50.467546,4.59485968 C50.1171098,4.24442346 49.9418944,3.76448541 49.9418944,3.15503112 Z M68.0077253,10.3313195 L63.8939294,10.3313195 L63.8939294,24.4705882 L60.2981671,24.4705882 L60.2981671,10.3313195 L57.525164,10.3313195 L57.525164,8.65532856 L60.2981671,7.55831633 L60.2981671,6.4613041 C60.2981671,4.47042009 60.7654084,2.99505497 61.699905,2.03516447 C62.6344015,1.07527397 64.0615189,0.595335915 65.9812999,0.595335915 C67.2408388,0.595335915 68.4800439,0.803563007 69.6989525,1.22002344 L68.7543031,3.93208145 C67.8705943,3.64766945 67.0275286,3.50546559 66.2250804,3.50546559 C65.4124747,3.50546559 64.820805,3.75686171 64.4500537,4.25966149 C64.0793023,4.76246128 63.8939294,5.51664965 63.8939294,6.52224922 L63.8939294,7.61926145 L68.0077253,7.61926145 L68.0077253,10.3313195 Z M69.0089215,7.61926145 L72.9094094,7.61926145 L76.3375727,17.1724096 C76.8556088,18.5335242 77.2009611,19.813359 77.3736398,21.0119524 L77.49553,21.0119524 C77.5869482,20.453286 77.7545456,19.7752783 77.9983273,18.9779089 C78.242109,18.1805396 79.5321012,14.3943616 81.8683427,7.61926145 L85.738358,7.61926145 L78.5315971,26.7103215 C77.2212704,30.2146837 75.0374253,31.9668385 71.9799963,31.9668385 C71.1877057,31.9668385 70.4157419,31.8805004 69.6640816,31.7078217 L69.6640816,28.8738734 C70.2024329,28.9957643 70.8169567,29.0567088 71.5076716,29.0567088 C73.2344587,29.0567088 74.4482703,28.056203 75.1491427,26.0551615 L75.7738303,24.4705882 L69.0089215,7.61926145 Z"></path>
-                    </g>
-                  </g>
-                </g>
-              </svg>
+            <a href="../../../index.php" class="navbar-brand d-flex">
+              <h2><font color="green"><b>GAME</b>-<strong>X</strong></font></h2>
             </a>
             <!-- End Logo -->
 
@@ -103,6 +93,65 @@ if(isset($_SESSION['userID'])){
       </div>
     </header>
     <!-- End Header -->
+
+    <!-- Promo Block -->
+      <section class="g-bg-cover g-bg-pos-center g-bg-img-hero g-bg-bluegray-opacity-0_3--after g-py-150" style="background-image: url(https://i0.wp.com/www.celebsclothing.com/blog/wp-content/uploads/2016/10/League-of-Legends.jpg?fit=1920%2C1080&ssl=1);">
+        <div class="container g-max-width-750 g-bg-cover__inner">
+          <!-- Countdown v4 -->
+          <div class="js-countdown text-center text-uppercase g-mb-40 g-mb-70--md" data-end-date="2018/01/01" data-month-format="%m" data-days-format="%D" data-hours-format="%H" data-minutes-format="%M" data-seconds-format="%S">
+            <div class="d-inline-block g-color-white g-font-size-11 g-px-10 g-px-40--md g-py-10">
+              <div class="js-cd-days g-font-size-20 g-font-size-45--md g-font-weight-700 g-line-height-1 g-mb-5">12</div>
+              <span class="g-font-size-default">Days</span>
+            </div>
+            <div class="d-inline-block g-color-white g-font-size-11 g-brd-left g-brd-white-opacity-0_4 g-px-10 g-px-40--md g-py-10">
+              <div class="js-cd-hours g-font-size-20 g-font-size-45--md g-font-weight-700 g-line-height-1 g-mb-5">01</div>
+              <span class="g-font-size-default">Hours</span>
+            </div>
+            <div class="d-inline-block g-color-white g-font-size-11 g-brd-left g-brd-white-opacity-0_4 g-px-10 g-px-40--md g-py-10">
+              <div class="js-cd-minutes g-font-size-20 g-font-size-45--md g-font-weight-700 g-line-height-1 g-mb-5">52</div>
+              <span class="g-font-size-default">Minutes</span>
+            </div>
+            <div class="d-inline-block g-color-white g-font-size-11 g-brd-left g-brd-white-opacity-0_4 g-px-10 g-px-40--md g-py-10">
+              <div class="js-cd-seconds g-font-size-20 g-font-size-45--md g-font-weight-700 g-line-height-1 g-mb-5">52</div>
+              <span class="g-font-size-default">Seconds</span>
+            </div>
+          </div>
+          <!-- End Countdown v4 -->
+
+          <h2 class="h2 g-color-white g-font-weight-700 g-font-size-40 g-font-size-55--md text-center text-uppercase g-mb-30 g-mb-70--md">The Next Game OPENS</h2>
+
+          <div class="row g-mx-minus-5">
+            <div class="col-md-4 g-px-5 g-mb-20 g-mb-0--md">
+              <div class="media">
+                <div class="d-flex align-self-center mr-3">
+                  <i class="g-color-white-opacity-0_7 g-font-size-27 g-line-height-0_7 icon-education-124 u-line-icon-pro"></i>
+                </div>
+                <div class="media-body align-self-center g-color-white text-uppercase">
+                  <span class="d-block g-color-white-opacity-0_7 g-font-size-default">When</span>
+                  <span class="d-block text-uppercase g-font-weight-700 mb-0">18:30, 12 Jul, 2017</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-5 g-px-5 g-mb-20 g-mb-0--md">
+              <div class="media">
+                <div class="d-flex align-self-center mr-3">
+                  <i class="g-color-white-opacity-0_7 g-font-size-27 g-line-height-0_7 icon-hotel-restaurant-235"></i>
+                </div>
+                <div class="media-body align-self-center g-color-white text-uppercase">
+                  <span class="d-block g-color-white-opacity-0_7 g-font-size-default">Where</span>
+                  <span class="d-block text-uppercase g-font-weight-700 mb-0">Concert Hall, Los Angeles, USA</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 text-md-right g-px-5">
+              <a class="btn btn-lg u-btn-white g-color-primary--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="shortcode-blocks-promo-demo-11.html#!">Play Now</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Promo Block -->
 
     <!-- Breadcrumb -->
     <section class="g-my-30">
@@ -135,32 +184,6 @@ if(isset($_SESSION['userID'])){
                 <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img-temp/400x450/img5.jpg" alt="Image Description">
               </figure>
 
-              <!-- Figure Caption -->
-              <figcaption class="u-block-hover__additional--fade g-bg-black-opacity-0_5 g-pa-30">
-                <div class="u-block-hover__additional--fade u-block-hover__additional--fade-up g-flex-middle">
-                  <!-- Figure Social Icons -->
-                  <ul class="list-inline text-center g-flex-middle-item--bottom g-mb-20">
-                    <li class="list-inline-item align-middle g-mx-7">
-                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="#!">
-                        <i class="icon-note u-line-icon-pro"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item align-middle g-mx-7">
-                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="#!">
-                        <i class="icon-notebook u-line-icon-pro"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item align-middle g-mx-7">
-                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="#!">
-                        <i class="icon-settings u-line-icon-pro"></i>
-                      </a>
-                    </li>
-                  </ul>
-                  <!-- End Figure Social Icons -->
-                </div>
-              </figcaption>
-              <!-- End Figure Caption -->
-
               <!-- User Info -->
               <span class="g-pos-abs g-top-20 g-left-0">
                   <a class="btn btn-sm u-btn-primary rounded-0" href="#!"><b><?=$selectUserInformations['user_fullname']?></b></a>
@@ -173,15 +196,15 @@ if(isset($_SESSION['userID'])){
             <!-- Sidebar Navigation -->
             <div class="list-group list-group-border-0 g-mb-40">
               <!-- Overall -->
-              <a href="page-profile-main-1.html" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> Overall</span>
+              <a href="userDashboard.php" class="list-group-item list-group-item-action justify-content-between">
+                <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> My Dashboard</span>
                 <span class="u-label g-font-size-11 g-bg-gray-dark-v2 g-rounded-20 g-px-10">2</span>
               </a>
               <!-- End Overall -->
 
               <!-- Profile -->
-              <a href="page-profile-profile-1.html" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-cursor g-pos-rel g-top-1 g-mr-8"></i> Profile</span>
+              <a href="#" class="list-group-item list-group-item-action justify-content-between active">
+                <span><i class="icon-cursor g-pos-rel g-top-1 g-mr-8"></i>My Profile</span>
               </a>
               <!-- End Profile -->
 
@@ -212,15 +235,15 @@ if(isset($_SESSION['userID'])){
               <!-- End Reviews -->
 
               <!-- History -->
-              <a href="page-profile-history-1.html" class="list-group-item list-group-item-action justify-content-between">
+              <a href="#!" class="list-group-item list-group-item-action justify-content-between">
                 <span><i class="icon-fire g-pos-rel g-top-1 g-mr-8"></i> History</span>
               </a>
               <!-- End History -->
 
               <!-- Settings -->
-              <a href="myProfile.php" class="list-group-item justify-content-between active">
+              <a href="#" class="list-group-item list-group-item-action justify-content-between">
                 <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> Settings</span>
-                <span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-8">3</span>
+                <span class="u-label g-font-size-11 g-bg-red g-color-white g-rounded-20 g-px-8">3</span>
               </a>
               <!-- End Settings -->
 
@@ -237,7 +260,7 @@ if(isset($_SESSION['userID'])){
               <!-- Panel Header -->
               <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
                 <h3 class="h6 mb-0">
-                    <i class="icon-layers g-pos-rel g-top-1 g-mr-5"></i> Project Progress
+                    <i class="icon-layers g-pos-rel g-top-1 g-mr-5"></i> Game Progress
                   </h3>
                 <div class="dropdown g-mb-10 g-mb-0--md">
                   <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -348,7 +371,7 @@ if(isset($_SESSION['userID'])){
             <div id="nav-1-1-default-hor-left-underline" class="tab-content">
               <!-- Edit Profile -->
               <div class="tab-pane fade show active" id="nav-1-1-default-hor-left-underline--1" role="tabpanel">
-                <h2 class="h4 g-font-weight-300">Manage your Name, ID and Email Addresses</h2>
+                <h2 class="h4 g-font-weight-300">Manage your Profile detils here.</h2>
                 <p>Below are name, email addresse, contacts and more on file for your account.</p>
 
                 <ul class="list-unstyled g-mb-30">
@@ -391,7 +414,7 @@ if(isset($_SESSION['userID'])){
                   <!-- Primary Email Address -->
                   <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                     <div class="g-pr-10">
-                      <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Primary email address</strong>
+                      <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">EMAIL ID</strong>
                       <span class="align-top"><?=$selectUserInformations['email_id']?></span>
                     </div>
                     <span>
@@ -403,7 +426,7 @@ if(isset($_SESSION['userID'])){
                   <!-- Linked Account -->
                   <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                     <div class="g-pr-10">
-                      <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Linked account</strong>
+                      <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Linked accounts</strong>
                       <span class="align-top">Facebook</span>
                     </div>
                     <span>

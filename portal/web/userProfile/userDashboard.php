@@ -31,7 +31,7 @@ if(isset($_SESSION['userID'])){
   <!-- CSS Global Icons -->
   <!-- <link rel="stylesheet" href="../../../assets/vendor/icon-awesome/css/font-awesome.min.css"> -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  <link rel="stylesheet" href="../../../assets/vendor/icon-line/css/simple-line-icons.css">
+  <link rel="stylesheet" href="http://simplelineicons.com/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../../assets/vendor/icon-etlinefont/style.css">
   <link rel="stylesheet" href="../../../assets/vendor/icon-line-pro/style.css">
   <link rel="stylesheet" href="../../../assets/vendor/icon-hs/style.css">
@@ -95,7 +95,7 @@ if(isset($_SESSION['userID'])){
     <!-- End Header -->
 
     <!-- Promo Block -->
-      <section class="g-bg-cover g-bg-pos-center g-bg-img-hero g-bg-bluegray-opacity-0_3--after g-py-150" style="background-image: url(../../../assets/img-temp/1920x1080/img13.jpg);">
+      <section class="g-bg-cover g-bg-pos-center g-bg-img-hero g-bg-bluegray-opacity-0_3--after g-py-150" style="background-image: url(https://i0.wp.com/www.celebsclothing.com/blog/wp-content/uploads/2016/10/League-of-Legends.jpg?fit=1920%2C1080&ssl=1);">
         <div class="container g-max-width-750 g-bg-cover__inner">
           <!-- Countdown v4 -->
           <div class="js-countdown text-center text-uppercase g-mb-40 g-mb-70--md" data-end-date="2018/01/01" data-month-format="%m" data-days-format="%D" data-hours-format="%H" data-minutes-format="%M" data-seconds-format="%S">
@@ -184,36 +184,10 @@ if(isset($_SESSION['userID'])){
                 <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img-temp/400x450/img5.jpg" alt="Image Description">
               </figure>
 
-              <!-- Figure Caption -->
-              <figcaption class="u-block-hover__additional--fade g-bg-black-opacity-0_5 g-pa-30">
-                <div class="u-block-hover__additional--fade u-block-hover__additional--fade-up g-flex-middle">
-                  <!-- Figure Social Icons -->
-                  <ul class="list-inline text-center g-flex-middle-item--bottom g-mb-20">
-                    <li class="list-inline-item align-middle g-mx-7">
-                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="#!">
-                        <i class="icon-note u-line-icon-pro"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item align-middle g-mx-7">
-                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="#!">
-                        <i class="icon-notebook u-line-icon-pro"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item align-middle g-mx-7">
-                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="#!">
-                        <i class="icon-settings u-line-icon-pro"></i>
-                      </a>
-                    </li>
-                  </ul>
-                  <!-- End Figure Social Icons -->
-                </div>
-              </figcaption>
-              <!-- End Figure Caption -->
-
               <!-- User Info -->
               <span class="g-pos-abs g-top-20 g-left-0">
                   <a class="btn btn-sm u-btn-primary rounded-0" href="#!"><b><?=$_SESSION['userNAME'];?></b></a>
-                  <small class="d-block g-bg-red g-color-white g-pa-5">Pro Champ</small>
+                  <small class="d-block g-bg-red g-color-black g-pa-5">Pro Champ</small>
                 </span>
               <!-- End User Info -->
             </div>
