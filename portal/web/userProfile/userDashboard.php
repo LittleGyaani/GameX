@@ -1,13 +1,28 @@
 <?php
+
+//Hiding all errors and notices
+error_reporting(0);
+
+//Calling Database file for estanlishing connection for performing operations
+include '../../../includes/config/dbConnectivity.php';
+
+//Initializing session
 session_start();
+
+//Validating if the session exists or not
 if(isset($_SESSION['userID'])){
 
-  $userID = $_SESSION['userID'];
   // echo 'Welcome User'.$_SESSION['userNAME'];
-  $getUserDetails = "SELECT * FROM user_login WHERE user_id = '$userID";
-}else{
+  $userID = $_SESSION['userID'];
+  //Selecting all user information basing upon the user's session id
+  $getAllUserDetails = $conn -> query("SELECT * FROM user_info WHERE user_id = '$userID'");
+  $selectUserInformations = $getAllUserDetails -> fetch_assoc();
+
+} else{
+
   echo 'You are not authorized to access the page without logging in.';
   header('Location:../auth/loginPage.php');
+
 }
  ?>
 <!DOCTYPE html>
@@ -88,6 +103,23 @@ if(isset($_SESSION['userID'])){
             </div>
             <!-- End Navigation -->
 
+            <?php
+            if(!($_SESSION['userID'])){ ?>
+            <div class="d-inline-block g-hidden-xs-down g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
+              <a class="btn u-btn-outline-primary g-font-size-13 text-uppercase g-py-10 g-px-15" href="portal/web/auth/loginPage.php">Login/Signup</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    <?php } else{ ?>
+      <div class="d-inline-block g-hidden-xs-down g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
+        <a class="btn btn-md u-btn-outline-cyan g-brd-2 g-mr-10 g-mb-15" href="myProfile.php">Welcome <b><?= $selectUserInformations['user_fullname'];?></b></a> <a href="../auth/controller/userLogout.php" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Logout</a>
+      </div>
+    </div>
+  </nav>
+</div>
+     <?php } ?>
+
           </div>
         </nav>
       </div>
@@ -158,7 +190,7 @@ if(isset($_SESSION['userID'])){
       <div class="container">
         <ul class="u-list-inline">
           <li class="list-inline-item g-mr-7">
-            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">Home</a>
+            <a class="u-link-v5 g-color-main g-color-primary--hover" href="../../../index.php">Home</a>
             <i class="fa fa-angle-right g-ml-7"></i>
           </li>
           <li class="list-inline-item g-mr-7">
@@ -196,9 +228,9 @@ if(isset($_SESSION['userID'])){
             <!-- Sidebar Navigation -->
             <div class="list-group list-group-border-0 g-mb-40">
               <!-- Overall -->
-              <a href="page-profile-main-1.html" class="list-group-item justify-content-between active">
-                <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> Overall</span>
-                <span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10">2</span>
+              <a href="#" class="list-group-item justify-content-between active">
+                <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> My Dashboard</span>
+                <!-- <span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10">2</span> -->
               </a>
               <!-- End Overall -->
 
@@ -1019,7 +1051,7 @@ if(isset($_SESSION['userID'])){
 
             <!-- Product Table Panel -->
             <div class="card border-0">
-              <div class="card-header d-flex align-items-center justify-content-between g-bg-purple border-0 g-mb-15">
+              <div class="card-header d-flex align-items-center justify-content-between g-bg-orange border-0 g-mb-15">
                 <h3 class="h6 mb-0">
                     <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> My Reports
                   </h3>

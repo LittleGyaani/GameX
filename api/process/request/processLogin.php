@@ -1,4 +1,9 @@
 <?php
+
+//Hiding all errors and notices
+error_reporting(0);
+
+
 session_start();
 
 //Including the DB file
@@ -20,29 +25,31 @@ include '../../../includes/config/dbConnectivity.php';
    //Getting values via POST method
    $userName = $_POST['userName'];
    $userPassword = $_POST['userPassword'];
-   $retrieveUserDetails = "SELECT * from user_info WHERE user_name = '$userName' OR email_id = '$userName' AND login_password = '$userPassword'";
+   //Running query to validate the user with provided combination
+   $retrieveUserDetails = "SELECT * from user_info WHERE (user_name = '$userName' OR email_id = '$userName') AND login_password = '$userPassword'";
    $runUserRetrivalQuery = $conn -> query($retrieveUserDetails);
-   $getUserInformations = mysqli_fetch_array($runUserRetrivalQuery);
+   $getUserInformations = $runUserRetrivalQuery -> fetch_array();
 
    //Checking if all the values are passed to this API or not
-   if(!empty($_POST)){
+   if(!empty($_POST) && mysqli_query("SELECT * from user_info WHERE user_name = '$userName' OR email_id = '$userName' OR login_password = '$userPassword'")){
 
      //Running the query and validating with the Database if the user exists or not
      if($runUserRetrivalQuery && (mysqli_num_rows($runUserRetrivalQuery) > 0)){
 
+       //Sending session values back to page and redirect user to Dashboard page
        $_SESSION['userID'] = $getUserInformations['user_id'];
-       $_SESSION['userNAME'] = $getUserInformations['user_fullname'];
+
+       //Generting response
        $resp = array('result' => 'SUCCESS', 'resp' => 'User validated.', 'msg' => 'Redirecting you now to Dashboard.');
 
      }else{
 
        $resp = array('result' => 'ERROR', 'resp' => 'No such user exists.', 'msg' => 'Please create an Account before login.');
-
      }
 
    }else {
 
-       $resp = array('result' => 'EMPTY', 'resp' => 'No required values passed.', 'msg' => 'Please check your form and try again.');
+       $resp = array('result' => 'EMPTY', 'resp' => 'Please check username or EMAIL ID or Password.', 'msg' => 'Wrong combination provided.');
 
    }
 

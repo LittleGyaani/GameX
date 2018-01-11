@@ -1,6 +1,9 @@
 <?php
-//Including the DB file
 
+//Hiding all errors and notices
+error_reporting(0);
+
+//Including the DB file
 include '../../../includes/config/dbConnectivity.php';
 
   /**

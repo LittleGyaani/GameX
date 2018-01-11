@@ -1,5 +1,11 @@
 <?php
+
+//Hiding all errors and notices
+error_reporting(0);
+
+//Initializing session
 session_start();
+
 if(isset($_SESSION['userID'])){
   // echo 'Session already running'.$_SESSION['userNAME'];
   header('Location:../userProfile/userDashboard.php');
@@ -101,22 +107,25 @@ if(isset($_SESSION['userID'])){
               <!-- Form -->
               <form class="g-py-15">
 
-                <div class="mb-4">
-                  <div class="input-group">
-                    <span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-gray-dark-v5">
-                        <i class="icon-finance-067 u-line-icon-pro"></i>
-                        </span>
-                    <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover g-py-15 g-px-15" type="text" placeholder="Please enter your Full Name" id="usrFullName">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 mb-4">
+                    <div class="input-group">
+                      <span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-gray-dark-v5">
+                          <i class="icon-finance-067 u-line-icon-pro"></i>
+                          </span>
+                      <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover g-py-15 g-px-15" type="text" placeholder="Your Name" id="usrFullName">
+                    </div>
                   </div>
-                </div>
 
-                <div class="mb-4">
-                  <div class="input-group">
-                    <span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-gray-dark-v5">
-                        <i class="icon-media-121 u-line-icon-pro"></i>
-                        </span>
-                    <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover g-py-15 g-px-15" type="email" placeholder="Please enter your User Name" id="usrName">
+                  <div class="col-xs-12 col-sm-6 mb-4">
+                    <div class="input-group">
+                      <span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-gray-dark-v5">
+                          <i class="icon-media-121 u-line-icon-pro"></i>
+                          </span>
+                      <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover g-py-15 g-px-15" type="email" placeholder="Your Username" id="usrName">
+                    </div>
                   </div>
+
                 </div>
 
                 <div class="mb-4">
@@ -158,7 +167,7 @@ if(isset($_SESSION['userID'])){
                   </label>
                 </div>
 
-                <button class="btn btn-md btn-block u-btn-primary rounded-0 g-py-15 mb-5" type="button" id="signupButton">Signup</button>
+                <button class="btn btn-md btn-block u-btn-outline-bluegray u-btn-hover-v1-4 g-letter-spacing-0_5 text-uppercase g-rounded-50 g-px-30 g-mr-10 g-mb-15" type="button" id="signupButton">Signup</button>
 
                 <div class="d-flex justify-content-center text-center g-mb-30">
                   <div class="d-inline-block align-self-center g-width-50 g-height-1 g-bg-gray-light-v1"></div>

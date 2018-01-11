@@ -1,4 +1,8 @@
 <?php
+
+//Hiding all errors and notices
+error_reporting(0);
+
 /**
  * This file is for establishing connection with Database.
  */

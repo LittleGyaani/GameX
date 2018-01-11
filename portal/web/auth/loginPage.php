@@ -1,5 +1,15 @@
 <?php
+
+//Hiding all errors and notices
+error_reporting(0);
+
+//Calling Database file for estanlishing connection for performing operations
+include '../../../includes/config/dbConnectivity.php';
+
+//Initializing session
 session_start();
+
+//Validating if the session exists or not
 if(!empty( $_SESSION['userID'])){
   echo 'Logged in successfully. Redirecting you to Dashboard now.';
   header('Location:../userProfile/userDashboard.php');
@@ -92,35 +102,39 @@ if(!empty( $_SESSION['userID'])){
             <div class="g-bg-white rounded g-py-40 g-px-30">
               <header class="text-center mb-4">
                 <h2 class="h2 g-color-black g-font-weight-600">Login to Play</h2>
-                <h4>Please login with your username or EMAILID and password to get access.</h4>
+                <h5>Please login with your <strong>USERNAME</strong> or <strong>EMAIL ID</strong> and <strong>Password</strong> to get access.</h5>
               </header>
 
               <!-- Form -->
-              <form class="g-py-15">
-                <div class="mb-4">
-                  <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15" type="text" placeholder="Username or EMAIL ID" id="userName">
-                </div>
+              <form class="g-py-15" id="userLoginForm">
 
-                <div class="g-mb-35">
-                  <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover rounded g-py-15 g-px-15 mb-3" type="password" placeholder="Password" id="userPassword">
-                  <div class="row justify-content-between">
-                    <div class="col align-self-center">
-                      <label class="form-check-inline u-check g-color-gray-dark-v5 g-font-size-12 g-pl-25 mb-0">
-                        <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
-                        <div class="u-check-icon-checkbox-v6 g-absolute-centered--y g-left-0">
-                          <i class="fa" data-check-icon="&#xf00c;"></i>
-                        </div>
-                        Keep signed in
-                      </label>
-                    </div>
-                    <div class="col align-self-center text-right">
-                      <a class="g-font-size-12" href="page-login-7.html#!">Forgot password?</a>
-                    </div>
+                <div class="mb-4">
+                  <div class="input-group">
+                    <span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-gray-dark-v5">
+                        <i class="icon-media-121 u-line-icon-pro"></i>
+                        </span>
+                    <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover g-py-15 g-px-15" type="text" placeholder="Please enter your Username or EMAIL ID" id="userName">
                   </div>
                 </div>
 
+                <div class="mb-4">
+                  <div class="input-group">
+                    <span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-gray-dark-v5">
+                        <i class="icon-media-094 u-line-icon-pro"></i>
+                        </span>
+                    <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover g-py-15 g-px-15" type="password" placeholder="Please enter your Password" id="userPassword">
+                  </div>
+
+
+                  <!--Forgot Password-->
+                    <br/><p align="right" class="g-color-gray-dark-v5 g-font-size-13 mb-0">Don't remember your Password? <a class="g-font-weight-600" href="forgotPass.php">Reset now</a>
+                    </p>
+                  <!-- Forgot Password End-->
+
+                </div>
+
                 <div class="g-mb-60">
-                  <button class="btn btn-md btn-block u-btn-primary rounded g-py-13" type="button" id="loginButton">Login</button>
+                  <button class="btn btn-md btn-block u-btn-outline-blue u-btn-hover-v1-4 g-letter-spacing-0_5 text-uppercase g-rounded-50 g-px-30 g-mr-10 g-mb-15" type="button" id="loginButton">Login</button>
                 </div>
                 <div class="text-center g-pos-rel pb-2 g-mb-60">
                   <div class="d-inline-block w-100 g-height-1 g-bg-white"></div>
@@ -454,13 +468,24 @@ if(!empty( $_SESSION['userID'])){
 
                           case ('SUCCESS'):
                             window.location.href="../userProfile/userDashboard.php";
+                            window.location.reload();
                             alert(data.resp+data.msg);
                             break;
+
+                            case ('EXISTS'):
+                              $('userLoginForm').reset[0];
+                              $('userName').focus();
+                              alert(data.resp+data.msg);
+                              break;
 
                           case ('ERROR'):
                             alert(data.resp+data.msg);
                             window.location.href="signupPage.php";
                             break;
+
+                            case ('EMPTY'):
+                              alert(data.resp+data.msg);
+                              break;
 
                           default:
                             alert('Something went wrong.');

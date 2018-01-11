@@ -1,3 +1,25 @@
+<?php
+
+//Hiding all errors and notices
+error_reporting(0);
+
+//Calling Database file for estanlishing connection for performing operations
+include 'includes/config/dbConnectivity.php';
+
+//Initializing session
+session_start();
+
+//Validating if the session exists or not
+if(isset($_SESSION['userID'])){
+
+  // echo 'Welcome User'.$_SESSION['userNAME'];
+  $userID = $_SESSION['userID'];
+  //Selecting all user information basing upon the user's session id
+  $getAllUserDetails = $conn -> query("SELECT * FROM user_info WHERE user_id = '$userID'");
+  $selectUserInformations = $getAllUserDetails -> fetch_assoc();
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,12 +103,23 @@
             </div>
             <!-- End Navigation -->
 
+            <?php
+            if(!($_SESSION['userID'])){ ?>
             <div class="d-inline-block g-hidden-xs-down g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
               <a class="btn u-btn-outline-primary g-font-size-13 text-uppercase g-py-10 g-px-15" href="portal/web/auth/loginPage.php">Login/Signup</a>
             </div>
           </div>
         </nav>
       </div>
+    <?php } else{ ?>
+      <div class="d-inline-block g-hidden-xs-down g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
+        <a class="btn btn-md u-btn-outline-cyan g-brd-2 g-mr-10 g-mb-15" href="portal/web/userProfile/myProfile.php">Welcome <b><?= $selectUserInformations['user_fullname'];?></b></a> <a href="portal/web/auth/controller/userLogout.php" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Logout</a>
+      </div>
+    </div>
+  </nav>
+</div>
+     <?php } ?>
+
     </header>
     <!-- End Header -->
 
