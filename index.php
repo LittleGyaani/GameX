@@ -132,7 +132,7 @@ if(isset($_SESSION['userID'])){
           <div class="row align-items-center">
             <div class="col-lg-6 g-mb-30 g-mb-0--lg">
               <h2 class="h1 text-uppercase g-color-white g-mb-30">
-                  <span class="g-bg-primary-dark-v3 g-px-5">Let's &amp; Play!</span><br>
+                  <span class="g-bg-primary-dark-v3 g-px-5">Let's Play!</span><br>
                   <span class="g-bg-primary-dark-v3 g-px-5">Challenge Mode or</span><br>
                   <span class="g-bg-primary-dark-v3 g-px-5">Head-ON</span>
                 </h2>
@@ -330,7 +330,7 @@ if(isset($_SESSION['userID'])){
             <div class="u-heading-v2-3--bottom g-brd-primary g-mb-30">
               <h2 class="h4 u-heading-v2__title g-color-gray-dark-v2 g-font-weight-600 text-uppercase">Give a break to your life!</h2>
             </div>
-            <p class="g-font-size-16 g-line-height-2 g-mb-30">Play a challening head and game on to be the best among all. Prove your self! Let's challenge.</p>
+            <p class="g-font-size-16 g-line-height-2 g-mb-30">Play a challenging head and game on to be the best among all. Prove your self! Let's challenge.</p>
 
             <div class="g-mb-30">
               <img class="u-block-hover__main--grayscale g-width-100 g-opacity-0_6" src="http://gamerau.com/8-ball-pool-hack/images/logo.png" alt="Image description">

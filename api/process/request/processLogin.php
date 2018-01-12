@@ -31,7 +31,7 @@ include '../../../includes/config/dbConnectivity.php';
    $getUserInformations = $runUserRetrivalQuery -> fetch_array();
 
    //Checking if all the values are passed to this API or not
-   if(!empty($_POST) && mysqli_query("SELECT * from user_info WHERE user_name = '$userName' OR email_id = '$userName' OR login_password = '$userPassword'")){
+   if(!empty($_POST)){
 
      //Running the query and validating with the Database if the user exists or not
      if($runUserRetrivalQuery && (mysqli_num_rows($runUserRetrivalQuery) > 0)){
