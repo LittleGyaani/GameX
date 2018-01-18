@@ -100,29 +100,24 @@ if(isset($_SESSION['userID'])){
                 </li>
                 <!-- End Home -->
               </ul>
-            </div>
+
             <!-- End Navigation -->
 
-            <?php
-            if(!($_SESSION['userID'])){ ?>
-            <div class="d-inline-block g-hidden-xs-down g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
-              <a class="btn u-btn-outline-primary g-font-size-13 text-uppercase g-py-10 g-px-15" href="portal/web/auth/loginPage.php">Login/Signup</a>
-            </div>
+                <?php
+                if(!($_SESSION['userID'])){ ?>
+                <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
+                  <a class="btn u-btn-outline-primary g-font-size-13 text-uppercase g-py-10 g-px-15" href="portal/web/auth/loginPage.php">Login/Signup</a>
+                </div>
+            </nav>
+        <?php } else{ ?>
+          <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
+            <a class="btn btn-md u-btn-outline-cyan g-brd-2 g-mr-10 g-mb-15" href="myProfile.php">Welcome <b><?= $selectUserInformations['user_fullname'];?></b></a> <a href="../auth/controller/userLogout.php" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Logout</a>
           </div>
-        </nav>
-      </div>
-    <?php } else{ ?>
-      <div class="d-inline-block g-hidden-xs-down g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
-        <a class="btn btn-md u-btn-outline-cyan g-brd-2 g-mr-10 g-mb-15" href="myProfile.php">Welcome <b><?= $selectUserInformations['user_fullname'];?></b></a> <a href="../auth/controller/userLogout.php" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Logout</a>
-      </div>
-    </div>
-  </nav>
-</div>
-     <?php } ?>
+      </nav>
+         <?php } ?>
 
+            </nav>
           </div>
-        </nav>
-      </div>
     </header>
     <!-- End Header -->
 
