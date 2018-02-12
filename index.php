@@ -96,30 +96,28 @@ if(isset($_SESSION['userID'])){
 
                 <!-- Home -->
                 <li class="hs-has-mega-menu nav-item active g-mx-10--lg g-mx-15--xl" data-animation-in="fadeIn" data-animation-out="fadeOut" data-max-width="60%" data-position="left">
-                  <a id="mega-menu-home" class="nav-link g-py-7 g-px-0" href="index.php" aria-haspopup="true" aria-expanded="false">Home-X</a>
+                  <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
+                    <a class="btn u-btn-outline-green g-font-size-13 text-uppercase g-py-10 g-px-15" href="index.php">HOME-X</a>
+                  </div>
                 </li>
                 <!-- End Home -->
               </ul>
-            </div>
+
             <!-- End Navigation -->
 
             <?php
             if(!($_SESSION['userID'])){ ?>
-            <div class="d-inline-block g-hidden-xs-down g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
+            <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
               <a class="btn u-btn-outline-primary g-font-size-13 text-uppercase g-py-10 g-px-15" href="portal/web/auth/loginPage.php">Login/Signup</a>
             </div>
-          </div>
-        </nav>
-      </div>
+
     <?php } else{ ?>
-      <div class="d-inline-block g-hidden-xs-down g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
+      <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
         <a class="btn btn-md u-btn-outline-cyan g-brd-2 g-mr-10 g-mb-15" href="portal/web/userProfile/myProfile.php">Welcome <b><?= $selectUserInformations['user_fullname'];?></b></a> <a href="portal/web/auth/controller/userLogout.php" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Logout</a>
       </div>
-    </div>
-  </nav>
-</div>
-     <?php } ?>
 
+     <?php } ?>
+</div>
     </header>
     <!-- End Header -->
 
@@ -482,7 +480,7 @@ if(isset($_SESSION['userID'])){
           <p class="lead g-font-weight-400 g-mr-20--md g-mb-15 g-mb-0--md">Go ahead and <b>Play</b> the best game of your <strong>Life</strong>.</p>
         </div>
         <div class="align-self-md-center">
-          <a class="btn btn-lg u-btn-white text-uppercase g-font-weight-600 g-font-size-12" target="_blank" href="https://wrapbootstrap.com/theme/unify-responsive-website-template-WB0412697?ref=htmlstream">Let's PLAY</a>
+          <a class="btn btn-lg u-btn-white text-uppercase g-font-weight-600 g-font-size-12" target="_blank" href="/portal/web/auth/loginPage.php">Let's PLAY</a>
         </div>
       </div>
     </section>

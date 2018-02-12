@@ -93,14 +93,14 @@ if(isset($_SESSION['userID'])){
 
             <?php
             if(!($_SESSION['userID'])){ ?>
-            <div class="d-inline-block g-hidden-xs-down g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
+            <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
               <a class="btn u-btn-outline-primary g-font-size-13 text-uppercase g-py-10 g-px-15" href="portal/web/auth/loginPage.php">Login/Signup</a>
             </div>
           </div>
         </nav>
       </div>
     <?php } else{ ?>
-      <div class="d-inline-block g-hidden-xs-down g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
+      <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
         <a class="btn btn-md u-btn-outline-cyan g-brd-2 g-mr-10 g-mb-15" href="myProfile.php">Welcome <b><?= $selectUserInformations['user_fullname'];?></b></a> <a href="../auth/controller/userLogout.php" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Logout</a>
       </div>
     </div>
@@ -218,7 +218,6 @@ if(isset($_SESSION['userID'])){
               <!-- Overall -->
               <a href="userDashboard.php" class="list-group-item list-group-item-action justify-content-between">
                 <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> My Dashboard</span>
-                <span class="u-label g-font-size-11 g-bg-gray-dark-v2 g-rounded-20 g-px-10">2</span>
               </a>
               <!-- End Overall -->
 
@@ -373,16 +372,16 @@ if(isset($_SESSION['userID'])){
             <!-- Nav tabs -->
             <ul class="nav nav-justified u-nav-v1-1 u-nav-primary g-brd-bottom--md g-brd-bottom-2 g-brd-primary g-mb-20" role="tablist" data-target="nav-1-1-default-hor-left-underline" data-tabs-mobile-type="slide-up-down" data-btn-classes="btn btn-md btn-block rounded-0 u-btn-outline-primary g-mb-20">
               <li class="nav-item">
-                <a class="nav-link g-py-10 active" data-toggle="tab" href="myProfile.php#nav-1-1-default-hor-left-underline--1" role="tab">Edit Profile</a>
+                <a class="nav-link g-py-10 active" data-toggle="tab" href="#nav-1-1-default-hor-left-underline--1" role="tab">Edit Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link g-py-10" data-toggle="tab" href="myProfile.php#nav-1-1-default-hor-left-underline--2" role="tab">Security Settings</a>
+                <a class="nav-link g-py-10" data-toggle="tab" href="#nav-1-1-default-hor-left-underline--2" role="tab">Security Settings</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link g-py-10" data-toggle="tab" href="myProfile.php#nav-1-1-default-hor-left-underline--3" role="tab">Payment Options</a>
+                <a class="nav-link g-py-10" data-toggle="tab" href="#pmntPage" role="tab">Payment Options</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link g-py-10" data-toggle="tab" href="myProfile.php#nav-1-1-default-hor-left-underline--4" role="tab">Notification Settings</a>
+                <a class="nav-link g-py-10" data-toggle="tab" href="#nav-1-1-default-hor-left-underline--4" role="tab">Notification Settings</a>
               </li>
             </ul>
             <!-- End Nav tabs -->
@@ -482,7 +481,7 @@ if(isset($_SESSION['userID'])){
 
                 <div class="text-sm-right">
                   <a class="btn u-btn-darkgray rounded-0 g-py-12 g-px-25 g-mr-10" href="#!">Reset</a>
-                  <a class="btn u-btn-primary rounded-0 g-py-12 g-px-25" href="#!">Save Changes</a>
+                  <a class="btn u-btn-primary rounded-0 g-py-12 g-px-25" href="#!" id="actionBtn">Save Changes</a>
                 </div>
               </div>
               <!-- End Edit Profile -->
@@ -593,7 +592,7 @@ if(isset($_SESSION['userID'])){
               <!-- End Security Settings -->
 
               <!-- Payment Options -->
-              <div class="tab-pane fade" id="nav-1-1-default-hor-left-underline--3" role="tabpanel">
+              <div class="tab-pane fade" id="pmntPage" role="tabpanel">
                 <h2 class="h4 g-font-weight-300">Manage your Payment Settings</h2>
                 <p class="g-mb-25">Below are the payment options for your account.</p>
 
@@ -1203,11 +1202,27 @@ if(isset($_SESSION['userID'])){
      });
  </script>
 
+ <!-- Writing some custom script to handle extra features -->
+ <script>
+
+   $(document).ready (function(){
+
+       $('#actionBtn').click( function() {
+
+            $('#actionBtn').text("SAVE CHANGES");
+
+       });
+
+
+
+   });
+
+ </script>
+
   <div id="copyModal" class="text-left modal-demo g-bg-white g-color-black g-pa-20" style="display: none;"></div>
 
   <!-- CSS -->
   <link rel="stylesheet" href="../../../assets/vendor/malihu-scrollbar/jquery.mCustomScrollbar.min.css">
 
 </body>
-
 </html>

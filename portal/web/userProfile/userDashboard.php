@@ -15,7 +15,7 @@ if(isset($_SESSION['userID'])){
   // echo 'Welcome User'.$_SESSION['userNAME'];
   $userID = $_SESSION['userID'];
   //Selecting all user information basing upon the user's session id
-  $getAllUserDetails = $conn -> query("SELECT * FROM user_info WHERE user_id = '$userID'");
+  $getAllUserDetails = $conn -> query("SELECT * FROM user_info ui JOIN user_wallet_info uw ON ui.user_id = uw.userID WHERE ui.user_id = '$userID'");
   $selectUserInformations = $getAllUserDetails -> fetch_assoc();
 
 } else{
@@ -84,6 +84,9 @@ if(isset($_SESSION['userID'])){
             </button>
             <!-- End Responsive Toggle Button -->
 
+              <div id="hiddenUserID"><?$selectUserInformations['userID']?>></div>
+
+
             <!-- Logo -->
             <a href="../../../index.php" class="navbar-brand d-flex">
               <h2><font color="green"><b>GAME</b>-<strong>X</strong></font></h2>
@@ -96,7 +99,7 @@ if(isset($_SESSION['userID'])){
 
                 <!-- Home -->
                 <li class="hs-has-mega-menu nav-item active g-mx-10--lg g-mx-15--xl" data-animation-in="fadeIn" data-animation-out="fadeOut" data-max-width="60%" data-position="left">
-                  <a id="mega-menu-home" class="nav-link g-py-7 g-px-0" href="../../../index.php" aria-haspopup="true" aria-expanded="false">Home-X</a>
+                  <a id="mega-menu-home" class="btn btn-md u-btn-outline-purple g-brd-2 g-mr-10 g-mb-15" href="../../../index.php" aria-haspopup="true" aria-expanded="false">Home-X</a>
                 </li>
                 <!-- End Home -->
               </ul>
@@ -108,16 +111,20 @@ if(isset($_SESSION['userID'])){
                 <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
                   <a class="btn u-btn-outline-primary g-font-size-13 text-uppercase g-py-10 g-px-15" href="portal/web/auth/loginPage.php">Login/Signup</a>
                 </div>
-            </nav>
+
         <?php } else{ ?>
           <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
-            <a class="btn btn-md u-btn-outline-cyan g-brd-2 g-mr-10 g-mb-15" href="myProfile.php">Welcome <b><?= $selectUserInformations['user_fullname'];?></b></a> <a href="../auth/controller/userLogout.php" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Logout</a>
-          </div>
-      </nav>
-         <?php } ?>
+            <a class="btn btn-md u-btn-outline-cyan g-brd-2 g-mr-10 g-mb-15" href="myProfile.php">Welcome <b><?= $selectUserInformations['user_fullname'];?></b></a>
+            <a href="../auth/controller/userLogout.php" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Logout</a>
 
-            </nav>
+          <a href="myProfile.php/#pmntPage" class="btn btn-md u-btn-outline-blue g-brd-2 g-mr-10 g-mb-15">
+            <b><i class="icon-christmas-021 u-line-icon-pro">$<?= $selectUserInformations['walletBalance'];?></i></b>
+          </a>
           </div>
+         <?php } ?>
+  </nav>
+          </div>
+        </div>
     </header>
     <!-- End Header -->
 
@@ -213,7 +220,7 @@ if(isset($_SESSION['userID'])){
 
               <!-- User Info -->
               <span class="g-pos-abs g-top-20 g-left-0">
-                  <a class="btn btn-sm u-btn-primary rounded-0" href="#!"><b><?=$_SESSION['userNAME'];?></b></a>
+                  <a class="btn btn-sm u-btn-primary rounded-0" href="#!"><b><?=$selectUserInformations['userNAME'];?></b></a>
                   <small class="d-block g-bg-red g-color-black g-pa-5">Pro Champ</small>
                 </span>
               <!-- End User Info -->
@@ -225,7 +232,6 @@ if(isset($_SESSION['userID'])){
               <!-- Overall -->
               <a href="#" class="list-group-item justify-content-between active">
                 <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> My Dashboard</span>
-                <!-- <span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10">2</span> -->
               </a>
               <!-- End Overall -->
 
@@ -1529,6 +1535,42 @@ if(isset($_SESSION['userID'])){
           $.HSCore.components.HSTabs.init('[role="tablist"]');
         }, 200);
       });
+  </script>
+
+  <!-- Writing some custom script to handle extra features -->
+  <script>
+
+    $(document).ready (function(){
+
+        $('#btn').setText("Hello");
+        notificationPanel();
+        var userID = $('#hiddenUserID').val();
+
+  function notificationPanel(){
+
+    $('#notificationCount').ready(function(){
+
+          $.ajax({
+
+                type:'get',
+                url:'../../../../api/process/request/notificationCheck.php'+userID,
+                async: true,
+                cache: true,
+                success:function(data){
+                  alert('Done');
+                  if(data){
+                    alert("Notifications available.");
+                  }else{
+                    alert("No Notification.");
+                  }
+
+                }
+
+        });
+
+      });
+    }
+});
   </script>
 
 </body>
