@@ -12,7 +12,7 @@ include '../../../includes/config/dbConnectivity.php';
   //#userID
 
   //Reading user from URL via GET
-  $userID = $_GET['userID'];
+  $userID = $_POST['userID'];
   //Response array to throw response messages according to action
   $respArray = array();
   $unreadCount = 0;
@@ -22,28 +22,28 @@ include '../../../includes/config/dbConnectivity.php';
 
     $getNotificationsCount = "SELECT *,count(*) AS COUNT FROM `user_notification_record` WHERE `userID` = $userID AND `notification_status` = 0";
     $getMessageCount = $conn -> query($getNotificationsCount);
+    $readMessageCount = $getMessageCount -> fetch_assoc();
 
-      if($getMessageCount -> num_rows > 0){
+      if($getMessageCount){
 
-        while($checkNotifications = $getMessageCount -> fetch_assoc()){
-
-                $unreadCount = $checkNotifications['COUNT'];
-                $messageTitle = $checkNotifications['notification_title'];
-                $messageContent = $checkNotifications['notification_message'];
-
-        }
+        $unreadCount = $readMessageCount['COUNT'];
 
         /*Put one if condition here */
         //Printing Response Array
-        $respArray = array('message' => 'Unread Notifications.', "unreadcounts" => $unreadCount, "messagetitle" => $messageTitle, "messagecontent" => $messageContent);
+        if($unreadCount)
+
+        $respArray = array('message' => 'Unread Notifications.', "unreadcounts" => $unreadCount);
         // echo json_encode($notificationCountArray, JSON_PRETTY_PRINT);
         // echo 'API WORKING SUCCESSFULLY';
         // exit;
+        else
+
+        $respArray = array('message' => 'All caught up.', "unreadcounts" => $unreadCount);
 
       }else {
 
         //Printing Response Array
-        $respArray = array('message' => 'All Caught-up!.', "unreadcounts" => $unreadCount);
+        $respArray = array('message' => 'Unable to get new notifications.');
 
       }
 

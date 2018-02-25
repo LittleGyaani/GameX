@@ -15,7 +15,7 @@ if(isset($_SESSION['userID'])){
   // echo 'Welcome User'.$_SESSION['userNAME'];
   $userID = $_SESSION['userID'];
   //Selecting all user information basing upon the user's session id
-  $getAllUserDetails = $conn -> query("SELECT * FROM user_info WHERE user_id = '$userID'");
+  $getAllUserDetails = $conn -> query("SELECT * FROM user_info ui JOIN user_wallet_info uw ON ui.user_id = uw.userID WHERE ui.user_id = '$userID'");
   $selectUserInformations = $getAllUserDetails -> fetch_assoc();
 
 } else{
@@ -30,7 +30,7 @@ if(isset($_SESSION['userID'])){
 
 <head>
   <!-- Title -->
-  <title>Game X - Play the best of your life! | My Profile</title>
+  <title>battlestation - Play the best of your life! | My Profile</title>
 
   <!-- Required Meta Tags Always Come First -->
   <meta charset="utf-8">
@@ -87,26 +87,36 @@ if(isset($_SESSION['userID'])){
 
             <!-- Logo -->
             <a href="../../../index.php" class="navbar-brand d-flex">
-              <h2><font color="green"><b>GAME</b>-<strong>X</strong></font></h2>
+                <h2><font color="green"><b>battle</b><strong>station</strong></font></h2>
             </a>
             <!-- End Logo -->
 
-            <?php
-            if(!($_SESSION['userID'])){ ?>
+            <!-- User AREA-->
             <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
-              <a class="btn u-btn-outline-primary g-font-size-13 text-uppercase g-py-10 g-px-15" href="portal/web/auth/loginPage.php">Login/Signup</a>
-            </div>
-          </div>
-        </nav>
-      </div>
-    <?php } else{ ?>
-      <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
-        <a class="btn btn-md u-btn-outline-cyan g-brd-2 g-mr-10 g-mb-15" href="myProfile.php">Welcome <b><?= $selectUserInformations['user_fullname'];?></b></a> <a href="../auth/controller/userLogout.php" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Logout</a>
-      </div>
-    </div>
-  </nav>
-</div>
-     <?php } ?>
+
+              <i class="icon-user"></i>  Welcome <a class="g-brd-2 g-mr-10 g-mb-15" href="myProfile.php"><b><?= $selectUserInformations['user_fullname'];?>!</b></a>
+              <br>
+
+            <!-- Notification Icon Start -->
+                   <a href="#" class="justify-content-between">
+                       <span class="u-label g-font-size-18 g-bg-primary g-rounded-20 g-px-8"><i class="icon-bell g-pos-rel g-top-1 g-mr-8"></i><b>24</b></span>
+                   </a>
+            <!-- Notification Icon End -->
+
+            <!-- Wallet Icon Start -->
+                   <a href="#" class="justify-content-between">
+                       <span class="u-label g-font-size-18 g-bg-blue g-rounded-20 g-px-8"><i class="icon-wallet g-pos-rel g-top-1 g-mr-8"></i>₹<b><?= $selectUserInformations['walletBalance'];?></b></span>
+                   </a>
+             <!-- Wallet Icon End -->
+
+             <!-- Wallet Icon Start -->
+                    <a href="../auth/controller/userLogout.php" class="justify-content-between">
+                        <span class="u-label g-font-size-18 g-bg-lightred g-rounded-20 g-px-8"><i class="icon-power g-pos-rel g-top-1 g-mr-8"></i>Logout</span>
+                    </a>
+              <!-- Wallet Icon End -->
+
+           </div>
+           <!-- User AREA End-->
 
           </div>
         </nav>
@@ -201,13 +211,13 @@ if(isset($_SESSION['userID'])){
             <!-- User Image -->
             <div class="u-block-hover g-pos-rel">
               <figure>
-                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img-temp/400x450/img5.jpg" alt="Image Description">
+                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img/profilePic/img5.jpg" alt="Image Description">
               </figure>
 
               <!-- User Info -->
               <span class="g-pos-abs g-top-20 g-left-0">
                   <a class="btn btn-sm u-btn-primary rounded-0" href="#!"><b><?=$selectUserInformations['user_fullname']?></b></a>
-                  <small class="d-block g-bg-black g-color-white g-pa-5">Pro GAMER</small>
+                  <small class="d-block g-bg-black g-color-white g-pa-5"><strong>Pro GAMER</strong></small>
                 </span>
               <!-- End User Info -->
             </div>
@@ -215,64 +225,65 @@ if(isset($_SESSION['userID'])){
 
             <!-- Sidebar Navigation -->
             <div class="list-group list-group-border-0 g-mb-40">
-              <!-- Overall -->
-              <a href="userDashboard.php" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> My Dashboard</span>
-              </a>
-              <!-- End Overall -->
+                <!-- Overall -->
+                <a href="userDashboard.php" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> My Dashboard Area</span>
+                </a>
+                <!-- End Overall -->
 
-              <!-- Profile -->
-              <a href="#" class="list-group-item list-group-item-action justify-content-between active">
-                <span><i class="icon-cursor g-pos-rel g-top-1 g-mr-8"></i>My Profile</span>
-              </a>
-              <!-- End Profile -->
+                <!-- Profile -->
+                <a href="#" class="list-group-item list-group-item-action justify-content-between active">
+                    <span><i class="icon-user g-pos-rel g-top-1 g-mr-8"></i> My Profile Informations</span>
+                </a>
+                <!-- End Profile -->
 
-              <!-- Users Contacts -->
-              <a href="page-profile-users-1.html" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-notebook g-pos-rel g-top-1 g-mr-8"></i> Users Contacts</span>
-              </a>
-              <!-- End Users Contacts -->
+                <!-- Users Contacts -->
+                <a href="gamePlatforms.php" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-game-controller g-pos-rel g-top-1 g-mr-8"></i> My Game Platforms</span>
+                </a>
+                <!-- End Users Contacts -->
 
-              <!-- My Projects -->
-              <a href="page-profile-projects-1.html" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-layers g-pos-rel g-top-1 g-mr-8"></i> My Projects</span>
-                <span class="u-label g-font-size-11 g-bg-primary g-rounded-20 g-px-10">9</span>
-              </a>
-              <!-- End My Projects -->
+                <!-- My Projects -->
+                <a href="page-profile-projects-1.html" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-wallet g-pos-rel g-top-1 g-mr-8"></i> My Wallet Statistics</span>
+                    <span class="u-label g-font-size-11 g-bg-primary g-rounded-20 g-px-10">9</span>
+                </a>
+                <!-- End My Projects -->
 
-              <!-- Comments -->
-              <a href="page-profile-comments-1.html" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-bubbles g-pos-rel g-top-1 g-mr-8"></i> Comments</span>
-                <span class="u-label g-font-size-11 g-bg-pink g-rounded-20 g-px-8">24</span>
-              </a>
-              <!-- End Comments -->
+                <!-- Comments -->
+                <a href="page-profile-comments-1.html" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-bell g-pos-rel g-top-1 g-mr-8"></i> My Notifications Area</span>
+                    <span class="u-label g-font-size-11 g-bg-black g-rounded-20 g-px-8">24</span>
+                </a>
+                <!-- End Comments -->
 
-              <!-- Reviews -->
-              <a href="page-profile-reviews-1.html" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-heart g-pos-rel g-top-1 g-mr-8"></i> Reviews</span>
-              </a>
-              <!-- End Reviews -->
+                <!-- Reviews -->
+                <a href="page-profile-reviews-1.html" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-feed g-pos-rel g-top-1 g-mr-8"></i> My Battle History</span>
+                </a>
+                <!-- End Reviews -->
 
-              <!-- History -->
-              <a href="#!" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-fire g-pos-rel g-top-1 g-mr-8"></i> History</span>
-              </a>
-              <!-- End History -->
+                <!-- History -->
+                <a href="#!" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-fire g-pos-rel g-top-1 g-mr-8"></i> My Challenge Requests</span>
+                </a>
+                <!-- End History -->
 
-              <!-- Settings -->
-              <a href="#" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> Settings</span>
-                <span class="u-label g-font-size-11 g-bg-red g-color-white g-rounded-20 g-px-8">3</span>
-              </a>
-              <!-- End Settings -->
+                <!-- Settings -->
+                <a href="#" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> Settings</span>
+                    <span class="u-label g-font-size-11 g-bg-red g-color-white g-rounded-20 g-px-8">3</span>
+                </a>
+                <!-- End Settings -->
 
-              <!-- Logout -->
-              <a href="../auth/controller/userLogout.php" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> Logout</span>
-              </a>
-              <!-- End Logout -->
+                <!-- Logout -->
+                <a href="../auth/controller/userLogout.php" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-power g-pos-rel g-top-1 g-mr-8"></i> Logout</span>
+                </a>
+                <!-- End Logout -->
             </div>
             <!-- End Sidebar Navigation -->
+
 
             <!-- Project Progress -->
             <div class="card border-0 rounded-0 g-mb-50">
@@ -477,6 +488,18 @@ if(isset($_SESSION['userID'])){
                       </span>
                   </li>
                   <!-- End Address -->
+                  <!-- Address -->
+                  <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
+                    <div class="g-pr-10">
+                      <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Joined ON</strong>
+                      <span class="align-top"><?=$selectUserInformations['user_registration_date']?></span>
+                    </div>
+                    <span>
+                        <i class="icon-pencil g-color-gray-dark-v5 g-color-primary--hover g-cursor-pointer g-pos-rel g-top-1"></i>
+                      </span>
+                  </li>
+                  <!-- End Address -->
+
                 </ul>
 
                 <div class="text-sm-right">

@@ -15,7 +15,8 @@ if(isset($_SESSION['userID'])){
   // echo 'Welcome User'.$_SESSION['userNAME'];
   $userID = $_SESSION['userID'];
   //Selecting all user information basing upon the user's session id
-  $getAllUserDetails = $conn -> query("SELECT * FROM user_info ui JOIN user_wallet_info uw ON ui.user_id = uw.userID WHERE ui.user_id = '$userID'");
+  $selectAllUserData = "SELECT * FROM user_info ui JOIN user_wallet_info uw ON ui.user_id = uw.userID WHERE ui.user_id = '$userID'";
+  $getAllUserDetails = $conn -> query($selectAllUserData);
   $selectUserInformations = $getAllUserDetails -> fetch_assoc();
 
 } else{
@@ -30,101 +31,15 @@ if(isset($_SESSION['userID'])){
 
 <head>
   <!-- Title -->
-  <title>Game X - Play the best of your life! | User Dashboard</title>
+  <title>battlestation - Play the best of your life! | User Dashboard</title>
 
-  <!-- Required Meta Tags Always Come First -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <?php
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="../../../favicon.ico">
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C500%2C600%2C700%7CPlayfair+Display%7CRoboto%7CRaleway%7CSpectral%7CRubik">
-  <!-- CSS Global Compulsory -->
-  <link rel="stylesheet" href="../../../assets/vendor/bootstrap/bootstrap.min.css">
-  <!-- CSS Global Icons -->
-  <!-- <link rel="stylesheet" href="../../../assets/vendor/icon-awesome/css/font-awesome.min.css"> -->
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  <link rel="stylesheet" href="http://simplelineicons.com/css/simple-line-icons.css">
-  <link rel="stylesheet" href="../../../assets/vendor/icon-etlinefont/style.css">
-  <link rel="stylesheet" href="../../../assets/vendor/icon-line-pro/style.css">
-  <link rel="stylesheet" href="../../../assets/vendor/icon-hs/style.css">
-  <link rel="stylesheet" href="../../../assets/vendor/animate.css">
-  <link rel="stylesheet" href="../../../assets/vendor/malihu-scrollbar/jquery.mCustomScrollbar.min.css">
-  <link rel="stylesheet" href="../../../assets/vendor/hs-megamenu/src/hs.megamenu.css">
-  <link rel="stylesheet" href="../../../assets/vendor/hamburgers/hamburgers.min.css">
+      //Including Meta and Navigation
+      include "../../../includes/common/template_header.php";
 
-  <!-- CSS Unify -->
-  <link rel="stylesheet" href="../../../assets/css/unify-core.css">
-  <link rel="stylesheet" href="../../../assets/css/unify-components.css">
-  <link rel="stylesheet" href="../../../assets/css/unify-globals.css">
+     ?>
 
-  <!-- CSS Customization -->
-  <link rel="stylesheet" href="../../../assets/css/custom.css">
-</head>
-
-<body>
-  <main>
-
-
-
-    <!-- Header -->
-    <header id="js-header" class="u-header u-header--static">
-      <div class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-10">
-        <nav class="js-mega-menu navbar navbar-expand-lg hs-menu-initialized hs-menu-horizontal">
-          <div class="container">
-            <!-- Responsive Toggle Button -->
-            <button class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pa-0 g-pos-abs g-top-3 g-right-0" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
-              <span class="hamburger hamburger--slider">
-            <span class="hamburger-box">
-              <span class="hamburger-inner"></span>
-              </span>
-              </span>
-            </button>
-            <!-- End Responsive Toggle Button -->
-
-              <div id="hiddenUserID"><?$selectUserInformations['userID']?>></div>
-
-
-            <!-- Logo -->
-            <a href="../../../index.php" class="navbar-brand d-flex">
-              <h2><font color="green"><b>GAME</b>-<strong>X</strong></font></h2>
-            </a>
-            <!-- End Logo -->
-
-            <!-- Navigation -->
-            <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg g-mr-40--lg" id="navBar">
-              <ul class="navbar-nav text-uppercase g-pos-rel g-font-weight-600 ml-auto">
-
-                <!-- Home -->
-                <li class="hs-has-mega-menu nav-item active g-mx-10--lg g-mx-15--xl" data-animation-in="fadeIn" data-animation-out="fadeOut" data-max-width="60%" data-position="left">
-                  <a id="mega-menu-home" class="btn btn-md u-btn-outline-purple g-brd-2 g-mr-10 g-mb-15" href="../../../index.php" aria-haspopup="true" aria-expanded="false">Home-X</a>
-                </li>
-                <!-- End Home -->
-              </ul>
-
-            <!-- End Navigation -->
-
-                <?php
-                if(!($_SESSION['userID'])){ ?>
-                <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
-                  <a class="btn u-btn-outline-primary g-font-size-13 text-uppercase g-py-10 g-px-15" href="portal/web/auth/loginPage.php">Login/Signup</a>
-                </div>
-
-        <?php } else{ ?>
-          <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
-            <a class="btn btn-md u-btn-outline-cyan g-brd-2 g-mr-10 g-mb-15" href="myProfile.php">Welcome <b><?= $selectUserInformations['user_fullname'];?></b></a>
-            <a href="../auth/controller/userLogout.php" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Logout</a>
-
-          <a href="myProfile.php/#pmntPage" class="btn btn-md u-btn-outline-blue g-brd-2 g-mr-10 g-mb-15">
-            <b><i class="icon-christmas-021 u-line-icon-pro">$<?= $selectUserInformations['walletBalance'];?></i></b>
-          </a>
-          </div>
-         <?php } ?>
-  </nav>
-          </div>
-        </div>
     </header>
     <!-- End Header -->
 
@@ -215,76 +130,77 @@ if(isset($_SESSION['userID'])){
             <!-- User Image -->
             <div class="u-block-hover g-pos-rel">
               <figure>
-                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img-temp/400x450/img5.jpg" alt="Image Description">
+                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img/profilePic/img5.jpg" alt="Image Description">
               </figure>
 
               <!-- User Info -->
               <span class="g-pos-abs g-top-20 g-left-0">
-                  <a class="btn btn-sm u-btn-primary rounded-0" href="#!"><b><?=$selectUserInformations['userNAME'];?></b></a>
-                  <small class="d-block g-bg-red g-color-black g-pa-5">Pro Champ</small>
-                </span>
+                <a class="btn btn-sm u-btn-primary rounded-0" href="#!"><b><?= $selectUserInformations['user_fullname'];?></b></a>
+                <small class="d-block g-bg-black g-color-white g-pa-5"><strong>Pro GAMER</strong></small>
+              </span>
               <!-- End User Info -->
+
             </div>
             <!-- User Image -->
 
             <!-- Sidebar Navigation -->
             <div class="list-group list-group-border-0 g-mb-40">
-              <!-- Overall -->
-              <a href="#" class="list-group-item justify-content-between active">
-                <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> My Dashboard</span>
-              </a>
-              <!-- End Overall -->
+                <!-- Overall -->
+                <a href="#" class="list-group-item list-group-item-action justify-content-between active">
+                    <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> My Dashboard Area</span>
+                </a>
+                <!-- End Overall -->
 
-              <!-- Profile -->
-              <a href="myProfile.php" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-cursor g-pos-rel g-top-1 g-mr-8"></i> Profile</span>
-              </a>
-              <!-- End Profile -->
+                <!-- Profile -->
+                <a href="myProfile.php" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-user g-pos-rel g-top-1 g-mr-8"></i> My Profile Informations</span>
+                </a>
+                <!-- End Profile -->
 
-              <!-- Users Contacts -->
-              <a href="page-profile-users-1.html" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-notebook g-pos-rel g-top-1 g-mr-8"></i> Users Contacts</span>
-              </a>
-              <!-- End Users Contacts -->
+                <!-- Users Contacts -->
+                <a href="gamePlatforms.php" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-game-controller g-pos-rel g-top-1 g-mr-8"></i> My Game Platforms</span>
+                </a>
+                <!-- End Users Contacts -->
 
-              <!-- My Projects -->
-              <a href="page-profile-projects-1.html" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-layers g-pos-rel g-top-1 g-mr-8"></i> My Projects</span>
-                <span class="u-label g-font-size-11 g-bg-primary g-rounded-20 g-px-10">9</span>
-              </a>
-              <!-- End My Projects -->
+                <!-- My Projects -->
+                <a href="page-profile-projects-1.html" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-wallet g-pos-rel g-top-1 g-mr-8"></i> My Wallet Statistics</span>
+                    <span class="u-label g-font-size-11 g-bg-primary g-rounded-20 g-px-10">9</span>
+                </a>
+                <!-- End My Projects -->
 
-              <!-- Comments -->
-              <a href="page-profile-comments-1.html" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-bubbles g-pos-rel g-top-1 g-mr-8"></i> Comments</span>
-                <span class="u-label g-font-size-11 g-bg-pink g-rounded-20 g-px-8">24</span>
-              </a>
-              <!-- End Comments -->
+                <!-- Comments -->
+                <a href="page-profile-comments-1.html" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-bell g-pos-rel g-top-1 g-mr-8"></i> My Notifications Area</span>
+                    <span class="u-label g-font-size-11 g-bg-black g-rounded-20 g-px-8">24</span>
+                </a>
+                <!-- End Comments -->
 
-              <!-- Reviews -->
-              <a href="page-profile-reviews-1.html" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-heart g-pos-rel g-top-1 g-mr-8"></i> Reviews</span>
-              </a>
-              <!-- End Reviews -->
+                <!-- Reviews -->
+                <a href="page-profile-reviews-1.html" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-feed g-pos-rel g-top-1 g-mr-8"></i> My Battle History</span>
+                </a>
+                <!-- End Reviews -->
 
-              <!-- History -->
-              <a href="page-profile-history-1.html" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-fire g-pos-rel g-top-1 g-mr-8"></i> History</span>
-              </a>
-              <!-- End History -->
+                <!-- History -->
+                <a href="#!" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-fire g-pos-rel g-top-1 g-mr-8"></i> My Challenge Requests</span>
+                </a>
+                <!-- End History -->
 
-              <!-- Settings -->
-              <a href="page-profile-settings-1.html" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> Settings</span>
-                <span class="u-label g-font-size-11 g-bg-cyan g-rounded-20 g-px-8">3</span>
-              </a>
-              <!-- End Settings -->
+                <!-- Settings -->
+                <a href="#" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> Settings</span>
+                    <span class="u-label g-font-size-11 g-bg-red g-color-white g-rounded-20 g-px-8">3</span>
+                </a>
+                <!-- End Settings -->
 
-              <!-- Logout -->
-              <a href="../auth/controller/userLogout.php" class="list-group-item list-group-item-action justify-content-between">
-                <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> Logout</span>
-              </a>
-              <!-- End Logout -->
+                <!-- Logout -->
+                <a href="../auth/controller/userLogout.php" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-power g-pos-rel g-top-1 g-mr-8"></i> Logout</span>
+                </a>
+                <!-- End Logout -->
             </div>
             <!-- End Sidebar Navigation -->
 
@@ -293,33 +209,8 @@ if(isset($_SESSION['userID'])){
               <!-- Panel Header -->
               <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
                 <h3 class="h6 mb-0">
-                    <i class="icon-layers g-pos-rel g-top-1 g-mr-5"></i> Games in Progress
+                    <i class="icon-badge g-pos-rel g-top-1 g-mr-5"></i> Games in Progress
                   </h3>
-                <div class="dropdown g-mb-10 g-mb-0--md">
-                  <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="icon-options-vertical g-pos-rel g-top-1"></i>
-                    </span>
-                  <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
-                    <a class="dropdown-item g-px-10" href="#!">
-                      <i class="icon-layers g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Projects
-                    </a>
-                    <a class="dropdown-item g-px-10" href="#!">
-                      <i class="icon-wallet g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Wallets
-                    </a>
-                    <a class="dropdown-item g-px-10" href="#!">
-                      <i class="icon-fire g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Reports
-                    </a>
-                    <a class="dropdown-item g-px-10" href="#!">
-                      <i class="icon-settings g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Users Setting
-                    </a>
-
-                    <div class="dropdown-divider"></div>
-
-                    <a class="dropdown-item g-px-10" href="#!">
-                      <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
-                    </a>
-                  </div>
-                </div>
               </div>
               <!-- End Panel Header -->
 
@@ -390,9 +281,9 @@ if(isset($_SESSION['userID'])){
                 <!-- Latest Projects Panel -->
                 <div class="card border-0">
                   <!-- Panel Header -->
-                  <div class="card-header d-flex align-items-center justify-content-between g-bg-green border-0 g-mb-15">
+                  <div class="card-header d-flex align-items-center justify-content-between g-bg-grey border-0 g-mb-15">
                     <h3 class="h6 mb-0">
-                        <i class="icon-layers g-pos-rel g-top-1 g-mr-5"></i> Matches open to join
+                        <i class="icon-exclamation g-pos-rel g-top-1 g-mr-5"></i> Open Match Notifications
                       </h3>
                     <div class="dropdown g-mb-10 g-mb-0--md">
                       <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -400,16 +291,16 @@ if(isset($_SESSION['userID'])){
                         </span>
                       <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
                         <a class="dropdown-item g-px-10" href="#!">
-                          <i class="icon-layers g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Projects
+                          <i class="icon-layers g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Quick Match
                         </a>
                         <a class="dropdown-item g-px-10" href="#!">
-                          <i class="icon-wallet g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Wallets
+                          <i class="icon-wallet g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Game Registration
                         </a>
                         <a class="dropdown-item g-px-10" href="#!">
-                          <i class="icon-fire g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Reports
+                          <i class="icon-fire g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Match Fixtures
                         </a>
                         <a class="dropdown-item g-px-10" href="#!">
-                          <i class="icon-settings g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Users Setting
+                          <i class="icon-settings g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Match Summary
                         </a>
 
                         <div class="dropdown-divider"></div>
@@ -424,56 +315,57 @@ if(isset($_SESSION['userID'])){
 
                   <!-- Panel Body -->
                   <div class="js-scrollbar card-block u-info-v1-1 g-bg-white-gradient-v1--after g-height-400 g-pa-0">
+                    <?php
+
+                      $selectGameInfo = "SELECT * FROM `game_registration_meta`";
+                      $runselectGameInfo = $conn -> query($selectGameInfo);
+                      $leftBrdColorArray = array("g-brd-red-left", "g-brd-black-left", "g-brd-yellow-left", "g-brd-green-left", "g-brd-pink-left", "g-brd-blue-left");
+                      if($runselectGameInfo -> num_rows > 0){
+
+                        while($getGameInfo = $runselectGameInfo -> fetch_assoc()){
+
+                          $timeonly = strtotime($getGameInfo['game_registration_start_date']);
+                          // echo $timeonly;
+                          if($i > count($leftBrdColorArray) - 1) $i = 0;
+
+                    ?>
                     <ul class="list-unstyled">
-                      <li class="media g-brd-around g-brd-gray-light-v4 g-brd-left-3 g-brd-blue-left rounded g-pa-20 g-mb-10">
+                      <li class="media g-brd-around g-brd-gray-light-v4 g-brd-left-3 <?php echo $leftBrdColorArray[$i]; ?> rounded g-pa-20 g-mb-10">
                         <div class="d-flex g-mt-2 g-mr-15">
-                          <img class="g-width-40 g-height-40 rounded-circle" src="../../../assets/img-temp/100x100/img1.jpg" alt="Image Description">
+                          <img class="g-width-40 g-height-40 rounded-circle" src="../../../assets/img-temp/100x100/img1.jpg" alt="<?=$getGameInfo['game_name']?>">
                         </div>
                         <div class="media-body">
                           <div class="d-flex justify-content-between">
-                            <h5 class="h6 g-font-weight-600 g-color-black">Unify Template</h5>
-                            <span class="small text-nowrap g-color-blue">2 min ago</span>
+                            <h5 class="h6 g-font-weight-600 g-color-black"><?=$getGameInfo['game_name']?></h5>
+                            <span class="small text-nowrap g-color-blue"><?php echo get_time_ago($timeonly);?></span>
                           </div>
-                          <p>Curabitur hendrerit dolor sit amet consectetur. Adipiscing elitut leosit amet, consectetur eleifend.</p>
-                          <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-main g-rounded-20 g-px-10">HTML</span>
-                          <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-main g-rounded-20 g-px-10">AnhularJS</span>
-                          <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-main g-rounded-20 g-px-10">PHP</span>
-                        </div>
-                      </li>
+                          <p><?=$getGameInfo['game_fixture_info']?><br>
+                          <span class=" g-color-red g-rounded-20 g-px-10">Registration Open <?=$getGameInfo['game_registration_start_date']?></span><br>
+                          <span class=" g-color-red g-rounded-20 g-px-10">Registration Ends <?=$getGameInfo['game_registration_end_date']?></span><br>
+                          </p>
+                          <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-blue g-rounded-20 g-px-10">Participants <?=$getGameInfo['game_participants']?></span>
+                          <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-pink g-rounded-20 g-px-10">Winning Prize ₹<?=$getGameInfo['game_winning_amount']?></span> <br>
+                          <br>
+                          <?php
+                          $today = date("d-m-Y H:i");
+                          // echo $today;
+                              echo ($today < $getGameInfo['game_registration_end_date']) ? '<a href="shortcode-base-buttons.html#!" class="btn btn-md u-btn-outline-darkgray g-rounded-50 g-mr-10 g-mb-15">Join Game</a>':'<input type="button" class="btn btn-md u-btn-outline-red g-rounded-50 g-mr-10 g-mb-15" value ="Registration Over" />';
+                            ?>
 
-                      <li class="media g-brd-around g-brd-gray-light-v4 g-brd-left-3 g-brd-pink-left rounded g-pa-20 g-mb-10">
-                        <div class="d-flex g-mt-2 g-mr-15">
-                          <img class="g-width-40 g-height-40 rounded-circle" src="../../../assets/img-temp/100x100/img5.jpg" alt="Image Description">
                         </div>
-                        <div class="media-body">
-                          <div class="d-flex justify-content-between">
-                            <h5 class="h6 g-font-weight-600 g-color-black">UX/UI Design and Backend</h5>
-                            <span class="small text-nowrap g-color-pink">16 min ago</span>
-                          </div>
-                          <p>Hac consectetur habitasse platea dictumst, adipiscing elitut leosit amet, consectetur eleifend.</p>
-                          <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-main g-rounded-20 g-px-10">CSS</span>
-                          <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-main g-color-black g-rounded-20 g-px-10">JavaScript</span>
-                          <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-main g-rounded-20 g-px-10">Ruby</span>
-                          <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-main g-rounded-20 g-px-10">ASP.NET</span>
-                        </div>
-                      </li>
 
-                      <li class="media g-brd-around g-brd-gray-light-v4 g-brd-left-3 g-brd-black-left rounded g-pa-20 g-mb-10">
-                        <div class="d-flex g-mt-2 g-mr-15">
-                          <img class="g-width-40 g-height-40 rounded-circle" src="../../../assets/img-temp/100x100/img4.jpg" alt="Image Description">
-                        </div>
-                        <div class="media-body">
-                          <div class="d-flex justify-content-between">
-                            <h5 class="h6 g-font-weight-600 g-color-black">React Native App</h5>
-                            <span class="small text-nowrap g-color-blue">2 min ago</span>
-                          </div>
-                          <p>Curabitur hendrerit dolor sit amet consectetur. Adipiscing elitut leosit amet, consectetur eleifend.</p>
-                          <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-main g-rounded-20 g-px-10">ReactJS</span>
-                          <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-main g-rounded-20 g-px-10">CSS</span>
-                          <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-main g-rounded-20 g-px-10">HTML</span>
-                        </div>
                       </li>
                     </ul>
+                    <?php
+                    $i++;
+                  }
+                  }else{
+
+                    echo 'No game to show at this moment.';
+
+                  }
+                    ?>
+
                   </div>
                   <!-- End Panel Body -->
                 </div>
@@ -483,7 +375,7 @@ if(isset($_SESSION['userID'])){
               <div class="col-lg-6">
                 <!-- Activities Panel -->
                 <div class="card border-0">
-                  <div class="card-header d-flex align-items-center justify-content-between g-bg-cyan border-0 g-mb-15">
+                  <div class="card-header d-flex align-items-center justify-content-between g-bg-grey border-0 g-mb-15">
                     <h3 class="h6 mb-0">
                         <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> Global Leaderboard
                       </h3>
@@ -610,7 +502,7 @@ if(isset($_SESSION['userID'])){
                 <div class="card border-0">
                   <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
                     <h3 class="h6 mb-0">
-                        <i class="icon-list g-pos-rel g-top-1 g-mr-5"></i> Notifications
+                        <i class="icon-list g-pos-rel g-top-1 g-mr-5"></i> Quick Notifications
                       </h3>
                     <div class="dropdown g-mb-10 g-mb-0--md">
                       <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -640,6 +532,18 @@ if(isset($_SESSION['userID'])){
                   </div>
 
                   <div class="js-scrollbar card-block u-info-v1-1 g-bg-white-gradient-v1--after g-height-300 g-pa-0">
+                    <?php
+                      $selectUserNotifications = "SELECT * FROM `user_notification_record` WHERE `user_id` = $userID";
+                      $runselectUserNotifications = $conn -> query($selectUserNotifications);
+                      $colorArray = array("g-color-primary", "g-color-cyan", "g-color-orange");
+                      $iconArray = array("");
+                      // for($i = 0; $i < count($colorArray); $i++){
+                      //   print "Colors"." ".$colorArray[$i]."<br>";
+                      //
+                      // }
+                      //
+                      // exit;
+                     ?>
                     <!-- Alert Success -->
                     <div class="alert fade show g-bg-primary-opacity-0_1 g-color-primary rounded-0 g-mb-5" role="alert">
                       <button type="button" class="close u-alert-close--light g-ml-10 g-mt-1" data-dismiss="alert" aria-label="Close">
@@ -759,7 +663,7 @@ if(isset($_SESSION['userID'])){
                 <div class="card border-0">
                   <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
                     <h3 class="h6 mb-0">
-                        <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> Activities
+                        <i class="icon-energy g-pos-rel g-top-1 g-mr-5"></i> Global Activities
                       </h3>
                     <div class="dropdown g-mb-10 g-mb-0--md">
                       <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -792,14 +696,14 @@ if(isset($_SESSION['userID'])){
                     <!-- Article -->
                     <article class="media g-mb-20">
                       <a class="d-flex mr-3" href="#!">
-                        <img class="rounded-circle g-width-40 g-height-40" src="../../../assets/img-temp/100x100/img1.jpg" alt="Image Description">
+                        <img class="rounded-circle g-width-80 g-height-80" src="../../../assets/img/icons/game-challenge.png" alt="CHALLENGE">
                       </a>
 
                       <div class="media-body">
                         <h3 class="h6">
-                            <span class="g-color-black g-font-weight-600">Htmlstream</span>
-                            <a class="g-color-gray-dark-v4 g-mr-5" href="#!">@Htmlstream</a>
-                            <span class="g-color-gray-dark-v4">26m</span>
+                            <a class="g-color-black g-font-weight-600" href="#!">@Htmlstream</a> <span class="g-color-black-dark-v4">challenged</span> <a class="g-color-black g-font-weight-600" href="#!">@Htmlstream</a>
+                            <br>
+                            <div style="float:right; margin-right:11px;"><span class="g-color-red">26 minutes ago</span></div> <br>
                           </h3>
                         <p class="g-color-gray-dark-v4 g-mb-5">Sed ultrices velit vitae tortor posuere ultrices. Aliquam laoreet lorem et vulputate porta.</p>
                         <a href="#!">https://goo.gl/Zjd6Bj</a>
@@ -878,33 +782,8 @@ if(isset($_SESSION['userID'])){
               <!-- Panel Header -->
               <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
                 <h3 class="h6 mb-0">
-                    <i class="icon-notebook g-pos-rel g-top-1 g-mr-5"></i> Last Played Games with Players
+                    <i class="icon-shield g-pos-rel g-top-1 g-mr-5"></i> Last Played Games with Players
                   </h3>
-                <div class="dropdown g-mb-10 g-mb-0--md">
-                  <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="icon-options-vertical g-pos-rel g-top-1"></i>
-                    </span>
-                  <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
-                    <a class="dropdown-item g-px-10" href="#!">
-                      <i class="icon-layers g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Projects
-                    </a>
-                    <a class="dropdown-item g-px-10" href="#!">
-                      <i class="icon-wallet g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Wallets
-                    </a>
-                    <a class="dropdown-item g-px-10" href="#!">
-                      <i class="icon-fire g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Reports
-                    </a>
-                    <a class="dropdown-item g-px-10" href="#!">
-                      <i class="icon-settings g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Users Setting
-                    </a>
-
-                    <div class="dropdown-divider"></div>
-
-                    <a class="dropdown-item g-px-10" href="#!">
-                      <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
-                    </a>
-                  </div>
-                </div>
               </div>
               <!-- End Panel Header -->
 
@@ -937,17 +816,17 @@ if(isset($_SESSION['userID'])){
                       <ul class="row list-inline g-py-20 g-ma-0">
                         <li class="col g-brd-right g-brd-gray-light-v4">
                           <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-cyan--hover" href="#!">
-                            <i class="icon-speech"></i>
+                            <i class="icon-trophy" data-toggle="tooltip" data-placement="top" title="Quick Challenge"></i>
                           </a>
                         </li>
                         <li class="col g-brd-right g-brd-gray-light-v4">
                           <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-red--hover" href="#!">
-                            <i class="icon-envelope-letter"></i>
+                            <i class="icon-speech"data-toggle="tooltip" data-placement="top" title="Chat Now"></i>
                           </a>
                         </li>
                         <li class="col">
                           <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-purple--hover" href="#!">
-                            <i class="icon-screen-smartphone"></i>
+                            <i class="icon-user-following"data-toggle="tooltip" data-placement="top" title="View Profile"></i>
                           </a>
                         </li>
                       </ul>
@@ -1052,182 +931,106 @@ if(isset($_SESSION['userID'])){
 
             <!-- Product Table Panel -->
             <div class="card border-0">
-              <div class="card-header d-flex align-items-center justify-content-between g-bg-orange border-0 g-mb-15">
+              <div class="card-header d-flex align-items-center justify-content-between g-bg-grey border-0 g-mb-15">
                 <h3 class="h6 mb-0">
-                    <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> My Reports
+                    <i class="icon-calculator g-pos-rel g-top-1 g-mr-5"></i> My Wallet Transaction Reports
                   </h3>
-                <div class="dropdown g-mb-10 g-mb-0--md">
-                  <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="icon-options-vertical g-pos-rel g-top-1"></i>
-                    </span>
-                  <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
-                    <a class="dropdown-item g-px-10" href="#!">
-                      <i class="icon-layers g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Projects
-                    </a>
-                    <a class="dropdown-item g-px-10" href="#!">
-                      <i class="icon-wallet g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Wallets
-                    </a>
-                    <a class="dropdown-item g-px-10" href="#!">
-                      <i class="icon-fire g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Reports
-                    </a>
-                    <a class="dropdown-item g-px-10" href="#!">
-                      <i class="icon-settings g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Users Setting
-                    </a>
-
-                    <div class="dropdown-divider"></div>
-
-                    <a class="dropdown-item g-px-10" href="#!">
-                      <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
-                    </a>
-                  </div>
-                </div>
+                  <div style="float:right">Your Wallet Balance is ₹<b><?= $selectUserInformations['walletBalance'];?></b> | Last Updated On : <?= $selectUserInformations['lastUpdate_date_time_stamp'];?></div>
               </div>
+
 
               <div class="card-block g-pa-0">
                 <!-- Product Table -->
                 <div class="table-responsive">
                   <table class="table table-bordered u-table--v2">
+                    <?php
+
+                      $selectWalletInfo = "SELECT * FROM `user_wallet_transaction_info` WHERE `userID` = $userID LIMIT 10";
+                      $runselectWalletInfo = $conn -> query($selectWalletInfo);
+                      if(($runselectWalletInfo -> num_rows) > 0){
+                        ?>
                     <thead class="text-uppercase g-letter-spacing-1">
                       <tr>
-                        <th class="g-font-weight-300 g-color-black">Games Played</th>
-                        <th class="g-font-weight-300 g-color-black g-min-width-200">Prizes Earned</th>
-                        <th class="g-font-weight-300 g-color-black">Status</th>
-                        <th class="g-font-weight-300 g-color-black">Contacts</th>
+                        <th class="g-font-weight-200 g-color-black">Wallet Tranx. ID</th>
+                        <th class="g-font-weight-200 g-color-black">Remaining Balance (CWB-/+LUB)*</th>
+                        <th class="g-font-weight-200 g-color-black">Wallet <br>Transaction <br>Type</th>
+                        <th class="g-font-weight-200 g-color-black">Last Used Balance</th>
+                        <th class="g-font-weight-200 g-color-black">Transaction Date & Time</th>
+                        <th class="g-font-weight-200 g-color-black">Transaction Status</th>
                       </tr>
                     </thead>
 
                     <tbody>
+
+                      <?php
+                            while ($userWalletDetails = $runselectWalletInfo -> fetch_assoc()){
+                      ?>
                       <tr>
+
+                        <td class="align-middle">
+                          <h4 class="h6 g-mb-2"><b>BSTRANS-<?=$userWalletDetails['walletTransactionID']?></b></h4>
+                        </td>
+
                         <td class="align-middle text-nowrap">
-                          <h4 class="h6 g-mb-2">Lenovo Group</h4>
-                          <div class="js-rating g-font-size-12 g-color-primary" data-rating="3.5"></div>
+                            <span>₹<b><?=$userWalletDetails['wallet_remaining_balance']?></b></span>
                         </td>
+
                         <td class="align-middle">
-                          <div class="d-flex">
-                            <i class="icon-location-pin g-font-size-18 g-color-gray-dark-v5 g-pos-rel g-top-5 g-mr-7"></i>
-                            <span>389ZA2 DeClaudine, CA, USA</span>
-                          </div>
+                          <span class="btn btn-block u-btn-primary g-rounded-50 g-py-5">
+                            <i class="icon-check g-mr-5"></i> <?=ucwords($userWalletDetails['useType']);?>
+                          </span>
                         </td>
-                        <td class="align-middle">
-                          <a class="btn btn-block u-btn-primary g-rounded-50 g-py-5" href="#!">
-                            <i class="fa fa-arrows-v g-mr-5"></i> Middle
-                          </a>
-                        </td>
+
                         <td class="align-middle text-nowrap">
                           <span class="d-block g-mb-5">
-                            <i class="icon-phone g-font-size-16 g-color-gray-dark-v5 g-pos-rel g-top-2 g-mr-5"></i> +1 4768 97655
-                          </span>
-                          <span class="d-block">
-                            <i class="icon-envelope g-font-size-16 g-color-gray-dark-v5 g-pos-rel g-top-2 g-mr-5"></i> contact@lenovo.com
+                            <?php
+                            if($userWalletDetails['useType'] == 'wallet credit' || $userWalletDetails['useType'] == 'wallet topup') {?>
+                            +₹<b><?=$userWalletDetails['lastUsedBalance']?></b>
+                            <?php
+                          }else{ ?>
+                            -₹<b><?=$userWalletDetails['lastUsedBalance']?></b>
+                            <?php
+                            }
+                            ?>
                           </span>
                         </td>
+
+                        <td class="align-middle text-nowrap">
+                          <span class="d-block g-mb-5">
+                            <?=$userWalletDetails['date_time_stamp']?>
+                          </span>
+
+                        </td>
+
+                        <td class="align-middle text-nowrap">
+                          <span class="d-block g-mb-5">
+                            <?=ucfirst($userWalletDetails['transaction_status']);?>
+                          </span>
+
+                        </td>
+
                       </tr>
 
-                      <tr>
-                        <td class="align-middle text-nowrap">
-                          <h4 class="h6 g-mb-2">Samsung Electronics</h4>
-                          <div class="js-rating g-font-size-12 g-color-primary" data-rating="4.5"></div>
-                        </td>
-                        <td class="align-middle">
-                          <div class="d-flex">
-                            <i class="icon-location-pin g-font-size-18 g-color-gray-dark-v5 g-pos-rel g-top-5 g-mr-7"></i>
-                            <span>738AD Lorena Spur, London, UK</span>
-                          </div>
-                        </td>
-                        <td class="align-middle">
-                          <a class="btn btn-block u-btn-pink g-rounded-50 g-py-5" href="#!">
-                            <i class="fa fa-level-up g-mr-5"></i> High
-                          </a>
-                        </td>
-                        <td class="align-middle text-nowrap">
-                          <span class="d-block g-mb-5">
-                            <i class="icon-phone g-font-size-16 g-color-gray-dark-v5 g-pos-rel g-top-2 g-mr-5"></i> +44 7689 7655
-                          </span>
-                          <span class="d-block">
-                            <i class="icon-envelope g-font-size-16 g-color-gray-dark-v5 g-pos-rel g-top-2 g-mr-5"></i> users@samsung.com
-                          </span>
-                        </td>
-                      </tr>
+                      <?php  }
+                       ?>
+                      <strong><small>* CWB - Current Wallet Balance, LUB - Last Used Balance, TRANX. - Transaction</small></strong>
+                      <div style="float:right;">
+                      <a href="#!" class="btn btn-lg u-btn-blue g-mr-10 g-mb-15">
+                      View Wallet <i class="fa fa-long-arrow-right g-mr-5"></i>
+                      </a>
+                      <?php
 
-                      <tr>
-                        <td class="align-middle text-nowrap">
-                          <h4 class="h6 g-mb-2">Sony Corp.</h4>
-                          <div class="js-rating g-font-size-12 g-color-primary" data-rating="2"></div>
-                        </td>
-                        <td class="align-middle">
-                          <div class="d-flex">
-                            <i class="icon-location-pin g-font-size-18 g-color-gray-dark-v5 g-pos-rel g-top-5 g-mr-7"></i>
-                            <span>044C1 Port Dickson, BC, Canada</span>
-                          </div>
-                        </td>
-                        <td class="align-middle">
-                          <a class="btn btn-block u-btn-cyan g-rounded-50 g-py-5" href="#!">
-                            <i class="fa fa-sort-amount-desc g-mr-5"></i> Deep
-                          </a>
-                        </td>
-                        <td class="align-middle text-nowrap">
-                          <span class="d-block g-mb-5">
-                            <i class="icon-phone g-font-size-16 g-color-gray-dark-v5 g-pos-rel g-top-2 g-mr-5"></i> +1 0739 3644
-                          </span>
-                          <span class="d-block">
-                            <i class="icon-envelope g-font-size-16 g-color-gray-dark-v5 g-pos-rel g-top-2 g-mr-5"></i> clients@sony.com
-                          </span>
-                        </td>
-                      </tr>
 
-                      <tr>
-                        <td class="align-middle text-nowrap">
-                          <h4 class="h6 g-mb-2">Apple Inc.</h4>
-                          <div class="js-rating g-font-size-12 g-color-primary" data-rating="5"></div>
-                        </td>
-                        <td class="align-middle">
-                          <div class="d-flex">
-                            <i class="icon-location-pin g-font-size-18 g-color-gray-dark-v5 g-pos-rel g-top-5 g-mr-7"></i>
-                            <span>07W2 Donell Lodge, NY, USA</span>
-                          </div>
-                        </td>
-                        <td class="align-middle">
-                          <a class="btn btn-block u-btn-purple g-rounded-50 g-py-5" href="#!">
-                            <i class="fa fa-level-down g-mr-5"></i> Down
-                          </a>
-                        </td>
-                        <td class="align-middle text-nowrap">
-                          <span class="d-block g-mb-5">
-                            <i class="icon-phone g-font-size-16 g-color-gray-dark-v5 g-pos-rel g-top-2 g-mr-5"></i> +1 6589-96451
-                          </span>
-                          <span class="d-block">
-                            <i class="icon-envelope g-font-size-16 g-color-gray-dark-v5 g-pos-rel g-top-2 g-mr-5"></i> mail@appple.com
-                          </span>
-                        </td>
-                      </tr>
+                      }else{
 
-                      <tr>
-                        <td class="align-middle text-nowrap">
-                          <h4 class="h6 g-mb-2">Dell Corporation</h4>
-                          <div class="js-rating g-font-size-12 g-color-primary" data-rating="4"></div>
-                        </td>
-                        <td class="align-middle">
-                          <div class="d-flex">
-                            <i class="icon-location-pin g-font-size-18 g-color-gray-dark-v5 g-pos-rel g-top-5 g-mr-7"></i>
-                            <span>1A9WA4 Wanderben, Berlin, Germany</span>
-                          </div>
-                        </td>
-                        <td class="align-middle">
-                          <a class="btn btn-block u-btn-deeporange g-rounded-50 g-py-5" href="#!">
-                            <i class="fa fa-bolt g-mr-5"></i> Stabile
-                          </a>
-                        </td>
-                        <td class="align-middle text-nowrap">
-                          <span class="d-block g-mb-5">
-                            <i class="icon-phone g-font-size-16 g-color-gray-dark-v5 g-pos-rel g-top-2 g-mr-5"></i> +49 3868 4792
-                          </span>
-                          <span class="d-block">
-                            <i class="icon-envelope g-font-size-16 g-color-gray-dark-v5 g-pos-rel g-top-2 g-mr-5"></i> clients@dell.com
-                          </span>
-                        </td>
-                      </tr>
+                        echo '<b>No transactions to show. Please do some purchase with your wallet balance.</b>';
+                      }
+                      ?>
+
                     </tbody>
                   </table>
+
+              </div>
                 </div>
                 <!-- End Product Table -->
               </div>
@@ -1239,224 +1042,13 @@ if(isset($_SESSION['userID'])){
       </div>
     </section>
 
-    <!-- Footer -->
-    <div id="contacts-section" class="g-bg-black-opacity-0_9 g-color-white-opacity-0_8 g-py-60">
-      <div class="container">
-        <div class="row">
-          <!-- Footer Content -->
-          <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
-            <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
-              <h2 class="u-heading-v2__title h6 text-uppercase mb-0">About Us</h2>
-            </div>
+    <?php
 
-            <p>About Unify dolor sit amet, consectetur adipiscing elit. Maecenas eget nisl id libero tincidunt sodales.</p>
-          </div>
-          <!-- End Footer Content -->
+      //Footer Section
+      include "../../../includes/common/template_footer.php";
 
-          <!-- Footer Content -->
-          <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
-            <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
-              <h2 class="u-heading-v2__title h6 text-uppercase mb-0">Latest Posts</h2>
-            </div>
+     ?>
 
-            <article>
-              <h3 class="h6 g-mb-2">
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Incredible template</a>
-          </h3>
-              <div class="small g-color-white-opacity-0_6">May 8, 2017</div>
-            </article>
-
-            <hr class="g-brd-white-opacity-0_1 g-my-10">
-
-            <article>
-              <h3 class="h6 g-mb-2">
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">New features</a>
-          </h3>
-              <div class="small g-color-white-opacity-0_6">June 23, 2017</div>
-            </article>
-
-            <hr class="g-brd-white-opacity-0_1 g-my-10">
-
-            <article>
-              <h3 class="h6 g-mb-2">
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">New terms and conditions</a>
-          </h3>
-              <div class="small g-color-white-opacity-0_6">September 15, 2017</div>
-            </article>
-          </div>
-          <!-- End Footer Content -->
-
-          <!-- Footer Content -->
-          <div class="col-lg-3 col-md-6 g-mb-40 g-mb-0--lg">
-            <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
-              <h2 class="u-heading-v2__title h6 text-uppercase mb-0">Useful Links</h2>
-            </div>
-
-            <nav class="text-uppercase1">
-              <ul class="list-unstyled g-mt-minus-10 mb-0">
-                <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
-                  <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">About Us</a>
-                <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
-              </h4>
-                </li>
-                <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
-                  <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Portfolio</a>
-                <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
-              </h4>
-                </li>
-                <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
-                  <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Our Services</a>
-                <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
-              </h4>
-                </li>
-                <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
-                  <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Latest Jobs</a>
-                <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
-              </h4>
-                </li>
-                <li class="g-pos-rel g-py-10">
-                  <h4 class="h6 g-pr-20 mb-0">
-                <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Contact Us</a>
-                <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
-              </h4>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <!-- End Footer Content -->
-
-          <!-- Footer Content -->
-          <div class="col-lg-3 col-md-6">
-            <div class="u-heading-v2-3--bottom g-brd-white-opacity-0_8 g-mb-20">
-              <h2 class="u-heading-v2__title h6 text-uppercase mb-0">Our Contacts</h2>
-            </div>
-
-            <address class="g-bg-no-repeat g-font-size-12 mb-0" style="background-image: url(../../../assets/img/maps/map2.png);">
-          <!-- Location -->
-          <div class="d-flex g-mb-20">
-            <div class="g-mr-10">
-              <span class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-color-white-opacity-0_6">
-                <i class="fa fa-map-marker"></i>
-              </span>
-            </div>
-            <p class="mb-0">795 Folsom Ave, Suite 600, <br> San Francisco, CA 94107 795</p>
-          </div>
-          <!-- End Location -->
-
-          <!-- Phone -->
-          <div class="d-flex g-mb-20">
-            <div class="g-mr-10">
-              <span class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-color-white-opacity-0_6">
-                <i class="fa fa-phone"></i>
-              </span>
-            </div>
-            <p class="mb-0">(+123) 456 7890 <br> (+123) 456 7891</p>
-          </div>
-          <!-- End Phone -->
-
-          <!-- Email and Website -->
-          <div class="d-flex g-mb-20">
-            <div class="g-mr-10">
-              <span class="u-icon-v3 u-icon-size--xs g-bg-white-opacity-0_1 g-color-white-opacity-0_6">
-                <i class="fa fa-globe"></i>
-              </span>
-            </div>
-            <p class="mb-0">
-              <a class="g-color-white-opacity-0_8 g-color-white--hover" href="mailto:info@gamex.com">info@gamex.com</a>
-              <br>
-              <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">www.gamex.com</a>
-            </p>
-          </div>
-          <!-- End Email and Website -->
-        </address>
-          </div>
-          <!-- End Footer Content -->
-        </div>
-      </div>
-    </div>
-    <!-- End Footer -->
-
-    <!-- Copyright Footer -->
-    <footer class="g-bg-gray-dark-v1 g-color-white-opacity-0_8 g-py-20">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 text-center text-md-left g-mb-10 g-mb-0--md">
-            <div class="d-lg-flex">
-              <small class="d-block g-font-size-default g-mr-10 g-mb-10 g-mb-0--md">2017 © All Rights Reserved.</small>
-              <ul class="u-list-inline">
-                <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Privacy Policy</a>
-                </li>
-                <li class="list-inline-item">
-                  <span>|</span>
-                </li>
-                <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Terms of Use</a>
-                </li>
-                <li class="list-inline-item">
-                  <span>|</span>
-                </li>
-                <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">License</a>
-                </li>
-                <li class="list-inline-item">
-                  <span>|</span>
-                </li>
-                <li class="list-inline-item">
-                  <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Support</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-md-4 align-self-center">
-            <ul class="list-inline text-center text-md-right mb-0">
-              <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Facebook">
-                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
-                  <i class="fa fa-facebook"></i>
-                </a>
-              </li>
-              <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Skype">
-                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
-                  <i class="fa fa-skype"></i>
-                </a>
-              </li>
-              <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Linkedin">
-                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
-                  <i class="fa fa-linkedin"></i>
-                </a>
-              </li>
-              <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Pinterest">
-                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
-                  <i class="fa fa-pinterest"></i>
-                </a>
-              </li>
-              <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Twitter">
-                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
-                  <i class="fa fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item g-mx-10" data-toggle="tooltip" data-placement="top" title="Dribbble">
-                <a href="#!" class="g-color-white-opacity-0_5 g-color-white--hover">
-                  <i class="fa fa-dribbble"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- End Copyright Footer -->
-    <a class="js-go-to u-go-to-v1" href="#!" data-type="fixed" data-position='{
-     "bottom": 15,
-     "right": 15
-   }' data-offset-top="400" data-compensation="#js-header" data-show-effect="zoomIn">
-      <i class="hs-icon hs-icon-arrow-top"></i>
-    </a>
   </main>
 
   <div class="u-outer-spaces-helper"></div>
@@ -1540,35 +1132,51 @@ if(isset($_SESSION['userID'])){
   <!-- Writing some custom script to handle extra features -->
   <script>
 
-    $(document).ready (function(){
+    $(document).ready(function(){
 
-        $('#btn').setText("Hello");
-        notificationPanel();
-        var userID = $('#hiddenUserID').val();
+
+        // $('#notificationCount').html(notificationCount);
+        setTimeout(notificationPanel, 100);
+        var userID = $('#hiddenUserID').text();
+        // alert(userID);
 
   function notificationPanel(){
 
-    $('#notificationCount').ready(function(){
+    var notificationCount = 0;
+    // $('#notificationCount').html(notificationCount);
+    // alert(notificationCount);
+    // alert('Hello');
 
           $.ajax({
 
-                type:'get',
-                url:'../../../../api/process/request/notificationCheck.php'+userID,
-                async: true,
-                cache: true,
+                type:'post',
+                url:'../../../api/process/request/notificationCheck.php',
+                data:{'userID':userID},
+                dataType: 'json',
                 success:function(data){
-                  alert('Done');
+
                   if(data){
-                    alert("Notifications available.");
-                  }else{
-                    alert("No Notification.");
+                    // alert(data);
+
+                    var unreadcounts = parseInt(data.unreadcounts);
+                    // alert(unreadcounts);
+                    var newnotificationCount = notificationCount+unreadcounts;
+                    $('#notificationCount').html(newnotificationCount);
+
                   }
+
+                },complete: function() {
+
+                  // schedule the next request *only* when the current one is complete:
+                  setTimeout(notificationPanel, 3500);
+                  // if(readNotificaionCount > unreadcounts){
+                  //   alert ('new');
+                  // }
 
                 }
 
         });
 
-      });
     }
 });
   </script>
@@ -1576,3 +1184,33 @@ if(isset($_SESSION['userID'])){
 </body>
 
 </html>
+
+<?php
+//Custom php function to get time ago
+
+function get_time_ago( $time )
+{
+    $time_difference = time() - $time;
+
+    if( $time_difference < 1 ) { return '1 second ago'; }
+    $condition = array( 12 * 30 * 24 * 60 * 60 =>  'year',
+                30 * 24 * 60 * 60       =>  'month',
+                24 * 60 * 60            =>  'day',
+                60 * 60                 =>  'hour',
+                60                      =>  'minute',
+                1                       =>  'second'
+    );
+
+    foreach( $condition as $secs => $str )
+    {
+        $d = $time_difference / $secs;
+
+        if( $d >= 1 )
+        {
+            $t = round( $d );
+            return  $t . ' ' . $str . ( $t > 1 ? 's' : '' ) . ' ago';
+        }
+    }
+}
+
+ ?>

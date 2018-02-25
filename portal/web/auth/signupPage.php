@@ -512,9 +512,10 @@ if(isset($_SESSION['userID'])){
   </script>
   <!--Some Custom Scripts for handling authentication.-->
   <script>
+
     $(document).ready(function(){
 
-      //Signup Script
+            //Signup Script
             $('#signupButton').on('click',function(){
                 // alert("hi!");
                 var userName = $('#usrName').val();
@@ -531,7 +532,7 @@ if(isset($_SESSION['userID'])){
                   alert('Username field is blank.');
                   $('#usrName').focus();
                 }else if(userPassword == '' || userCnfmPassword == '' || userPassword != userCnfmPassword){
-                  alert('Either Password and Confirm Passwords fields are blank or they donot match');
+                  alert('Either Password and Confirm Passwords fields are blank or they don\'\t match.');
                   $('#usrPass').focus();
                   $('#usrPass').val("");
                   $('#usrCnfmPass').val("");
@@ -552,6 +553,7 @@ if(isset($_SESSION['userID'])){
                           $('#loader').show();
                           },
                           success: function(data){
+
                             $('#loader').hide();
 
                             switch(data.result){

@@ -6,6 +6,9 @@ error_reporting(0);
 //Including the DB file
 include '../../../includes/config/dbConnectivity.php';
 
+//Declaring default Date and Time Zone for Stamps
+date_default_timezone_set('Asia/Kolkata');
+
   /**
    * This API is for registering new user if login fails.
    *All the values are obtained from jQuery AJAX POST method
@@ -20,6 +23,8 @@ include '../../../includes/config/dbConnectivity.php';
    $userEMAILID = "";
    $userFullName = "";
    $resp = "";
+   $now = date("d-m-Y H:i");
+   $regDate = date("d-m-Y");
 
    //Getting values via POST method
    $userName = $_POST['userName'];
@@ -33,14 +38,16 @@ include '../../../includes/config/dbConnectivity.php';
    if(!empty($_POST)){
 
      //Running the query and validating with the Database if the user exists or not
-     if($runUserRetrivalQuery && (mysqli_num_rows($runUserRetrivalQuery) > 0)){
+     if($runUserRetrivalQuery && (($runUserRetrivalQuery -> num_rows) > 0)){
 
        $resp = array('result' => 'EXISTS', 'resp' => 'User already exists.', 'msg' => 'Please login to access Dashboard.');
 
      }else{
 
-       $insertUserDetails = "INSERT INTO `user_info`(`user_name`, `user_fullname`, `email_id`, `login_password`) VALUES ('$userName','$userFullName','$userEMAILID','$userPassword')";
+       $insertUserDetails = "INSERT INTO `user_info`(`user_name`, `user_fullname`, `email_id`, `login_password`, `user_registration_date`) VALUES ('$userName','$userFullName','$userEMAILID','$userPassword', '$regDate')";
        $runInsertUserDetails = $conn -> query($insertUserDetails);
+       $lastUserID = $conn -> insert_id;
+       $createWalletforUser = $conn -> query("INSERT INTO `user_wallet_info`(`userID`, `walletBalance`, `created_date_time_stamp`, `lastUpdate_date_time_stamp`) VALUES ('$lastUserID',0,'$now','$now')");
 
          //Running the insertion query to push data to DB if the user doesn't exist
          if($runInsertUserDetails){

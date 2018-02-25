@@ -9,7 +9,7 @@ error_reporting(0);
  $dbHost = "localhost";
  $dbUser = "root";
  $dbPass = "";
- $dbName = "gamex_db";
+ $dbName = "battle_station_DB";
 
  //Establishing connection to Database using MySQLi
  $conn = new mysqli($dbHost,$dbUser,$dbPass,$dbName);
