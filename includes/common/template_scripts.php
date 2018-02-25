@@ -354,6 +354,7 @@ function notificationPanel(){
                   // alert(unreadcounts);
                   var newnotificationCount = notificationCount+unreadcounts;
                   $('#notificationCount').html(newnotificationCount);
+                    $('#notificationCounts').html(newnotificationCount);
 
                 }
 

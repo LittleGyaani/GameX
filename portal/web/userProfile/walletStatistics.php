@@ -31,7 +31,7 @@ if(isset($_SESSION['userID'])){
 
 <head>
     <!-- Title -->
-    <title>battlestation - Play the best of your life! | Game Platform Profile</title>
+    <title>battlestation - Play the best of your life! | Wallet Statistics</title>
 
     <?php
 
@@ -158,13 +158,13 @@ if(isset($_SESSION['userID'])){
                         <!-- End Profile -->
 
                         <!-- Users Contacts -->
-                        <a href="#" class="list-group-item list-group-item-action justify-content-between active">
+                        <a href="#" class="list-group-item list-group-item-action justify-content-between">
                             <span><i class="icon-game-controller g-pos-rel g-top-1 g-mr-8"></i> My Game Platforms</span>
                         </a>
                         <!-- End Users Contacts -->
 
                         <!-- My Projects -->
-                        <a href="walletStatistics.php" class="list-group-item list-group-item-action justify-content-between">
+                        <a href="#" class="list-group-item list-group-item-action justify-content-between active">
                             <span><i class="icon-wallet g-pos-rel g-top-1 g-mr-8"></i> My Wallet Statistics</span>
                         </a>
                         <!-- End My Projects -->
@@ -298,180 +298,105 @@ if(isset($_SESSION['userID'])){
 
                 <!-- Game Platform Area -->
                 <div class="col-lg-9">
+                  <div class="card-header d-flex align-items-center justify-content-between g-bg-grey border-0 g-mb-15">
+                    <h3 class="h6 mb-0">
+                        <i class="icon-credit-card g-pos-rel g-top-1 g-mr-5"></i> My Wallet Transaction Reports
+                      </h3>
+                  </div>
 
-                    <!-- Platform Box Start -->
-                    <section class="g-py-100">
-                        <div class="container">
-                            <header class="text-center g-width-60x--md mx-auto g-mb-50">
-                                <h2 class="h1 g-color-gray-dark-v1 g-font-weight-300">Game Platforms</h2>
-                                <p class="lead">Add your <b>userid/username</b> associated with the <strong>games/platforms</strong> you have.</p>
-                            </header>
-
-
-                            <div class="row g-mb-30">
-
+                  <!--Basic Table-->
+                      <div class="table-responsive">
+                        <table class="table table-bordered u-table--v2">
                           <?php
-                              $selectAllGamePlatforms = "SELECT * FROM profile_platform_games WHERE `game_status` = '1' ORDER BY `game_name` ASC";
-                              $getAllGameInfo = $conn -> query($selectAllGamePlatforms);
-                              if($getAllGameInfo && (($getAllGameInfo -> num_rows) > 0)){
-                                  while ($getGameMeta = $getAllGameInfo -> fetch_assoc()){
 
-                          ?>
+                            $selectWalletInfo = "SELECT * FROM `user_wallet_transaction_info` WHERE `userID` = $userID";
+                            $runselectWalletInfo = $conn -> query($selectWalletInfo);
+                            if(($runselectWalletInfo -> num_rows) > 0){
+                              ?>
+                          <thead class="text-uppercase g-letter-spacing-1">
+                            <tr>
+                              <th class="g-font-weight-200 g-color-black">Wallet Tranx. ID</th>
+                              <th class="g-font-weight-200 g-color-black">Remaining Balance (CWB-/+LUB)*</th>
+                              <th class="g-font-weight-200 g-color-black">Wallet <br>Transaction <br>Type</th>
+                              <th class="g-font-weight-200 g-color-black">Last Used Balance</th>
+                              <th class="g-font-weight-200 g-color-black">Transaction Date & Time</th>
+                              <th class="g-font-weight-200 g-color-black">Transaction Status</th>
+                            </tr>
+                          </thead>
 
-                             <div class="col-lg-6 g-mb-40 g-mb-0--lg">
+                          <tbody>
 
-                                    <ul class="list-unstyled mb-0">
+                            <?php
+                                  while ($userWalletDetails = $runselectWalletInfo -> fetch_assoc()){
+                            ?>
+                            <tr>
 
-                                        <li class="media u-shadow-v11 rounded g-pa-20 g-mb-10">
-                                            <div class="d-flex align-self-center g-mt-3 g-mr-15">
-                                                <img class="g-width-90 g-height-80" src="../../../assets/img/platforms/<?=$getGameMeta['game_image']?>" alt="<?=$getGameMeta['game_name'] ?>">
-                                            </div>
+                              <td class="align-middle">
+                                <h4 class="h6 g-mb-2"><b>BSTRANS-<?=$userWalletDetails['walletTransactionID']?></b></h4>
+                              </td>
 
-                                            <div class="media-body">
-                                                <a class="d-block u-link-v5 g-color-main g-color-primary--hover g-font-weight-600 g-mb-3" id ="<?=$getGameMeta['gameID'] ?>" href=""><?=$getGameMeta['game_name'] ?></a>
-                                                <span class="g-font-size-13 g-color-green g-mr-15">
-                                                  <i class="icon-location-pin g-pos-rel g-top-1 mr-1"></i> <b><?=$getGameMeta['game_sponsor']?></b> </br>
-                                                </span>
-                                                <span class="g-font-size-13 g-color-pink g-mr-5">
-                                                  <i class="icon-directions g-pos-rel g-top-1 mr-1"></i> <?=$getGameMeta['game_developer_company'];?>
-                                                </span> <br>
-                                                <?php
-                                                  $gameID = $getGameMeta['gameID'];
-                                                  $getUserID = "SELECT * FROM `user_associated_game` WHERE `gameID` = '$gameID' AND `userID` = $userID";
-                                                  $getUserName = $conn -> query($getUserID);
-                                                  $getUserCount = $getUserName -> num_rows;
+                              <td class="align-middle text-nowrap">
+                                  <span>₹<b><?=$userWalletDetails['wallet_remaining_balance']?></b></span>
+                              </td>
 
-                                                  if($getUserCount){
+                              <td class="align-middle">
+                                <span class="btn btn-block u-btn-primary g-rounded-50 g-py-5">
+                                  <i class="icon-check g-mr-5"></i> <?=ucwords($userWalletDetails['useType']);?>
+                                </span>
+                              </td>
 
-                                                    while ($getUserMeta = $getUserName -> fetch_assoc()){
+                              <td class="align-middle text-nowrap">
+                                <span class="d-block g-mb-5">
+                                  <?php
+                                  if($userWalletDetails['useType'] == 'wallet credit' || $userWalletDetails['useType'] == 'wallet topup') {?>
+                                  +₹<b><?=$userWalletDetails['lastUsedBalance']?></b>
+                                  <?php
+                                }else{ ?>
+                                  -₹<b><?=$userWalletDetails['lastUsedBalance']?></b>
+                                  <?php
+                                  }
+                                  ?>
+                                </span>
+                              </td>
 
-                                                  ?>
+                              <td class="align-middle text-nowrap">
+                                <span class="d-block g-mb-5">
+                                  <?=$userWalletDetails['date_time_stamp']?>
+                                </span>
 
-                                                <span class="g-font-size-13 g-color-blue g-mr-15">
-                                                  <i class="icon-user g-pos-rel g-top-1 mr-1"></i><b><?= $getUserMeta['platform_user_name'] ?></b>
-                                                </span>
+                              </td>
 
-                                            </li>
+                              <td class="align-middle text-nowrap">
+                                <span class="d-block g-mb-5">
+                                  <?=ucfirst($userWalletDetails['transaction_status']);?>
+                                </span>
 
+                              </td>
 
-                                            <!--UPDATE USERNAME/USERID of the GAME/Platform-->
-                                            <div class="text-center">
-                                                <button type="button" id="<?=$getGameMeta['gameID'] ?>" data-user-id="<?php echo $userID; ?>" data-platform-user-name ="<?= $getUserMeta['platform_user_name'] ?>" class="platformIDUpdate btn btn-md u-btn-outline-red g-mr-10 g-mb-15 u-btn-hover-v1-4 g-mr-10 g-mb-15" data-modal-target="#usernameUpdate" data-modal-effect="fadein">
-                                                    <i class="fa fa-pencil g-mr-5" ></i>UPDATE USERID
-                                                </button>
-                                            </div>
-                                            <!--END ADD USERNAME/USERID of the GAME/Platform-->
+                            </tr>
 
-                                                <?php
-                                              }
-                                            }else{ ?>
-
-                                                  <span class="g-font-size-13 g-color-red g-mr-15">
-                                                    <i class="icon-user g-pos-rel g-top-1 mr-1"></i> <strong>No UserID Mapped</strong>
-                                                  </span>
-                                            </div>
-                                        </li>
-
-
-                                        <!--ADD USERNAME/USERID of the GAME/Platform-->
-                                        <div class="text-center">
-                                            <button type ="button" data-game-id="<?=$getGameMeta['gameID'] ?>" data-user-id ="<?php echo $userID; ?>" class="platformIDMapping btn btn-md u-btn-outline-black g-mr-10 g-mb-15 u-btn-hover-v1-4 g-mr-10 g-mb-15" data-modal-target="#usernameMapping" data-modal-effect="fadein">
-                                                <i class="fa fa-check-circle g-mr-5"></i>ADD USERID
-                                            </button>
-                                        </div>
-                                        <!--END ADD USERNAME/USERID of the GAME/Platform-->
-
-                                        <?php
-                                        }
-                                         ?>
-
-                                        <br>
-
-                                    </ul>
+                            <?php  }
+                             ?>
+                            <strong><small>* CWB - Current Wallet Balance, LUB - Last Used Balance, TRANX. - Transaction</small></strong><br>
+                            <h4>Your Current Wallet Balance is ₹<b><?= $selectUserInformations['walletBalance'];?></b> | Last Updated On : <?= $selectUserInformations['lastUpdate_date_time_stamp'];?></h4>
+                            <?php
 
 
-                                </div>
+                            }else{
 
-                                <?php
+                              echo '<b>No transactions to show. Please do some purchase with your wallet balance.</b>';
+                            }
+                            ?>
 
-                                        }
-                                    }
+                          </tbody>
+                        </table>
+                      </div>
+                      <!--End Basic Table-->
 
-                                ?>
+                </div>
 
-                              </div>
-                              <!-- Game Platform Content -->
+        </section>
 
-                            </div>
-                        </div>
-                    </section>
-                    <!-- End Platform Boxes -->
-
-
-                            <!-- Username/UserID update modal window -->
-                            <div id="usernameUpdate" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">
-                              <button type="button" class="close" onclick="Custombox.modal.close();">
-                                <i class="fa fa-close" id="closeModal"></i>
-                              </button>
-
-                              <div class="details"></div>
-                              <div class="form-group g-mb-20">
-                                <label class="g-mb-10"><h6 class="g-mb-20" id="platformName"></h6></label>
-
-                                      <form action = "" method ="post">
-                                        <div class="form-group g-mb-20">
-                                            <div class="input-group g-brd-primary--focus">
-                                              <div class="input-group-addon d-flex align-items-center g-bg-white g-color-gray-light-v1 rounded-0">
-                                                <i class="icon-user"></i>
-                                              </div>
-                                              <input class="form-control form-control-md rounded-0" type="text" placeholder="" value="" id="platformUserName" />
-                                              <input type="hidden" id="gameID" value="" />
-                                            </div>
-                                          </div>
-
-                                          <div class="form-group g-mb-20">
-                                              <div class="input-group g-brd-primary--focus">
-                                                <button type="submit" id="userIDUpdate" class="btn btn-primary">SAVE</button>
-                                              </div>
-                                            </div>
-                                      </form>
-
-                              </div>
-                            </div>
-                            <!-- End Username/UserID update modal window -->
-
-                            <!-- Username/UserID add modal window -->
-                            <div id="usernameMapping" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">
-                              <button type="button" class="close" onclick="Custombox.modal.close();">
-                                <i class="fa fa-close g-color-gray-light-v1" id="closeAddModal"></i>
-                              </button>
-
-                              <div class="details"></div>
-                              <div class="form-group g-mb-20">
-                                <label class="g-mb-10"><h6 class="g-mb-20" id="gamename"></h6></label>
-
-                                      <form action = "" method ="post">
-                                        <div class="form-group g-mb-20">
-                                            <div class="input-group g-brd-primary--focus">
-                                              <div class="input-group-addon d-flex align-items-center g-bg-white g-color-gray-light-v1 rounded-0">
-                                                <i class="icon-user"></i>
-                                              </div>
-                                              <input class="form-control form-control-md rounded-0" type="text" placeholder="" value="" id="addPlatformUserName" />
-                                                <input type="hidden" value="" id="gamePID" />
-                                                <input type="hidden" value="" id="userID" />
-                                                <input type="hidden" value="" id="hiddenGameName" />
-                                            </div>
-                                          </div>
-
-                                          <div class="form-group g-mb-20">
-                                              <div class="input-group g-brd-primary--focus">
-                                                <button type="submit" id="mapUserID" class="btn btn-primary">SAVE</button>
-                                              </div>
-                                            </div>
-                                      </form>
-                              </div>
-                            </div>
-                            <!-- End Username/UserID add modal window -->
             </div>
         </div>
     </section>
