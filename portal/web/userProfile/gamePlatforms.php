@@ -43,29 +43,6 @@ if(isset($_SESSION['userID'])){
     </header>
     <!-- End Header -->
 
-
-    <!-- Red Alert -->
-    <div class="row">
-      <div class="col-lg-6 col-sm-4">
-       <div class="alert alert-dismissible fade show g-bg-red g-color-white rounded-0" role="alert" style="display:none;" id="errorNotify">
-         <button type="button" class="close u-alert-close--light" data-dismiss="alert" aria-label="Close">
-           <span aria-hidden="true">×</span>
-         </button>
-
-         <div class="media">
-           <span class="d-flex g-mr-10 g-mt-5">
-             <i class="icon-ban g-font-size-25"></i>
-           </span>
-           <span class="media-body align-self-center">
-             <strong>Oh snap!</strong> Change a few things up and try submitting again.
-           </span>
-         </div>
-       </div>
-     </div>
-   </div>
-   <!-- End Red Alert -->
-
-
     <!-- Promo Block -->
 
     <section class="g-bg-cover g-bg-pos-center g-bg-img-hero g-bg-bluegray-opacity-0_3--after g-py-150" style="background-image: url(https://i0.wp.com/www.celebsclothing.com/blog/wp-content/uploads/2016/10/League-of-Legends.jpg?fit=1920%2C1080&ssl=1);">
@@ -399,7 +376,7 @@ if(isset($_SESSION['userID'])){
 
                                         <!--ADD USERNAME/USERID of the GAME/Platform-->
                                         <div class="text-center">
-                                            <button type ="button" id="<?= $getGameMeta['gameID'] ?>" data-user-id="<?php echo $userID; ?>" data-platform-user-name ="<?= $getUserMeta['platform_user_name'] ?>" class="platformIDMapping btn btn-md u-btn-outline-black g-mr-10 g-mb-15 u-btn-hover-v1-4 g-mr-10 g-mb-15" data-modal-target="#usernameMapping" data-modal-effect="fadein">
+                                            <button type ="button" data-game-id="<?=$getGameMeta['gameID'] ?>" data-user-id ="<?php echo $userID; ?>" class="platformIDMapping btn btn-md u-btn-outline-black g-mr-10 g-mb-15 u-btn-hover-v1-4 g-mr-10 g-mb-15" data-modal-target="#usernameMapping" data-modal-effect="fadein">
                                                 <i class="fa fa-check-circle g-mr-5"></i>ADD USERID
                                             </button>
                                         </div>
@@ -448,40 +425,6 @@ if(isset($_SESSION['userID'])){
                                               <div class="input-group-addon d-flex align-items-center g-bg-white g-color-gray-light-v1 rounded-0">
                                                 <i class="icon-user"></i>
                                               </div>
-                                              <input class="form-control form-control-md rounded-0" type="text" placeholder="" value="" id="addPlatformUserName" />
-                                              <input type="hidden" id="gameID" value="" />
-                                            </div>
-                                          </div>
-
-                                          <div class="form-group g-mb-20">
-                                              <div class="input-group g-brd-primary--focus">
-                                                <button type="submit" id="userIDUpdate" class="btn btn-primary">SAVE</button>
-                                              </div>
-                                            </div>
-
-                                        <!-- <p><button type="submit" class="btn btn-md u-btn-primary rounded-0">Submit</button></p> -->
-                                      </form>
-
-                              </div>
-                            </div>
-                            <!-- End Username/UserID update modal window -->
-
-                            <!-- Username/UserID add modal window -->
-                            <div id="usernameMapping" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">
-                              <button type="button" class="close" onclick="Custombox.modal.close();">
-                                <i class="fa fa-close" id="closeModal"></i>
-                              </button>
-
-                              <div class="details"></div>
-                              <div class="form-group g-mb-20">
-                                <label class="g-mb-10"><h6 class="g-mb-20"><?= $getGameMeta['game_name'] ?></h6></label>
-
-                                      <form action = "" method ="post">
-                                        <div class="form-group g-mb-20">
-                                            <div class="input-group g-brd-primary--focus">
-                                              <div class="input-group-addon d-flex align-items-center g-bg-white g-color-gray-light-v1 rounded-0">
-                                                <i class="icon-user"></i>
-                                              </div>
                                               <input class="form-control form-control-md rounded-0" type="text" placeholder="" value="" id="platformUserName" />
                                               <input type="hidden" id="gameID" value="" />
                                             </div>
@@ -492,10 +435,41 @@ if(isset($_SESSION['userID'])){
                                                 <button type="submit" id="userIDUpdate" class="btn btn-primary">SAVE</button>
                                               </div>
                                             </div>
-
-                                        <!-- <p><button type="submit" class="btn btn-md u-btn-primary rounded-0">Submit</button></p> -->
                                       </form>
 
+                              </div>
+                            </div>
+                            <!-- End Username/UserID update modal window -->
+
+                            <!-- Username/UserID add modal window -->
+                            <div id="usernameMapping" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">
+                              <button type="button" class="close" onclick="Custombox.modal.close();">
+                                <i class="fa fa-close g-color-gray-light-v1" id="closeAddModal"></i>
+                              </button>
+
+                              <div class="details"></div>
+                              <div class="form-group g-mb-20">
+                                <label class="g-mb-10"><h6 class="g-mb-20" id="gamename"></h6></label>
+
+                                      <form action = "" method ="post">
+                                        <div class="form-group g-mb-20">
+                                            <div class="input-group g-brd-primary--focus">
+                                              <div class="input-group-addon d-flex align-items-center g-bg-white g-color-gray-light-v1 rounded-0">
+                                                <i class="icon-user"></i>
+                                              </div>
+                                              <input class="form-control form-control-md rounded-0" type="text" placeholder="" value="" id="addPlatformUserName" />
+                                                <input type="hidden" value="" id="gamePID" />
+                                                <input type="hidden" value="" id="userID" />
+                                                <input type="hidden" value="" id="hiddenGameName" />
+                                            </div>
+                                          </div>
+
+                                          <div class="form-group g-mb-20">
+                                              <div class="input-group g-brd-primary--focus">
+                                                <button type="submit" id="mapUserID" class="btn btn-primary">SAVE</button>
+                                              </div>
+                                            </div>
+                                      </form>
                               </div>
                             </div>
                             <!-- End Username/UserID add modal window -->
@@ -521,11 +495,6 @@ if(isset($_SESSION['userID'])){
 
  ?>
 
-
-<div id="copyModal" class="text-left modal-demo g-bg-white g-color-black g-pa-20" style="display: none;"></div>
-
-<!-- CSS -->
-<link rel="stylesheet" href="../../../assets/vendor/malihu-scrollbar/jquery.mCustomScrollbar.min.css">
 
 </body>
 </html>

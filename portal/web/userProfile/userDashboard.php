@@ -1054,132 +1054,13 @@ if(isset($_SESSION['userID'])){
   <div class="u-outer-spaces-helper"></div>
 
 
-  <!-- JS Global Compulsory -->
-  <script src="../../../assets/vendor/jquery/jquery.min.js"></script>
-  <script src="../../../assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
-  <script src="../../../assets/vendor/popper.min.js"></script>
-  <script src="../../../assets/vendor/bootstrap/bootstrap.min.js"></script>
+  <?php
 
+    //Footer Section
+    include "../../../includes/common/template_scripts.php";
 
-  <!-- JS Implementing Plugins -->
-  <script src="../../../assets/vendor/appear.js"></script>
-  <script src="../../../assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
-  <script src="../../../assets/vendor/malihu-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+   ?>
 
-  <!-- JS Unify -->
-  <script src="../../../assets/js/hs.core.js"></script>
-  <script src="../../../assets/js/helpers/hs.hamburgers.js"></script>
-  <script src="../../../assets/js/components/hs.header.js"></script>
-  <script src="../../../assets/js/components/hs.tabs.js"></script>
-  <script src="../../../assets/js/components/hs.counter.js"></script>
-  <script src="../../../assets/js/components/hs.progress-bar.js"></script>
-  <script src="../../../assets/js/components/hs.rating.js"></script>
-  <script src="../../../assets/js/components/hs.scrollbar.js"></script>
-  <script src="../../../assets/js/components/hs.go-to.js"></script>
-
-  <!-- JS Customization -->
-  <script src="../../../assets/js/custom.js"></script>
-
-  <!-- JS Plugins Init. -->
-  <script>
-    $(document).on('ready', function () {
-        // initialization of go to
-        $.HSCore.components.HSGoTo.init('.js-go-to');
-
-        // initialization of tabs
-        $.HSCore.components.HSTabs.init('[role="tablist"]');
-
-        // initialization of counters
-        var counters = $.HSCore.components.HSCounter.init('[class*="js-counter"]');
-
-        // initialization of rating
-        $.HSCore.components.HSRating.init($('.js-rating'), {
-          spacing: 2
-        });
-
-        // initialization of HSScrollBar component
-        $.HSCore.components.HSScrollBar.init( $('.js-scrollbar') );
-      });
-
-      $(window).on('load', function () {
-        // initialization of header
-        $.HSCore.components.HSHeader.init($('#js-header'));
-        $.HSCore.helpers.HSHamburgers.init('.hamburger');
-
-        // initialization of HSMegaMenu component
-        $('.js-mega-menu').HSMegaMenu({
-          event: 'hover',
-          pageContainer: $('.container'),
-          breakpoint: 991
-        });
-
-        // initialization of horizontal progress bars
-        setTimeout(function () { // important in this case
-          var horizontalProgressBars = $.HSCore.components.HSProgressBar.init('.js-hr-progress-bar', {
-            direction: 'horizontal',
-            indicatorSelector: '.js-hr-progress-bar-indicator'
-          });
-        }, 1);
-      });
-
-      $(window).on('resize', function () {
-        setTimeout(function () {
-          $.HSCore.components.HSTabs.init('[role="tablist"]');
-        }, 200);
-      });
-  </script>
-
-  <!-- Writing some custom script to handle extra features -->
-  <script>
-
-    $(document).ready(function(){
-
-
-        // $('#notificationCount').html(notificationCount);
-        setTimeout(notificationPanel, 100);
-        var userID = $('#hiddenUserID').text();
-        // alert(userID);
-
-  function notificationPanel(){
-
-    var notificationCount = 0;
-    // $('#notificationCount').html(notificationCount);
-    // alert(notificationCount);
-    // alert('Hello');
-
-          $.ajax({
-
-                type:'post',
-                url:'../../../api/process/request/notificationCheck.php',
-                data:{'userID':userID},
-                dataType: 'json',
-                success:function(data){
-
-                  if(data){
-                    // alert(data);
-
-                    var unreadcounts = parseInt(data.unreadcounts);
-                    // alert(unreadcounts);
-                    var newnotificationCount = notificationCount+unreadcounts;
-                    $('#notificationCount').html(newnotificationCount);
-
-                  }
-
-                },complete: function() {
-
-                  // schedule the next request *only* when the current one is complete:
-                  setTimeout(notificationPanel, 3500);
-                  // if(readNotificaionCount > unreadcounts){
-                  //   alert ('new');
-                  // }
-
-                }
-
-        });
-
-    }
-});
-  </script>
 
 </body>
 

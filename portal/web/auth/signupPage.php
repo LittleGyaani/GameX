@@ -16,7 +16,7 @@ if(isset($_SESSION['userID'])){
 
 <head>
   <!-- Title -->
-  <title>Game X - Play the best of your life! | Signup Page</title>
+  <title>battlestation - Play the best of your life! | Signup Page</title>
 
   <!-- Required Meta Tags Always Come First -->
   <meta charset="utf-8">

@@ -50,6 +50,20 @@ if($requestType == 'getUserName'){
 
     }
 
+}else if($requestType == 'getGameInfo'){
+
+          $getGameDetails = $conn -> query("SELECT * FROM `profile_platform_games` WHERE `gameID` = $gamePlatformID");
+          $fetchGameDetails = $getGameDetails -> fetch_assoc();
+
+          $resp = array('status' => "fetched", 'gameID' => $gamePlatformID, 'userID' => $userID, 'gameName' => $fetchGameDetails['game_name'], 'gamePlacehoder' => $fetchGameDetails['game_placeholder_value']);
+
+}else if($requestType == 'mapusername'){
+
+          $runMapUserName = $conn -> query("INSERT INTO `user_associated_game` (`userID`, `gameID`, `platform_user_name`) VALUES ($userID,$gamePlatformID,'$platformUSERName')");
+
+          if($runMapUserName)
+            $resp = array('status' => 'DONE', 'message' => 'ADDED' );
+
 }else{
 
     $resp = array("status" => 'ERROR', 'message' => 'Please provide valid request.');

@@ -33,6 +33,7 @@
 <!-- CSS Implementing Plugins -->
 <link  rel="stylesheet" href="../../../assets/vendor/custombox/custombox.min.css">
 
+
 <!--Heartbeat Style -->
 <style>
 .fa-beat {

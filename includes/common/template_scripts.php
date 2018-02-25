@@ -133,18 +133,7 @@
 
     });
 
-
-    //UserID updataion for existing user and mapping.
-    $('.platformIDMapping').on('click',function(){
-
-      // alert('Hi!'); // Button is WORKING
-
-      var getPlatformID = this.id;
-
-        alert('Game ID '+getPlatformID); //Checking if game Platform ID is available
-
-    });
-
+    //Update User ID for existing game and username
     $('#userIDUpdate').on('click',function(e){
 
       var platformUserName = $('#platformUserName').val();
@@ -201,10 +190,10 @@
                       text: "Your new username updated.",
                       icon: "success",
                       button: false,
-                      timer:1200
+                      timer:2000,
                       }).then(function() {
 
-                          window.setTimeout(reload(),5500);
+                          window.setTimeout(reload(),2500);
                           swal.close();
                           $('#closeModal').click();
 
@@ -235,9 +224,151 @@
         });
 
       }
-      return false;
+      e.preventDefault();
+    });
+
+    //UserID mapping for game.
+    $('.platformIDMapping').on('click',function(){
+
+      // alert('Hi!'); // Button is WORKING
+
+      var getPlatformID = $(this).attr('data-game-id');
+      var userID =$(this).attr('data-user-id');
+
+      $.ajax({
+
+        type:'POST',
+        url:'../../../api/process/request/addUpdateGameUserProfile.php?request='+'getGameInfo',
+        data:{'platformGameID':getPlatformID, 'userID':userID},
+        dataType:'json',
+        success:function(data){
+
+            $('#gamePID').val(data.gameID);
+            $('#userID').val(data.userID);
+            $('#gamename').html("ADD USERNAME FOR "+data.gameName);
+            $('#hiddenGameName').val(data.gameName);
+            $('#addPlatformUserName').attr('placeholder',data.gamePlacehoder);
+
+        }
+
+      });
+
+        // alert(getPlatformID+userID); //Checking if game Platform ID and User ID is available
+
+    });
+
+    $('#mapUserID').on('click',function(e){
+
+      var userID = $('#userID').val();
+      var gameID = $('#gamePID').val();
+      var gamename = $('#hiddenGameName').val();
+      var username = $("#addPlatformUserName").val();
+      var placeholder = $("#addPlatformUserName").attr('placeholder');
+
+      if(username){
+
+              $.ajax({
+
+                type:'POST',
+                url:'../../../api/process/request/addUpdateGameUserProfile.php?request='+'mapusername',
+                data:{'platformGameID':gameID, 'userID':userID, 'platformUserName':username},
+                dataType:'json',
+                success:function(data){
+
+                    if(data.message == 'ADDED'){
+
+                      swal({
+                        title: "Username added as "+username,
+                        text: "You added username for "+gamename,
+                        icon: "success",
+                        button: false,
+                        timer:2000
+                        }).then(function() {
+
+                            window.setTimeout(reload(),2500);
+                            swal.close();
+                            $('#closeModal').click();
+
+                        });
+
+                    }
+                }
+
+              });
+
+        }else{
+
+          swal({
+            title: "Nothing Provided for "+gamename+"!",
+            text: "No "+placeholder+ " provided.",
+            icon: "error",
+            button: {
+              text: "RETRY",
+            },
+            }).then(function() {
+
+            $('#addPlatformUserName').focus();
+
+          });
+
+
+      }
+
+      e.preventDefault();
     });
 
   });
 
+</script>
+
+<!-- Writing some custom script to handle extra features -->
+<script>
+
+  $(document).ready(function(){
+
+
+      // $('#notificationCount').html(notificationCount);
+      setTimeout(notificationPanel, 100);
+      var userID = $('#hiddenUserID').text();
+      // alert(userID);
+
+function notificationPanel(){
+
+  var notificationCount = 0;
+  // $('#notificationCount').html(notificationCount);
+  // alert(notificationCount);
+  // alert('Hello');
+
+        $.ajax({
+
+              type:'post',
+              url:'../../../api/process/request/notificationCheck.php',
+              data:{'userID':userID},
+              dataType: 'json',
+              success:function(data){
+
+                if(data){
+                  // alert(data);
+
+                  var unreadcounts = parseInt(data.unreadcounts);
+                  // alert(unreadcounts);
+                  var newnotificationCount = notificationCount+unreadcounts;
+                  $('#notificationCount').html(newnotificationCount);
+
+                }
+
+              },complete: function() {
+
+                // schedule the next request *only* when the current one is complete:
+                setTimeout(notificationPanel, 3500);
+                // if(readNotificaionCount > unreadcounts){
+                //   alert ('new');
+                // }
+
+              }
+
+      });
+
+  }
+});
 </script>
