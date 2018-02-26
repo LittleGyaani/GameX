@@ -371,5 +371,81 @@ function notificationPanel(){
       });
 
   }
+
+  $('#joinGameButton').click(function(e){
+
+    e.preventDefault();
+    var gameID = $(this).attr('data-game-id');
+    // var gameName = ;
+
+    alert(gameID);
+
+    joinGame(gameID);
+
+  });
+
+  function joinGame(gameID){
+
+    swal({
+
+     title: 'You are about to join?',
+     text: "Please read and check terms before joining game!",
+     icon: 'warning',
+     buttons: true,
+     dangerMode: true,
+   })
+         .then((willJoin) => {
+
+      if (willJoin) {
+
+            $.ajax({
+
+                type:'post',
+                url:'../../../api/process/request/userGameJoin.php',
+                data:{'gameID':gameID},
+                dataType:'json',
+                success:function(data){
+
+                  if(data.status == 'SUCCESS'){
+
+                      swal({
+
+                       title: "You have successfully joined"+data.gameName,
+                       text: "Please wait for the fixture and rules.",
+                       icon: 'success',
+                       buttons: false,
+                       timer : 1700
+
+                      });
+
+                  }else{
+
+                      alert('ERROR');
+
+                  }
+
+                }
+
+
+            });
+
+      } else {
+
+        swal({
+
+         title: 'You are not joining game!',
+         text: "Oops! You opt not to join.",
+         icon: 'error',
+         buttons: false,
+         timer : 1700
+
+       });
+
+      }
+
+    });
+
+  };
+
 });
 </script>

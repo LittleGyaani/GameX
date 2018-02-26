@@ -324,6 +324,7 @@ if(isset($_SESSION['userID'])){
                         while($getGameInfo = $runselectGameInfo -> fetch_assoc()){
 
                           $timeonly = strtotime($getGameInfo['game_registration_start_date']);
+                          $gameID = $getGameInfo['game_reg_ID'];
                           // echo $timeonly;
                           if($i > count($leftBrdColorArray) - 1) $i = 0;
 
@@ -348,7 +349,7 @@ if(isset($_SESSION['userID'])){
                           <?php
                           $today = date("d-m-Y H:i");
                           // echo $today;
-                              echo ($today < $getGameInfo['game_registration_end_date']) ? '<a href="shortcode-base-buttons.html#!" class="btn btn-md u-btn-outline-darkgray g-rounded-50 g-mr-10 g-mb-15">Join Game</a>':'<input type="button" class="btn btn-md u-btn-outline-red g-rounded-50 g-mr-10 g-mb-15" value ="Registration Over" />';
+                              echo ($today < $getGameInfo['game_registration_end_date']) ? '<a href="javascript:void(0);" id="joinGameButton" class="btn btn-md u-btn-outline-darkgray g-rounded-50 g-mr-10 g-mb-15" data-game-id="'." $gameID".'">Join Game</a>':'<input type="button" class="btn btn-md u-btn-outline-red g-rounded-50 g-mr-10 g-mb-15" value ="Registration Over" />';
                             ?>
 
                         </div>

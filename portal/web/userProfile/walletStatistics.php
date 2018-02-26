@@ -158,7 +158,7 @@ if(isset($_SESSION['userID'])){
                         <!-- End Profile -->
 
                         <!-- Users Contacts -->
-                        <a href="#" class="list-group-item list-group-item-action justify-content-between">
+                        <a href="gamePlatforms.php" class="list-group-item list-group-item-action justify-content-between">
                             <span><i class="icon-game-controller g-pos-rel g-top-1 g-mr-8"></i> My Game Platforms</span>
                         </a>
                         <!-- End Users Contacts -->
@@ -377,8 +377,32 @@ if(isset($_SESSION['userID'])){
 
                             <?php  }
                              ?>
-                            <strong><small>* CWB - Current Wallet Balance, LUB - Last Used Balance, TRANX. - Transaction</small></strong><br>
-                            <h4>Your Current Wallet Balance is ₹<b><?= $selectUserInformations['walletBalance'];?></b> | Last Updated On : <?= $selectUserInformations['lastUpdate_date_time_stamp'];?></h4>
+                             <div class="row" style="float:left; margin-left:2px;">
+                               <div class="col-md-12">
+                                     <span class="btn btn-block u-btn-blue g-rounded-50 g-py-5">
+                                     <i class="icon-plus g-mr-5"></i> Add Money to Wallet
+                                   </span>
+                                 </div>
+                               </div>
+
+                               <div class="row" style="float:left; margin-left:2px;">
+                                 <div class="col-md-12" style="float:right;">
+                                   <span class="btn btn-block u-btn-black g-rounded-50 g-py-5">
+                                   <i class="icon-arrow-down-circle g-mr-5"></i> Request Money Withdrawl
+                                 </span>
+                               </div>
+                             </div>
+
+                             <div class="row" style="float:left; margin-left:2px;">
+                               <div class="col-md-12">
+                                 <span class="btn btn-block u-btn-red g-rounded-50 g-py-5">
+                                 <i class="icon-diamond g-mr-5"></i> Reedem Coupon Voucher
+                               </span>
+                             </div>
+                           </div>
+                           <br><br>
+                            <strong><br><small>* CWB - Current Wallet Balance, LUB - Last Used Balance, TRANX. - Transaction</small></strong><br>
+                            <h6>Your Current Wallet Balance is ₹<b><?= $selectUserInformations['walletBalance'];?></b> | Last Updated On : <?= $selectUserInformations['lastUpdate_date_time_stamp'];?></h6>
                             <?php
 
 
