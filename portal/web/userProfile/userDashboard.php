@@ -10,7 +10,7 @@ include '../../../includes/config/dbConnectivity.php';
 session_start();
 
 //Validating if the session exists or not
-if(isset($_SESSION['userID'])){
+if(!empty($_SESSION['userID'])){
 
   // echo 'Welcome User'.$_SESSION['userNAME'];
   $userID = $_SESSION['userID'];
@@ -349,7 +349,7 @@ if(isset($_SESSION['userID'])){
                           <?php
                           $today = date("d-m-Y H:i");
                           // echo $today;
-                              echo ($today < $getGameInfo['game_registration_end_date']) ? '<a href="javascript:void(0);" id="joinGameButton" class="btn btn-md u-btn-outline-darkgray g-rounded-50 g-mr-10 g-mb-15" data-game-id="'." $gameID".'">Join Game</a>':'<input type="button" class="btn btn-md u-btn-outline-red g-rounded-50 g-mr-10 g-mb-15" value ="Registration Over" />';
+                              echo ($today < $getGameInfo['game_registration_end_date']) ? '<a href="javascript:void(0);" id="'." $gameID".'" class="joinGameButton btn btn-md u-btn-outline-darkgray g-rounded-50 g-mr-10 g-mb-15">Join Game</a>':'<input type="button" class="btn btn-md u-btn-outline-red g-rounded-50 g-mr-10 g-mb-15" value ="Registration Over" />';
                             ?>
 
                         </div>
@@ -1061,7 +1061,6 @@ if(isset($_SESSION['userID'])){
     include "../../../includes/common/template_scripts.php";
 
    ?>
-
 
 </body>
 

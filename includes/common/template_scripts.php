@@ -86,8 +86,11 @@
 <!-- JS Unify -->
 <script  src="../../../assets/js/components/hs.modal-window.js"></script>
 
-<!-- Sweet Alert (SWAL) -->
+<!-- Sweet Alert 2 (SWAL2) -->
 <script src="../../../assets/js/components/sweetalert2.min.js"></script>
+
+<!-- jQuery Shake Effect for form errors -->
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 <!-- Writing some custom script to handle extra features -->
 <script>
@@ -335,6 +338,8 @@
 function notificationPanel(){
 
   var notificationCount = 0;
+  var audio = new Audio('../../../assets/notification/notification-sound.wav');
+
   // $('#notificationCount').html(notificationCount);
   // alert(notificationCount);
   // alert('Hello');
@@ -352,9 +357,11 @@ function notificationPanel(){
 
                   var unreadcounts = parseInt(data.unreadcounts);
                   // alert(unreadcounts);
+                  if(unreadcounts!=0)
+                  audio.play();
                   var newnotificationCount = notificationCount+unreadcounts;
                   $('#notificationCount').html(newnotificationCount);
-                    $('#notificationCounts').html(newnotificationCount);
+                  $('#notificationCounts').html(newnotificationCount);
 
                 }
 
@@ -372,11 +379,11 @@ function notificationPanel(){
 
   }
 
-  $('#joinGameButton').click(function(e){
+  $('.joinGameButton').click(function(e){
 
     e.preventDefault();
-    var gameID = $(this).attr('data-game-id');
-    // var gameName = ;
+    var gameID = this.id;
+    var userID = $('#hiddenUserID').text();
 
     alert(gameID);
 
@@ -402,15 +409,15 @@ function notificationPanel(){
 
                 type:'post',
                 url:'../../../api/process/request/userGameJoin.php',
-                data:{'gameID':gameID},
+                data:{'gameID':gameID,'userID':userID},
                 dataType:'json',
                 success:function(data){
 
-                  if(data.status == 'SUCCESS'){
+                  if(data.response == 'SUCCESS'){
 
                       swal({
 
-                       title: "You have successfully joined"+data.gameName,
+                       title: "You have successfully joined the tournament.",
                        text: "Please wait for the fixture and rules.",
                        icon: 'success',
                        buttons: false,
@@ -420,7 +427,15 @@ function notificationPanel(){
 
                   }else{
 
-                      alert('ERROR');
+                    swal({
+
+                     title: "You have already joined the tournament.",
+                     text: "Please wait for the fixture and rules.",
+                     icon: 'warning',
+                     buttons: false,
+                     timer : 1700
+
+                    });
 
                   }
 

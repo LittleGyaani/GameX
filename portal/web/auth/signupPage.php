@@ -6,7 +6,7 @@ error_reporting(0);
 //Initializing session
 session_start();
 
-if(isset($_SESSION['userID'])){
+if(!empty($_SESSION['userID'])){
   // echo 'Session already running'.$_SESSION['userNAME'];
   header('Location:../userProfile/userDashboard.php');
 }
@@ -122,8 +122,9 @@ if(isset($_SESSION['userID'])){
                       <span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-gray-dark-v5">
                           <i class="icon-media-121 u-line-icon-pro"></i>
                           </span>
-                      <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover g-py-15 g-px-15" type="email" placeholder="Your Username" id="usrName">
+                      <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--hover g-py-15 g-px-15" type="text" placeholder="Your Username" id="usrName">
                     </div>
+                    <div id="checkUserName" style="display:none;"></div>
                   </div>
 
                 </div>
@@ -515,6 +516,64 @@ if(isset($_SESSION['userID'])){
 
     $(document).ready(function(){
 
+      // $('#signupButton').attr('disabled',true);
+
+      // $("#usrName").keyup(function(){
+      //
+      //   var user_name = $(this).val();
+      //
+      //   if(user_name == ""){
+      //
+      //     alert('BLANK');
+      //
+      //   }
+      //
+      //     if(user_name.length > 3){
+      //
+      //       setTimeout(check_username_ajax(user_name), 100);
+      //       $("#checkUserName").show();
+      //       $("#checkUserName").html('<img src="../../../assets/img/loaders/check-loader.gif" height="67px" width="88px" />Checking...');
+      //
+      //     }else{
+      //
+      //         // alert("RETRY");
+      //         $("#usrName").focus();
+      //         $("#checkUserName").hide();
+      //
+      //     }
+      //
+      //   });
+      //
+      //   function check_username_ajax(username){
+      //
+      //       $.ajax({
+      //
+      //               type : 'POST',
+      //               url: '../../../api/process/request/processRegister.php?request='+'checkUserName',
+      //               data : {'userName':username},
+      //               dataType : 'json',
+      //
+      //               success : function(data){
+      //
+      //                 if(data.result == 'AVAILABLE'){
+      //
+      //                         $('#signupButton').attr('disabled',false);
+      //                         $("#checkUserName").delay(500).fadeOut("slow", 0.6);
+      //
+      //                         $("#checkUserName").html('<img src="../../../assets/img/loaders/tick-loader.gif" height="28px" width="109px" />'+'<small>'+data.msg+'</small>');
+      //
+      //                 }else {
+      //
+      //                     $("#checkUserName").delay(500).fadeOut("slow", 0.6);
+      //                     $("#checkUserName").html('<img src="../../../assets/img/loaders/error-loader.png" height="22px" width="22px" />'+' <small>Username is taken.</small>');
+      //
+      //                 }
+      //
+      //               }
+      //       });
+      //       return false;
+      //     }
+
             //Signup Script
             $('#signupButton').on('click',function(){
                 // alert("hi!");
@@ -525,28 +584,39 @@ if(isset($_SESSION['userID'])){
                 var userFullName = $('#usrFullName').val();
                 if(userName == '' && userPassword == '' && userPassword == '' && userCnfmPassword == '' && userEMAILID == ''){
                   alert('You cannot left all the fields blank.')
+
                 }else if(userFullName == ''){
+
                   alert('Please provide your Full name.');
                   $('#usrFullName').focus();
+
                 }else if (userName == ''){
+
                   alert('Username field is blank.');
                   $('#usrName').focus();
+
                 }else if(userPassword == '' || userCnfmPassword == '' || userPassword != userCnfmPassword){
+
                   alert('Either Password and Confirm Passwords fields are blank or they don\'\t match.');
                   $('#usrPass').focus();
                   $('#usrPass').val("");
                   $('#usrCnfmPass').val("");
+
                 }else if(userEMAILID == ''){
+
                   alert('Email ID field is blank.');
                   $('#usrEMAIL').focus();
+
                 }else if(!$('#termsCheck').is(':checked')){
+
                   alert('Please accept the terms and conditions.');
                   $('#termsCheck').focus();
+
                 }else{
 
                     $.ajax({
                           type: 'post',
-                          url: '../../../api/process/request/processRegister.php',
+                          url: '../../../api/process/request/processRegister.php?request='+'registerUser',
                           dataType: 'json',
                           data:{'userName':userName,'userPassword':userPassword,'userEMAILID':userEMAILID,'userFullName':userFullName},
                           beforeSend: function(){
@@ -559,11 +629,11 @@ if(isset($_SESSION['userID'])){
                             switch(data.result){
 
                                 case ('EXISTS'):
-                                  $('showSuccessAlert').show();
+                                  $('#showSuccessAlert').show();
                                   $('#signupFormContainer').attr('display','none');
                                   $('#srespMSG').html(data.resp);
                                   $('#smainMSG').html(data.msg)
-                                  window.location.href="../userProfile/userDashboard.php";
+                                  window.location.href="loginPage.php";
                                   alert(data.resp+data.msg);
                                   break;
 
@@ -573,7 +643,7 @@ if(isset($_SESSION['userID'])){
                                   $('#erespMSG').html(data.resp);
                                   $('#emainMSG').html(data.msg)
                                   alert(data.resp+data.msg);
-                                  windows.location.href = "loginPage.php";
+                                  window.location.href = "../userProfile/userDashboard.php";
                                   break;
 
                                 default:

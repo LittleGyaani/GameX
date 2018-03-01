@@ -54,7 +54,7 @@ include '../../../includes/config/dbConnectivity.php';
   }
 
   //Closing the connection now
-  mysqli_close($conn);
+  $conn -> close();
 
   //Printing Response Array
   echo json_encode($respArray,JSON_PRETTY_PRINT);

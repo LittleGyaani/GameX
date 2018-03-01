@@ -195,6 +195,9 @@ if(!empty( $_SESSION['userID'])){
   <!-- JS Customization -->
   <script src="../../../assets/js/custom.js"></script>
 
+  <!-- jQuery Shake Effect for form errors -->
+  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
   <!-- JS Plugins Init. -->
   <script>
     $(document).on('ready', function () {
@@ -224,9 +227,17 @@ if(!empty( $_SESSION['userID'])){
         }, 200);
       });
   </script>
+
   <!--Some Custom Scripts for handling authentication.-->
   <script>
+
     $(document).ready(function(){
+
+      $('#userLoginForm').keypress(function(e) {
+      if (e.which == 13)
+        $('#loginButton').click();
+      // return false;
+    });
 
         //Login Script
         $('#loginButton').on('click',function(){
@@ -234,19 +245,27 @@ if(!empty( $_SESSION['userID'])){
             var userName = $('#userName').val();
             var userPassword = $('#userPassword').val();
             if(userName == ''){
-              alert('Username field is blank.')
+
+              alert('Username field is blank.');
               $('#userName').focus();
+
             }else if(userPassword == ''){
+
               alert('Password field is blank.')
               $('#userPassword').focus();
+
             }else if(userName == '' && userPassword ==''){
-              alert('You cannot left both the fields blank.')
+
+              alert('You cannot left both the fields blank.');
+              $('#userLoginForm').effect('shake');
+
             }else{
+
               $.ajax({
                     type: 'post',
                     url: '../../../api/process/request/processLogin.php',
                     dataType: 'json',
-                    data:{'userName':userName,'userPassword':userPassword},
+                    data: {'userName':userName,'userPassword':userPassword},
                     beforeSend: function(){
                     $('#loader').show();
                     },
@@ -255,37 +274,54 @@ if(!empty( $_SESSION['userID'])){
 
                       switch(data.result){
 
-                          case ('SUCCESS'):
-                            window.location.href="../userProfile/userDashboard.php";
-                            window.location.reload();
-                            alert(data.resp+data.msg);
-                            break;
+                            case ('PASSERROR'):
 
-                            case ('EXISTS'):
-                              $('userLoginForm').reset[0];
-                              $('userName').focus();
+                              $('#userName').attr('disabled',true);
+                              $('#userPassword').val("");
+                              $('#userPassword').focus();
+                              // $('#userLoginForm').effect('shake');
                               alert(data.resp+data.msg);
                               break;
 
-                          case ('ERROR'):
-                            alert(data.resp+data.msg);
-                            window.location.href="signupPage.php";
-                            break;
+                            case ('USERERROR'):
+
+                              alert(data.resp+data.msg);
+                              window.location.href="signupPage.php";
+                              break;
+
+                            case ('SUCCESS'):
+
+                              window.location.href="../userProfile/userDashboard.php";
+                              window.location.reload();
+                              alert(data.resp+data.msg);
+                              break;
 
                             case ('EMPTY'):
+
                               alert(data.resp+data.msg);
                               break;
 
-                          default:
-                            alert('Something went wrong.');
+                            case ('FAIL'):
+
+                              alert(data.resp+data.msg);
+                              break;
+
+                            default:
+
+                              alert('Something went wrong.');
 
                         }
                     }
+
                   });
+
                 }
+
               });
+
       });
-        </script>
+
+  </script>
 </body>
 
 </html>
