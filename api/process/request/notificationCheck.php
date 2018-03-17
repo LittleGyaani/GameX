@@ -1,57 +1,78 @@
 <?php
 
-//Hiding all errors and notices
-error_reporting(0);
+    //Hiding all errors and notices
+    error_reporting(0);
 
-//Including the DB file
-include '../../../includes/config/dbConnectivity.php';
+    //Allow Cross Access from Origin
+    header("Access-Control-Allow-Origin: *");
+
+    //Define Base URL to be used globally
+    $baseURL = "http://www.battlestation.live/";
+
+    //Including the DB file
+    include "../../../includes/config/dbConnectivity.php";
 
   /*This API checks for the latest notification associated with user.*/
 
-  //Accepted Parameters
-  //#userID
+      //Accepted Parameters
+      //#userID
+     //#notificationCount
 
-  //Reading user from URL via GET
-  $userID = $_POST['userID'];
+    //Reading user from URL via POST
+    $userID = $_POST['userID'];
+    $notificationCount = $_POST['notification_count'];
+    $secureToken = $_POST['token'];
+
   //Response array to throw response messages according to action
   $respArray = array();
   $unreadCount = 0;
 
-  //Check if userID is passed to API or not
-  if($userID){
+  if($secureToken){
 
-    $getNotificationsCount = "SELECT *,count(*) AS COUNT FROM `user_notification_record` WHERE `userID` = $userID AND `notification_status` = 0";
-    $getMessageCount = $conn -> query($getNotificationsCount);
-    $readMessageCount = $getMessageCount -> fetch_assoc();
+      //Check if userID is passed to API or not
+      if($userID){
 
-      if($getMessageCount){
+        $getNotificationsCount = "SELECT * FROM `user_notification_record` WHERE `userID` = $userID AND `notification_status` = 0";
+        $getMessageCount = $conn -> query($getNotificationsCount);
+        $unreadCount = $getMessageCount -> num_rows;
 
-        $unreadCount = $readMessageCount['COUNT'];
+          if($getMessageCount){
 
-        /*Put one if condition here */
-        //Printing Response Array
-        if($unreadCount)
+            //Printing Response Array
+            if($unreadCount > $notificationCount){
 
-        $respArray = array('message' => 'Unread Notifications.', "unreadcounts" => $unreadCount);
-        // echo json_encode($notificationCountArray, JSON_PRETTY_PRINT);
-        // echo 'API WORKING SUCCESSFULLY';
-        // exit;
-        else
+                $respArray = array('message' => 'New Unread Notifications.', "unreadcounts" => $unreadCount, 'response' => 'NUN');
 
-        $respArray = array('message' => 'All caught up.', "unreadcounts" => $unreadCount);
+            }else if($unreadCount == 0){
 
-      }else {
+                $respArray = array('message' => 'All caught up.', "unreadcounts" => $unreadCount, 'response' => 'NNN');
 
-        //Printing Response Array
-        $respArray = array('message' => 'Unable to get new notifications.');
+            }else if ($notificationCount == $unreadCount){
+
+                $respArray = array('message' => 'You have unread notifications.', "unreadcounts" => $unreadCount, 'response' => 'NPR');
+
+            }
+
+            //NUN - New Unread Notifications, NNN - No New Notifications, NPR - Notification Pending to Read
+
+          }else {
+
+            //Printing Response Array
+            $respArray = array('message' => 'Unable to get new notifications.');
+
+          }
+
+      }else{
+
+        $respArray = array('message' => 'No userID Obtained via URL.');
 
       }
 
-  }else{
+    }else{
 
-    $respArray = array('message' => 'No userID Obtained via URL.');
+        $respArray['response'][] = array('message' => "Invalid Secure Token Passed.", 'response' => "You are not authorized or no secure method obtained. Recording your IP Now...");
 
-  }
+    }
 
   //Closing the connection now
   $conn -> close();

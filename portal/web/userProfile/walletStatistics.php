@@ -21,7 +21,7 @@ if(isset($_SESSION['userID'])){
 } else{
 
     echo 'You are not authorized to access the page without logging in.';
-    header('Location:../auth/loginPage.php');
+    header('Location:../auth/loginPage.php?redirectback=' . urlencode($_SERVER['REQUEST_URI']));
 
 }
 ?>
@@ -131,7 +131,7 @@ if(isset($_SESSION['userID'])){
                     <!-- User Image -->
                     <div class="u-block-hover g-pos-rel">
                         <figure>
-                            <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img/profilePic/img5.jpg" alt="Image Description">
+                            <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img/profilePic/user_sampat.jpg" alt="Image Description">
                         </figure>
 
                         <!-- User Info -->
@@ -380,26 +380,58 @@ if(isset($_SESSION['userID'])){
                              <div class="row" style="float:left; margin-left:2px;">
                                <div class="col-md-12">
                                      <span class="btn btn-block u-btn-blue g-rounded-50 g-py-5">
-                                     <i class="icon-plus g-mr-5"></i> Add Money to Wallet
+                                     <i class="icon-plus g-mr-5"></i> Add Money
                                    </span>
                                  </div>
                                </div>
 
                                <div class="row" style="float:left; margin-left:2px;">
                                  <div class="col-md-12" style="float:right;">
-                                   <span class="btn btn-block u-btn-black g-rounded-50 g-py-5">
-                                   <i class="icon-arrow-down-circle g-mr-5"></i> Request Money Withdrawl
+                                   <span class="btn btn-block u-btn-primary g-rounded-50 g-py-5">
+                                   <i class="icon-arrow-down-circle g-mr-5"></i> Withdraw Request
                                  </span>
                                </div>
                              </div>
 
                              <div class="row" style="float:left; margin-left:2px;">
                                <div class="col-md-12">
-                                 <span class="btn btn-block u-btn-red g-rounded-50 g-py-5">
-                                 <i class="icon-diamond g-mr-5"></i> Reedem Coupon Voucher
-                               </span>
+                                 <a class="btn btn-block u-btn-cyan g-rounded-50 g-py-5" href="#ReedemptionModal" data-modal-target="#ReedemptionModal" data-modal-effect="blur"><i class="icon-present g-mr-5"></i> Reedem Voucher</a>
                              </div>
                            </div>
+
+                           <div class="row" style="float:left; margin-left:2px;">
+                             <div class="col-md-12">
+                               <span class="btn btn-block u-btn-purple g-rounded-50 g-py-5">
+                               <i class="fa fa-exchange g-mr-5"></i> Money Transfer
+                             </span>
+                           </div>
+                         </div>
+
+                         <!-- Voucher Reedemption modal window -->
+                          <div id="ReedemptionModal" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">
+                            <button type="button" class="close" onclick="Custombox.modal.close();">
+                              <i class="fa fa-close"></i>
+                            </button>
+                            <h4 class="g-mb-20">Reedem Voucher</h4>
+                            <p>
+                              <!-- Voucher Code Masking -->
+                              <div class="form-group g-mb-20">
+                                <label class="g-mb-10">Enter Voucher Code</label>
+                                <b class="tooltip tooltip-top-right u-tooltip--v1">Some helpful information</b>
+                                <div class="input-group g-brd-primary--focus">
+                                  <input id="voucherCode" class="form-control form-control-md g-brd-right-none rounded-0" type="text" placeholder="BSV-XXX-XXX" data-mask="BSV-999-999">
+                                  <div class="input-group-addon d-flex align-items-center g-color-gray-dark-v5 rounded-0">
+                                    <i class="icon-credit-card"></i>
+                                  </div>
+                                </div>
+                                <br>
+                                <button class="btn btn-md u-btn-outline-darkgray g-mr-10 g-mb-15" id="rdmvchr">Reedem</button>
+                              </div>
+                              <!-- End Vocuher Card Masking -->
+                            </p>
+                          </div>
+                          <!-- Voucher Reedemption Demo modal window -->
+
                            <br><br>
                             <strong><br><small>* CWB - Current Wallet Balance, LUB - Last Used Balance, TRANX. - Transaction</small></strong><br>
                             <h6>Your Current Wallet Balance is ₹<b><?= $selectUserInformations['walletBalance'];?></b> | Last Updated On : <?= $selectUserInformations['lastUpdate_date_time_stamp'];?></h6>

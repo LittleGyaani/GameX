@@ -27,162 +27,45 @@ if(isset($_SESSION['userID'])){
   <!-- Title -->
   <title>battlestation - Play the best of your life! | HOME</title>
 
-        <!-- Required Meta Tags Always Come First -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <?php
 
-        <!-- Favicon -->
-        <link rel="shortcut icon" href="favicon.ico">
-        <!-- Google Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C500%2C600%2C700%7CPlayfair+Display%7CRoboto%7CRaleway%7CSpectral%7CRubik">
-        <!-- CSS Global Compulsory -->
-        <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
-        <!-- CSS Global Icons -->
-        <!-- <link rel="stylesheet" href="assets/vendor/icon-awesome/css/font-awesome.min.css"> -->
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-        <link rel="stylesheet" href="assets/vendor/icon-line/css/simple-line-icons.css">
-        <link rel="stylesheet" href="assets/vendor/icon-etlinefont/style.css">
-        <link rel="stylesheet" href="assets/vendor/icon-line-pro/style.css">
-        <link rel="stylesheet" href="assets/vendor/icon-hs/style.css">
-        <link rel="stylesheet" href="assets/vendor/dzsparallaxer/dzsparallaxer.css">
-        <link rel="stylesheet" href="assets/vendor/dzsparallaxer/dzsscroller/scroller.css">
-        <link rel="stylesheet" href="assets/vendor/dzsparallaxer/advancedscroller/plugin.css">
-        <link rel="stylesheet" href="assets/vendor/animate.css">
-        <link rel="stylesheet" href="assets/vendor/fancybox/jquery.fancybox.min.css">
-        <link rel="stylesheet" href="assets/vendor/slick-carousel/slick/slick.css">
-        <link rel="stylesheet" href="assets/vendor/typedjs/typed.css">
-        <link rel="stylesheet" href="assets/vendor/hs-megamenu/src/hs.megamenu.css">
-        <link rel="stylesheet" href="assets/vendor/hamburgers/hamburgers.min.css">
+    //Including Meta and Navigation
+    include "includes/common/template_header.php";
 
-        <!-- CSS Unify -->
-        <link rel="stylesheet" href="assets/css/unify-core.css">
-        <link rel="stylesheet" href="assets/css/unify-components.css">
-        <link rel="stylesheet" href="assets/css/unify-globals.css">
+   ?>
 
-        <!-- CSS Customization -->
-        <link rel="stylesheet" href="assets/css/custom.css">
-        <!--Heartbeat Style -->
-        <style>
-        .fa-beat {
-          animation:fa-beat 5s ease infinite;
-        }
-        @keyframes fa-beat {
-          0% {
-            transform:scale(1);
-          }
-          5% {
-            transform:scale(1.25);
-          }
-          20% {
-            transform:scale(1);
-          }
-          30% {
-            transform:scale(1);
-          }
-          35% {
-            transform:scale(1.25);
-          }
-          50% {
-            transform:scale(1);
-          }
-          55% {
-            transform:scale(1.25);
-          }
-          70% {
-            transform:scale(1);
-          }
-        }
-
-        .heart {
-          color:red;
-        }
-        </style>
-        <!--Heartbeat End-->
-        
-      </head>
-
-      <body>
-        <main>
-
-
-
-          <!-- Header -->
-          <header id="js-header" class="u-header u-header--static">
-            <div class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-10">
-              <nav class="js-mega-menu navbar navbar-expand-lg hs-menu-initialized hs-menu-horizontal">
-                <div class="container">
-                  <!-- Responsive Toggle Button -->
-                  <button class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pa-0 g-pos-abs g-top-3 g-right-0" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
-                    <span class="hamburger hamburger--slider">
-                  <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                    </span>
-                    </span>
-                  </button>
-                  <!-- End Responsive Toggle Button -->
-
-                  <!-- Logo -->
-                  <a href="index.php" class="navbar-brand d-flex">
-                    <h2><font color="green"><b>GAME</b>-<strong>X</strong></font></h2>
-                  </a>
-                  <!-- End Logo -->
-
-                  <!-- Navigation -->
-                  <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg g-mr-40--lg" id="navBar">
-                    <ul class="navbar-nav text-uppercase g-pos-rel g-font-weight-600 ml-auto">
-
-                      <!-- Home -->
-                      <li class="hs-has-mega-menu nav-item active g-mx-10--lg g-mx-15--xl" data-animation-in="fadeIn" data-animation-out="fadeOut" data-max-width="60%" data-position="left">
-                        <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
-                          <a class="btn u-btn-outline-green g-font-size-13 text-uppercase g-py-10 g-px-15" href="index.php">HOME-X</a>
-                        </div>
-                      </li>
-                      <!-- End Home -->
-                    </ul>
-
-                  <!-- End Navigation -->
-
-                  <?php
-                  if(!($_SESSION['userID'])){ ?>
-                  <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
-                    <a class="btn u-btn-outline-primary g-font-size-13 text-uppercase g-py-10 g-px-15" href="portal/web/auth/loginPage.php">Login/Signup</a>
-                  </div>
-
-          <?php } else{ ?>
-            <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
-              <a class="btn btn-md u-btn-outline-cyan g-brd-2 g-mr-10 g-mb-15" href="portal/web/userProfile/myProfile.php">Welcome <b><?= $selectUserInformations['user_fullname'];?></b></a> <a href="portal/web/auth/controller/userLogout.php" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Logout</a>
-            </div>
-
-           <?php } ?>
-      </div>
     </header>
     <!-- End Header -->
 
     <!-- Promo Block -->
-    <section class="g-pos-rel">
-      <div class="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll" data-options='{direction: "reverse", settings_mode_oneelement_max_offset: "150"}'>
-        <div class="divimage dzsparallaxer--target w-100 g-bg-cover g-bg-pos-top-center g-bg-img-hero g-bg-bluegray-opacity-0_2--after" style="height: 130%; background-image: url(http://images.nintendolife.com/news/2017/10/injustice_2_director_on_the_possibility_of_bringing_the_game_to_switch/attachment/0/large.jpg);"></div>
+     <div class="g-bg-img-hero g-pos-rel" style="background-image: url(https://htmlstream.com/preview/unify-v2.4/assets/img/bg/bg-img1.png);">
+       <div class="container g-pt-100">
+         <div class="row justify-content-lg-between">
+           <div class="col-lg-4 g-pt-50--lg">
+             <div class="mb-5">
+               <h1 class="g-color-black g-font-size-45 mb-4">Injustice Super League!</h1>
+               <p>Explore the tournament and take part in the challenge.</p>
+             </div>
 
-        <div class="container g-bg-cover__inner g-py-100">
-          <div class="row align-items-center">
-            <div class="col-lg-6 g-mb-30 g-mb-0--lg">
-              <h2 class="h1 text-uppercase g-color-white g-mb-30">
-                  <span class="g-bg-primary-dark-v3 g-px-5">Let's Play!</span><br>
-                  <span class="g-bg-primary-dark-v3 g-px-5">Challenge Mode or</span><br>
-                  <span class="g-bg-primary-dark-v3 g-px-5">Head-ON</span>
-                </h2>
-              <h3 class="h4 g-color-white">
-                  <span class="g-bg-black-opacity-0_6 g-px-5">Ready for a new battle</span><br>
-                  <span class="g-bg-black-opacity-0_6 g-px-5">already registered 160+ globally</span><br>
-                  <span class="g-bg-black-opacity-0_6 g-px-5">CHALLENGE NOW.</span>
-                </h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End Promo Block -->
+             <a class="js-go-to btn u-shadow-v33 g-hidden-md-down g-color-white g-bg-primary g-bg-main--hover g-rounded-30 g-px-35 g-py-10" href="gamePlatforms.php" data-target="#content">Play Now</a>
+           </div>
+
+           <div class="col-lg-8 align-self-end">
+             <div class="u-shadow-v40 g-brd-around g-brd-7 g-brd-white rounded">
+               <img class="img-fluid rounded" src="http://www.allkeyshop.com/blog/wp-content/uploads/injustice-2-banner1-1024x576.jpg" alt="Image Description">
+             </div>
+           </div>
+         </div>
+       </div>
+
+       <!-- SVG Bottom Background Shape -->
+       <svg class="g-pos-abs g-bottom-0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1921 183.5" enable-background="new 0 0 1921 183.5" xml:space="preserve">
+         <path fill="#FFFFFF" d="M0,183.5v-142c0,0,507,171,1171,58c0,0,497-93,750,84H0z" />
+         <path opacity="0.2" fill="#FFFFFF" d="M0,183V0c0,0,507,220.4,1171,74.7c0,0,497-119.9,750,108.3H0z" />
+       </svg>
+       <!-- End SVG Bottom Background Shape -->
+     </div>
+     <!-- End Promo Block -->
 
     <!-- Icon Blocks -->
     <section class="g-py-100">
@@ -356,7 +239,7 @@ if(isset($_SESSION['userID'])){
     <!-- Most Quality Solution -->
     <section class="dzsparallaxer auto-init height-is-based-on-content use-loading" data-options='{direction: "reverse", settings_mode_oneelement_max_offset: "150"}'>
       <!-- Parallax Image -->
-      <div class="divimage dzsparallaxer--target w-100 u-bg-overlay g-bg-img-hero g-bg-white-opacity-0_7--after" style="height: 140%; background-image: url(assets/img/bg/intro_parallax_bg.jpg);"></div>
+      <div class="divimage dzsparallaxer--target w-100 u-bg-overlay g-bg-img-hero g-bg-white-opacity-0_7--after" style="height: 140%; background-image: url(http://backgroundcheckall.com/wp-content/uploads/2017/12/parallax-background-1.jpg);"></div>
       <!-- End Parallax Image -->
 
       <div class="container u-bg-overlay__inner g-py-150--md g-py-80">
@@ -436,77 +319,41 @@ if(isset($_SESSION['userID'])){
        </div>
 
        <div class="row no-gutters g-mx-minus-10">
+         <?php
+
+         $hoverColorArray = array("g-bg-pink--hover", "g-bg-cyan--hover", "g-bg-blue--hover", "g-bg-red--hover", "g-bg-orange--hover");
+         $selectGameInfo = "SELECT * FROM `game_registration_meta`";
+         $runselectGameInfo = $conn -> query($selectGameInfo);
+         $participantCountRows = $runselectGameInfo -> num_rows;
+         if($participantCountRows > 0){
+
+           while($getGameInfo = $runselectGameInfo -> fetch_assoc()){
+
+             $timeonly = strtotime($getGameInfo['game_registration_start_date']);
+             $gameID = $getGameInfo['game_reg_ID'];
+             if($i > count($hoverColorArray) - 1) $i = 1;
+
+         ?>
          <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
            <!-- Projects -->
-           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-pink--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
-             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="http://www.afkmagazine.com/wp-content/uploads/2013/07/rockstar-logo.png" width="160px" height="160px" alt="Image Description">
-             <br/><span class="g-font-weight-600 g-font-size-22 text-uppercase">GTA Vice City</span>
-             <h3 class="h4 g-font-weight-600 mb-0">Registration Open : 09/01/2018</h3>
+           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-black--hover <?php echo $hoverColorArray[$i+1]; ?> text-center rounded g-transition-0_3 g-px-30 g-py-50">
+             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="<?php echo $baseURL;?>assets/img/tournaments/<?=$getGameInfo['game_image_name']?>" width="300" height="200" alt="<?=$getGameInfo['game_name']?>">
+             <br/><span class="g-font-weight-600 g-font-size-17 text-uppercase"><?=$getGameInfo['game_name']?></span>
+             <h3 class="h4 g-font-weight-600 mb-0">Registration Open <br> <b><?=$getGameInfo['game_registration_start_date']?></b></h3>
 
              <a class="u-link-v2" href="#!"></a>
            </div>
            <!-- End Projects -->
          </div>
+         <?php
+       $i++;
+     }
+   }else{
 
-         <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
-           <!-- Projects -->
-           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-pink--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
-             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="http://www.afkmagazine.com/wp-content/uploads/2013/07/rockstar-logo.png" width="160px" height="160px" alt="Image Description">
-             <br/><span class="g-font-weight-600 g-font-size-22 text-uppercase">GTA Vice City</span>
-             <h3 class="h4 g-font-weight-600 mb-0">Registration Open : 09/01/2018</h3>
+     echo 'NO Games to Join.';
+   }
 
-             <a class="u-link-v2" href="#!"></a>
-           </div>
-           <!-- End Projects -->
-         </div>
-
-         <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
-           <!-- Projects -->
-           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-cyan--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
-             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="http://www.afkmagazine.com/wp-content/uploads/2013/07/rockstar-logo.png" width="160px" height="160px" alt="Image Description">
-             <br/><span class="g-font-weight-600 g-font-size-22 text-uppercase">GTA Vice City</span>
-             <h3 class="h4 g-font-weight-600 mb-0">Registration Open : 09/01/2018</h3>
-
-             <a class="u-link-v2" href="#!"></a>
-           </div>
-           <!-- End Projects -->
-         </div>
-
-         <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
-           <!-- Projects -->
-           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-blue--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
-             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="http://www.afkmagazine.com/wp-content/uploads/2013/07/rockstar-logo.png" width="160px" height="160px" alt="Image Description">
-             <br/><span class="g-font-weight-600 g-font-size-22 text-uppercase">GTA Vice City</span>
-             <h3 class="h4 g-font-weight-600 mb-0">Registration Open : 09/01/2018</h3>
-
-             <a class="u-link-v2" href="#!"></a>
-           </div>
-           <!-- End Projects -->
-         </div>
-
-         <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
-           <!-- Projects -->
-           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-green--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
-             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="http://www.afkmagazine.com/wp-content/uploads/2013/07/rockstar-logo.png" width="160px" height="160px" alt="Image Description">
-             <br/><span class="g-font-weight-600 g-font-size-22 text-uppercase">GTA Vice City</span>
-             <h3 class="h4 g-font-weight-600 mb-0">Registration Open : 09/01/2018</h3>
-
-             <a class="u-link-v2" href="#!"></a>
-           </div>
-           <!-- End Projects -->
-         </div>
-
-         <div class="col-sm-6 col-lg-4 g-px-10 g-mb-20">
-           <!-- Projects -->
-           <div class="u-block-hover g-brd-around g-brd-gray-light-v4 g-color-black g-color-white--hover g-bg-red--hover text-center rounded g-transition-0_3 g-px-30 g-py-50">
-             <img class="img-fluid u-block-hover__main--zoom-v1 mb-5" src="http://www.afkmagazine.com/wp-content/uploads/2013/07/rockstar-logo.png" width="160px" height="160px" alt="Image Description">
-             <br/><span class="g-font-weight-600 g-font-size-22 text-uppercase">GTA Vice City</span>
-             <h3 class="h4 g-font-weight-600 mb-0">Registration Open : 09/01/2018</h3>
-
-             <a class="u-link-v2" href="#!"></a>
-           </div>
-           <!-- End Projects -->
-         </div>
+        ?>
        </div>
      </section>
      <!-- End Projects -->
@@ -518,7 +365,7 @@ if(isset($_SESSION['userID'])){
           <p class="lead g-font-weight-400 g-mr-20--md g-mb-15 g-mb-0--md">Go ahead and <b>Play</b> the best game of your <strong>Life</strong>.</p>
         </div>
         <div class="align-self-md-center">
-          <a class="btn btn-lg u-btn-white text-uppercase g-font-weight-600 g-font-size-12" target="_blank" href="/portal/web/auth/loginPage.php">Let's PLAY</a>
+          <a class="btn btn-lg u-btn-white text-uppercase g-font-weight-600 g-font-size-12" href="portal/web/auth/loginPage.php">Let's PLAY</a>
         </div>
       </div>
     </section>

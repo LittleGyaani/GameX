@@ -22,78 +22,16 @@ if(!empty( $_SESSION['userID'])){
   <!-- Title -->
   <title>battlestation - Play the best of your life! | Login Page</title>
 
-  <!-- Required Meta Tags Always Come First -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <?php
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="../../../favicon.ico">
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C500%2C600%2C700%7CPlayfair+Display%7CRoboto%7CRaleway%7CSpectral%7CRubik">
-  <!-- CSS Global Compulsory -->
-  <link rel="stylesheet" href="../../../assets/vendor/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="../../../assets/vendor/icon-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../../../assets/vendor/icon-line-pro/style.css">
-  <link rel="stylesheet" href="../../../assets/vendor/icon-hs/style.css">
-  <link rel="stylesheet" href="../../../assets/vendor/animate.css">
-  <link rel="stylesheet" href="../../../assets/vendor/hs-megamenu/src/hs.megamenu.css">
-  <link rel="stylesheet" href="../../../assets/vendor/hamburgers/hamburgers.min.css">
+    //Including Meta and Navigation
+    include "../../../includes/common/template_header.php";
 
-  <!-- CSS Unify -->
-  <link rel="stylesheet" href="../../../assets/css/unify-core.css">
-  <link rel="stylesheet" href="../../../assets/css/unify-components.css">
-  <link rel="stylesheet" href="../../../assets/css/unify-globals.css">
+   ?>
 
-  <!-- CSS Customization -->
-  <link rel="stylesheet" href="../../../assets/css/custom.css">
-</head>
-
-<body>
-  <main>
-
-    <!-- Header -->
-    <header id="js-header" class="u-header u-header--static">
-      <div class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-10">
-        <nav class="js-mega-menu navbar navbar-expand-lg hs-menu-initialized hs-menu-horizontal">
-          <div class="container">
-            <!-- Responsive Toggle Button -->
-            <button class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pa-0 g-pos-abs g-top-3 g-right-0" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
-              <span class="hamburger hamburger--slider">
-            <span class="hamburger-box">
-              <span class="hamburger-inner"></span>
-              </span>
-              </span>
-            </button>
-            <!-- End Responsive Toggle Button -->
-
-            <!-- Logo -->
-            <a href="../../../index.php" class="navbar-brand d-flex">
-              <h2><font color="green"><b>GAME</b>-<strong>X</strong></font></h2>
-            </a>
-            <!-- End Logo -->
-            <!-- Navigation -->
-            <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg g-mr-40--lg" id="navBar">
-              <ul class="navbar-nav text-uppercase g-pos-rel g-font-weight-600 ml-auto">
-
-                <!-- Home -->
-                <li class="hs-has-mega-menu nav-item active g-mx-10--lg g-mx-15--xl" data-animation-in="fadeIn" data-animation-out="fadeOut" data-max-width="60%" data-position="left">
-                  <a id="mega-menu-home" class="nav-link g-py-7 g-px-0" href="../../../index.php" aria-haspopup="true" aria-expanded="false">Home-X</a>
-                </li>
-                <!-- End Home -->
-              </ul>
-            </div>
-            <!-- End Navigation -->
-
-            <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
-              <a class="btn u-btn-outline-primary g-font-size-13 text-uppercase g-py-10 g-px-15" href="loginPage.php">Login/Signup</a>
-            </div>
-          </div>
-        </nav>
-      </div>
     </header>
     <!-- End Header -->
-
+    <br><br><br>
     <!-- Login -->
     <section class="g-height-100vh g-flex-centered g-bg-size-cover g-bg-pos-top-center" style="background-image: url(../../../assets/img/bg/authentication_page_bg.jpg);">
       <div class="container g-py-100 g-pos-rel g-z-index-1">
@@ -145,10 +83,10 @@ if(!empty( $_SESSION['userID'])){
                   <i class="mr-3 fa fa-facebook"></i>
                   <span class="g-hidden-xs-down">Login with</span> Facebook
                 </button>
-                <button class="btn btn-block u-btn-twitter rounded text-uppercase g-py-13" type="button">
+                <!-- <button class="btn btn-block u-btn-twitter rounded text-uppercase g-py-13" type="button">
                   <i class="mr-3 fa fa-twitter"></i>
                   <span class="g-hidden-xs-down">Login with</span> Twitter
-                </button>
+                </button> -->
               </form>
               <!-- End Form -->
 
@@ -246,17 +184,32 @@ if(!empty( $_SESSION['userID'])){
             var userPassword = $('#userPassword').val();
             if(userName == ''){
 
-              alert('Username field is blank.');
+              cheers.warning({
+                title: 'Username field is blank',
+                message: 'Please fillup the field',
+                alert: 'slideleft',
+                icon: 'fa-user-circle-o',
+              });
               $('#userName').focus();
 
             }else if(userPassword == ''){
 
-              alert('Password field is blank.')
+              cheers.warning({
+                title:'Password field is blank.',
+                message: 'Please fillup the field',
+                alert: 'slideleft',
+                icon: 'fa-asterisk',
+              });
               $('#userPassword').focus();
 
             }else if(userName == '' && userPassword ==''){
 
-              alert('You cannot left both the fields blank.');
+              cheers.warning({
+                title:'You cannot left both the fields blank.',
+                message: 'Please fillup required fields',
+                alert: 'slideleft',
+                icon: 'fa-toggle-off',
+              });
               $('#userLoginForm').effect('shake');
 
             }else{
@@ -277,38 +230,65 @@ if(!empty( $_SESSION['userID'])){
                             case ('PASSERROR'):
 
                               $('#userName').attr('disabled',true);
-                              $('#userPassword').val("");
                               $('#userPassword').focus();
                               // $('#userLoginForm').effect('shake');
-                              alert(data.resp+data.msg);
+                              //alert(data.resp+data.msg);
+                              cheers.warning({
+                                title: data.resp,
+                                message: data.msg,
+                                alert: 'slideleft',
+                              });
+                              $('#userPassword').val('');
                               break;
 
                             case ('USERERROR'):
 
-                              alert(data.resp+data.msg);
-                              window.location.href="signupPage.php";
+                              // alert(data.resp+data.msg);
+                              setTimeout(function(){   window.location.href="signupPage.php"; }, 1500);
+                              cheers.error({
+                                title: data.resp,
+                                message: data.msg,
+                                alert: 'slideleft',
+                              });
+
                               break;
 
                             case ('SUCCESS'):
 
-                              window.location.href="../userProfile/userDashboard.php";
-                              window.location.reload();
-                              alert(data.resp+data.msg);
+                              setTimeout(function(){   window.location.href="../userProfile/userDashboard.php"; }, 1500);
+                              cheers.success({
+                                title: data.resp,
+                                message: data.msg,
+                                alert: 'slideleft',
+                              });
+
                               break;
 
                             case ('EMPTY'):
 
-                              alert(data.resp+data.msg);
+                              cheers.error({
+                                title: data.resp,
+                                message: data.msg,
+                                alert: 'slideleft',
+                              });
                               break;
 
                             case ('FAIL'):
 
-                              alert(data.resp+data.msg);
+                              cheers.error({
+                                title: data.resp,
+                                message: data.msg,
+                                alert: 'slideleft',
+                              });
                               break;
 
                             default:
 
-                              alert('Something went wrong.');
+                              cheers.error({
+                                title: 'Something went wrong.',
+                                message: 'Please retry after some moment.',
+                                alert: 'slideleft',
+                              });
 
                         }
                     }

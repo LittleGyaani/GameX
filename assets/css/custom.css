@@ -1,1 +1,259 @@
 /* Add here all your css styles (customizations) */
+.msg_box{
+ position:fixed;
+ bottom:-5px;
+ width:250px;
+ background:white;
+ border-radius:5px 5px 0px 0px;
+}
+
+.msg_head{
+ background:#72c02c;
+ color:white;
+ padding:8px;
+ font-weight:bold;
+ cursor:pointer;
+ border-radius:5px 5px 0px 0px;
+}
+
+.msg_body{
+ background:aliceblue;
+ height:200px;
+ font-size:12px;
+ padding:15px;
+ overflow:auto;
+ overflow-x: hidden;
+}
+.msg_input{
+ width:100%;
+ height: 55px;
+ border: 1px solid white;
+ border-top:1px solid #DDDDDD;
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ box-sizing: border-box;
+}
+
+.chatclose{
+ float:right;
+ cursor:pointer;
+ color:white;
+}
+
+.minimize{
+ float:right;
+ cursor:pointer;
+ padding-right:5px;
+
+}
+
+.msg-left{
+ position:relative;
+ background:#e2e2e2;
+ padding:5px;
+ min-height:10px;
+ margin-bottom:5px;
+ margin-right:10px;
+ border-radius:5px;
+ word-break: break-all;
+}
+
+.msg-right{
+ background:#d4e7fa;
+ padding:5px;
+ min-height:15px;
+ margin-bottom:5px;
+ position:relative;
+ margin-left:10px;
+ border-radius:5px;
+ word-break: break-all;
+}
+/**** Slider Layout Popup *********/
+
+ #chat-sidebar {
+   width: 250px;
+  position: fixed;
+  height: 1024px;
+  right: 0px;
+  top: 88px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid #b2b2b2;
+  background: white;
+  float: right;
+}
+ #sidebar-user-box {
+     padding: 4px;
+     margin-bottom: 4px;
+     font-size: 15px;
+     font-family: Calibri;
+     font-weight:bold;
+     cursor:pointer;
+}
+ #sidebar-user-box:hover {
+
+     color:#ffffff;
+     background-color: #72c02c;
+     /* -webkit-transition: background-color 2s ease-out;
+     -moz-transition: background-color 2s ease-out;
+     -o-transition: background-color 2s ease-out;
+     transition: background-color 2s ease-out; */
+}
+ #sidebar-user-box:after {
+     content: ".";
+     display: block;
+     height: 0;
+     clear: both;
+     visibility: hidden;
+}
+ .chtimg{
+     width:35px;
+     height:35px;
+     border-radius:50%;
+     float:left;
+}
+ #slider-username{
+     float:left;
+     line-height:30px;
+     margin-left:5px;
+}
+
+/* <!-- Heartbeat Style --> */
+.fa-beat {
+  animation:fa-beat 5s ease infinite;
+}
+@keyframes fa-beat {
+  0% {
+    transform:scale(1);
+  }
+  5% {
+    transform:scale(1.25);
+  }
+  20% {
+    transform:scale(1);
+  }
+  30% {
+    transform:scale(1);
+  }
+  35% {
+    transform:scale(1.25);
+  }
+  50% {
+    transform:scale(1);
+  }
+  55% {
+    transform:scale(1.25);
+  }
+  70% {
+    transform:scale(1);
+  }
+}
+
+.heart {
+  color:red;
+}
+#notification_li
+{
+position:relative
+}
+#notificationContainer
+{
+background-color: #fff;
+border: 1px solid rgba(100, 100, 100, .4);
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+overflow-y: visible;
+position: absolute;
+float: right;
+top: 39px;
+left: -4px;
+margin-left: -170px;
+width: 400px;
+z-index: -1;
+display: none; // Enable this after jquery implementation
+}
+
+@media only screen and (min-width: 860px){
+
+  #notificationContainer
+  {
+    float: right;
+    top: 39px;
+    left: -26px;
+    display: none; // Enable this after jquery implementation
+  }
+
+
+}
+/* // Popup Arrow */
+#notificationContainer:before {
+content: '';
+display: block;
+position: absolute;
+width: 0;
+height: 0;
+color: transparent;
+border: 10px solid black;
+border-color: transparent transparent white;
+margin-top: -20px;
+margin-left: 188px;
+}
+#notificationTitle
+{
+font-weight: bold;
+padding: 8px;
+font-size: 13px;
+background-color: #ffffff;
+position: fixed;
+z-index: 1000;
+width: 384px;
+border-bottom: 1px solid #dddddd;
+}
+#notificationsBody
+{
+padding: 33px 0px 0px 0px !important;
+min-height:300px;
+}
+#notificationFooter
+{
+background-color: #e9eaed;
+text-align: center;
+font-weight: bold;
+padding: 8px;
+font-size: 12px;
+border-top: 1px solid #dddddd;
+}
+#nav{list-style:none;margin: 0px;padding: 0px;}
+#nav li {
+float: left;
+margin-right: 5px;
+font-size: 14px;
+font-weight:bold;
+}
+#nav li a{color:#333333;text-decoration:none}
+#nav li a:hover{color:#006699;text-decoration:none}
+.parent{
+position:relative;
+height:300px;
+width:300px;
+background:#eee;
+overflow:hidden;
+padding-right:10px;
+}
+.scrollable{
+position:absolute;
+top:0px;
+width:300px;
+}
+.scrollbar{
+cursor:n-resize;
+position:absolute;
+top:0px;
+right:0px;
+z-index:2;
+background:#444;
+width:10px;
+border-radius:0px;
+cursor: pointer;
+}
+
+/* <!--Heartbeat End--> */

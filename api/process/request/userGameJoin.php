@@ -6,7 +6,18 @@ error_reporting(0);
 //Declaring default Date and Time Zone for Stamps
 date_default_timezone_set('Asia/Kolkata');
 
-session_start();
+//Check for session exists or not
+if(!$_SESSION['user_id']){
+
+  header('Location:../auth/loginPage.php?redirectback=' . urlencode($_SERVER['REQUEST_URI']));
+
+}else{
+
+  //Start the session and let user data to be read in the page
+  session_start();
+
+}
+
 
 //Including the DB file
 include '../../../includes/config/dbConnectivity.php';

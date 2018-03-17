@@ -1,33 +1,33 @@
 <!-- JS Global Compulsory -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/d07b1474/cloudflare-static/email-decode.min.js"></script>
+<script data-cfasync="false" src="http://www.nattsshoother.com/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../../../assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
-<script src="../../../assets/vendor/popper.min.js"></script>
-<script src="../../../assets/vendor/bootstrap/bootstrap.min.js"></script>
+<script src="<?php echo $baseURL; ?>assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+<script src="<?php echo $baseURL; ?>assets/vendor/popper.min.js"></script>
+<script src="<?php echo $baseURL; ?>assets/vendor/bootstrap/bootstrap.min.js"></script>
 
 
 <!-- JS Implementing Plugins -->
-<script src="../../../assets/vendor/appear.js"></script>
-<script src="../../../assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
-<script src="../../../assets/vendor/malihu-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="../../../assets/vendor/jquery.maskedinput/src/jquery.maskedinput.js"></script>
-<script src="../../../assets/vendor/chosen/chosen.jquery.js"></script>
+<script src="<?php echo $baseURL; ?>assets/vendor/appear.js"></script>
+<script src="<?php echo $baseURL; ?>assets/vendor/hs-megamenu/src/hs.megamenu.js"></script>
+<script src="<?php echo $baseURL; ?>assets/vendor/malihu-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="<?php echo $baseURL; ?>assets/vendor/jquery.maskedinput/src/jquery.maskedinput.js"></script>
+<script src="<?php echo $baseURL; ?>assets/vendor/chosen/chosen.jquery.js"></script>
 
 <!-- JS Unify -->
-<script src="../../../assets/js/hs.core.js"></script>
-<script src="../../../assets/js/helpers/hs.hamburgers.js"></script>
-<script src="../../../assets/js/components/hs.header.js"></script>
-<script src="../../../assets/js/components/hs.tabs.js"></script>
-<script src="../../../assets/js/components/hs.progress-bar.js"></script>
-<script src="../../../assets/js/components/hs.scrollbar.js"></script>
-<script src="../../../assets/js/helpers/hs.not-empty-state.js"></script>
-<script src="../../../assets/js/helpers/hs.focus-state.js"></script>
-<script src="../../../assets/js/components/hs.masked-input.js"></script>
-<script src="../../../assets/js/components/hs.select.js"></script>
-<script src="../../../assets/js/components/hs.go-to.js"></script>
+<script src="<?php echo $baseURL; ?>assets/js/hs.core.js"></script>
+<script src="<?php echo $baseURL; ?>assets/js/helpers/hs.hamburgers.js"></script>
+<script src="<?php echo $baseURL; ?>assets/js/components/hs.header.js"></script>
+<script src="<?php echo $baseURL; ?>assets/js/components/hs.tabs.js"></script>
+<script src="<?php echo $baseURL; ?>assets/js/components/hs.progress-bar.js"></script>
+<script src="<?php echo $baseURL; ?>assets/js/components/hs.scrollbar.js"></script>
+<script src="<?php echo $baseURL; ?>assets/js/helpers/hs.not-empty-state.js"></script>
+<script src="<?php echo $baseURL; ?>assets/js/helpers/hs.focus-state.js"></script>
+<script src="<?php echo $baseURL; ?>assets/js/components/hs.masked-input.js"></script>
+<script src="<?php echo $baseURL; ?>assets/js/components/hs.select.js"></script>
+<script src="<?php echo $baseURL; ?>assets/js/components/hs.go-to.js"></script>
 
 <!-- JS Customization -->
-<script src="../../../assets/js/custom.js"></script>
+<script src="<?php echo $baseURL; ?>assets/js/custom.js"></script>
 
 
 <!-- JS Plugins Init. -->
@@ -81,16 +81,19 @@
 </script>
 
 <!-- JS Implementing Plugins -->
-<script  src="../../../assets/vendor/custombox/custombox.min.js"></script>
+<script  src="<?php echo $baseURL; ?>assets/vendor/custombox/custombox.min.js"></script>
 
 <!-- JS Unify -->
-<script  src="../../../assets/js/components/hs.modal-window.js"></script>
+<script  src="<?php echo $baseURL; ?>assets/js/components/hs.modal-window.js"></script>
 
 <!-- Sweet Alert 2 (SWAL2) -->
-<script src="../../../assets/js/components/sweetalert2.min.js"></script>
+<script src="<?php echo $baseURL; ?>assets/js/components/sweetalert2.min.js"></script>
 
 <!-- jQuery Shake Effect for form errors -->
-<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- Moment js library for date_time_stamp functionality -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
 
 <!-- Writing some custom script to handle extra features -->
 <script>
@@ -107,6 +110,9 @@
 
     }
 
+    //Initializing tooltip calls
+    $('[data-toggle="tooltip"]').tooltip();
+
 
 
     $('.platformIDUpdate').on('click',function(){
@@ -121,7 +127,7 @@
         $.ajax ({
 
           type:'POST',
-          url:'../../../api/process/request/addUpdateGameUserProfile.php?request='+'getUserName',
+          url:'<?php echo $baseURL; ?>api/process/request/addUpdateGameUserProfile.php?request='+'getUserName',
           data:{'platformGameID':platformGameID,'platformUserName':platformUserName,'userID':userID},
           dataType:'json',
           success:function(data){
@@ -165,7 +171,7 @@
         $.ajax({
 
               type:'POST',
-              url:'../../../api/process/request/addUpdateGameUserProfile.php?request='+'updateUserName',
+              url:'<?php echo $baseURL; ?>api/process/request/addUpdateGameUserProfile.php?request='+'updateUserName',
               data:{'platformUserName':platformUserName, 'platformGameID':platformGameID, 'userID':userID},
               dataType:'json',
               success:function(data){
@@ -241,7 +247,7 @@
       $.ajax({
 
         type:'POST',
-        url:'../../../api/process/request/addUpdateGameUserProfile.php?request='+'getGameInfo',
+        url:'<?php echo $baseURL; ?>api/process/request/addUpdateGameUserProfile.php?request='+'getGameInfo',
         data:{'platformGameID':getPlatformID, 'userID':userID},
         dataType:'json',
         success:function(data){
@@ -273,7 +279,7 @@
               $.ajax({
 
                 type:'POST',
-                url:'../../../api/process/request/addUpdateGameUserProfile.php?request='+'mapusername',
+                url:'<?php echo $baseURL; ?>api/process/request/addUpdateGameUserProfile.php?request='+'mapusername',
                 data:{'platformGameID':gameID, 'userID':userID, 'platformUserName':username},
                 dataType:'json',
                 success:function(data){
@@ -337,8 +343,11 @@
 
 function notificationPanel(){
 
-  var notificationCount = 0;
-  var audio = new Audio('../../../assets/notification/notification-sound.wav');
+  //Reading the securetiy token Generated
+  var token = $('#tokenArea').text();
+
+  var notificationCount = $('#notificationCount').text();
+  var audio = new Audio('<?php echo $baseURL; ?>assets/notification/notification-sound.wav');
 
   // $('#notificationCount').html(notificationCount);
   // alert(notificationCount);
@@ -347,24 +356,37 @@ function notificationPanel(){
         $.ajax({
 
               type:'post',
-              url:'../../../api/process/request/notificationCheck.php',
-              data:{'userID':userID},
+              url:'<?php echo $baseURL; ?>api/process/request/notificationCheck?token='+token,
+              data:{'userID':userID,'notification_count':notificationCount,'token':token},
               dataType: 'json',
               success:function(data){
 
-                if(data){
-                  // alert(data);
-
                   var unreadcounts = parseInt(data.unreadcounts);
-                  // alert(unreadcounts);
-                  if(unreadcounts!=0)
-                  audio.play();
-                  var newnotificationCount = notificationCount+unreadcounts;
-                  $('#notificationCount').html(newnotificationCount);
-                  $('#notificationCounts').html(newnotificationCount);
+                  $('#notificationCounts').html(unreadcounts);
+
+                if(data.response == 'NPR'){
+
+                    $('#notificationCount').html(unreadcounts);
+
+                }else if(data.response == 'NUN'){
+
+                    $('#notificationCount').html(unreadcounts);
+                    $('.icon-bell').effect( "shake" );
+                    // cheers.success({
+                    //     title: 'New Notification!',
+                    //     icon: 'fa-bell',
+                    //     message: 'You have received a notification.',
+                    //     alert: 'slideleft',
+                    // });
+
+                    //Play notification sound upon new notification
+                    audio.play();
+
+                }else{
+
+                    $('#notificationCount').html('0');
 
                 }
-
               },complete: function() {
 
                 // schedule the next request *only* when the current one is complete:
@@ -385,7 +407,7 @@ function notificationPanel(){
     var gameID = this.id;
     var userID = $('#hiddenUserID').text();
 
-    alert(gameID);
+    //alert(gameID);
 
     joinGame(gameID);
 
@@ -408,7 +430,7 @@ function notificationPanel(){
             $.ajax({
 
                 type:'post',
-                url:'../../../api/process/request/userGameJoin.php',
+                url:'<?php echo $baseURL; ?>api/process/request/userGameJoin',
                 data:{'gameID':gameID,'userID':userID},
                 dataType:'json',
                 success:function(data){
@@ -456,11 +478,257 @@ function notificationPanel(){
 
        });
 
+       window.setTimeout(reload, 2200);
+
       }
 
     });
 
   };
+
+     $("#notificationLink").click(function(){
+
+        $("#notificationContainer").fadeToggle(300);
+        $("#notification_count").fadeOut("slow");
+        return false;
+
+      });
+
+    //Document Click hiding the popup
+    $(document).click(function(){
+
+      $("#notificationContainer").hide();
+
+    });
+
+    //Popup on click
+    $("#notificationContainer").click(function(){
+
+      e.stopPropagation();
+
+    });
+
+    function scrollbar(){
+      var parH = $('.parent').outerHeight(true);
+      var areaH = $('.scrollable').outerHeight(true);
+      var scrH = parH / (areaH/parH);
+
+      function dragging(){
+      var scrPos = $('.scrollbar').position().top;
+      $('.scrollable').css({top: -(scrPos*(areaH/parH)-1)});
+      }
+
+
+
+      $('.scrollbar').height(scrH);
+      $('.scrollbar').draggable({
+      axis: 'y',
+      containment: 'parent',
+      drag: function() {
+      dragging()
+      }
+
+      });
+
+  };
+
+  function type(){
+
+    if(dots < 3)
+    {
+        $('#dots').append('.');
+        dots++;
+    }
+    else
+    {
+        $('#dots').html('');
+        dots = 0;
+    }
+
+  }
+
+  //Run the dots along
+  setInterval (type, 600);
+
+  //Quick User Match function
+  $(document).on('click','.quickMatchModal',function(){
+
+    $('#quickMatchArea').html("");
+
+    //Reading the securetiy token Generated
+    var token = $('#tokenArea').text();
+    var userid = $('#hiddenUserID').text();
+
+    $.ajax({
+
+        type: 'post',
+        url: '<?php echo $baseURL; ?>api/process/request/findQuickMatch?token='+token,
+        data:{'token':token, 'userid':userid},
+        dataType: 'html',
+        beforeSend: function(){
+
+          $('#findQuickMatch').show().fadeIn('slow').delay(7200);
+
+        },
+        success: function(data){
+
+          $('#findQuickMatch').fadeOut('slow').delay(7800);
+
+          if(data){
+
+            setTimeout(function(){
+
+              $('#quickMatchArea').html(data);
+              $('#successtext').html("<i class='icon-target'></i>New Matche(s) Found.");
+
+            },7500);
+
+          }else{
+
+            alert('ERROR');
+
+          }
+      }
+
+
+    });
+
+  });
+
+  $('#rdmvchr').click(function(){
+
+    var vcode = $('#voucherCode').val();
+    alert('Hi'+vcode);
+
+  });
+
+  $(document).on('click','.acceptChallenge',function(){
+
+      var quickMatchID = this.id;
+      var challengeruserID = $(this).attr('data-id');
+      var challengeruserName = $(this).attr('name');
+
+      $.ajax({
+
+          type: 'post',
+          url:  '<?php echo $baseURL; ?>api/process/request/acceptQuickMatch',
+          // dataType: 'json',
+          data: {'acceptoruserID': userID, 'quickMatchID': quickMatchID, 'challengeruserID':challengeruserID, 'challengeruserName': challengeruserName},
+          success: function(result){
+
+              if(result == "CA"){
+
+                swal({
+
+                 title: "You have successfully accepted the challenge.",
+                 text: "Please proceed with game play.",
+                 icon: 'success',
+                 buttons: false,
+                 timer : 5000
+                }).then(function() {
+
+                   window.setTimeout(reload(),5500);
+                   swal.close();
+                   // $('#closeModal').click();
+
+               });
+
+              }else{
+
+                alert ('Unknow Error');
+
+              }
+
+          }
+
+
+
+      });
+
+  });
+
+  //Head ON Macth Logic
+  $('#headonMatch').hide();
+  $('#addMoney').hide();
+
+  $('#headonMatch').on('click', function(){
+
+      var headOnuserID = $('#userSelect option:selected').val();
+      var challengeAmount = $('#challengeAmount option:selected').val();
+      var currentDTStamp = moment().format('DMMYYYYHmmss');
+      var InvitationCode ='BSLVHOM'+currentDTStamp;
+      alert(InvitationCode);
+
+      alert('Hi '+headOnuserID+' Amount '+challengeAmount);
+
+
+      return false;
+
+  });
+
+  $('#userSelect').on ('change', function(){
+
+    if($(this).val() == 'null')
+
+        $('#gamePlatformChoose').fadeOut('slow').delay(100);
+
+    else
+
+        $('#gamePlatformChoose').fadeIn('slow').delay(100);
+
+  });
+
+  $('#gameSelect').on('change', function(){
+
+    if($(this).val() == 'null'){
+
+      $('#challengeAmountSection').hide();
+      $('#challengeAmount').reset();
+
+    }else{
+
+      $('#challengeAmountSection').fadeIn('slow').delay(100);
+
+    }
+
+  });
+
+
+  $('#challengeAmount').on('change', function(){
+
+      $('#headonMatch').fadeIn('slow').delay(100);
+
+      var walletBalance = parseInt($('.walletBalance').text().replace('₹',''));
+      var challengeAmount = parseInt($('#challengeAmount option:selected').text().replace('₹',''));
+
+      if(walletBalance < challengeAmount){
+
+
+        swal({
+
+         title: "Insufficient funds in wallet.",
+         text: "Please add "+'₹'+(challengeAmount-walletBalance)+" to your wallet and retry.",
+         icon: 'warning',
+         buttons: false
+       });
+
+       // swal.close();
+       // Custombox.modal.close();
+       // $('#headonMatchForm')[0].reset();
+
+        $('#addMoney').fadeIn('slow').delay(100);
+        $('#headonMatch').hide();
+
+      }
+      else{
+
+        $('#addMoney').hide();
+        $('#headonMatch').fadeIn('slow').delay(100);
+
+      }
+
+  });
+
 
 });
 </script>

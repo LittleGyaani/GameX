@@ -21,9 +21,10 @@ if(isset($_SESSION['userID'])){
 } else{
 
   echo 'You are not authorized to access the page without logging in.';
-  header('Location:../auth/loginPage.php');
+  header('Location:../auth/loginPage.php?redirectback=' . urlencode($_SERVER['REQUEST_URI']));
 
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,7 +131,7 @@ if(isset($_SESSION['userID'])){
             <!-- User Image -->
             <div class="u-block-hover g-pos-rel">
               <figure>
-                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img/profilePic/img5.jpg" alt="Image Description">
+                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img/profilePic/user_sampat.jpg" alt="Image Description">
               </figure>
 
               <!-- User Info -->

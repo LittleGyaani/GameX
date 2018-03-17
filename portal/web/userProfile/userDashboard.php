@@ -9,6 +9,9 @@ include '../../../includes/config/dbConnectivity.php';
 //Initializing session
 session_start();
 
+//Defining Default Time DateTimeZone
+date_default_timezone_set('Asia/Kolkata');
+
 //Validating if the session exists or not
 if(!empty($_SESSION['userID'])){
 
@@ -19,10 +22,11 @@ if(!empty($_SESSION['userID'])){
   $getAllUserDetails = $conn -> query($selectAllUserData);
   $selectUserInformations = $getAllUserDetails -> fetch_assoc();
 
-} else{
+}else{
 
   echo 'You are not authorized to access the page without logging in.';
-  header('Location:../auth/loginPage.php');
+  header('Location:../auth/loginPage.php?redirectback=' . urlencode($_SERVER['REQUEST_URI']));
+
 
 }
  ?>
@@ -44,62 +48,120 @@ if(!empty($_SESSION['userID'])){
     <!-- End Header -->
 
     <!-- Promo Block -->
-      <section class="g-bg-cover g-bg-pos-center g-bg-img-hero g-bg-bluegray-opacity-0_3--after g-py-150" style="background-image: url(https://i0.wp.com/www.celebsclothing.com/blog/wp-content/uploads/2016/10/League-of-Legends.jpg?fit=1920%2C1080&ssl=1);">
-        <div class="container g-max-width-750 g-bg-cover__inner">
-          <!-- Countdown v4 -->
-          <div class="js-countdown text-center text-uppercase g-mb-40 g-mb-70--md" data-end-date="2018/01/01" data-month-format="%m" data-days-format="%D" data-hours-format="%H" data-minutes-format="%M" data-seconds-format="%S">
-            <div class="d-inline-block g-color-white g-font-size-11 g-px-10 g-px-40--md g-py-10">
-              <div class="js-cd-days g-font-size-20 g-font-size-45--md g-font-weight-700 g-line-height-1 g-mb-5">12</div>
-              <span class="g-font-size-default">Days</span>
-            </div>
-            <div class="d-inline-block g-color-white g-font-size-11 g-brd-left g-brd-white-opacity-0_4 g-px-10 g-px-40--md g-py-10">
-              <div class="js-cd-hours g-font-size-20 g-font-size-45--md g-font-weight-700 g-line-height-1 g-mb-5">01</div>
-              <span class="g-font-size-default">Hours</span>
-            </div>
-            <div class="d-inline-block g-color-white g-font-size-11 g-brd-left g-brd-white-opacity-0_4 g-px-10 g-px-40--md g-py-10">
-              <div class="js-cd-minutes g-font-size-20 g-font-size-45--md g-font-weight-700 g-line-height-1 g-mb-5">52</div>
-              <span class="g-font-size-default">Minutes</span>
-            </div>
-            <div class="d-inline-block g-color-white g-font-size-11 g-brd-left g-brd-white-opacity-0_4 g-px-10 g-px-40--md g-py-10">
-              <div class="js-cd-seconds g-font-size-20 g-font-size-45--md g-font-weight-700 g-line-height-1 g-mb-5">52</div>
-              <span class="g-font-size-default">Seconds</span>
+    <div class="container g-pt-100">
+        <div class="row justify-content-lg-between">
+          <div class="col-lg-4 g-pt-50--lg">
+            <div class="mb-5">
+              <h1 class="g-color-black g-font-size-45 mb-4">Welcome Back!</h1>
+              <p>Explore all the September events and back-to-school resources to welcome you to campus.</p>
+              <span class="u-icon-v1 g-mb-10"><a class="js-go-to btn u-shadow-v33 g-color-white g-bg-primary u-btn-hover-v2-2 g-bg-cyan--hover g-rounded-30 g-px-35 g-py-10 quickMatchModal" href="#quickMatch" data-modal-target="#quickMatch" data-modal-effect="blur">
+                  <i class="icon-energy"></i> Quick Match</a>
+                </span>
+                <br>
+                <span class="u-icon-v1 g-mb-10"><a class="js-go-to btn u-shadow-v33 g-color-white g-bg-purple u-btn-hover-v2-2 g-bg-orange--hover g-rounded-30 g-px-35 g-py-10 quickHeadOnMatchModal" href="#quickheadOnMatch" data-modal-target="#quickheadOnMatch" data-modal-effect="blur">
+                    <i class="icon-puzzle"></i> Quick Head On Match</a>
+                  </span>
+
             </div>
           </div>
-          <!-- End Countdown v4 -->
 
-          <h2 class="h2 g-color-white g-font-weight-700 g-font-size-40 g-font-size-55--md text-center text-uppercase g-mb-30 g-mb-70--md">The Next Game OPENS</h2>
-
-          <div class="row g-mx-minus-5">
-            <div class="col-md-4 g-px-5 g-mb-20 g-mb-0--md">
-              <div class="media">
-                <div class="d-flex align-self-center mr-3">
-                  <i class="g-color-white-opacity-0_7 g-font-size-27 g-line-height-0_7 icon-education-124 u-line-icon-pro"></i>
-                </div>
-                <div class="media-body align-self-center g-color-white text-uppercase">
-                  <span class="d-block g-color-white-opacity-0_7 g-font-size-default">When</span>
-                  <span class="d-block text-uppercase g-font-weight-700 mb-0">18:30, 12 Jul, 2017</span>
-                </div>
-              </div>
+          <!-- Qucik Match modal window -->
+          <div id="quickMatch" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">
+            <button type="button" class="close" onclick="Custombox.modal.close();">
+              <i class="icon-close"></i>
+            </button>
+            <div id="findQuickMatch">
+            <p><center><img src="https://cdn.dribbble.com/users/475393/screenshots/3099510/pulse.gif" height="390" width="512"/></center></p>
+            <center><p><h3>Finding a <b>Match</b> for YOU<span id="dots"></span><h3></p></center>
             </div>
 
-            <div class="col-md-5 g-px-5 g-mb-20 g-mb-0--md">
-              <div class="media">
-                <div class="d-flex align-self-center mr-3">
-                  <i class="g-color-white-opacity-0_7 g-font-size-27 g-line-height-0_7 icon-hotel-restaurant-235"></i>
-                </div>
-                <div class="media-body align-self-center g-color-white text-uppercase">
-                  <span class="d-block g-color-white-opacity-0_7 g-font-size-default">Where</span>
-                  <span class="d-block text-uppercase g-font-weight-700 mb-0">Concert Hall, Los Angeles, USA</span>
-                </div>
-              </div>
-            </div>
+              <div id="quickMatchArea"><h4 class="g-mb-20"><div id="successtext"></div></h4></div>
+              <center><button type="button" class="close btn btn-lg u-btn-outline-red u-btn-hover-v2-1 g-mr-10 g-mb-15" onclick="Custombox.modal.close();">Cancel</button></center>
+          </div>
+          <!-- End Quick Match modal window -->
 
-            <div class="col-md-3 text-md-right g-px-5">
-              <a class="btn btn-lg u-btn-white g-color-primary--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="shortcode-blocks-promo-demo-11.html#!">Play Now</a>
+          <!-- Qucik Head ON Match modal window -->
+          <div id="quickheadOnMatch" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">
+            <button type="button" class="close" onclick="Custombox.modal.close();">
+              <i class="icon-close"></i>
+            </button>
+
+                  <form method="post" id="headonMatchForm" action="#" class="g-brd-around g-brd-gray-light-v4 g-pa-30 g-mb-30">
+
+                    <div class="form-inline">
+                      <label class="mr-sm-3 mb-3 mb-lg-0" for="WhomtoChallenge">Whom to Challenge?</label>
+                      <select id="userSelect" name="userSelect" class="custom-select mr-sm-3 mb-3 mb-lg-0">
+                        <option value="null" selected disabled>Choose an User</option>
+                    <?php
+                      $selectUserData = "SELECT * FROM `user_info`";
+                      $runselectUserData = $conn -> query($selectUserData);
+                      if($runselectUserData && ($runselectUserData -> num_rows > 0)){
+
+                          while ($fetchuserData = $runselectUserData -> fetch_assoc()){
+                    ?>
+                          <option value="<?= $fetchuserData['user_id']; ?>"><?= $fetchuserData['user_fullname']; ?> - <?= $fetchuserData['user_name']; ?></option>
+                    <?php
+                  }
+                }
+                    ?>
+                      </select>
+
+                    </div>
+
+                    <br>
+
+                    <div class="form-inline" id ="gamePlatformChoose" style="display:none">
+                      <label class="mr-sm-3 mb-3 mb-lg-0" for="WhomtoChallenge">What game to Challenge?</label>
+                      <select id="gameSelect" name="gameSelect" class="custom-select mr-sm-3 mb-3 mb-lg-0">
+                        <option value="null" selected disabled>Choose Game</option>
+                    <?php
+                      $selectGameData = "SELECT * FROM `profile_platform_games` WHERE `game_status`= 1";
+                      $runselectGameData = $conn -> query($selectGameData);
+                      if($runselectGameData && ($runselectGameData -> num_rows > 0)){
+
+                          while ($fetchgameData = $runselectGameData -> fetch_assoc()){
+                    ?>
+                          <option value="<?= $fetchgameData['gameID']; ?>"><?= $fetchgameData['game_name']; ?> - <?= $fetchgameData['game_developer_company']; ?></option>
+                    <?php
+                  }
+                }
+                    ?>
+                      </select>
+
+                    </div>
+
+                      <br>
+
+                    <div id="challengeAmountSection" class="form-inline" style="display:none">
+                      <label class="mr-sm-3 mb-3 mb-lg-0" for="HowMuchforChallenge">Choose Challenge Amount?</label>
+                      <select id="challengeAmount" name="challengeAmount" class="custom-select mr-sm-3 mb-3 mb-lg-0">
+                        <option value="0" selected disabled>Choose an Amount</option>
+                        <option value="50">₹50</option>
+                        <option value="100">₹100</option>
+                        <option value="150">₹150</option>
+                        <option value="200">₹200</option>
+                        <option value="250">₹250</option>
+                        <option value="500">₹500</option>
+                        <option value="1000">₹1000</option>
+                      </select>
+                    </div>
+
+                    <br>
+
+                    <center>  <button type="submit" class="btn btn-md u-btn-primary rounded-0" id="headonMatch">Challenge Now</button> </center>
+                    <center>  <a href="#" class="btn btn-md u-btn-red rounded-0" id="addMoney">Add Money</a> </center>
+
+                  </form>
+
+          </div>
+          <!-- End Quick Head On Match modal window -->
+
+          <div class="col-lg-8 align-self-end">
+            <div class="u-shadow-v40 g-brd-around g-brd-7 g-brd-white rounded">
+              <img class="img-fluid rounded" src="<?php echo $baseURL;?>assets/img/bg/quick_match.png" alt="Image Description">
             </div>
           </div>
         </div>
-      </section>
       <!-- End Promo Block -->
 
     <!-- Breadcrumb -->
@@ -130,7 +192,7 @@ if(!empty($_SESSION['userID'])){
             <!-- User Image -->
             <div class="u-block-hover g-pos-rel">
               <figure>
-                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img/profilePic/img5.jpg" alt="Image Description">
+                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img/profilePic/<?= $selectUserInformations['user_profile_pic'];?>" alt="Image Description">
               </figure>
 
               <!-- User Info -->
@@ -203,71 +265,8 @@ if(!empty($_SESSION['userID'])){
             </div>
             <!-- End Sidebar Navigation -->
 
-            <!-- Project Progress -->
-            <div class="card border-0 rounded-0 g-mb-50">
-              <!-- Panel Header -->
-              <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
-                <h3 class="h6 mb-0">
-                    <i class="icon-badge g-pos-rel g-top-1 g-mr-5"></i> Games in Progress
-                  </h3>
-              </div>
-              <!-- End Panel Header -->
+            <!-- Project progres area, Copy from template_project_area.php -->
 
-              <!-- Panel Body -->
-              <div class="js-scrollbar card-block u-info-v1-1 g-bg-white-gradient-v1--after g-height-300 g-pa-0">
-                <!-- Web Design -->
-                <div class="g-mb-20">
-                  <h6 class="g-mb-10">Web Design <span class="float-right g-ml-10">68%</span></h6>
-                  <div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-5">
-                    <div class="js-hr-progress-bar-indicator progress-bar g-bg-cyan u-progress-bar--xs" role="progressbar" style="width: 68%;" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <small class="g-font-size-12">11% more than last week</small>
-                </div>
-                <!-- End Web Design -->
-
-                <!-- Unify Project -->
-                <div class="g-mb-20">
-                  <h6 class="g-mb-10">Dribbble Shots <span class="float-right g-ml-10">62%</span></h6>
-                  <div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-5">
-                    <div class="js-hr-progress-bar-indicator progress-bar g-bg-pink u-progress-bar--xs" role="progressbar" style="width: 62%;" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <small class="g-font-size-12">20% less than last week</small>
-                </div>
-                <!-- End Unify Project -->
-
-                <!-- Unify Project -->
-                <div class="g-mb-20">
-                  <h6 class="g-mb-10">Unify Project <span class="float-right g-ml-10">93%</span></h6>
-                  <div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-5">
-                    <div class="js-hr-progress-bar-indicator progress-bar g-bg-primary u-progress-bar--xs" role="progressbar" style="width: 93%;" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <small class="g-font-size-12">17% more than last week</small>
-                </div>
-                <!-- End Unify Project -->
-
-                <!-- WordPress Coding -->
-                <div class="g-mb-20">
-                  <h6 class="g-mb-10">WordPress Coding <span class="float-right g-ml-10">74%</span></h6>
-                  <div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-5">
-                    <div class="js-hr-progress-bar-indicator progress-bar g-bg-black u-progress-bar--xs" role="progressbar" style="width: 74%;" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <small class="g-font-size-12">35% more than last week</small>
-                </div>
-                <!-- End WordPress Coding -->
-
-                <!-- Pixeel Ltd -->
-                <div class="g-mb-20">
-                  <h6 class="g-mb-10">Pixeel Ltd <span class="float-right g-ml-10">86%</span></h6>
-                  <div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-5">
-                    <div class="js-hr-progress-bar-indicator progress-bar g-bg-darkpurple u-progress-bar--xs" role="progressbar" style="width: 86%;" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <small class="g-font-size-12">42% more than last week</small>
-                </div>
-                <!-- End Pixeel Ltd -->
-              </div>
-              <!-- End Panel Body -->
-            </div>
-            <!-- End Project Progress -->
           </div>
           <!-- End Profile Sidebar -->
 
@@ -277,6 +276,7 @@ if(!empty($_SESSION['userID'])){
             <!-- Projects & Activities Panels -->
             <div class="row g-mb-40">
               <div class="col-lg-6 g-mb-40 g-mb-0--lg">
+
                 <!-- Latest Projects Panel -->
                 <div class="card border-0">
                   <!-- Panel Header -->
@@ -285,7 +285,7 @@ if(!empty($_SESSION['userID'])){
                         <i class="icon-exclamation g-pos-rel g-top-1 g-mr-5"></i> Open Match Notifications
                       </h3>
                     <div class="dropdown g-mb-10 g-mb-0--md">
-                      <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" rel="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="icon-options-vertical g-pos-rel g-top-1"></i>
                         </span>
                       <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
@@ -318,8 +318,9 @@ if(!empty($_SESSION['userID'])){
 
                       $selectGameInfo = "SELECT * FROM `game_registration_meta`";
                       $runselectGameInfo = $conn -> query($selectGameInfo);
+                      $participantCountRows = $runselectGameInfo -> num_rows;
                       $leftBrdColorArray = array("g-brd-red-left", "g-brd-black-left", "g-brd-yellow-left", "g-brd-green-left", "g-brd-pink-left", "g-brd-blue-left");
-                      if($runselectGameInfo -> num_rows > 0){
+                      if($participantCountRows > 0){
 
                         while($getGameInfo = $runselectGameInfo -> fetch_assoc()){
 
@@ -341,15 +342,30 @@ if(!empty($_SESSION['userID'])){
                           </div>
                           <p><?=$getGameInfo['game_fixture_info']?><br>
                           <span class=" g-color-red g-rounded-20 g-px-10">Registration Open <?=$getGameInfo['game_registration_start_date']?></span><br>
-                          <span class=" g-color-red g-rounded-20 g-px-10">Registration Ends <?=$getGameInfo['game_registration_end_date']?></span><br>
+                          <span class=" g-color-red g-rounded-20 g-px-10">Registration Ends &nbsp; <?=$getGameInfo['game_registration_end_date']?></span><br>
                           </p>
                           <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-blue g-rounded-20 g-px-10">Participants <?=$getGameInfo['game_participants']?></span>
                           <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-pink g-rounded-20 g-px-10">Winning Prize ₹<?=$getGameInfo['game_winning_amount']?></span> <br>
                           <br>
                           <?php
                           $today = date("d-m-Y H:i");
-                          // echo $today;
-                              echo ($today < $getGameInfo['game_registration_end_date']) ? '<a href="javascript:void(0);" id="'." $gameID".'" class="joinGameButton btn btn-md u-btn-outline-darkgray g-rounded-50 g-mr-10 g-mb-15">Join Game</a>':'<input type="button" class="btn btn-md u-btn-outline-red g-rounded-50 g-mr-10 g-mb-15" value ="Registration Over" />';
+                          $endDate = $getGameInfo['game_registration_end_date'];
+
+                          //Get tournament registered counter
+                          $getTournamentRegisterMeta = $conn -> query("SELECT * FROM `tournament_fixture_info` WHERE `tournament_Game_ID` = $gameID");
+                          $getUserJoinStatus = $conn -> query("SELECT * FROM `tournament_fixture_info` WHERE `tournament_Game_ID` = $gameID AND `tournament_join_userID` = $userID");
+
+                          if(!$getUserJoinStatus -> num_rows)
+                              if(strtotime($endDate) >= strtotime($today))
+                                if($participantCountRows >= $getTournamentRegisterMeta -> num_rows)
+                                  echo '<a href="javascript:void(0);" id="'." $gameID".'" class="joinGameButton btn btn-md u-btn-outline-darkgray g-rounded-50 g-mr-10 g-mb-15">Join Game</a>';
+                                else
+                                  echo '<input type="button" class="btn btn-md u-btn-outline-yellow g-rounded-50 g-mr-10 g-mb-15" value ="User Limit Reached" disabled></input>';
+                              else
+                                echo '<input type="button" class="btn btn-md u-btn-outline-red g-rounded-50 g-mr-10 g-mb-15" value ="Registration Over" disabled> </input>';
+                          else
+                              echo '<input type="button" class="btn btn-md u-btn-outline-purple g-rounded-50 g-mr-10 g-mb-15" value ="Already Joined" disabled> </input>';
+
                             ?>
 
                         </div>
@@ -361,7 +377,7 @@ if(!empty($_SESSION['userID'])){
                   }
                   }else{
 
-                    echo 'No game to show at this moment.';
+                    echo 'No game to show at this moment.<br>Please check back.';
 
                   }
                     ?>
@@ -380,7 +396,7 @@ if(!empty($_SESSION['userID'])){
                         <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> Global Leaderboard
                       </h3>
                     <div class="dropdown g-mb-10 g-mb-0--md">
-                      <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" rel="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="icon-options-vertical g-pos-rel g-top-1"></i>
                         </span>
                       <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
@@ -504,8 +520,8 @@ if(!empty($_SESSION['userID'])){
                     <h3 class="h6 mb-0">
                         <i class="icon-list g-pos-rel g-top-1 g-mr-5"></i> Quick Notifications
                       </h3>
-                    <div class="dropdown g-mb-10 g-mb-0--md">
-                      <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <!-- <div class="dropdown g-mb-10 g-mb-0--md">
+                      <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" rel="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="icon-options-vertical g-pos-rel g-top-1"></i>
                         </span>
                       <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
@@ -528,39 +544,21 @@ if(!empty($_SESSION['userID'])){
                           <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
                         </a>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
 
                   <div class="js-scrollbar card-block u-info-v1-1 g-bg-white-gradient-v1--after g-height-300 g-pa-0">
                     <?php
-                      $selectUserNotifications = "SELECT * FROM `user_notification_record` WHERE `user_id` = $userID";
+                      $selectUserNotifications = "SELECT * FROM `user_notification_record` WHERE `userID` = $userID ORDER BY `notification_sent_DTStamp` DESC";
                       $runselectUserNotifications = $conn -> query($selectUserNotifications);
-                      $colorArray = array("g-color-primary", "g-color-cyan", "g-color-orange");
-                      $iconArray = array("");
-                      // for($i = 0; $i < count($colorArray); $i++){
-                      //   print "Colors"." ".$colorArray[$i]."<br>";
-                      //
-                      // }
-                      //
-                      // exit;
-                     ?>
-                    <!-- Alert Success -->
-                    <div class="alert fade show g-bg-primary-opacity-0_1 g-color-primary rounded-0 g-mb-5" role="alert">
-                      <button type="button" class="close u-alert-close--light g-ml-10 g-mt-1" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                      $colorArray = array("g-color-primary", "g-color-cyan", "g-color-orange", "g-color-purple", "g-color-lightred");
+                      $iconArray = array("fa fa-wallet", "fa fa-arrow-circle");
 
-                      <div class="media">
-                        <div class="d-flex g-mr-10">
-                          <img class="g-width-40 g-height-40 g-rounded-50x" src="../../../assets/img-temp/100x100/img5.jpg" alt="Image Description">
-                        </div>
-                        <div class="media-body">
-                          <p class="m-0"><strong>Jasica Coolman</strong> saved your pin.</p>
-                          <span class="g-font-size-12 g-color-gray">2 hours ago</span>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- End Alert Success -->
+                      if($runselectUserNotifications -> num_rows > 0){
+
+                          while($getNotficationdetails = $runselectUserNotifications -> fetch_assoc()){
+
+                     ?>
 
                     <!-- Alert Cyan -->
                     <div class="alert fade show g-bg-cyan-opacity-0_1 g-color-cyan rounded-0 g-mb-5" role="alert">
@@ -570,90 +568,24 @@ if(!empty($_SESSION['userID'])){
 
                       <div class="media">
                         <div class="d-flex g-mr-10">
-                          <img class="g-width-40 g-height-40 g-rounded-50x" src="../../../assets/img-temp/100x100/img14.jpg" alt="Image Description">
+                          <img class="g-width-40 g-height-40 g-rounded-50x" src="" alt="<?= $getNotficationdetails['user_name']?>">
                         </div>
                         <div class="media-body">
-                          <p class="m-0"><strong>Jack Watson</strong> sent you a message.</p>
-                          <span class="g-font-size-12">5 minutes ago</span>
+                          <p class="m-0"><strong><?= ucwords($getNotficationdetails['notification_sent_by']);?></strong> sent you a message.</p>
+                          <span class="g-font-size-12"><?=get_time_ago(strtotime($getNotficationdetails['notification_sent_DTStamp'])) ?></span>
                         </div>
                       </div>
                     </div>
                     <!-- End Alert Cyan -->
+                    <?php
+                  }
+                }else{
 
-                    <!-- Alert Orange -->
-                    <div class="alert fade show g-bg-orange-opacity-0_1 g-color-orange rounded-0 g-mb-5" role="alert">
-                      <button type="button" class="close u-alert-close--light g-ml-10 g-mt-1" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                  echo 'No Notification to show at the moment.';
+                }
+                ?>
+              </div>
 
-                      <div class="media">
-                        <div class="d-flex g-mr-10">
-                          <img class="g-width-40 g-height-40 g-rounded-50x" src="../../../assets/img-temp/100x100/img4.jpg" alt="Image Description">
-                        </div>
-                        <div class="media-body">
-                          <p class="m-0"><strong>Nelly</strong> is offering free cofee..</p>
-                          <span class="g-font-size-12 g-color-gray">5 days ago</span>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- End Alert Orange -->
-
-                    <!-- Alert Purple -->
-                    <div class="alert fade show g-bg-purple-opacity-0_1 g-color-purple rounded-0 g-mb-5" role="alert">
-                      <button type="button" class="close u-alert-close--light g-ml-10 g-mt-1" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-
-                      <div class="media">
-                        <div class="d-flex g-mr-10">
-                          <span class="u-icon-v3 u-icon-size--sm g-bg-purple g-color-white g-rounded-50x">
-                            <i class="icon-wallet"></i>
-                          </span>
-                        </div>
-                        <div class="media-body">
-                          <p class="m-0"><strong>Pixeel Ltd</strong> received $270 for logo.</p>
-                          <span class="g-font-size-12 g-color-gray">2 hours ago</span>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- End Alert Purple -->
-
-                    <!-- Alert Red -->
-                    <div class="alert fade show g-bg-red-opacity-0_1 g-color-lightred rounded-0 g-mb-5" role="alert">
-                      <button type="button" class="close u-alert-close--light g-ml-10 g-mt-1" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-
-                      <div class="media">
-                        <div class="d-flex g-mr-10">
-                          <img class="g-width-40 g-height-40 g-rounded-50x" src="../../../assets/img-temp/100x100/img17.jpg" alt="Image Description">
-                        </div>
-                        <div class="media-body">
-                          <p class="m-0"><strong>Edmon Low</strong> saved your pin.</p>
-                          <span class="g-font-size-12 g-color-gray">5 minutes ago</span>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- End Alert Red -->
-
-                    <!-- Alert Gray Lighter 5 -->
-                    <div class="alert fade show g-bg-gray-light-v5 rounded-0 g-mb-5" role="alert">
-                      <button type="button" class="close u-alert-close--light g-ml-10 g-mt-1" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-
-                      <div class="media">
-                        <div class="d-flex g-mr-10">
-                          <img class="g-width-40 g-height-40 g-rounded-50x" src="../../../assets/img-temp/100x100/img1.jpg" alt="Image Description">
-                        </div>
-                        <div class="media-body">
-                          <p class="m-0"><strong>Htmlstream</strong> released a new update.</p>
-                          <span class="g-font-size-12 g-color-gray">2 hours ago</span>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- End Alert Gray Lighter 5 -->
-                  </div>
                 </div>
                 <!-- End Notifications Panel -->
               </div>
@@ -665,8 +597,8 @@ if(!empty($_SESSION['userID'])){
                     <h3 class="h6 mb-0">
                         <i class="icon-energy g-pos-rel g-top-1 g-mr-5"></i> Global Activities
                       </h3>
-                    <div class="dropdown g-mb-10 g-mb-0--md">
-                      <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <!-- <div class="dropdown g-mb-10 g-mb-0--md">
+                      <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" rel="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="icon-options-vertical g-pos-rel g-top-1"></i>
                         </span>
                       <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
@@ -689,7 +621,7 @@ if(!empty($_SESSION['userID'])){
                           <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
                         </a>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
 
                   <div class="js-scrollbar card-block  u-info-v1-1 g-bg-white-gradient-v1--after g-height-300 g-pa-0">
@@ -701,12 +633,12 @@ if(!empty($_SESSION['userID'])){
 
                       <div class="media-body">
                         <h3 class="h6">
-                            <a class="g-color-black g-font-weight-600" href="#!">@Htmlstream</a> <span class="g-color-black-dark-v4">challenged</span> <a class="g-color-black g-font-weight-600" href="#!">@Htmlstream</a>
+                            <a class="g-color-black g-font-weight-600" href="#!">@brahma</a> <span class="g-color-black-dark-v4">challenged</span> <a class="g-color-black g-font-weight-600" href="#!">@Debashis</a>
                             <br>
                             <div style="float:right; margin-right:11px;"><span class="g-color-red">26 minutes ago</span></div> <br>
                           </h3>
-                        <p class="g-color-gray-dark-v4 g-mb-5">Sed ultrices velit vitae tortor posuere ultrices. Aliquam laoreet lorem et vulputate porta.</p>
-                        <a href="#!">https://goo.gl/Zjd6Bj</a>
+                        <p class="g-color-gray-dark-v4 g-mb-5">Match is scheduled to start at 15:55 today.</p>
+                        <!-- <a href="#!">https://goo.gl/Zjd6Bj</a> -->
                       </div>
                     </article>
                     <!-- End Article -->
@@ -721,12 +653,12 @@ if(!empty($_SESSION['userID'])){
 
                       <div class="media-body">
                         <h3 class="h6">
-                            <span class="g-color-black g-font-weight-600">Pixeel</span>
-                            <a class="g-color-gray-dark-v4 g-mr-5" href="#!">@PixeelStudio</a>
-                            <span class="g-color-gray-dark-v4">3h</span>
+                            <a class="g-color-black g-font-weight-600" href="#!">@brahma</a> <span class="g-color-black-dark-v4">challenged</span> <a class="g-color-black g-font-weight-600" href="#!">@Debashis</a>
+                            <br>
+                            <div style="float:right; margin-right:11px;"><span class="g-color-red">3 days ago</span></div> <br>
                           </h3>
-                        <p class="g-color-gray-dark-v4 g-mb-5">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis.</p>
-                        <a href="#!">https://goo.gl/Zjd6Bj</a>
+                        <p class="g-color-gray-dark-v4 g-mb-5">Match is scheduled to start at 15:55 today.</p>
+                        <!-- <a href="#!">https://goo.gl/Zjd6Bj</a> -->
                       </div>
                     </article>
                     <!-- End Article -->
@@ -741,13 +673,14 @@ if(!empty($_SESSION['userID'])){
 
                       <div class="media-body">
                         <h3 class="h6">
-                            <span class="g-color-black g-font-weight-600">Wrapbootstrap</span>
-                            <a class="g-color-gray-dark-v4 g-mr-5" href="#!">@Wrapbootstrap</a>
-                            <span class="g-color-gray-dark-v4">54m</span>
+                            <a class="g-color-black g-font-weight-600" href="#!">@brahma</a> <span class="g-color-black-dark-v4">challenged</span> <a class="g-color-black g-font-weight-600" href="#!">@Debashis</a>
+                            <br>
+                            <div style="float:right; margin-right:11px;"><span class="g-color-red">26 minutes ago</span></div> <br>
                           </h3>
-                        <p class="g-color-gray-dark-v4 g-mb-5">Sed ultrices velit vitae tortor posuere ultrices. Aliquam laoreet lorem et vulputate porta.</p>
-                        <a href="#!">https://goo.gl/Zjd6Bj</a>
+                        <p class="g-color-gray-dark-v4 g-mb-5">Match is scheduled to start at 15:55 on 22-03-2018.</p>
+                        <!-- <a href="#!">https://goo.gl/Zjd6Bj</a> -->
                       </div>
+
                     </article>
                     <!-- End Article -->
 
@@ -761,12 +694,12 @@ if(!empty($_SESSION['userID'])){
 
                       <div class="media-body">
                         <h3 class="h6">
-                            <span class="g-color-black g-font-weight-600">Karina</span>
-                            <a class="g-color-gray-dark-v4 g-mr-5" href="#!">@Karina</a>
-                            <span class="g-color-gray-dark-v4">7h</span>
+                            <a class="g-color-black g-font-weight-600" href="#!">@brahma</a> <span class="g-color-black-dark-v4">challenged</span> <a class="g-color-black g-font-weight-600" href="#!">@Rohit</a>
+                            <br>
+                            <div style="float:right; margin-right:11px;"><span class="g-color-red">15 days ago</span></div> <br>
                           </h3>
-                        <p class="g-color-gray-dark-v4 g-mb-5">Sed ultrices velit vitae tortor posuere ultrices. Aliquam laoreet lorem et vulputate porta.</p>
-                        <a href="#!">https://goo.gl/Zjd6Bj</a>
+                        <p class="g-color-gray-dark-v4 g-mb-5">Match has ended. Winner yet to announce.</p>
+                        <!-- <a href="#!">https://goo.gl/Zjd6Bj</a> -->
                       </div>
                     </article>
                     <!-- End Article -->
@@ -815,8 +748,8 @@ if(!empty($_SESSION['userID'])){
                       <!-- Figure List -->
                       <ul class="row list-inline g-py-20 g-ma-0">
                         <li class="col g-brd-right g-brd-gray-light-v4">
-                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-cyan--hover" href="#!">
-                            <i class="icon-trophy" data-toggle="tooltip" data-placement="top" title="Quick Challenge"></i>
+                          <a class="u-icon-v1 u-icon-size--sm g-color-gray-dark-v5 g-bg-transparent g-color-cyan--hover" href="#!" data-toggle="tooltip" data-placement="top" title="Quick Challenge">
+                            <i class="icon-trophy"></i>
                           </a>
                         </li>
                         <li class="col g-brd-right g-brd-gray-light-v4">
@@ -1032,15 +965,19 @@ if(!empty($_SESSION['userID'])){
                   </table>
 
               </div>
+
                 </div>
                 <!-- End Product Table -->
+
               </div>
             </div>
             <!-- End Product Table Panel -->
           </div>
           <!-- End Profile Content -->
         </div>
+
       </div>
+
     </section>
 
     <?php
@@ -1067,6 +1004,7 @@ if(!empty($_SESSION['userID'])){
 </html>
 
 <?php
+
 //Custom php function to get time ago
 
 function get_time_ago( $time )

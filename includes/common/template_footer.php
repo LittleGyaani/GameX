@@ -8,7 +8,7 @@
           <h2 class="u-heading-v2__title h6 text-uppercase mb-0">About Us</h2>
         </div>
 
-        <p>About Unify dolor sit amet, consectetur adipiscing elit. Maecenas eget nisl id libero tincidunt sodales.</p>
+        <p>battlestation is a live gaming platform with more than 15+ online games along with 650+ registered users and active members globally.</p>
       </div>
       <!-- End Footer Content -->
 
@@ -20,7 +20,7 @@
 
         <article>
           <h3 class="h6 g-mb-2">
-        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Incredible template</a>
+        <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Incredible Test</a>
       </h3>
           <div class="small g-color-white-opacity-0_6">May 8, 2017</div>
         </article>
@@ -61,13 +61,13 @@
             </li>
             <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
               <h4 class="h6 g-pr-20 mb-0">
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Portfolio</a>
+            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">How to Play?</a>
             <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
           </h4>
             </li>
             <li class="g-pos-rel g-brd-bottom g-brd-white-opacity-0_1 g-py-10">
               <h4 class="h6 g-pr-20 mb-0">
-            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Our Services</a>
+            <a class="g-color-white-opacity-0_8 g-color-white--hover" href="#!">Our Game List</a>
             <i class="fa fa-angle-right g-absolute-centered--y g-right-0"></i>
           </h4>
             </li>
@@ -102,7 +102,7 @@
             <i class="fa fa-map-marker"></i>
           </span>
         </div>
-        <p class="mb-0">795 Folsom Ave, Suite 600, <br> San Francisco, CA 94107 795</p>
+        <p class="mb-0">Bapuji Nagar, <br> Bhubaneswar, ODISHA, IN 752050</p>
       </div>
       <!-- End Location -->
 
@@ -230,3 +230,4 @@
   <i class="icon-arrow-up"></i>
 </a>
 <!-- Footer Section End-->
+<div id="tokenArea" style="display:none;"><?php echo random_string(50);?></div>
