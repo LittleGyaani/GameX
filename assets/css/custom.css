@@ -167,23 +167,11 @@ float: right;
 top: 39px;
 left: -4px;
 margin-left: -170px;
-width: 400px;
+width: 449px;
 z-index: -1;
 display: none; // Enable this after jquery implementation
 }
 
-@media only screen and (min-width: 860px){
-
-  #notificationContainer
-  {
-    float: right;
-    top: 39px;
-    left: -26px;
-    display: none; // Enable this after jquery implementation
-  }
-
-
-}
 /* // Popup Arrow */
 #notificationContainer:before {
 content: '';
@@ -195,23 +183,30 @@ color: transparent;
 border: 10px solid black;
 border-color: transparent transparent white;
 margin-top: -20px;
-margin-left: 188px;
+margin-left: 190px;
 }
-#notificationTitle
-{
-font-weight: bold;
-padding: 8px;
-font-size: 13px;
-background-color: #ffffff;
-position: fixed;
-z-index: 1000;
-width: 384px;
-border-bottom: 1px solid #dddddd;
+
+#notificationTitle {
+
+    font-weight: bold;
+    padding: 8px;
+    font-size: 13px;
+    background-color: #ffffff;
+    position: fixed;
+    z-index: 1000;
+    width: 446px;
+    border-bottom: 1px solid #dddddd;
+
 }
+
 #notificationsBody
 {
-padding: 33px 0px 0px 0px !important;
-min-height:300px;
+
+    padding: 33px 0px 0px 0px !important;
+    max-height: 400px;
+    overflow-y: scroll;
+    overflow: auto;
+
 }
 #notificationFooter
 {

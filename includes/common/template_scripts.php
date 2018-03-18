@@ -497,40 +497,22 @@ function notificationPanel(){
     //Document Click hiding the popup
     $(document).click(function(){
 
-      $("#notificationContainer").hide();
+      $("#notificationContainer").fadeOut("slow");
 
     });
 
     //Popup on click
     $("#notificationContainer").click(function(){
 
-      e.stopPropagation();
+      return false;
 
     });
 
-    function scrollbar(){
-      var parH = $('.parent').outerHeight(true);
-      var areaH = $('.scrollable').outerHeight(true);
-      var scrH = parH / (areaH/parH);
+    $('.lnkAllNotification').on('click',function(){
 
-      function dragging(){
-      var scrPos = $('.scrollbar').position().top;
-      $('.scrollable').css({top: -(scrPos*(areaH/parH)-1)});
-      }
+      window.location.href="allNotifications";
 
-
-
-      $('.scrollbar').height(scrH);
-      $('.scrollbar').draggable({
-      axis: 'y',
-      containment: 'parent',
-      drag: function() {
-      dragging()
-      }
-
-      });
-
-  };
+    });
 
   function type(){
 
@@ -648,8 +630,6 @@ function notificationPanel(){
   });
 
   //Head ON Macth Logic
-  $('#headonMatch').hide();
-  $('#addMoney').hide();
 
   $('#headonMatch').on('click', function(){
 
@@ -657,10 +637,32 @@ function notificationPanel(){
       var challengeAmount = $('#challengeAmount option:selected').val();
       var currentDTStamp = moment().format('DMMYYYYHmmss');
       var InvitationCode ='BSLVHOM'+currentDTStamp;
-      alert(InvitationCode);
+      var headonMatchData = $('#headonMatchForm').serialize();
 
-      alert('Hi '+headOnuserID+' Amount '+challengeAmount);
+      // alert(InvitationCode);
 
+      // alert('Hi '+headOnuserID+' Amount '+challengeAmount);
+
+      $.ajax({
+
+          type: 'post',
+          url: '<?php echo $baseURL; ?>api/process/request/createHeadOnMatch',
+          data:{headonMatchData,InvitationCode,userID},
+          success:function(result){
+
+            if(result){
+
+              alert('Hi');
+
+            }else{
+
+              alert('ERROR');
+
+            }
+
+          }
+
+      });
 
       return false;
 
@@ -693,10 +695,10 @@ function notificationPanel(){
 
   });
 
+  $('#headonMatch').hide();
+  $('#addMoney').hide();
 
   $('#challengeAmount').on('change', function(){
-
-      $('#headonMatch').fadeIn('slow').delay(100);
 
       var walletBalance = parseInt($('.walletBalance').text().replace('₹',''));
       var challengeAmount = parseInt($('#challengeAmount option:selected').text().replace('₹',''));
@@ -710,14 +712,14 @@ function notificationPanel(){
          text: "Please add "+'₹'+(challengeAmount-walletBalance)+" to your wallet and retry.",
          icon: 'warning',
          buttons: false
-       });
+        }).then(function() {
 
-       // swal.close();
-       // Custombox.modal.close();
-       // $('#headonMatchForm')[0].reset();
+          // window.setTimeout(reload(),5500);
+          swal.close();
+          $('#addMoney').fadeIn('slow').delay(100);
+          $('#headonMatch').hide();
 
-        $('#addMoney').fadeIn('slow').delay(100);
-        $('#headonMatch').hide();
+      });
 
       }
       else{
@@ -726,6 +728,12 @@ function notificationPanel(){
         $('#headonMatch').fadeIn('slow').delay(100);
 
       }
+
+  });
+
+  $(document).on('click','.closeHeadOnModal',function(){
+
+    window.location.reload();
 
   });
 

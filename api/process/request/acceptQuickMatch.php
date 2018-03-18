@@ -28,12 +28,12 @@
   //Details to be used while sending the notifications
   $userName = $fetchUserDetails['user_fullname'];
 
-  
-  $updateAcceptedStatus = "UPDATE `quick_user_match` SET `acceptor_id` = $acceptoruserID, `status_flag` = 1 WHERE `quickMatchID` = $quickMatchID";
+
+  $updateAcceptedStatus    = "UPDATE `quick_user_match` SET `acceptor_id` = $acceptoruserID, `status_flag` = 1 WHERE `quickMatchID` = $quickMatchID";
   $runupdateAcceptedStatus = $conn -> query($updateAcceptedStatus);
 
-  $pushNotificationforChallenger = $conn -> query("INSERT INTO `user_notification_record` (`userID`, `notification_title`, `notification_message`, `notification_status`, `notification_type`, `notification_sent_by`, `notification_sent_DTStamp`) VALUES('$challengeruserID', 'Challenge accepted by $userName.', 'Please check Quick Challenge for more detils', 0, 'quickChallengeGame', '$userName', '$now')");
-  $pushNotificationforAccepter = $conn -> query("INSERT INTO `user_notification_record` (`userID`, `notification_title`, `notification_message`, `notification_status`, `notification_type`, `notification_sent_by`, `notification_sent_DTStamp`) VALUES('$acceptoruserID','You have accepted challenge of $challengeruserName','Please check Quick Challenge for more detils', 0, 'quickChallengeGame', '$challengeruserName', '$now')");
+  $pushNotificationforChallenger = $conn -> query("INSERT INTO `user_notification_record` (`userID`, `sentuserID`, `notification_title`, `notification_message`, `notification_status`, `notification_type`, `notification_sent_by`, `notification_sent_DTStamp`) VALUES('$challengeruserID','','Challenge accepted by $userName.', 'Please check Quick Challenge for more detils', 0, 'quickChallengeGame', '$userName', '$now')");
+  $pushNotificationforAccepter   = $conn -> query("INSERT INTO `user_notification_record` (`userID`, `sentuserID`, `notification_title`, `notification_message`, `notification_status`, `notification_type`, `notification_sent_by`, `notification_sent_DTStamp`) VALUES('$acceptoruserID','','You have accepted challenge of $challengeruserName','Please check Quick Challenge for more detils', 0, 'quickChallengeGame', '$challengeruserName', '$now')");
 
   if($runupdateAcceptedStatus)
     echo "CA";

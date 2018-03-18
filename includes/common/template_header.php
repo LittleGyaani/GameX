@@ -1,7 +1,13 @@
 <?php
 
+  //Allow Cross Access from Origin
+  header("Access-Control-Allow-Origin: *");
+
   //Define Base URL to be used globally
   $baseURL = 'http://localhost/GameX/';//http://www.battlestation.live/
+
+  //Defining Default Time DateTimeZone
+  date_default_timezone_set('Asia/Kolkata');
 
   //Generate Random String to use as token for secure AJAX calls
   function random_string($length) {
@@ -15,8 +21,32 @@
       return $key;
     }
 
-  //Allow Cross Access from Origin
-  header("Access-Control-Allow-Origin: *");
+    //Custom php function to get time ago
+
+    function get_time_ago( $time )
+    {
+        $time_difference = time() - $time;
+
+        if( $time_difference < 1 ) { return '1 second ago'; }
+        $condition = array( 12 * 30 * 24 * 60 * 60 =>  'year',
+                    30 * 24 * 60 * 60       =>  'month',
+                    24 * 60 * 60            =>  'day',
+                    60 * 60                 =>  'hour',
+                    60                      =>  'minute',
+                    1                       =>  'second'
+        );
+
+        foreach( $condition as $secs => $str )
+        {
+            $d = $time_difference / $secs;
+
+            if( $d >= 1 )
+            {
+                $t = round( $d );
+                return  $t . ' ' . $str . ( $t > 1 ? 's' : '' ) . ' ago';
+            }
+        }
+    }
 
  ?>
 <!-- Meta updated by LittleGyaani(BRAHMA) {https://www.twitter.com/LittleGyaani} -->
@@ -147,7 +177,7 @@
               <!-- User AREA-->
               <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
 
-                <font color="white"><i class="icon-user g-pos-rel"></i> Welcome</font> <a class="g-brd-2 g-mr-10 g-mb-15" href="myProfile.php"><b><?= $selectUserInformations['user_fullname'];?>!</b></a>
+                <font color="white"><i class="icon-user"></i><span class="u-label g-font-size-16 g-px-8">Welcome</span></font><a class="g-brd-2 g-mr-16 g-font-size-16 g-mb-15" href="myProfile.php"><b><?= $selectUserInformations['user_fullname'];?>!</b></a>
                 <br>
 
               <!-- Notification Icon Start -->
@@ -159,7 +189,7 @@
                          <b><span class="u-label g-font-size-18 g-bg-primary g-rounded-20 g-px-8"><i class="icon-bell g-pos-rel g-top-1" ></i>  <span id="notificationCount"></span></span></b>
                      </a>
                      <div id="notificationContainer">
-                      <div id="notificationTitle"><i class="icon-cursor"></i> All Notifications</div>
+                      <div id="notificationTitle"><i class="icon-bell"></i> All Notifications</div>
                       <div id="notificationsBody" class="notifications">
                         <?php
                         $getNotficationinPanel = $conn -> query("SELECT * FROM `user_notification_record` WHERE `userID` = $userID ORDER BY `notification_sent_DTStamp` DESC");
@@ -167,7 +197,7 @@
                           ?>
 
                           <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-md-12">
                               <!-- Alert with Box Shadow -->
                                 <div class="alert fade show u-shadow-v1-3 g-pa-20" role="alert">
                                   <button type="button" class="close u-alert-close--light g-ml-10 g-mt-1" data-dismiss="alert" aria-label="Close">
@@ -177,16 +207,16 @@
                                   <div class="media">
                                     <div class="d-flex g-mr-10">
                                       <span class="u-icon-v3 u-icon-size--sm g-bg-red g-color-white">
-                                        <i class="fa fa-magic"></i>
+                                        <i class="icon-bell"></i>
                                       </span>
                                     </div>
                                     <div class="media-body">
                                       <div class="d-flex justify-content-between">
-                                        <p class="m-11"><strong><?=$showNotificationsinPanel['notification_title']?></strong> <br><small>sent by <b><?=$showNotificationsinPanel['notification_sent_by']?></b></small>
-                                        </p>
-                                        <span class="float-right small g-mx-10">Just Now</span>
+                                        <p class="m-8 g-font-size-14"><?=$showNotificationsinPanel['notification_title']?>
+                                        <br>sent by <font color="g-primary"><?= $showNotificationsinPanel['notification_sent_by']?></font></p>
+                                        <span class="float-right small g-mx-10"><?= get_time_ago(strtotime($showNotificationsinPanel['notification_sent_DTStamp'])); ?></span>
                                       </div>
-                                      <p class="m-0 g-font-size-14"><?=$showNotificationsinPanel['notification_message']?></p>
+                                      <p class="g-font-size-14"><?=$showNotificationsinPanel['notification_message']?></p>
                                     </div>
                                   </div>
                                 </div>
@@ -198,7 +228,7 @@
                         }
                         ?>
                       </div>
-                      <div id="notificationFooter"><a href="#">See All</a></div>
+                      <div id="notificationFooter"><a class ="lnkAllNotification" href="allNotifications.php" target="_blank">See All</a></div>
                       </div>
                 </li>
 

@@ -82,7 +82,7 @@ if(!empty($_SESSION['userID'])){
 
           <!-- Qucik Head ON Match modal window -->
           <div id="quickheadOnMatch" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">
-            <button type="button" class="close" onclick="Custombox.modal.close();">
+            <button type="button" class="close closeHeadOnModal" onclick="Custombox.modal.close();">
               <i class="icon-close"></i>
             </button>
 
@@ -90,10 +90,11 @@ if(!empty($_SESSION['userID'])){
 
                     <div class="form-inline">
                       <label class="mr-sm-3 mb-3 mb-lg-0" for="WhomtoChallenge">Whom to Challenge?</label>
+                      <span class="input-group-addon justify-content-center" id="sizing-addon1">@</span>
                       <select id="userSelect" name="userSelect" class="custom-select mr-sm-3 mb-3 mb-lg-0">
                         <option value="null" selected disabled>Choose an User</option>
                     <?php
-                      $selectUserData = "SELECT * FROM `user_info`";
+                      $selectUserData = "SELECT * FROM `user_info` WHERE `user_id` != $userID";
                       $runselectUserData = $conn -> query($selectUserData);
                       if($runselectUserData && ($runselectUserData -> num_rows > 0)){
 
@@ -192,7 +193,7 @@ if(!empty($_SESSION['userID'])){
             <!-- User Image -->
             <div class="u-block-hover g-pos-rel">
               <figure>
-                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img/profilePic/<?= $selectUserInformations['user_profile_pic'];?>" alt="Image Description">
+                <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img/profilePic/<?= $selectUserInformations['user_profile_pic'];?>" alt="<?= $selectUserInformations['user_fullname'];?>">
               </figure>
 
               <!-- User Info -->
@@ -232,7 +233,7 @@ if(!empty($_SESSION['userID'])){
                 <!-- End My Projects -->
 
                 <!-- Comments -->
-                <a href="page-profile-comments-1.html" class="list-group-item list-group-item-action justify-content-between">
+                <a href="allNotifications" class="list-group-item list-group-item-action justify-content-between">
                     <span><i class="icon-bell g-pos-rel g-top-1 g-mr-8"></i> My Notifications Area</span>
                     <span class="u-label g-font-size-11 g-bg-black g-rounded-20 g-px-8"><div id="notificationCounts"></div></span>
                 </a>
@@ -1002,34 +1003,3 @@ if(!empty($_SESSION['userID'])){
 </body>
 
 </html>
-
-<?php
-
-//Custom php function to get time ago
-
-function get_time_ago( $time )
-{
-    $time_difference = time() - $time;
-
-    if( $time_difference < 1 ) { return '1 second ago'; }
-    $condition = array( 12 * 30 * 24 * 60 * 60 =>  'year',
-                30 * 24 * 60 * 60       =>  'month',
-                24 * 60 * 60            =>  'day',
-                60 * 60                 =>  'hour',
-                60                      =>  'minute',
-                1                       =>  'second'
-    );
-
-    foreach( $condition as $secs => $str )
-    {
-        $d = $time_difference / $secs;
-
-        if( $d >= 1 )
-        {
-            $t = round( $d );
-            return  $t . ' ' . $str . ( $t > 1 ? 's' : '' ) . ' ago';
-        }
-    }
-}
-
- ?>

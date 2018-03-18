@@ -3,18 +3,18 @@
 //Hiding all errors and notices
 error_reporting(0);
 
+//Start the session and let user data to be read in the page
+session_start();
+
 //Calling Database file for estanlishing connection for performing operations
 include '../../../includes/config/dbConnectivity.php';
 
 //Validating if the session exists or not
 if(isset($_SESSION['userID'])){
 
-
-    //Start the session and let user data to be read in the page
-    session_start();
-
     // echo 'Welcome User'.$_SESSION['userNAME'];
     $userID = $_SESSION['userID'];
+    
     //Selecting all user information basing upon the user's session id
     $getAllUserDetails = $conn -> query("SELECT * FROM user_info ui JOIN user_wallet_info uw ON ui.user_id = uw.userID WHERE ui.user_id = '$userID'");
     $selectUserInformations = $getAllUserDetails -> fetch_assoc();
@@ -22,7 +22,7 @@ if(isset($_SESSION['userID'])){
 } else{
 
     echo 'You are not authorized to access the page without logging in.';
-    header('Location:../auth/loginPage.php?redirectback=' . urlencode($_SERVER['REQUEST_URI']));
+    header('Location:../auth/loginPage.php?redirectback='.urlencode($_SERVER['REQUEST_URI']));
 
 }
 ?>
