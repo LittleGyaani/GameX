@@ -18,7 +18,7 @@ if(!empty($_SESSION['userID'])){
   // echo 'Welcome User'.$_SESSION['userNAME'];
   $userID = $_SESSION['userID'];
   //Selecting all user information basing upon the user's session id
-  $selectAllUserData = "SELECT * FROM user_info ui JOIN user_wallet_info uw ON ui.user_id = uw.userID WHERE ui.user_id = '$userID'";
+  $selectAllUserData = "SELECT * FROM `user_info` WHERE `user_id` = '$userID'";
   $getAllUserDetails = $conn -> query($selectAllUserData);
   $selectUserInformations = $getAllUserDetails -> fetch_assoc();
 
@@ -46,7 +46,7 @@ if(!empty($_SESSION['userID'])){
 
     </header>
     <!-- End Header -->
-
+    <!-- <div style="background:white; color:black; height:100%; width:100%; position:fixed; z-index:999; overflow:hidden; display:none;"><img src=""</div> -->
     <!-- Promo Block -->
     <div class="container g-pt-100">
         <div class="row justify-content-lg-between">
@@ -71,8 +71,8 @@ if(!empty($_SESSION['userID'])){
               <i class="icon-close"></i>
             </button>
             <div id="findQuickMatch">
-            <p><center><img src="https://cdn.dribbble.com/users/475393/screenshots/3099510/pulse.gif" height="390" width="512"/></center></p>
-            <center><p><h3>Finding a <b>Match</b> for YOU<span id="dots"></span><h3></p></center>
+            <p><center><img src="https://cdn.dribbble.com/users/475393/screenshots/3099510/pulse.gif" height="290" width="388"/></center></p><br>
+            <center><p><h5>Finding a <b>Match</b> for YOU<span id="dots"></span><h5></p></center>
             </div>
 
               <div id="quickMatchArea"><h4 class="g-mb-20"><div id="successtext"></div></h4></div>
@@ -81,7 +81,7 @@ if(!empty($_SESSION['userID'])){
           <!-- End Quick Match modal window -->
 
           <!-- Qucik Head ON Match modal window -->
-          <div id="quickheadOnMatch" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">
+          <div id="quickheadOnMatch" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20"  tabindex="-1" data-backdrop="false" style="display: none;">
             <button type="button" class="close closeHeadOnModal" onclick="Custombox.modal.close();">
               <i class="icon-close"></i>
             </button>
@@ -90,7 +90,6 @@ if(!empty($_SESSION['userID'])){
 
                     <div class="form-inline">
                       <label class="mr-sm-3 mb-3 mb-lg-0" for="WhomtoChallenge">Whom to Challenge?</label>
-                      <span class="input-group-addon justify-content-center" id="sizing-addon1">@</span>
                       <select id="userSelect" name="userSelect" class="custom-select mr-sm-3 mb-3 mb-lg-0">
                         <option value="null" selected disabled>Choose an User</option>
                     <?php
@@ -246,7 +245,7 @@ if(!empty($_SESSION['userID'])){
                 <!-- End Reviews -->
 
                 <!-- History -->
-                <a href="#!" class="list-group-item list-group-item-action justify-content-between">
+                <a href="challengeRequests" class="list-group-item list-group-item-action justify-content-between">
                     <span><i class="icon-fire g-pos-rel g-top-1 g-mr-8"></i> My Challenge Requests</span>
                 </a>
                 <!-- End History -->
@@ -626,84 +625,9 @@ if(!empty($_SESSION['userID'])){
                   </div>
 
                   <div class="js-scrollbar card-block  u-info-v1-1 g-bg-white-gradient-v1--after g-height-300 g-pa-0">
-                    <!-- Article -->
-                    <article class="media g-mb-20">
-                      <a class="d-flex mr-3" href="#!">
-                        <img class="rounded-circle g-width-80 g-height-80" src="../../../assets/img/icons/game-challenge.png" alt="CHALLENGE">
-                      </a>
 
-                      <div class="media-body">
-                        <h3 class="h6">
-                            <a class="g-color-black g-font-weight-600" href="#!">@brahma</a> <span class="g-color-black-dark-v4">challenged</span> <a class="g-color-black g-font-weight-600" href="#!">@Debashis</a>
-                            <br>
-                            <div style="float:right; margin-right:11px;"><span class="g-color-red">26 minutes ago</span></div> <br>
-                          </h3>
-                        <p class="g-color-gray-dark-v4 g-mb-5">Match is scheduled to start at 15:55 today.</p>
-                        <!-- <a href="#!">https://goo.gl/Zjd6Bj</a> -->
-                      </div>
-                    </article>
-                    <!-- End Article -->
+                  <div id="globalActivities"></div>
 
-                    <hr class="g-brd-gray-light-v4 g-mt-15 g-mb-20">
-
-                    <!-- Article -->
-                    <article class="media g-mb-20">
-                      <a class="d-flex mr-3" href="#!">
-                        <img class="rounded-circle g-width-40 g-height-40" src="../../../assets/img-temp/100x100/img3.jpg" alt="Image Description">
-                      </a>
-
-                      <div class="media-body">
-                        <h3 class="h6">
-                            <a class="g-color-black g-font-weight-600" href="#!">@brahma</a> <span class="g-color-black-dark-v4">challenged</span> <a class="g-color-black g-font-weight-600" href="#!">@Debashis</a>
-                            <br>
-                            <div style="float:right; margin-right:11px;"><span class="g-color-red">3 days ago</span></div> <br>
-                          </h3>
-                        <p class="g-color-gray-dark-v4 g-mb-5">Match is scheduled to start at 15:55 today.</p>
-                        <!-- <a href="#!">https://goo.gl/Zjd6Bj</a> -->
-                      </div>
-                    </article>
-                    <!-- End Article -->
-
-                    <hr class="g-brd-gray-light-v4 g-mt-15 g-mb-20">
-
-                    <!-- Article -->
-                    <article class="media g-mb-20">
-                      <a class="d-flex mr-3" href="#!">
-                        <img class="rounded-circle g-width-40 g-height-40" src="../../../assets/img-temp/100x100/img2.jpg" alt="Image Description">
-                      </a>
-
-                      <div class="media-body">
-                        <h3 class="h6">
-                            <a class="g-color-black g-font-weight-600" href="#!">@brahma</a> <span class="g-color-black-dark-v4">challenged</span> <a class="g-color-black g-font-weight-600" href="#!">@Debashis</a>
-                            <br>
-                            <div style="float:right; margin-right:11px;"><span class="g-color-red">26 minutes ago</span></div> <br>
-                          </h3>
-                        <p class="g-color-gray-dark-v4 g-mb-5">Match is scheduled to start at 15:55 on 22-03-2018.</p>
-                        <!-- <a href="#!">https://goo.gl/Zjd6Bj</a> -->
-                      </div>
-
-                    </article>
-                    <!-- End Article -->
-
-                    <hr class="g-brd-gray-light-v4 g-mt-15 g-mb-20">
-
-                    <!-- Article -->
-                    <article class="media g-mb-20">
-                      <a class="d-flex mr-3" href="#!">
-                        <img class="rounded-circle g-width-40 g-height-40" src="../../../assets/img-temp/100x100/img4.jpg" alt="Image Description">
-                      </a>
-
-                      <div class="media-body">
-                        <h3 class="h6">
-                            <a class="g-color-black g-font-weight-600" href="#!">@brahma</a> <span class="g-color-black-dark-v4">challenged</span> <a class="g-color-black g-font-weight-600" href="#!">@Rohit</a>
-                            <br>
-                            <div style="float:right; margin-right:11px;"><span class="g-color-red">15 days ago</span></div> <br>
-                          </h3>
-                        <p class="g-color-gray-dark-v4 g-mb-5">Match has ended. Winner yet to announce.</p>
-                        <!-- <a href="#!">https://goo.gl/Zjd6Bj</a> -->
-                      </div>
-                    </article>
-                    <!-- End Article -->
                   </div>
                 </div>
                 <!-- End News Feeds -->

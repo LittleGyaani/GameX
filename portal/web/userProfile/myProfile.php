@@ -15,7 +15,7 @@ if(isset($_SESSION['userID'])){
   // echo 'Welcome User'.$_SESSION['userNAME'];
   $userID = $_SESSION['userID'];
   //Selecting all user information basing upon the user's session id
-  $getAllUserDetails = $conn -> query("SELECT * FROM user_info ui JOIN user_wallet_info uw ON ui.user_id = uw.userID WHERE ui.user_id = '$userID'");
+  $getAllUserDetails = $conn -> query("SELECT * FROM `user_info` WHERE `user_id` = '$userID'"); //SELECT * FROM user_info ui JOIN user_wallet_info uw ON ui.user_id = uw.userID WHERE ui.user_id = '$userID'
   $selectUserInformations = $getAllUserDetails -> fetch_assoc();
 
 } else{

@@ -4,7 +4,7 @@
   header("Access-Control-Allow-Origin: *");
 
   //Define Base URL to be used globally
-  $baseURL = 'http://localhost/GameX/';//http://www.battlestation.live/
+  $baseURL = 'http://192.168.0.13/GameX/';//http://www.battlestation.live/
 
   //Defining Default Time DateTimeZone
   date_default_timezone_set('Asia/Kolkata');
@@ -93,6 +93,10 @@
 
 <body>
 
+  <!--Notification Audio-->
+  <audio id="notificationSound" style="display:none;"></audio>
+  <!--Notification Audio End-->
+
 <main>
 
 
@@ -175,60 +179,26 @@
 
             }else{?>
               <!-- User AREA-->
+              <center>
               <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
 
-                <font color="white"><i class="icon-user"></i><span class="u-label g-font-size-16 g-px-8">Welcome</span></font><a class="g-brd-2 g-mr-16 g-font-size-16 g-mb-15" href="myProfile.php"><b><?= $selectUserInformations['user_fullname'];?>!</b></a>
+                <font color="white"><i class="icon-user"></i><span class="u-label g-font-size-16 g-px-8">Welcome</span></font><a class="g-brd-2 g-mr-16 g-font-size-16 g-mb-15 userName" href="myProfile.php"><b><?= $selectUserInformations['user_fullname'];?>!</b></a>
                 <br>
 
               <!-- Notification Icon Start -->
               <div class="row">
                 <div class="col-md-12">
               <ul id="nav">
-              <li id="notification_li">
+                <li id="notification_li">
                      <a href="javascript:void(0);" id="notificationLink" class="justify-content-between">
                          <b><span class="u-label g-font-size-18 g-bg-primary g-rounded-20 g-px-8"><i class="icon-bell g-pos-rel g-top-1" ></i>  <span id="notificationCount"></span></span></b>
                      </a>
                      <div id="notificationContainer">
                       <div id="notificationTitle"><i class="icon-bell"></i> All Notifications</div>
                       <div id="notificationsBody" class="notifications">
-                        <?php
-                        $getNotficationinPanel = $conn -> query("SELECT * FROM `user_notification_record` WHERE `userID` = $userID ORDER BY `notification_sent_DTStamp` DESC");
-                        while ($showNotificationsinPanel = $getNotficationinPanel -> fetch_assoc()) {
-                          ?>
-
-                          <div class="row">
-                            <div class="col-md-12">
-                              <!-- Alert with Box Shadow -->
-                                <div class="alert fade show u-shadow-v1-3 g-pa-20" role="alert">
-                                  <button type="button" class="close u-alert-close--light g-ml-10 g-mt-1" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                  </button>
-
-                                  <div class="media">
-                                    <div class="d-flex g-mr-10">
-                                      <span class="u-icon-v3 u-icon-size--sm g-bg-red g-color-white">
-                                        <i class="icon-bell"></i>
-                                      </span>
-                                    </div>
-                                    <div class="media-body">
-                                      <div class="d-flex justify-content-between">
-                                        <p class="m-8 g-font-size-14"><?=$showNotificationsinPanel['notification_title']?>
-                                        <br>sent by <font color="g-primary"><?= $showNotificationsinPanel['notification_sent_by']?></font></p>
-                                        <span class="float-right small g-mx-10"><?= get_time_ago(strtotime($showNotificationsinPanel['notification_sent_DTStamp'])); ?></span>
-                                      </div>
-                                      <p class="g-font-size-14"><?=$showNotificationsinPanel['notification_message']?></p>
-                                    </div>
-                                  </div>
-                                </div>
-                                <!-- End Alert with Box Shadow -->
-                              </div>
-                            </div>
-
-                        <?php
-                        }
-                        ?>
+                          <!-- Area for appending messages -->
                       </div>
-                      <div id="notificationFooter"><a class ="lnkAllNotification" href="allNotifications.php" target="_blank">See All</a></div>
+                      <div id="notificationFooter"><a class ="lnkAllNotification" href="allNotifications" target="_blank">See All</a></div>
                       </div>
                 </li>
 
@@ -236,18 +206,26 @@
 
               <!-- Wallet Icon Start -->
                     <li>
-                     <a href="#" class="justify-content-between">
-                         <span class="u-label g-font-size-18 g-bg-blue g-rounded-20 g-px-8 walletBalance"><i class="icon-wallet g-pos-rel g-top-1 g-mr-8"></i>₹<b><?= $selectUserInformations['walletBalance'];?></b></span>
+                     <a href="walletStatistics" class="justify-content-between">
+                         <span class="u-label g-font-size-18 g-bg-blue g-rounded-20 g-px-8 walletBalance"><i class="icon-wallet g-pos-rel g-top-1 g-mr-8"></i>₹<b id="walletBalanceArea"></b></span>
                      </a>
                    </li>
                <!-- Wallet Icon End -->
 
+               <!-- Achievements Icon Start -->
+                     <!-- <li>
+                      <a href="#" class="justify-content-between">
+                          <span class="u-label g-font-size-18 g-bg-cyan g-rounded g-px-8 walletBalance"><i class="icon-trophy g-pos-rel g-top-1"></i></span>
+                      </a>
+                    </li> -->
+                <!-- Achievements Icon End -->
+
                <!-- Logout Icon Start -->
-                    <li>
+                    <!-- <li>
                       <a href="../auth/controller/userLogout.php" class="justify-content-between">
                           <span class="u-label g-font-size-18 g-bg-lightred g-rounded-20 g-px-8"><i class="icon-logout g-pos-rel g-top-1 g-mr-8"></i><b>Logoff</b></span>
                       </a>
-                    </li>
+                    </li> -->
                 <!-- Logout Icon End -->
                 </ul>
               </div>
@@ -255,6 +233,7 @@
 
              </div>
              <!-- User AREA End-->
+           </center>
 
            <?php }} ?>
          </nav>

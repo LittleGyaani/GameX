@@ -156,47 +156,45 @@
 {
 position:relative
 }
-#notificationContainer
-{
-background-color: #fff;
-border: 1px solid rgba(100, 100, 100, .4);
--webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
-overflow-y: visible;
-position: absolute;
-float: right;
-top: 39px;
-left: -4px;
-margin-left: -170px;
-width: 449px;
-z-index: -1;
-display: none; // Enable this after jquery implementation
+#notificationContainer {
+
+  width: 361px;
+  background-color: #fff;
+  border: 1px solid rgba(100, 100, 100, .4);
+  -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+  overflow-y: visible;
+  position: absolute;
+  float: right;
+  top: 38px;
+  left: -169px;
+  z-index: -1;
+  display: none;
+
 }
 
 /* // Popup Arrow */
 #notificationContainer:before {
-content: '';
-display: block;
-position: absolute;
-width: 0;
-height: 0;
-color: transparent;
-border: 10px solid black;
-border-color: transparent transparent white;
-margin-top: -20px;
-margin-left: 190px;
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    color: transparent;
+    border: 10px solid black;
+    border-color: transparent transparent white;
+    margin-top: -20px;
+    margin-left: 185px;
 }
 
 #notificationTitle {
-
     font-weight: bold;
     padding: 8px;
     font-size: 13px;
     background-color: #ffffff;
     position: fixed;
     z-index: 1000;
-    width: 446px;
+    width: 359px;
     border-bottom: 1px solid #dddddd;
-
 }
 
 #notificationsBody

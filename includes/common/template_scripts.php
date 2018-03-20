@@ -337,7 +337,10 @@
 
 
       // $('#notificationCount').html(notificationCount);
-      setTimeout(notificationPanel, 100);
+      setTimeout(notificationPanel, 200);
+      setTimeout(walletBalance, 200);
+      setTimeout(getAllNotification, 200);
+      setTimeout(globalActivities, 500);
       var userID = $('#hiddenUserID').text();
       // alert(userID);
 
@@ -347,7 +350,8 @@ function notificationPanel(){
   var token = $('#tokenArea').text();
 
   var notificationCount = $('#notificationCount').text();
-  var audio = new Audio('<?php echo $baseURL; ?>assets/notification/notification-sound.wav');
+  notificationTrigger = document.getElementById("notificationSound");
+  notificationTrigger.src = "<?php echo $baseURL; ?>assets/notification/notification-sound.wav";
 
   // $('#notificationCount').html(notificationCount);
   // alert(notificationCount);
@@ -371,16 +375,17 @@ function notificationPanel(){
                 }else if(data.response == 'NUN'){
 
                     $('#notificationCount').html(unreadcounts);
-                    $('.icon-bell').effect( "shake" );
-                    // cheers.success({
-                    //     title: 'New Notification!',
-                    //     icon: 'fa-bell',
-                    //     message: 'You have received a notification.',
-                    //     alert: 'slideleft',
-                    // });
+                    $('.icon-notifications-bell').effect( "shake" );
+
+                    cheers.success({
+                        title: 'New Notification!',
+                        icon: 'fa-bell',
+                        message: 'You have received a notification.',
+                        alert: 'slideleft',
+                    });
 
                     //Play notification sound upon new notification
-                    audio.play();
+                    notificationTrigger.play();
 
                 }else{
 
@@ -390,10 +395,7 @@ function notificationPanel(){
               },complete: function() {
 
                 // schedule the next request *only* when the current one is complete:
-                setTimeout(notificationPanel, 3500);
-                // if(readNotificaionCount > unreadcounts){
-                //   alert ('new');
-                // }
+                setTimeout(notificationPanel, 5500);
 
               }
 
@@ -488,7 +490,7 @@ function notificationPanel(){
 
      $("#notificationLink").click(function(){
 
-        $("#notificationContainer").fadeToggle(300);
+        $("#notificationContainer").fadeToggle('slow').delay(500);
         $("#notification_count").fadeOut("slow");
         return false;
 
@@ -635,10 +637,12 @@ function notificationPanel(){
 
       var headOnuserID = $('#userSelect option:selected').val();
       var challengeAmount = $('#challengeAmount option:selected').val();
-      var currentDTStamp = moment().format('DMMYYYYHmmss');
+      var currentDTStamp = moment().format('Hmmss');
       var InvitationCode ='BSLVHOM'+currentDTStamp;
+      var challengedUserName = $('#userSelect option:selected').text();
       var headonMatchData = $('#headonMatchForm').serialize();
-
+      var userName = $('.userName').text();
+      // alert(userName);
       // alert(InvitationCode);
 
       // alert('Hi '+headOnuserID+' Amount '+challengeAmount);
@@ -647,16 +651,59 @@ function notificationPanel(){
 
           type: 'post',
           url: '<?php echo $baseURL; ?>api/process/request/createHeadOnMatch',
-          data:{headonMatchData,InvitationCode,userID},
-          success:function(result){
+          data:{headonMatchData,InvitationCode,userID,challengedUserName,userName},
+          dataType: 'json',
+          success:function(resp){
 
-            if(result){
+            switch (resp.code) {
 
-              alert('Hi');
+              case 'UCS':
 
-            }else{
+                        swal({
 
-              alert('ERROR');
+                         title: resp.result,
+                         text: resp.msg,
+                         icon: 'success',
+                         buttons: false,
+                         timer : 5000
+                       });
+
+                       break;
+
+              case 'UCM':
+
+                      swal({
+
+                       title: resp.result,
+                       text: resp.msg,
+                       icon: 'warning',
+                       buttons: false,
+                       timer : 5000
+                     });
+                     break;
+
+              case 'WFA':
+
+                      swal({
+
+                       title: resp.result,
+                       text: resp.msg,
+                       icon: 'warning',
+                       buttons: false,
+                       timer : 5000
+                     });
+                     break;
+
+              default:
+
+                  swal({
+
+                   title: 'Unable to create challenge.',
+                   text: 'Please try after some moment.',
+                   icon: 'error',
+                   buttons: false,
+                   timer : 5000
+                 });
 
             }
 
@@ -737,6 +784,133 @@ function notificationPanel(){
 
   });
 
+  function walletBalance(){
+
+    $.ajax({
+
+      type:'POST',
+      url:'<?php echo $baseURL; ?>api/process/request/getWalletBalance',
+      data:{userID},
+      dataType:'json',
+      success:function(data){
+
+        if(data.code == 'WBF')
+          $('#walletBalanceArea').html(data.msg);
+        else
+          console.log(data.code);
+      },complete: function() {
+
+        setTimeout(walletBalance, 3500);
+
+      }
+
+    });
+
+  }
+
+  function getAllNotification(){
+
+    $.ajax({
+
+      type:'POST',
+      url:'<?php echo $baseURL; ?>api/process/request/getAllNotifications',
+      data:{userID},
+      dataType:'html',
+      success:function(messages){
+
+        if(messages)
+          $('#notificationsBody').html(messages).fadeIn('slow').delay(300);
+        else
+          console.log('Unable to handle request');
+      },complete: function() {
+
+        setTimeout(getAllNotification, 3500);
+
+      }
+
+    });
+
+  }
+
+  // $('.dismissNotification').on('click', function(){
+  //
+  //     var notificationID = this.id;
+  //     alert(notificationID);
+  //
+  //     return false;
+  //
+  // });
+
+  $(document).on('click', '.acceptHeadOnChallenge', function(){
+
+    var headOnGameID = this.id;
+    var requestType = 'accept';
+    var CurrentWalletBalance = parseInt($('#walletBalanceArea').text());
+    var ChallengeRequestAmount = parseInt($('#challengeRequestAmount').text().replace('₹',''));
+
+    if(walletBalance >= challengeAmount){
+
+        $.ajax({
+
+          type:'POST',
+          url:'<?php echo $baseURL; ?>api/process/request/responseHeadOnMatch?request='+requestType,
+          data:{headOnGameID},
+          // dataType:'html',
+          success:function(response){
+
+            if(response)
+              alert('HI');
+            else
+              alert('Error');
+          }
+
+        });
+
+    }else{
+
+        swal({
+
+         title: "Insufficient funds in wallet.",
+         text: "Please add "+'₹'+(ChallengeRequestAmount-CurrentWalletBalance)+" to your wallet and retry.",
+         icon: 'warning',
+         buttons: false,
+         timer: 1500
+      });
+
+    }
+
+  });
+
+  function globalActivities(){
+
+    $.ajax({
+
+      type:'POST',
+      url:'<?php echo $baseURL; ?>api/process/request/globalActivities',
+      dataType:'html',
+      success:function(activities){
+
+        if(activities)
+          $('#globalActivities').html(activities).fadeIn('slow').delay(300);
+        else
+          console.log('Unable to handle request');
+      },complete: function() {
+
+        setTimeout(globalActivities, 3500);
+
+      }
+
+    });
+
+  }
+  if(navigator.onLine)
+  {
+    console.log('You are Online');
+  }
+  else
+  {
+    console.log('You are Offline')
+  }
 
 });
 </script>

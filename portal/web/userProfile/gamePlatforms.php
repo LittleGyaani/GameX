@@ -14,7 +14,7 @@ if(isset($_SESSION['userID'])){
 
     // echo 'Welcome User'.$_SESSION['userNAME'];
     $userID = $_SESSION['userID'];
-    
+
     //Selecting all user information basing upon the user's session id
     $getAllUserDetails = $conn -> query("SELECT * FROM user_info ui JOIN user_wallet_info uw ON ui.user_id = uw.userID WHERE ui.user_id = '$userID'");
     $selectUserInformations = $getAllUserDetails -> fetch_assoc();
@@ -357,7 +357,7 @@ if(isset($_SESSION['userID'])){
 
                                             <!--UPDATE USERNAME/USERID of the GAME/Platform-->
                                             <div class="text-center">
-                                                <button type="button" id="<?=$getGameMeta['gameID'] ?>" data-user-id="<?php echo $userID; ?>" data-platform-user-name ="<?= $getUserMeta['platform_user_name'] ?>" class="platformIDUpdate btn btn-md u-btn-outline-red g-mr-10 g-mb-15 u-btn-hover-v1-4 g-mr-10 g-mb-15" data-modal-target="#usernameUpdate" data-modal-effect="fadein">
+                                                <button type="button" id="<?=$getGameMeta['gameID'] ?>" data-user-id="<?php echo $userID; ?>" data-platform-user-name ="<?= $getUserMeta['platform_user_name'] ?>" class="platformIDUpdate btn btn-md u-btn-outline-cyan g-mr-10 g-mb-15 u-btn-hover-v1-4 g-mr-10 g-mb-15" data-modal-target="#usernameUpdate" data-modal-effect="fadein">
                                                     <i class="fa fa-pencil g-mr-5" ></i>UPDATE USERID
                                                 </button>
                                             </div>
