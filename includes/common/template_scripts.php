@@ -906,10 +906,12 @@ function notificationPanel(){
   if(navigator.onLine)
   {
     console.log('You are Online');
+    $('#internetActivity').fadeOut('slow').delay(100);
   }
   else
   {
-    console.log('You are Offline')
+    console.log('You are Offline');
+    $('#internetActivity').fadeIn('slow').delay(100);
   }
 
 });

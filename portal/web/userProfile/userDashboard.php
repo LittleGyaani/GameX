@@ -46,7 +46,7 @@ if(!empty($_SESSION['userID'])){
 
     </header>
     <!-- End Header -->
-    <!-- <div style="background:white; color:black; height:100%; width:100%; position:fixed; z-index:999; overflow:hidden; display:none;"><img src=""</div> -->
+    <div id ="internetActivity" class="col-md-12 col-md-6" style="background:white; background-position:center; color:black; height:100%; width:100%; position:fixed; z-index:10000; overflow:hidden; display:none;"><center><font class="g-color-gray" size="50">I and Internet aren't talking right now! Will be back soon. :(</font><br><br><br><br><img src="../../../assets/img/icons/no_internet.png"/></center></div>
     <!-- Promo Block -->
     <div class="container g-pt-100">
         <div class="row justify-content-lg-between">
@@ -316,7 +316,7 @@ if(!empty($_SESSION['userID'])){
                   <div class="js-scrollbar card-block u-info-v1-1 g-bg-white-gradient-v1--after g-height-400 g-pa-0">
                     <?php
 
-                      $selectGameInfo = "SELECT * FROM `game_registration_meta`";
+                      $selectGameInfo = "SELECT * FROM `tournament_registration_meta`";
                       $runselectGameInfo = $conn -> query($selectGameInfo);
                       $participantCountRows = $runselectGameInfo -> num_rows;
                       $leftBrdColorArray = array("g-brd-red-left", "g-brd-black-left", "g-brd-yellow-left", "g-brd-green-left", "g-brd-pink-left", "g-brd-blue-left");

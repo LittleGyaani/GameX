@@ -32,7 +32,7 @@
   $respArray = array();
   $errorCodes = array('NUM' => 'No UserID Mapped to Platforms', 'UCM' => 'Unable to create match at the moment', 'SCU' => 'Successfuly Challenged User');
 
-  $getUserConnectionWithGame      = "SELECT * FROM `head_on_match_request` WHERE `challenged_by_userID` = $challengeruserID AND `challenge_gameID` = $challengedGame AND `game_status` = 1";
+  $getUserConnectionWithGame      = "SELECT * FROM `head_on_match_request` WHERE `challenged_by_userID` = $challengeruserID AND `challenged_whom` = $challengedWhom AND `challenge_gameID` = $challengedGame AND `game_status` = 1";
   $rungetUserConnectionWithGame   = $conn -> query($getUserConnectionWithGame);
   $fetchgetUserConnectionWithGame = $rungetUserConnectionWithGame -> fetch_assoc();
 
@@ -60,7 +60,7 @@
       }else{
 
         //Generating Response to perform action
-        $respArray = array('result' => 'No User ID Mapped to platforms or no common games found.', 'msg' => "Please add platforms / more platform userid/names before challenging someone.", 'code' => 'UCM');
+        $respArray = array('result' => 'No User ID Mapped to platforms or no common games found.', 'msg' => "Please add the platform before challenging someone or ask partner to add to list instead.", 'code' => 'UCM');
 
       }
 

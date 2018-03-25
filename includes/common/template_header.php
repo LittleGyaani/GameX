@@ -4,7 +4,7 @@
   header("Access-Control-Allow-Origin: *");
 
   //Define Base URL to be used globally
-  $baseURL = 'http://192.168.0.13/GameX/';//http://www.battlestation.live/
+  $baseURL = 'http://localhost/GameX/';//http://www.battlestation.live/
 
   //Defining Default Time DateTimeZone
   date_default_timezone_set('Asia/Kolkata');
