@@ -13,6 +13,9 @@
   //Allow Cross Access from Origin
   header("Access-Control-Allow-Origin: *");
 
+  //Set Document type to JSON
+  header("Content-Type:application/json");
+
   //Define Base URL to be used globally
   $baseURL = "http://www.battlestation.live/";
 
@@ -28,7 +31,7 @@
 
   if($rungetWalletBalance)
 
-    $respArray = array('code' => 'WBF', 'response' => 'Wallet Balance Available', 'msg' => $walletmetaInfo['walletBalance']);
+    $respArray = array('code' => 'WBF', 'response' => 'Wallet Balance Available', 'msg' => $walletmetaInfo['walletBalance'], 'lastUpdatedOn' => $walletmetaInfo['lastUpdate_date_time_stamp']);
 
   else
 

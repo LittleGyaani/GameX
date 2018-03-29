@@ -62,7 +62,7 @@
         $notificationSentOn   = get_time_ago(strtotime($showNotificationsinPanel['notification_sent_DTStamp']));
 
     echo $messages = '<div class="row">
-                        <div class="col-md-12">
+                        <div class="col-lg-12">
                           <!-- Messages with Box  -->
                             <div class="alert fade show u-shadow-v1-3 g-pa-20" role="alert">
                               <button type="button" class="close u-alert-close--light g-ml-10 g-mt-1" data-dismiss="alert" aria-label="Close">
@@ -70,20 +70,22 @@
                               </button>';
 
       echo $messages = '<div class="media">
-                                <div class="d-flex g-mr-2">
+                                <div class="d-flex g-mr-10">
                                   <span class="u-icon-v3 u-icon-size--sm g-bg-white g-color-red">
                                     <i class="icon-speech icon-notifications-bell"></i>
                                   </span>
                                 </div>
                                 <div class="media-body">
                                   <div class="d-flex justify-content-between">
-                                    <p class="m-8 g-font-size-14">'."$notificationTitle".'
-                                    <br>sent by <font color="g-color-primary">'."$notificationSentBy".'</font></p>
-                                    <span class="float-right small g-mx-10">'."$notificationSentOn".'</span>
+                                    <p class="m-0">'."$notificationTitle".'</p>
+                                    <p class="m-0">sent by '."$notificationSentBy".'</p>
+                                    <p class="m-0"><span class="float-right small g-mx-10">'."$notificationSentOn".'</span></p>
                                   </div>
-                                  <p class="g-font-size-14">'."$notificationMessage".'</p>
+                                  </br>
+                                  <p class="m-0 g-font-size-14">'."$notificationMessage".'</p>
                                 </div>
                               </div>';
+
       echo $messages = '</div>
                               <!-- Messages with Box Shadow -->
                             </div>

@@ -794,10 +794,15 @@ function notificationPanel(){
       dataType:'json',
       success:function(data){
 
-        if(data.code == 'WBF')
+        if(data.code == 'WBF'){
+
           $('#walletBalanceArea').html(data.msg);
-        else
+          $('#walletBalanceHere').html(data.msg);
+          $('.walletUpdated').html(data.lastUpdatedOn);
+
+        }else{
           console.log(data.code);
+        }
       },complete: function() {
 
         setTimeout(walletBalance, 3500);

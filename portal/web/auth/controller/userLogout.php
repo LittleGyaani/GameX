@@ -15,4 +15,4 @@ unset($_SESSION['userID']);
 session_destroy();
 
 //Redirect back user to Login page
-header('Location:../loginPage.php');
+header('Location:../loginPage');

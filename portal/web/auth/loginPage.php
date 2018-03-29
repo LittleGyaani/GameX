@@ -12,7 +12,7 @@ session_start();
 //Validating if the session exists or not
 if(!empty( $_SESSION['userID'])){
   echo 'Logged in successfully. Redirecting you to Dashboard now.';
-  header('Location:../userProfile/userDashboard.php');
+  header('Location:../userProfile/userDashboard');
 }
  ?>
 <!DOCTYPE html>
@@ -216,7 +216,7 @@ if(!empty( $_SESSION['userID'])){
 
               $.ajax({
                     type: 'post',
-                    url: '../../../api/process/request/processLogin.php',
+                    url: '../../../api/process/request/processLogin',
                     dataType: 'json',
                     data: {'userName':userName,'userPassword':userPassword},
                     beforeSend: function(){
@@ -244,7 +244,7 @@ if(!empty( $_SESSION['userID'])){
                             case ('USERERROR'):
 
                               // alert(data.resp+data.msg);
-                              setTimeout(function(){   window.location.href="signupPage.php"; }, 1500);
+                              setTimeout(function(){   window.location.href="signupPage"; }, 1500);
                               cheers.error({
                                 title: data.resp,
                                 message: data.msg,
@@ -255,7 +255,7 @@ if(!empty( $_SESSION['userID'])){
 
                             case ('SUCCESS'):
 
-                              setTimeout(function(){   window.location.href="../userProfile/userDashboard.php"; }, 1500);
+                              setTimeout(function(){   window.location.href="../userProfile/userDashboard"; }, 1500);
                               cheers.success({
                                 title: data.resp,
                                 message: data.msg,

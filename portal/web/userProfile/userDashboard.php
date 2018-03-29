@@ -793,7 +793,7 @@ if(!empty($_SESSION['userID'])){
                 <h3 class="h6 mb-0">
                     <i class="icon-calculator g-pos-rel g-top-1 g-mr-5"></i> My Wallet Transaction Reports
                   </h3>
-                  <div style="float:right">Your Wallet Balance is ₹<b><?= $selectUserInformations['walletBalance'];?></b> | Last Updated On : <?= $selectUserInformations['lastUpdate_date_time_stamp'];?></div>
+                  <div style="float:right">Your Wallet Balance is ₹<b id="walletBalanceHere"></b> | Last Updated On : <span class="walletUpdated"></span></div>
               </div>
 
 

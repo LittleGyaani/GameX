@@ -66,16 +66,17 @@ date_default_timezone_set('Asia/Kolkata');
 
        }else{
 
-          $insertUserDetails = "INSERT INTO `user_info`(`user_name`, `user_fullname`, `email_id`, `login_password`, `user_registration_date`) VALUES ('$userName','$userFullName','$userEMAILID','$userPassword', '$regDate')";
+          $insertUserDetails = "INSERT INTO `user_info`(`user_name`, `user_fullname`, `email_id`, `login_password`, `user_registration_date`, `channel_source`, `is_firsttime`) VALUES ('$userName','$userFullName','$userEMAILID','$userPassword', '$regDate','web',1)";
           $runInsertUserDetails = $conn -> query($insertUserDetails);
           $lastUserID = $conn -> insert_id;
+          $firstWelcomeMessage = $conn -> query("INSERT INTO `user_notification_record`(`userID`, `sentuserID`, `notification_title`, `notification_message`, `notification_status`, `notification_type`, `notification_sent_by`, `notification_sent_DTStamp`) VALUES ($lastUserID,0,'Welcome to battlestation.','Warm greetings on joining us, $userName! Welcome to the platform, Enjoy the whole new world of batteling. Hope you will love it. Your sincere Admin!',0,'welcomemessage','admin','$now')");
           $createWalletforUser = $conn -> query("INSERT INTO `user_wallet_info`(`userID`, `walletBalance`, `created_date_time_stamp`, `lastUpdate_date_time_stamp`) VALUES ('$lastUserID',0,'$now','$now')");
 
             //Running the insertion query to push data to DB if the user doesn't exist
             if($runInsertUserDetails){
 
               //Sending session values back to page and redirect user to Dashboard page
-              $_SESSION['userID'] = $getUserInformations['user_id'];
+              $_SESSION['userID'] = $runInsertUserDetails['user_id'];
 
               $resp = array('result' => 'NEW', 'resp' => 'User Signup successful.', 'msg' => 'Please login to continue.');
 

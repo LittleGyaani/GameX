@@ -6,9 +6,12 @@ error_reporting(0);
 //Initializing session
 session_start();
 
+//Calling Database file for estanlishing connection for performing operations
+include '../../../includes/config/dbConnectivity.php';
+
 if(!empty($_SESSION['userID'])){
   // echo 'Session already running'.$_SESSION['userNAME'];
-  header('Location:../userProfile/userDashboard.php');
+  header('Location:../userProfile/userDashboard');
 }
  ?>
 <!DOCTYPE html>
@@ -350,7 +353,7 @@ if(!empty($_SESSION['userID'])){
 
                     $.ajax({
                           type: 'post',
-                          url: '../../../api/process/request/processRegister.php?request='+'registerUser',
+                          url: '../../../api/process/request/processRegister?request='+'registerUser',
                           dataType: 'json',
                           data:{'userName':userName,'userPassword':userPassword,'userEMAILID':userEMAILID,'userFullName':userFullName},
                           beforeSend: function(){
@@ -368,12 +371,12 @@ if(!empty($_SESSION['userID'])){
                                     title: data.resp,
                                     message: data.msg,
                                   });
-                                  setTimeout(function(){   window.location.href="loginPage.php"; }, 1500);
+                                  setTimeout(function(){   window.location.href="loginPage"; }, 1500);
                                   break;
 
                                 case ('NEW'):
                                   $('#loginFormContainer').hide();
-                                  setTimeout(function(){   window.location.href = "../userProfile/userDashboard.php"; }, 1500);
+                                  setTimeout(function(){   window.location.href = "../userProfile/userDashboard"; }, 1500);
                                   cheers.success({
                                     title: data.resp,
                                     message: data.msg,
