@@ -94,7 +94,7 @@ if (isset($_GET['state'])) { $helper->getPersistentDataHandler()->set('state', $
 $permissions = ['email']; // Optional permissions
 $loginUrl = $helper->getLoginUrl('https://battlestation.live/Gamex/portal/web/auth/fb-callback.php', $permissions);?>
 
- <button class="btn btn-block u-btn-facebook rounded text-uppercase g-py-13 g-mb-15" type="button"  scope="public_profile,email" onlogin="checkLoginState();">
+ <button class="btn btn-block u-btn-facebook rounded text-uppercase g-py-13 g-mb-15" type="button" scope="public_profile,email" onlogin="checkLoginState();">
                   <i class="mr-3 fa fa-facebook"></i>
                   <span class="g-hidden-xs-down" ><?php echo'<a href="' . $loginUrl . '">Login with Facebook </a>';?></span>
                 </button>
@@ -232,7 +232,7 @@ $loginUrl = $helper->getLoginUrl('https://battlestation.live/Gamex/portal/web/au
 
               $.ajax({
                     type: 'post',
-                    url: '../../../api/process/request/processLogin.php',
+                    url: '../../../api/process/request/processLogin',
                     dataType: 'json',
                     data: {'userName':userName,'userPassword':userPassword},
                     beforeSend: function(){

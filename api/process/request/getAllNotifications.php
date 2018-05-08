@@ -7,6 +7,9 @@
   //Hiding all errors and notices
   error_reporting(0);
 
+  //Including the DB file
+  include "../../../includes/config/dbConnectivity.php";
+
   //Declaring default Date and Time Zone for Stamps
   date_default_timezone_set('Asia/Kolkata');
 
@@ -44,8 +47,6 @@
       }
   }
 
-  //Including the DB file
-  include "../../../includes/config/dbConnectivity.php";
   $userID = $_POST['userID'];
   $respArray = array();
 
