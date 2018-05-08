@@ -9,7 +9,7 @@ error_reporting(0);
  $dbHost = "localhost";
  $dbUser = "root";
  $dbPass = "";
- $dbName = "battle_station_DB";
+ $dbName = "battle_station_DB"; Change DB nam
 
  //Establishing connection to Database using MySQLi
  $conn = new mysqli($dbHost,$dbUser,$dbPass,$dbName);

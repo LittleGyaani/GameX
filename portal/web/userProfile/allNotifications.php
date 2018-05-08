@@ -250,6 +250,12 @@ if(!empty($_SESSION['userID'])){
                     <span><i class="icon-fire g-pos-rel g-top-1 g-mr-8"></i> My Challenge Requests</span>
                 </a>
                 <!-- End History -->
+                 <!-- Fixture -->
+                <a href="fixture" class="list-group-item list-group-item-action justify-content-between">
+                    <span><i class="icon-game-controller g-pos-rel g-top-1 g-mr-8"></i> My Tournamnet Fixture</span>
+                </a>
+                <!-- End Fixture -->
+
 
                 <!-- Settings -->
                 <a href="#" class="list-group-item list-group-item-action justify-content-between">

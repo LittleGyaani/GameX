@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . '/vendor/autoload.php'; // change path as needed
 //Hiding all errors and notices
 error_reporting(0);
 
@@ -79,10 +79,26 @@ if(!empty( $_SESSION['userID'])){
                   <span class="u-icon-v2 u-icon-size--lg g-brd-white g-color-white g-bg-teal g-font-size-default rounded-circle text-uppercase g-absolute-centered g-pa-24">OR</span>
                 </div>
 
-                <button class="btn btn-block u-btn-facebook rounded text-uppercase g-py-13 g-mb-15" type="button">
+                <?php
+if(!session_id()) {
+    session_start();
+}
+$fb = new Facebook\Facebook([
+  'app_id' => '231577307401515',
+  'app_secret' => 'f40193b3820209c0a1796344f90f76c5',
+  'default_graph_version' => 'v2.12',
+  ]);
+
+$helper = $fb->getRedirectLoginHelper();
+if (isset($_GET['state'])) { $helper->getPersistentDataHandler()->set('state', $_GET['state']); }
+$permissions = ['email']; // Optional permissions
+$loginUrl = $helper->getLoginUrl('https://battlestation.live/Gamex/portal/web/auth/fb-callback.php', $permissions);?>
+
+ <button class="btn btn-block u-btn-facebook rounded text-uppercase g-py-13 g-mb-15" type="button"  scope="public_profile,email" onlogin="checkLoginState();">
                   <i class="mr-3 fa fa-facebook"></i>
-                  <span class="g-hidden-xs-down">Login with</span> Facebook
+                  <span class="g-hidden-xs-down" ><?php echo'<a href="' . $loginUrl . '">Login with Facebook </a>';?></span>
                 </button>
+
                 <!-- <button class="btn btn-block u-btn-twitter rounded text-uppercase g-py-13" type="button">
                   <i class="mr-3 fa fa-twitter"></i>
                   <span class="g-hidden-xs-down">Login with</span> Twitter
@@ -216,7 +232,7 @@ if(!empty( $_SESSION['userID'])){
 
               $.ajax({
                     type: 'post',
-                    url: '../../../api/process/request/processLogin',
+                    url: '../../../api/process/request/processLogin.php',
                     dataType: 'json',
                     data: {'userName':userName,'userPassword':userPassword},
                     beforeSend: function(){
