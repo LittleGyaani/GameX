@@ -980,7 +980,17 @@ function notificationPanel(){
         return true;
 
       });
-
+      //
+      // $('#addmny').click(function(e){
+      //
+      //   e.preventDefault();
+      //   var money = $('#');
+      //   alert(money);
+      //   if(money >= 50){
+      //
+      //
+      //
+      //   });
 
 
   // if(navigator.onLine)

@@ -221,9 +221,7 @@ if(isset($_SESSION['userID'])){
                              ?>
                              <div class="row" style="float:left; margin-left:2px;">
                                <div class="col-md-12">
-                                     <span class="btn btn-block u-btn-blue g-rounded-50 g-py-5">
-                                     <i class="icon-plus g-mr-5"></i> Add Money
-                                   </span>
+                                     <a class="btn btn-block u-btn-cyan g-rounded-50 g-py-5" href="#MoneyAddModal" data-modal-target="#MoneyAddModal" data-modal-effect="blur"><i class="icon-plus g-mr-5"></i> Add Money</a>
                                  </div>
                                </div>
 
@@ -273,6 +271,37 @@ if(isset($_SESSION['userID'])){
                             </p>
                           </div>
                           <!-- Voucher Reedemption Demo modal window -->
+
+                          <!-- Money Add modal window -->
+                           <div id="MoneyAddModal" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">
+                             <button type="button" class="close" onclick="Custombox.modal.close();">
+                               <i class="fa fa-close"></i>
+                             </button>
+                             <h4 class="g-mb-20">Add Money to  Wallet</h4>
+                             <p>
+                               <!-- Voucher Code Masking -->
+                               <div class="form-group g-mb-20">
+                                 <label class="g-mb-10">Enter Amount*</label>
+                                 <b class="tooltip tooltip-top-right u-tooltip--v1">Some helpful information</b>
+                                 <form method="post" action="../../../includes/integrations/wallets/paytm/pgRedirect.php">
+                                 <div class="input-group g-brd-primary--focus">
+                                   <input id="ORDER_ID" type="number" tabindex="1" maxlength="20" size="20" name="ORDER_ID" autocomplete="off" value="<?php echo date('Hi') . rand(10000,99999999)?>" hidden>
+                                    <input id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID" autocomplete="off" value="<?= $userID; ?>" hidden>
+                                    <input id="INDUSTRY_TYPE_ID" tabindex="4" maxlength="12" size="12" name="INDUSTRY_TYPE_ID" autocomplete="off" value="Retail" hidden>
+                                    <input id="CHANNEL_ID" tabindex="4" maxlength="12" size="12" name="CHANNEL_ID" autocomplete="off" value="WEB" hidden>
+                                    <input class="form-control form-control-md g-brd-right-none rounded-0" title="TXN_AMOUNT" tabindex="10" type="text" name="TXN_AMOUNT" value="" id="moneyAmount" placeholder="₹1000" >
+                                   <div class="input-group-addon d-flex align-items-center g-color-gray-dark-v5 rounded-0">
+                                     <i class="icon-credit-card"></i>
+                                   </div>
+                                 </div>
+                                 <br>
+                                 <input value="Add Money" type="submit"	onclick="" class="btn btn-md u-btn-outline-darkred g-mr-10 g-mb-15" id="addmny">
+                                 </form>
+                               </div>
+                               <!-- End Vocuher Card Masking -->
+                             </p>
+                           </div>
+                           <!-- Voucher Reedemption Demo modal window -->
 
                            <br><br>
                             <strong><br><small>* CWB - Current Wallet Balance, LUB - Last Used Balance, TRANX. - Transaction</small></strong><br>
