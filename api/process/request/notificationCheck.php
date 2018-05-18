@@ -12,6 +12,9 @@
     //Including the DB file
     include "../../../includes/config/dbConnectivity.php";
 
+    //Setting Header Type for JSON Output
+    header('Content-Type:application/json');
+
   /*This API checks for the latest notification associated with user.*/
 
       //Accepted Parameters
@@ -70,7 +73,7 @@
 
     }else{
 
-        $respArray['response'][] = array('message' => "Invalid Secure Token Passed.", 'response' => "You are not authorized or no secure method obtained. Recording your IP Now...");
+        $respArray['response'][] = array('message' => "Invalid Secure Token Passed.", 'response' => "You are not authorized or no secure method obtained. Recording your IP Now.");
 
     }
 

@@ -63,7 +63,7 @@
         $notificationSentOn   = get_time_ago(strtotime($showNotificationsinPanel['notification_sent_DTStamp']));
 
     echo $messages = '<div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-md-12">
                           <!-- Messages with Box  -->
                             <div class="alert fade show u-shadow-v1-3 g-pa-20" role="alert">
                               <button type="button" class="close u-alert-close--light g-ml-10 g-mt-1" data-dismiss="alert" aria-label="Close">

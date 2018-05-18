@@ -24,9 +24,9 @@ $paramList["CHANNEL_ID"] = $CHANNEL_ID;
 $paramList["TXN_AMOUNT"] = $TXN_AMOUNT;
 $paramList["WEBSITE"] = PAYTM_MERCHANT_WEBSITE;
 
-/*
-$paramList["CALLBACK_URL"] = "http://localhost/PaytmKit/pgResponse.php";
-$paramList["MSISDN"] = $MSISDN; //Mobile number of customer
+
+$paramList["CALLBACK_URL"] = "http://localhost/includes/integrations/wallets/paytm/pgResponse.php";
+/*$paramList["MSISDN"] = $MSISDN; //Mobile number of customer
 $paramList["EMAIL"] = $EMAIL; //Email ID of customer
 $paramList["VERIFIED_BY"] = "EMAIL"; //
 $paramList["IS_USER_VERIFIED"] = "YES"; //

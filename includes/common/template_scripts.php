@@ -342,6 +342,7 @@
       setTimeout(getAllNotification, 200);
       setTimeout(globalActivities, 500);
       var userID = $('#hiddenUserID').text();
+      $('[data-toggle="tooltip"]').tooltip();
       // alert(userID);
 
 function notificationPanel(){
@@ -516,23 +517,23 @@ function notificationPanel(){
 
     });
 
-  function type(){
-
-    if(dots < 3)
-    {
-        $('#dots').append('.');
-        dots++;
-    }
-    else
-    {
-        $('#dots').html('');
-        dots = 0;
-    }
-
-  }
-
-  //Run the dots along
-  setInterval (type, 600);
+  // function type(){
+  //
+  //   if(dots < 3)
+  //   {
+  //       $('#dots').append('.');
+  //       dots++;
+  //   }
+  //   else
+  //   {
+  //       $('#dots').html('');
+  //       dots = 0;
+  //   }
+  //
+  // }
+  //
+  // //Run the dots along
+  // setInterval (type, 600);
 
   //Quick User Match function
   $(document).on('click','.quickMatchModal',function(){
@@ -908,16 +909,90 @@ function notificationPanel(){
     });
 
   }
-  if(navigator.onLine)
-  {
-    console.log('You are Online');
-    $('#internetActivity').fadeOut('slow').delay(100);
-  }
-  else
-  {
-    console.log('You are Offline');
-    $('#internetActivity').fadeIn('slow').delay(100);
-  }
+
+  $('#changePhoto').click(function(e){
+
+    e.preventDefault();
+
+    // alert('Hi!');
+    $("#imageUpload").click();
+
+    return;
+  });
+
+  function fasterPreview(uploader) {
+
+    if (uploader.files && uploader.files[0]){
+
+        var x = $('#profileImage').attr('src', window.URL.createObjectURL(uploader.files[0]));
+
+        }
+    }
+
+  $("#imageUpload").change(function(){
+
+        var image = $(this).val();
+        var img_ex = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+        var img = $(this).val();
+
+        //validate file type
+        if(!img_ex.exec(image)){
+            alert('Please upload only .jpg/.jpeg/.png/.gif file.');
+            $('#imageUpload').val('');
+            return false;
+        }else{
+            // $('.uploadProcess').show();
+            // $('#uploadForm').hide();
+            // $( "#picUploadForm" ).submit();
+            // alert('Upload'+img);
+            fasterPreview(this);
+            $('#uploadimage').submit();
+
+        }
+
+
+      });
+
+      $('#uploadimage').submit(function(e){
+
+        e.preventDefault();
+        var username = $('.username').text();
+        //Calling the AJAX to update Profile Photo of User
+        $.ajax({
+
+          type:'POST',
+          url:'<?php echo $baseURL; ?>api/process/request/updateProfilePhoto?username='+username+'&&userid='+userID,
+          // dataType:'json',
+          data: new FormData(this),
+          contentType: false,
+          cache: false,
+          processData:false,
+          success:function(update){
+
+            if(update == 'SUCCESS')
+                    alert('Profile Picture Updated.');
+            else
+              console.log('Unable to handle request');
+          }
+
+        });
+
+        return true;
+
+      });
+
+
+
+  // if(navigator.onLine)
+  // {
+  //   console.log('You are Online');
+  //   $('#internetActivity').fadeOut('slow').delay(100);
+  // }
+  // else
+  // {
+  //   console.log('You are Offline');
+  //   $('#internetActivity').fadeIn('slow').delay(100);
+  // }
 
 });
 </script>

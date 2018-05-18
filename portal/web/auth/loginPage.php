@@ -84,15 +84,15 @@ if(!session_id()) {
     session_start();
 }
 $fb = new Facebook\Facebook([
-  'app_id' => '231577307401515',
-  'app_secret' => 'f40193b3820209c0a1796344f90f76c5',
+  'app_id' => '258910937982436',
+  'app_secret' => 'f4c7238f8f773b8a2cba68247387b17e',
   'default_graph_version' => 'v2.12',
   ]);
 
 $helper = $fb->getRedirectLoginHelper();
 if (isset($_GET['state'])) { $helper->getPersistentDataHandler()->set('state', $_GET['state']); }
 $permissions = ['email']; // Optional permissions
-$loginUrl = $helper->getLoginUrl('https://battlestation.live/Gamex/portal/web/auth/fb-callback.php', $permissions);?>
+$loginUrl = $helper->getLoginUrl('https://battlestation.live/portal/web/auth/fb-callback.php', $permissions);?>
 
  <button class="btn btn-block u-btn-facebook rounded text-uppercase g-py-13 g-mb-15" type="button" scope="public_profile,email" onlogin="checkLoginState();">
                   <i class="mr-3 fa fa-facebook"></i>
@@ -232,7 +232,7 @@ $loginUrl = $helper->getLoginUrl('https://battlestation.live/Gamex/portal/web/au
 
               $.ajax({
                     type: 'post',
-                    url: '../../../api/process/request/processLogin',
+                    url: '../../../api/process/request/processLogin.php',
                     dataType: 'json',
                     data: {'userName':userName,'userPassword':userPassword},
                     beforeSend: function(){

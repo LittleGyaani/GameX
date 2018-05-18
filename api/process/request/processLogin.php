@@ -3,7 +3,7 @@
 //Hiding all errors and notices
 error_reporting(0);
 
-
+//Initializing the session
 session_start();
 
 //Including the DB file
