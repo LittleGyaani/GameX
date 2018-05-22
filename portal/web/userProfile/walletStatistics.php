@@ -1,7 +1,7 @@
 <?php
 
 //Hiding all errors and notices
-error_reporting(0);
+error_reporting();
 
 //Calling Database file for estanlishing connection for performing operations
 include '../../../includes/config/dbConnectivity.php';
@@ -14,11 +14,14 @@ if(isset($_SESSION['userID'])){
 
     // echo 'Welcome User'.$_SESSION['userNAME'];
     $userID = $_SESSION['userID'];
+
     //Selecting all user information basing upon the user's session id
     $getAllUserDetails = $conn -> query("SELECT * FROM user_info ui JOIN user_wallet_info uw ON ui.user_id = uw.userID WHERE ui.user_id = '$userID'");
     $selectUserInformations = $getAllUserDetails -> fetch_assoc();
+    $walletID = $selectUserInformations['walletID'];
+    $walletBalance = $selectUserInformations['walletBalance'];
 
-} else{
+}else{
 
     echo 'You are not authorized to access the page without logging in.';
     header('Location:../auth/loginPage.php?redirectback=' . urlencode($_SERVER['REQUEST_URI']));
@@ -159,7 +162,7 @@ if(isset($_SESSION['userID'])){
                             <tr>
                               <th class="g-font-weight-200 g-color-black">Wallet Tranx. ID</th>
                               <th class="g-font-weight-200 g-color-black">Remaining Balance (CWB-/+LUB)*</th>
-                              <th class="g-font-weight-200 g-color-black">Wallet <br>Transaction <br>Type</th>
+                              <!-- <th class="g-font-weight-200 g-color-black">Wallet <br>Transaction <br>Type</th> -->
                               <th class="g-font-weight-200 g-color-black">Last Used Balance</th>
                               <th class="g-font-weight-200 g-color-black">Transaction Date & Time</th>
                               <th class="g-font-weight-200 g-color-black">Transaction Status</th>
@@ -181,22 +184,26 @@ if(isset($_SESSION['userID'])){
                                   <span>₹<b><?=$userWalletDetails['wallet_remaining_balance']?></b></span>
                               </td>
 
-                              <td class="align-middle">
+                              <!-- <td class="align-middle">
                                 <span class="btn btn-block u-btn-primary g-rounded-50 g-py-5">
                                   <i class="icon-check g-mr-5"></i> <?=ucwords($userWalletDetails['useType']);?>
                                 </span>
-                              </td>
+                              </td> -->
 
                               <td class="align-middle text-nowrap">
                                 <span class="d-block g-mb-5">
                                   <?php
-                                  if($userWalletDetails['useType'] == 'wallet credit' || $userWalletDetails['useType'] == 'wallet topup') {?>
+                                  if($userWalletDetails['useType'] == 'walletcredit' || $userWalletDetails['useType'] == 'wallettopup') {?>
                                   +₹<b><?=$userWalletDetails['lastUsedBalance']?></b>
                                   <?php
-                                }else{ ?>
-                                  -₹<b><?=$userWalletDetails['lastUsedBalance']?></b>
+                                }else if($userWalletDetails['lastUsedBalance'] == 0){ ?>
+                                  ₹<b>hi</b>
                                   <?php
-                                  }
+                                }else {
+                                  ?>
+                                  -₹<b><?=$userWalletDetails['lastUsedBalance']?></b>
+                                <?php
+                              }
                                   ?>
                                 </span>
                               </td>
@@ -285,17 +292,19 @@ if(isset($_SESSION['userID'])){
                                  <b class="tooltip tooltip-top-right u-tooltip--v1">Some helpful information</b>
                                  <form method="post" action="../../../includes/integrations/wallets/paytm/pgRedirect.php">
                                  <div class="input-group g-brd-primary--focus">
-                                   <input id="ORDER_ID" type="number" tabindex="1" maxlength="20" size="20" name="ORDER_ID" autocomplete="off" value="<?php echo date('Hi') . rand(10000,99999999)?>" hidden>
+                                   <input id="ORDER_ID" type="text" tabindex="1" maxlength="20" size="20" name="ORDER_ID" autocomplete="off" value="<?php echo 'BSLAM' . date('dmYHi') . rand(10000,99999999); ?>" hidden>
                                     <input id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID" autocomplete="off" value="<?= $userID; ?>" hidden>
                                     <input id="INDUSTRY_TYPE_ID" tabindex="4" maxlength="12" size="12" name="INDUSTRY_TYPE_ID" autocomplete="off" value="Retail" hidden>
                                     <input id="CHANNEL_ID" tabindex="4" maxlength="12" size="12" name="CHANNEL_ID" autocomplete="off" value="WEB" hidden>
-                                    <input class="form-control form-control-md g-brd-right-none rounded-0" title="TXN_AMOUNT" tabindex="10" type="text" name="TXN_AMOUNT" value="" id="moneyAmount" placeholder="₹1000" >
+                                    <input id ="WALLET_ID" tabindex="4" maxlength="12" size="12" name="WALLET_ID" autocomplete="off" value="<?= $walletID; ?>" hidden>
+                                    <input id ="WALLET_MONEY" tabindex="4" maxlength="12" size="12" name="WALLET_MONEY" autocomplete="off" value="<?= $walletBalance; ?>" hidden>
+                                    <input class="form-control form-control-md g-brd-right-none rounded-0" title="TXN_AMOUNT" min="50" max="9999" tabindex="10" type="text" name="TXN_AMOUNT" value="" id="moneyAmount" placeholder="₹1000" >
                                    <div class="input-group-addon d-flex align-items-center g-color-gray-dark-v5 rounded-0">
                                      <i class="icon-credit-card"></i>
                                    </div>
                                  </div>
-                                 <br>
-                                 <input value="Add Money" type="submit"	onclick="" class="btn btn-md u-btn-outline-darkred g-mr-10 g-mb-15" id="addmny">
+                                 *Minimum Amount to add money to wallet is ₹50.</br></br>
+                                 <center><input value="Add Money" type="submit"	onclick="" class="btn btn-md u-btn-outline-darkred g-mr-10 g-mb-15" id="addmny" name="ADDMONEY"></center>
                                  </form>
                                </div>
                                <!-- End Vocuher Card Masking -->

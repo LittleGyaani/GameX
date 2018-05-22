@@ -9,10 +9,6 @@
   //Defining Default Time DateTimeZone
   date_default_timezone_set('Asia/Kolkata');
 
-  header("Pragma: no-cache");
-	header("Cache-Control: no-cache");
-	header("Expires: 0");
-
   //Generate Random String to use as token for secure AJAX calls
   function random_string($length) {
     $key = '';
