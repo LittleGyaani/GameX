@@ -51,6 +51,9 @@ include '../../../includes/config/dbConnectivity.php';
              //Sending session values back to page and redirect user to Dashboard page
              $_SESSION['userID'] = $getUserInformations['user_id'];
 
+             //Update Login State in DB
+             //$conn -> query("UPDATE `user_info` SET `is_logged_in` = 1");
+
              //Generting response
              $resp = array('result' => 'SUCCESS', 'resp' => 'User validated.', 'msg' => 'Redirecting you now to Dashboard.');
 

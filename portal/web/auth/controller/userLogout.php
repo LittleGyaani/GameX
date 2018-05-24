@@ -11,6 +11,9 @@ session_start();
 //Destroy the global variable 'userID' from everywhere
 unset($_SESSION['userID']);
 
+//Change the login state of user
+
+
 //Destroy the entire session which makes sure no values EXISTS anywhere, anymeans
 session_destroy();
 

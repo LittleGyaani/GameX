@@ -47,7 +47,10 @@ $checkSum = getChecksumFromArray($paramList,PAYTM_MERCHANT_KEY);
 if(isset($_POST['ADDMONEY'])){
 
 		//Generate ORDER ID
-		$pushOrderDetails = $conn -> query("INSERT INTO `user_wallet_transaction_info`(`user_order_id`, `userID`, `user_wallet_id`, `lastUsedBalance`, `wallet_remaining_balance`, `useType`, `transaction_id`, `transaction_source`, `transaction_status`, `date_time_stamp`) VALUES ('$ORDER_ID',$CUST_ID,$WALLET_ID,0,$WALLET_MONEY,'wallettopup','','paytm','initiated','$CURRENT_DTSTAMP')");
+		$pushOrderDetails = $conn -> query("INSERT INTO `user_wallet_transaction_info`(`user_order_id`, `userID`, `user_wallet_id`, `lastUsedBalance`, `wallet_remaining_balance`, `useType`, `transaction_id`, `transaction_source`, `transaction_status`, `date_time_stamp`) VALUES ('$ORDER_ID',$CUST_ID,$WALLET_ID,$TXN_AMOUNT,$WALLET_MONEY,'wallettopup','','paytm','initiated','$CURRENT_DTSTAMP')");
+
+		//Insert into user Activity History
+		$insertUserActivity = $conn -> query("INSERT INTO `user_activity_history`(`user_id`, `user_last_action`, `user_activity_DTStamp`) VALUES ($CUST_ID,'wallet topup initiated','$CURRENT_DTSTAMP') WHERE `user_id` = $CUST_ID");
 
 }
 ?>
