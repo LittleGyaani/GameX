@@ -1,8 +1,11 @@
 <?php
+
+//Declaring all required header parameters
 header("Pragma: no-cache");
 header("Cache-Control: no-cache");
 header("Expires: 0");
-header( "refresh:8; url=http://localhost/gamex/portal/web/userProfile/walletStatistics" );
+header("refresh:3; url=http://localhost/gamex/portal/web/userProfile/walletStatistics");
+
 // following files need to be included
 require_once("./lib/config_paytm.php");
 require_once("./lib/encdec_paytm.php");
@@ -25,8 +28,7 @@ $isValidChecksum = verifychecksum_e($paramList, PAYTM_MERCHANT_KEY, $paytmChecks
 if($isValidChecksum == "TRUE") {
 	// echo "<b>Checksum matched and following are the transaction details:</b>" . "<br/>";
 	if ($_POST["STATUS"] == "TXN_SUCCESS") {
-		echo "<center><img src='http://localhost/GameX/assets/img/loaders/tick-loader.gif'";
-		echo "</br><b>Transaction is successful. Taking you back to Wallet.</center></b>" . "<br/>";
+
 		// print_r($_POST);
 		$ORDER_ID = $_POST['ORDERID'];
 		$TRANSACTION_ID = $_POST['TXNID'];
@@ -48,14 +50,30 @@ if($isValidChecksum == "TRUE") {
 
 		if($ORDER_ID == $fetchAllInfo['user_order_id']){
 
+			//checking if transaction status is completed or not
+			if($fetchAllInfo['transaction_status'] != 'completed'){
+
+				echo "<center><img src='http://localhost/GameX/assets/img/loaders/tick-loader.gif'";
+				echo "</br></br><b>Transaction is successful. Taking you back to Wallet.</center></b>" . "<br/>";
+
 				//Update Transaction Info
-				$pushTransactionDetail = $conn -> query ("UPDATE `user_wallet_transaction_info` SET `transaction_status` = 'completed', `date_time_stamp`='$now', `wallet_remaining_balance`=$walletBalance+$lastUsedBalance WHERE `user_order_id` = '$ORDER_ID'");
+				$pushTransactionDetail = $conn -> query ("UPDATE `user_wallet_transaction_info` SET `transaction_status` = 'completed', `date_time_stamp`='$now', `transaction_id` = '$TRANSACTION_ID', `wallet_remaining_balance`=$walletBalance+$lastUsedBalance WHERE `user_order_id` = '$ORDER_ID'");
 
 				//Update the wallet balance of current user against current user id
 				$updateWalletBalance = $conn -> query ("UPDATE `user_wallet_info` SET `walletBalance`=$walletBalance+$lastUsedBalance,`lastUpdate_date_time_stamp`='$now' WHERE `walletID` = $walletID");
 
 				//Insert into user Activity History
-				$insertUserActivity = $conn -> query("INSERT INTO `user_activity_history`(`user_id`, `user_last_action`, `user_activity_DTStamp`) VALUES ($CUST_ID,'wallet topup completed','$now') WHERE `user_id` = $userID");
+				$insertUserActivity = $conn -> query("INSERT INTO `user_activity_history`(`user_id`, `user_last_action`, `user_activity_DTStamp`) VALUES ($userID,'wallet topup completed','$now')");
+
+				//Insert Notification Record for User
+				$insertUserNotification = $conn -> query("INSERT INTO `user_notification_record`(`userID`, `sentuserID`, `notification_title`, `notification_message`, `notification_status`, `notification_type`, `notification_sent_by`, `notification_sent_DTStamp`) VALUES ($userID,0,'Money added successfully.','Thank you for adding money to wallet. Please check wallet for more detailed information.',0,'wallettopup','admin','$now')");
+
+			}else{
+
+					// echo 'You cannot use this page again.';
+					echo '<script>window.location.href="http://localhost/gamex/portal/web/userProfile/walletStatistics"';
+					echo '</script>';
+			}
 
 		}else{
 
@@ -80,3 +98,17 @@ else {
 	// header('Location:'.PAYTM_TXN_URL);
 }
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+function disable_f5(e)
+{
+  if ((e.which || e.keyCode) == 116)
+  {
+      e.preventDefault();
+  }
+}
+
+$(document).ready(function(){
+    $(document).bind("keydown", disable_f5);
+});
+</script>

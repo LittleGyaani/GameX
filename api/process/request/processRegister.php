@@ -76,7 +76,7 @@ date_default_timezone_set('Asia/Kolkata');
             if($runInsertUserDetails){
 
               //Sending session values back to page and redirect user to Dashboard page
-              $_SESSION['userID'] = $runInsertUserDetails['user_id'];
+              $_SESSION['userID'] = $lastUserID;
 
               $resp = array('result' => 'NEW', 'resp' => 'User Signup successful.', 'msg' => 'Please login to continue.');
 

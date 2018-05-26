@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/vendor/autoload.php'; // change path as needed
 //Hiding all errors and notices
 error_reporting(0);
 
@@ -79,24 +78,13 @@ if(!empty( $_SESSION['userID'])){
                   <span class="u-icon-v2 u-icon-size--lg g-brd-white g-color-white g-bg-teal g-font-size-default rounded-circle text-uppercase g-absolute-centered g-pa-24">OR</span>
                 </div>
 
-                <?php
-if(!session_id()) {
-    session_start();
-}
-$fb = new Facebook\Facebook([
-  'app_id' => '258910937982436',
-  'app_secret' => 'f4c7238f8f773b8a2cba68247387b17e',
-  'default_graph_version' => 'v2.12',
-  ]);
-
-$helper = $fb->getRedirectLoginHelper();
-if (isset($_GET['state'])) { $helper->getPersistentDataHandler()->set('state', $_GET['state']); }
-$permissions = ['email']; // Optional permissions
-$loginUrl = $helper->getLoginUrl('https://battlestation.live/portal/web/auth/fb-callback.php', $permissions);?>
-
- <button class="btn btn-block u-btn-facebook rounded text-uppercase g-py-13 g-mb-15" type="button" scope="public_profile,email" onlogin="checkLoginState();">
+                <button onclick="FBLogin();" class="btn btn-block u-btn-facebook rounded text-uppercase g-py-13 g-mb-15" type="button" display="popup" >
                   <i class="mr-3 fa fa-facebook"></i>
-                  <span class="g-hidden-xs-down" ><?php echo'<a href="' . $loginUrl . '">Login with Facebook </a>';?></span>
+                  <span class="g-hidden-xs-down">Login with Facebook</span>
+                </button>
+                <button onclick="FBLogout();" class="btn btn-block u-btn-facebook rounded text-uppercase g-py-13 g-mb-15" type="button">
+                  <i class="mr-3 fa fa-facebook"></i>
+                  <span class="g-hidden-xs-down">Logout of Facebook</span>
                 </button>
 
                 <!-- <button class="btn btn-block u-btn-twitter rounded text-uppercase g-py-13" type="button">
@@ -232,7 +220,7 @@ $loginUrl = $helper->getLoginUrl('https://battlestation.live/portal/web/auth/fb-
 
               $.ajax({
                     type: 'post',
-                    url: '../../../api/process/request/processLogin.php',
+                    url: '../../../api/process/request/processLogin',
                     dataType: 'json',
                     data: {'userName':userName,'userPassword':userPassword},
                     beforeSend: function(){
@@ -271,7 +259,7 @@ $loginUrl = $helper->getLoginUrl('https://battlestation.live/portal/web/auth/fb-
 
                             case ('SUCCESS'):
 
-                              setTimeout(function(){   window.location.href="../userProfile/userDashboard"; }, 1500);
+                              setTimeout(function(){   window.location.reload(true); }, 1500);
                               cheers.success({
                                 title: data.resp,
                                 message: data.msg,

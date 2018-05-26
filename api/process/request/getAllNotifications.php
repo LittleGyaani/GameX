@@ -67,7 +67,7 @@
                           <!-- Messages with Box  -->
                             <div class="alert fade show u-shadow-v1-3 g-pa-20" role="alert">
                               <button type="button" class="close u-alert-close--light g-ml-10 g-mt-1" data-dismiss="alert" aria-label="Close">
-                                <span class="dismissNotification" aria-hidden="true" id ='."$notificationID".'>×</span>
+                                <span class="readNotification" aria-hidden="true" id ='."$notificationID".'>×</span>
                               </button>';
 
       echo $messages = '<div class="media">

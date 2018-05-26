@@ -1385,9 +1385,9 @@ $bucket_path = !empty($client)?$client.'/':'';
 * @define integer
 */
 
-// define('DEV_MODE',setConfigValue('DEV_MODE','1'));
-// define('ERROR_LOGGING',setConfigValue('ERROR_LOGGING','1'));
-// define('MEMCACHE',setConfigValue('MEMCACHE','0'));
+define('DEV_MODE',setConfigValue('DEV_MODE','1'));
+define('ERROR_LOGGING',setConfigValue('ERROR_LOGGING','1'));
+define('MEMCACHE',setConfigValue('MEMCACHE','')); 
 
 define('REFRESH_BUDDYLIST',setConfigValue('REFRESH_BUDDYLIST','60'));   // Time in seconds after which the user's "Who's Online" list is refreshed
 

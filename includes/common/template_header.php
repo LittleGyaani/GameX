@@ -3,8 +3,11 @@
   //Allow Cross Access from Origin
   header("Access-Control-Allow-Origin: *");
 
+  //Initializing session
+  session_start();
+
   //Define Base URL to be used globally
-  $baseURL = 'http://localhost/GameX/';//http://www.battlestation.live/
+  $baseURL = 'http://localhost/GameX/';//$baseURL = 'https://www.battlestation.live/';
 
   //Defining Default Time DateTimeZone
   date_default_timezone_set('Asia/Kolkata');
@@ -65,7 +68,7 @@
 <!-- CSS Global Icons -->
 <!-- <link rel="stylesheet" href="<?php echo $baseURL; ?>assets/vendor/icon-awesome/css/font-awesome.min.css"> -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<link rel="stylesheet" href="http://simplelineicons.com/css/simple-line-icons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
 <link rel="stylesheet" href="<?php echo $baseURL; ?>assets/vendor/icon-etlinefont/style.css">
 <link rel="stylesheet" href="<?php echo $baseURL; ?>assets/vendor/icon-line-pro/style.css">
 <link rel="stylesheet" href="<?php echo $baseURL; ?>assets/vendor/icon-hs/style.css">
@@ -92,6 +95,87 @@
 </head>
 
 <body>
+
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '2161578867407424',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v3.0'
+    });
+
+    FB.AppEvents.logPageView();
+
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+   function checkLoginState() {
+     FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+    //console.log(response);
+  });
+}
+
+  function statusChangeCallback(response) {
+    if (response.status == 'connected') {
+        // Logged into your app and Facebook.
+        // we need to hide FB login button
+        // $('#fblogin').hide();
+        //fetch data from facebook
+        var accessToken = response.authResponse.accessToken;
+        getUserInfo();
+    }
+  }
+  function getUserInfo(){
+
+     FB.api('/me', {locale: 'en_IN', fields: 'id,name,email,picture'},function(response) {
+      console.log(JSON.stringify(response));
+      $.ajax({
+            type: "POST",
+            // dataType: 'json',
+            data: response,
+            url: '<?php echo $baseURL;?>api/process/request/FBLogin',
+            success: function(msg) {
+              if(msg == 'EXISTS')
+                alert('User is already present.'+msg);
+                // window.location.href="";
+                location.reload(true);
+            }
+      });
+
+    });
+
+  }
+
+  function FBLogin(){
+      FB.login(function(response) {
+         if (response.authResponse){
+
+             getUserInfo(); //Get User Information.
+
+          }else{
+           alert('Authorization failed.');
+          }
+       },{scope: 'public_profile,email',return_scopes: true});
+}
+
+function FBLogout()
+  {
+  	FB.logout(function(response) {
+      // console.log(JSON.stringify(response));
+      alert('Logout successful');
+    });
+  }
+</script>
 
   <!--Notification Audio-->
   <audio id="notificationSound" style="display:none;"></audio>
@@ -173,7 +257,7 @@
             <!-- End Navigation -->
 
               <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
-                <a class="btn btn-md u-btn-outline-cyan g-brd-2 g-mr-10 g-mb-15" href="portal/web/userProfile/myProfile.php">Welcome <b><?= $selectUserInformations['user_fullname'];?></b></a> <a href="portal/web/auth/controller/userLogout.php" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Logout</a>
+                <a class="btn btn-md u-btn-outline-cyan g-brd-2 g-mr-10 g-mb-15" href="portal/web/userProfile/myProfile">Welcome <b><?= $selectUserInformations['user_fullname'];?></b></a> <a href="portal/web/auth/controller/userLogout" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Logout</a>
               </div>
               <?php
 
@@ -182,7 +266,7 @@
               <center>
               <div class="d-inline-block g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
 
-                <font color="white"><i class="icon-user"></i><span class="u-label g-font-size-16 g-px-8">Welcome</span></font><a class="g-brd-2 g-mr-16 g-font-size-16 g-mb-15 userName" href="myProfile.php"><b><?= $selectUserInformations['user_fullname'];?>!</b></a>
+                <font color="white"><i class="icon-user"></i><span class="u-label g-font-size-16 g-px-8">Welcome</span></font><a class="g-brd-2 g-mr-16 g-font-size-16 g-mb-15 userName" href="portal/web/userProfile/myProfile"><b><?= $selectUserInformations['user_fullname'];?>!</b></a>
                 <br>
 
               <!-- Notification Icon Start -->

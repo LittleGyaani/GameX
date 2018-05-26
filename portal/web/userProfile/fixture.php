@@ -239,7 +239,7 @@ if(!empty($_SESSION['userID'])){
     $all_team = count($team);
     $k = $all_team/2;
 
-    $days = range(7, 100, 2); // first halh of season
+    $days = range(7, 100, 2); // first half of season
     $days2 = range(55, 100, 2); // second half
 
     // 1 tour

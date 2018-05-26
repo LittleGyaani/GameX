@@ -10,7 +10,7 @@ $url = explode('/',$_SERVER['REQUEST_URI']);
       <div id="loader" style="margin-top:50%;margin-left:25%;display:table;vertical-align:middle;position:absolute;z-index:999;display:none;">
         <img src="../../../assets/img/loaders/ajaxloader.gif" />
       </div>
-      <img id ="profileImage" class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img/profilePic/<?= !empty($selectUserInformations['user_profile_pic']) ? $selectUserInformations['user_profile_pic'] : 'user_default_avatar.png';?>" alt="<?= $selectUserInformations['user_fullname'];?>">
+      <img id ="profileImage" class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../../assets/img/profilePic/<?= !empty($selectUserInformations['user_profile_pic']) ? $selectUserInformations['user_profile_pic'] : 'user_default_avatar.png';?>" alt="<?= $selectUserInformations['user_name'];?>">
     </figure>
 
           <!-- Profile Action -->
@@ -36,7 +36,7 @@ $url = explode('/',$_SERVER['REQUEST_URI']);
 
     <!-- User Info -->
     <span class="g-pos-abs g-top-20 g-left-0">
-      <a class="btn btn-sm u-btn-primary rounded-0 username" href="#!"><b><?= $selectUserInformations['user_fullname'];?></b></a>
+      <a class="btn btn-sm u-btn-primary rounded-0 username unme" href="#!"><b><?= $selectUserInformations['user_fullname'];?></b></a>
       <small class="d-block g-bg-black g-color-white g-pa-5"><strong>Pro GAMER</strong></small>
     </span>
     <!-- End User Info -->

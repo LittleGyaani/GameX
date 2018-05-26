@@ -830,7 +830,7 @@ function notificationPanel(){
           console.log('Unable to handle request');
       },complete: function() {
 
-        setTimeout(getAllNotification, 3500);
+        setTimeout(getAllNotification, 8000);
 
       }
 
@@ -956,12 +956,12 @@ function notificationPanel(){
       $('#uploadimage').submit(function(e){
 
         e.preventDefault();
-        var username = $('.username').text();
+        var uname = $('#profileImage').attr('alt');
         //Calling the AJAX to update Profile Photo of User
         $.ajax({
 
           type:'POST',
-          url:'<?php echo $baseURL; ?>api/process/request/updateProfilePhoto?username='+username+'&&userid='+userID,
+          url:'<?php echo $baseURL; ?>api/process/request/updateProfilePhoto?username='+uname+'&&userid='+userID,
           // dataType:'json',
           data: new FormData(this),
           contentType: false,
@@ -992,6 +992,14 @@ function notificationPanel(){
       //
       //   });
 
+      $('.readNotification').click(function(e){
+
+        var notid = $(this).val();
+        e.preventDefault();
+        alert('Hi');
+
+
+      });
 
   // if(navigator.onLine)
   // {

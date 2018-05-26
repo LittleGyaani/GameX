@@ -11,12 +11,13 @@ session_start();
 
 //Defining Default Time DateTimeZone
 date_default_timezone_set('Asia/Kolkata');
-
+// echo 'Hi'.$_SESSION['userID'];
+// exit;
 //Validating if the session exists or not
 if(!empty($_SESSION['userID'])){
 
   // echo 'Welcome User'.$_SESSION['userNAME'];
-  $userID = $_SESSION['userID'];
+  echo $userID = $_SESSION['userID'];
   //Selecting all user information basing upon the user's session id
   $selectAllUserData = "SELECT * FROM `user_info` WHERE `user_id` = '$userID'";
   $getAllUserDetails = $conn -> query($selectAllUserData);
@@ -25,7 +26,7 @@ if(!empty($_SESSION['userID'])){
 }else{
 
   echo 'You are not authorized to access the page without logging in.';
-  header('Location:../auth/loginPage.php?redirectback=' . urlencode($_SERVER['REQUEST_URI']));
+  // header('Location:../auth/loginPage.php?redirectback=' . urlencode($_SERVER['REQUEST_URI']));
 
 
 }
@@ -731,7 +732,7 @@ if(!empty($_SESSION['userID'])){
                   <table class="table table-bordered u-table--v2">
                     <?php
 
-                      $selectWalletInfo = "SELECT * FROM `user_wallet_transaction_info` WHERE `userID` = $userID LIMIT 10";
+                      $selectWalletInfo = "SELECT * FROM `user_wallet_transaction_info` WHERE `userID` = $userID ORDER BY `date_time_stamp` DESC LIMIT 5";
                       $runselectWalletInfo = $conn -> query($selectWalletInfo);
                       if(($runselectWalletInfo -> num_rows) > 0){
                         ?>
@@ -770,13 +771,17 @@ if(!empty($_SESSION['userID'])){
                         <td class="align-middle text-nowrap">
                           <span class="d-block g-mb-5">
                             <?php
-                            if($userWalletDetails['useType'] == 'wallet credit' || $userWalletDetails['useType'] == 'wallet topup') {?>
+                            if($userWalletDetails['useType'] == 'walletcredit' || $userWalletDetails['useType'] == 'wallettopup') {?>
                             +₹<b><?=$userWalletDetails['lastUsedBalance']?></b>
                             <?php
-                          }else{ ?>
-                            -₹<b><?=$userWalletDetails['lastUsedBalance']?></b>
+                          }else if($userWalletDetails['lastUsedBalance'] == 0){ ?>
+                            ₹<b>hi</b>
                             <?php
-                            }
+                          }else {
+                            ?>
+                            -₹<b><?=$userWalletDetails['lastUsedBalance']?></b>
+                          <?php
+                        }
                             ?>
                           </span>
                         </td>

@@ -23,8 +23,9 @@ if(isset($_SESSION['userID'])){
 
 }else{
 
+    $_SESSION['redirecturl'] = urlencode($_SERVER['REQUEST_URI']);
     echo 'You are not authorized to access the page without logging in.';
-    header('Location:../auth/loginPage.php?redirectback=' . urlencode($_SERVER['REQUEST_URI']));
+    header('Location:../auth/loginPage.php?redirectback=' . $_SESSION['redirecturl']);
 
 }
 ?>
@@ -188,7 +189,7 @@ if(isset($_SESSION['userID'])){
                               ?>
                           <thead class="text-uppercase g-letter-spacing-1">
                             <tr>
-                              <th class="g-font-weight-200 g-color-black">Wallet Tranx. ID</th>
+                              <!-- <th class="g-font-weight-200 g-color-black">Wallet Tranx. ID</th> -->
                               <th class="g-font-weight-200 g-color-black">Remaining Balance (CWB-/+LUB)*</th>
                               <!-- <th class="g-font-weight-200 g-color-black">Wallet <br>Transaction <br>Type</th> -->
                               <th class="g-font-weight-200 g-color-black">Last Used Balance</th>
@@ -204,9 +205,9 @@ if(isset($_SESSION['userID'])){
                             ?>
                             <tr>
 
-                              <td class="align-middle">
+                              <!-- <td class="align-middle">
                                 <h4 class="h6 g-mb-2"><b>BSTRANS-<?=$userWalletDetails['walletTransactionID']?></b></h4>
-                              </td>
+                              </td> -->
 
                               <td class="align-middle text-nowrap">
                                   <span>₹<b><?=$userWalletDetails['wallet_remaining_balance']?></b></span>

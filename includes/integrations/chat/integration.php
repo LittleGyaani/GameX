@@ -67,7 +67,7 @@ if($dbms == "mssql" && file_exists(dirname(__FILE__).DIRECTORY_SEPARATOR.'sqlsrv
 * DB_NAME : database name.  @var string
 */
 define('DB_SERVER',			"localhost"				);
-define('DB_PORT',			"3306"					);
+define('DB_PORT',			"80"					);
 define('DB_USERNAME',		"root"					);
 define('DB_PASSWORD',		""				);
 define('DB_NAME',			"battle_station_DB"			);
