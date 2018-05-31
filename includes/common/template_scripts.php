@@ -33,6 +33,7 @@
 <!-- JS Plugins Init. -->
 <script>
     $(document).on('ready', function () {
+
         $.HSCore.helpers.HSFocusState.init();
         $.HSCore.helpers.HSNotEmptyState.init();
 
@@ -89,9 +90,6 @@
 <!-- Sweet Alert 2 (SWAL2) -->
 <script src="<?php echo $baseURL; ?>assets/js/components/sweetalert2.min.js"></script>
 
-<!-- jQuery Shake Effect for form errors -->
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <!-- Moment js library for date_time_stamp functionality -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
 
@@ -112,8 +110,6 @@
 
     //Initializing tooltip calls
     $('[data-toggle="tooltip"]').tooltip();
-
-
 
     $('.platformIDUpdate').on('click',function(){
 
@@ -376,7 +372,7 @@ function notificationPanel(){
                 }else if(data.response == 'NUN'){
 
                     $('#notificationCount').html(unreadcounts);
-                    $('.icon-notifications-bell').effect( "shake" );
+                    // $('.icon-notifications-bell').effect( "shake" );
 
                     cheers.success({
                         title: 'New Notification!',
@@ -1011,6 +1007,75 @@ function notificationPanel(){
   //   console.log('You are Offline');
   //   $('#internetActivity').fadeIn('slow').delay(100);
   // }
+
+  $("#username").keyup(function(){
+
+  var username = $(this).val();
+  // console.log(username);
+  if(username.length >= 5){
+
+   $("#result").html('checking...');
+
+     $.ajax({
+
+        type : 'POST',
+        url  : '<?php echo $baseURL; ?>api/process/request/firstUserUpdate',
+        data : {'username':username},
+        success : function(data){
+
+                  $("#result").html(data);
+
+        }
+
+      });
+
+      return false;
+
+  }else{
+
+   $("#result").html('');
+
+  }
+
+ });
+
+ $('#profileData').submit(function(e){
+
+   e.preventDefault();
+
+    // var data = $(this).serialize();
+    var npass = $('#pass').val();
+    var vpass = $('#vpass').val();
+    var phone = $('#phone').val();
+    var username = $('#username').val();
+    var userid = $('#hiddenUserID').text();
+
+    if(npass == vpass){
+
+      $.ajax({
+
+         type : 'POST',
+         url  : '<?php echo $baseURL; ?>api/process/request/updateProfile',
+         data : {npass,vpass,phone,username,userid},
+         success : function(res){
+
+                  alert(res);
+
+         }
+
+       });
+
+    }else{
+
+      alert('Passwords donot match. Please retry.')
+      $(this).find('input:password').val('');
+      $('#pass').focus();
+
+    }
+
+   return false;
+
+ });
 
 });
 </script>

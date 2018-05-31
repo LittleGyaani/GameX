@@ -138,7 +138,7 @@
   function getUserInfo(){
 
      FB.api('/me', {locale: 'en_IN', fields: 'id,name,email,picture'},function(response) {
-      console.log(JSON.stringify(response));
+      // console.log(JSON.stringify(response));
       $.ajax({
             type: "POST",
             // dataType: 'json',

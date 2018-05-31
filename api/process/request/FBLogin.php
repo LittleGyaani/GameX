@@ -17,11 +17,12 @@
   //Including the DB file
   include "../../../includes/config/dbConnectivity.php";
 
-  // print_r($_POST);
-
   //Declaring Variables
   $email = $_POST['email'];
-  $name = $_POS['name'];
+  $name = strtoupper($_POST['name']);
+  $now = date("d-m-Y H:i");
+  $date = date("d-m-Y");
+  $token = $_POST['id'];
 
   $checkifEmailExists = $conn -> query("SELECT * FROM `user_info` WHERE `email_id` = '$email'");
   $getUserInformations = $checkifEmailExists -> fetch_assoc();
@@ -38,7 +39,7 @@
   else{
 
     echo 'Signup Instead.';
-    $insertUserDetails = "INSERT INTO `user_info`(`user_name`, `user_fullname`, `email_id`, `login_password`, `user_registration_date`, `channel_source`, `is_logged_in`, `is_firsttime`) VALUES ('','$name','$userEMAILID','', '$now','facebook',1,1)";
+    $insertUserDetails = "INSERT INTO `user_info`(`user_name`, `user_fullname`, `email_id`, `login_password`, `user_registration_date`, `channel_source`, `auth_token`, `is_logged_in`, `is_firsttime`) VALUES ('','$name','$email','', '$date','facebook',$token,1,1)";
     $runInsertUserDetails = $conn -> query($insertUserDetails);
     $lastUserID = $conn -> insert_id;
     $_SESSION['userID'] = $lastUserID;

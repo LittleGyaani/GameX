@@ -17,11 +17,13 @@ date_default_timezone_set('Asia/Kolkata');
 if(!empty($_SESSION['userID'])){
 
   // echo 'Welcome User'.$_SESSION['userNAME'];
-  echo $userID = $_SESSION['userID'];
+  $userID = $_SESSION['userID'];
   //Selecting all user information basing upon the user's session id
   $selectAllUserData = "SELECT * FROM `user_info` WHERE `user_id` = '$userID'";
   $getAllUserDetails = $conn -> query($selectAllUserData);
   $selectUserInformations = $getAllUserDetails -> fetch_assoc();
+  if($selectUserInformations['is_firsttime'] == 1 && $selectUserInformations['channel_source'] == 'facebook')
+    header('Location:firstUser');
 
 }else{
 
@@ -51,7 +53,7 @@ if(!empty($_SESSION['userID'])){
     <!-- Promo Block -->
     <div class="container g-pt-100">
         <div class="row justify-content-lg-between">
-          <div class="col-lg-4 g-pt-50--lg">
+          <!-- <div class="col-lg-4 g-pt-50--lg">
             <div class="mb-5">
               <h1 class="g-color-black g-font-size-45 mb-4">Welcome Back!</h1>
               <p>Explore all the September events and back-to-school resources to welcome you to campus.</p>
@@ -64,7 +66,7 @@ if(!empty($_SESSION['userID'])){
                   </span>
 
             </div>
-          </div>
+          </div> -->
 
           <!-- Qucik Match modal window -->
           <div id="quickMatch" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">

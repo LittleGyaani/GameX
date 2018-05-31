@@ -10,9 +10,6 @@
   //Declaring default Date and Time Zone for Stamps
   date_default_timezone_set('Asia/Kolkata');
 
-  //Define Base URL to be used globally
-  $baseURL = "http://www.battlestation.live/";
-
   //Including the DB file
   include "../../../includes/config/dbConnectivity.php";
 

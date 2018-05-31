@@ -82,10 +82,10 @@ if(!empty( $_SESSION['userID'])){
                   <i class="mr-3 fa fa-facebook"></i>
                   <span class="g-hidden-xs-down">Login with Facebook</span>
                 </button>
-                <button onclick="FBLogout();" class="btn btn-block u-btn-facebook rounded text-uppercase g-py-13 g-mb-15" type="button">
+                <!-- <button onclick="FBLogout();" class="btn btn-block u-btn-facebook rounded text-uppercase g-py-13 g-mb-15" type="button">
                   <i class="mr-3 fa fa-facebook"></i>
                   <span class="g-hidden-xs-down">Logout of Facebook</span>
-                </button>
+                </button> -->
 
                 <!-- <button class="btn btn-block u-btn-twitter rounded text-uppercase g-py-13" type="button">
                   <i class="mr-3 fa fa-twitter"></i>

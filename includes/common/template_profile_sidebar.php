@@ -20,7 +20,7 @@ $url = explode('/',$_SERVER['REQUEST_URI']);
                   <ul class="list-inline text-center g-flex-middle-item--bottom g-mb-20">
 
                     <li class="list-inline-item align-middle g-mx-7">
-                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="javascript:void(0);" id="changePhoto" data-toggle="tooltip" title="Upload Photo">
+                      <a class="u-icon-v1 u-icon-size--md g-color-white" href="javascript:void(0);" id="changePhoto" data-toggle="tooltip" title="Upload Profile Photo" data-placement="right">
                         <i class="icon-camera u-line-icon-pro"></i>
                       </a>
                       <form id="uploadimage" action="" method="post" enctype="multipart/form-data">
