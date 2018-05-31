@@ -187,7 +187,7 @@ if(!empty($_SESSION['userID'])){
     <section class="g-mb-100">
       <div class="container">
         <div class="row">
-          
+
           <!-- Profile Section -->
 
           <?php
@@ -220,6 +220,7 @@ if(!empty($_SESSION['userID'])){
                             while($getAllChallengeInfo = $rungetAllChallengeRequests -> fetch_assoc()){
                               $challengedBy = $getAllChallengeInfo['challenged_by_userID'];
                               $challengedGame = $getAllChallengeInfo['challenge_gameID'];
+
                               $fetchAllMetaInfo = $conn -> query("SELECT * FROM `profile_platform_games` ppg JOIN `user_associated_game` uag ON uag.gameID = ppg.gameID JOIN `user_info` usi ON uag.userID = usi.user_id JOIN `head_on_match_request` hmr ON hmr.challenge_gameID = ppg.gameID WHERE usi.user_id = $challengedBy AND hmr.game_status = 1  AND ppg.gameID = $challengedGame");
                               $returnfetchAllMetaInfo = $fetchAllMetaInfo -> fetch_assoc();
                           ?>
@@ -229,7 +230,7 @@ if(!empty($_SESSION['userID'])){
                             <div class="u-shadow-v11 text-center">
                               <div class="g-bg-white g-pa-20">
                                 <div class="g-width-90 g-height-700 mx-auto">
-                                  <img class="g-width-130 g-height-130 img-fluid g-brd-around g-brd-3 g-brd-gray-light-v3 rounded-circle" src="../../../assets/img/profilePic/<?= $returnfetchAllMetaInfo['user_profile_pic'];?>" alt="<?= $returnfetchAllMetaInfo['user_fullname'];?>">
+                                  <img class="g-width-130 g-height-130 img-fluid g-brd-around g-brd-3 g-brd-gray-light-v3 rounded-circle" src="../../../assets/img/profilePic/<?= !empty($returnfetchAllMetaInfo['user_profile_pic']) ? $returnfetchAllMetaInfo['user_profile_pic'] : 'user_default_avatar.png';?>" alt="<?= $returnfetchAllMetaInfo['user_fullname'];?>">
                                 </div>
                                 <div class="mb-3">
                                   <h3 class="h5"><a class="g-color-black" href="shortcode-blocks-users.html#"></a></h3>
@@ -252,11 +253,25 @@ if(!empty($_SESSION['userID'])){
                                   <span class="d-block g-font-weight-500 g-font-size-13">Challenger <?=$returnfetchAllMetaInfo['game_placeholder_value']?> <br><b><?=$returnfetchAllMetaInfo['platform_user_name']?></b></span>
                                 </div>
                               </div>
+                              <?php
+                                if($getAllChallengeInfo['has_accepted'] == 0 && $getAllChallengeInfo['game_status'] != 0){
+                               ?>
                               <a class="acceptHeadOnChallenge btn btn-block g-color-white g-bg-indigo g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
                               <i class="icon icon-check"></i>  Accept Challenge Request
                               </a>
                               <a class="dismissHeadOnChallenge btn btn-block g-color-white g-bg-purple g-bg-secondary-dark-light-v1--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15 mt-0" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
                               <i class="icon icon-close"></i> Decline Challenge Request</a>
+                            <?php
+                          }else{
+                            ?>
+                            <a class="uploadscreenshot btn btn-block g-color-white g-bg-blue g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
+                            <i class="icon icon-check"></i>  Upload Result
+                            </a>
+                            <a class="claimadispute btn btn-block g-color-white g-bg-pink g-bg-secondary-dark-light-v1--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15 mt-0" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
+                            <i class="icon icon-close"></i> Raise Dispute</a>
+                          <?php
+                        }
+                          ?>
                             </div>
                             <!-- End Listing - Agents -->
                           </div>

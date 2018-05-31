@@ -860,8 +860,19 @@ function notificationPanel(){
           // dataType:'html',
           success:function(response){
 
-            if(response)
-              alert('HI');
+            if(response.code == 'HMA'){
+
+              swal({
+
+               title: 'You have successful accepted the challenge.',
+               text: 'Please proceed with game play.',
+               icon: 'error',
+               buttons: false,
+               timer : 5000
+             });
+
+            }
+
             else
               alert('Error');
           }
