@@ -214,15 +214,17 @@ if(!empty($_SESSION['userID'])){
                         <!-- Users -->
                         <div class="row g-mb-70">
                           <?php
-                          $getAllChallengeRequests = "SELECT * FROM `head_on_match_request` WHERE `challenged_whom` = $userID AND `game_status` = 1";
+                          $getAllChallengeRequests = "SELECT * FROM `head_on_match_request` WHERE `challenged_whom` = $userID";
                           $rungetAllChallengeRequests = $conn -> query($getAllChallengeRequests);
                           if($rungetAllChallengeRequests -> num_rows > 0){
                             while($getAllChallengeInfo = $rungetAllChallengeRequests -> fetch_assoc()){
+
                               $challengedBy = $getAllChallengeInfo['challenged_by_userID'];
                               $challengedGame = $getAllChallengeInfo['challenge_gameID'];
 
-                              $fetchAllMetaInfo = $conn -> query("SELECT * FROM `profile_platform_games` ppg JOIN `user_associated_game` uag ON uag.gameID = ppg.gameID JOIN `user_info` usi ON uag.userID = usi.user_id JOIN `head_on_match_request` hmr ON hmr.challenge_gameID = ppg.gameID WHERE usi.user_id = $challengedBy AND hmr.game_status = 1  AND ppg.gameID = $challengedGame");
+                              $fetchAllMetaInfo = $conn -> query("SELECT * FROM `profile_platform_games` ppg JOIN `user_associated_game` uag ON uag.gameID = ppg.gameID JOIN `user_info` usi ON uag.userID = usi.user_id JOIN `head_on_match_request` hmr ON hmr.challenge_gameID = ppg.gameID WHERE usi.user_id = $challengedBy AND ppg.gameID = $challengedGame AND hmr.challenged_by_userID = $challengedBy"); //SELECT * FROM `profile_platform_games` ppg JOIN `user_associated_game` uag ON uag.gameID = ppg.gameID JOIN `user_info` usi ON uag.userID = usi.user_id JOIN `head_on_match_request` hmr ON hmr.challenge_gameID = ppg.gameID WHERE usi.user_id = $challengedBy AND ppg.gameID = $challengedGame
                               $returnfetchAllMetaInfo = $fetchAllMetaInfo -> fetch_assoc();
+                              // print_r("SELECT * FROM `profile_platform_games` ppg JOIN `user_associated_game` uag ON uag.gameID = ppg.gameID JOIN `user_info` usi ON uag.userID = usi.user_id JOIN `head_on_match_request` hmr ON hmr.challenge_gameID = ppg.gameID WHERE usi.user_id = $challengedBy AND ppg.gameID = $challengedGame AND hmr.challenged_by_userID = $challengedBy");
                           ?>
 
                           <div class="col-md-4 g-mb-30">
@@ -235,13 +237,13 @@ if(!empty($_SESSION['userID'])){
                                 <div class="mb-3">
                                   <h3 class="h5"><a class="g-color-black" href="shortcode-blocks-users.html#"></a></h3>
                                   <span class="u-label g-rounded-20 g-bg-indigo g-px-15 g-mr-10 g-mb-15">
-                                    <span class="d-block g-color-white-dark-v5 g-font-size-13 mb-1">Challengd By <strong><?=$returnfetchAllMetaInfo['user_name']?></strong></span>
+                                    <span class="d-block g-color-white-dark-v5 g-font-size-13 mb-1">Challenged By <strong><?=$returnfetchAllMetaInfo['user_name']?></strong></span>
                                 </span>
                                 <span class="u-label g-rounded-20 g-bg-purple g-px-15 g-mr-10 g-mb-15">
-                                  <span class="d-block g-color-white-dark-v5 g-font-size-13 mb-1">Challengd Amount <strong id="challengeRequestAmount">₹<?=$returnfetchAllMetaInfo['challenge_amount']?></strong></span>
+                                  <span class="d-block g-color-white-dark-v5 g-font-size-13 mb-1">Challenge Amount <strong id="challengeRequestAmount">₹<?=$returnfetchAllMetaInfo['challenge_amount']?></strong></span>
                                 </span>
                                 <span class="u-label g-rounded-20 g-bg-black g-px-10 g-mr-10 g-mb-15">
-                                  <span class="d-block g-color-white-dark-v5 g-font-size-13 mb-1">Challengd On <strong><?=$returnfetchAllMetaInfo['request_DTStamp']?></strong></span>
+                                  <span class="d-block g-color-white-dark-v5 g-font-size-13 mb-1">Challenged On <strong><?=$returnfetchAllMetaInfo['request_DTStamp']?></strong></span>
                                 </span>
                                   <br>
                                   <img class="g-width-90 g-height-70 mx-auto" src="../../../assets/img/platforms/<?= $returnfetchAllMetaInfo['game_image'];?>" alt="<?= $returnfetchAllMetaInfo['game_name'];?>"><br>
@@ -256,13 +258,13 @@ if(!empty($_SESSION['userID'])){
                               <?php
                                 if($getAllChallengeInfo['has_accepted'] == 0 && $getAllChallengeInfo['game_status'] != 0){
                                ?>
-                              <a class="acceptHeadOnChallenge btn btn-block g-color-white g-bg-indigo g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
+                              <a class="acceptHeadOnChallenge btn btn-block g-color-white g-bg-indigo g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>" data-amount="<?=$returnfetchAllMetaInfo['challenge_amount']?>">
                               <i class="icon icon-check"></i>  Accept Challenge Request
                               </a>
                               <a class="dismissHeadOnChallenge btn btn-block g-color-white g-bg-purple g-bg-secondary-dark-light-v1--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15 mt-0" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
                               <i class="icon icon-close"></i> Decline Challenge Request</a>
                             <?php
-                          }else{
+                          }else if($getAllChallengeInfo['has_accepted'] == 1 && $getAllChallengeInfo['game_status'] != 0){
                             ?>
                             <a class="uploadscreenshot btn btn-block g-color-white g-bg-blue g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
                             <i class="icon icon-check"></i>  Upload Result
@@ -270,6 +272,12 @@ if(!empty($_SESSION['userID'])){
                             <a class="claimadispute btn btn-block g-color-white g-bg-pink g-bg-secondary-dark-light-v1--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15 mt-0" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
                             <i class="icon icon-close"></i> Raise Dispute</a>
                           <?php
+                        }else{
+                          ?>
+                          <button class=" btn btn-block g-color-white g-bg-green g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
+                          <i class="icon icon-check"></i>  Game Finished
+                        </button>
+                        <?php
                         }
                           ?>
                             </div>

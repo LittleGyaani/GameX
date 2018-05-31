@@ -848,46 +848,48 @@ function notificationPanel(){
     var headOnGameID = this.id;
     var requestType = 'accept';
     var CurrentWalletBalance = parseInt($('#walletBalanceArea').text());
-    var ChallengeRequestAmount = parseInt($('#challengeRequestAmount').text().replace('₹',''));
+    // var ChallengeRequestAmount = parseInt($('#challengeRequestAmount').text().replace('₹',''));
+    var challengeAmount = $(this).attr('data-amount');
+    //alert(CurrentWalletBalance+ChallengeRequestAmount);
+    // alert(challengeAmount);
 
-    if(walletBalance >= challengeAmount){
-
-        $.ajax({
-
-          type:'POST',
-          url:'<?php echo $baseURL; ?>api/process/request/responseHeadOnMatch?request='+requestType,
-          data:{headOnGameID},
-          // dataType:'html',
-          success:function(response){
-
-            if(response.code == 'HMA'){
-
-              swal({
-
-               title: 'You have successful accepted the challenge.',
-               text: 'Please proceed with game play.',
-               icon: 'error',
-               buttons: false,
-               timer : 5000
-             });
-
-            }
-
-            else
-              alert('Error');
-          }
-
-        });
+    if(CurrentWalletBalance >= challengeAmount){
+      alert('Done');
+        // $.ajax({
+        //
+        //   type:'POST',
+        //   url:'<?php echo $baseURL; ?>api/process/request/responseHeadOnMatch?request='+requestType,
+        //   data:{headOnGameID},
+        //   // dataType:'html',
+        //   success:function(response){
+        //
+        //     if(response.code == 'HMA'){
+        //
+        //       swal({
+        //
+        //        title: 'You have successful accepted the challenge.',
+        //        text: 'Please proceed with game play.',
+        //        icon: 'error',
+        //        buttons: false,
+        //        timer : 5000
+        //      });
+        //
+        //    }else{
+        //       alert('Error');
+        //     }
+        //   }
+        //
+        // });
 
     }else{
 
         swal({
 
          title: "Insufficient funds in wallet.",
-         text: "Please add "+'₹'+(ChallengeRequestAmount-CurrentWalletBalance)+" to your wallet and retry.",
+         text: "Please add "+'₹'+(challengeAmount-CurrentWalletBalance)+" to your wallet and retry.",
          icon: 'warning',
          buttons: false,
-         timer: 1500
+         timer: 2000
       });
 
     }

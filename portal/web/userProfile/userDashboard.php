@@ -53,20 +53,20 @@ if(!empty($_SESSION['userID'])){
     <!-- Promo Block -->
     <div class="container g-pt-100">
         <div class="row justify-content-lg-between">
-          <!-- <div class="col-lg-4 g-pt-50--lg">
+          <div class="col-lg-4 g-pt-50--lg">
             <div class="mb-5">
-              <h1 class="g-color-black g-font-size-45 mb-4">Welcome Back!</h1>
+              <!-- <h1 class="g-color-black g-font-size-45 mb-4">Welcome Back!</h1>
               <p>Explore all the September events and back-to-school resources to welcome you to campus.</p>
               <span class="u-icon-v1 g-mb-10"><a class="js-go-to btn u-shadow-v33 g-color-white g-bg-primary u-btn-hover-v2-2 g-bg-cyan--hover g-rounded-30 g-px-35 g-py-10 quickMatchModal" href="#quickMatch" data-modal-target="#quickMatch" data-modal-effect="blur">
                   <i class="icon-energy"></i> Quick Match</a>
-                </span>
+                </span> -->
                 <br>
                 <span class="u-icon-v1 g-mb-10"><a class="js-go-to btn u-shadow-v33 g-color-white g-bg-purple u-btn-hover-v2-2 g-bg-orange--hover g-rounded-30 g-px-35 g-py-10 quickHeadOnMatchModal" href="#quickheadOnMatch" data-modal-target="#quickheadOnMatch" data-modal-effect="blur">
                     <i class="icon-puzzle"></i> Quick Head On Match</a>
                   </span>
 
             </div>
-          </div> -->
+          </div>
 
           <!-- Qucik Match modal window -->
           <div id="quickMatch" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">
