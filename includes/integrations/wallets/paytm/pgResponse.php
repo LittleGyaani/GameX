@@ -82,7 +82,9 @@ if($isValidChecksum == "TRUE") {
 		}
 
 	}else {
+
 		echo "<b>Transaction status is failure</b>" . "<br/>";
+
 	}
 	// if (isset($_POST) && count($_POST)>0 )
 	// {
@@ -91,24 +93,10 @@ if($isValidChecksum == "TRUE") {
 	// 	}
 	// }
 
-}
-else {
+}else {
+
 	echo "<b>Checksum mismatched.</b>";
 	//Process transaction as suspicious.
 	// header('Location:'.PAYTM_TXN_URL);
 }
 ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-function disable_f5(e)
-{
-  if ((e.which || e.keyCode) == 116)
-  {
-      e.preventDefault();
-  }
-}
-
-$(document).ready(function(){
-    $(document).bind("keydown", disable_f5);
-});
-</script>

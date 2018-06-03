@@ -70,7 +70,7 @@
         $selectChallenger = $conn -> query("SELECT * FROM `user_info` WHERE `user_id` = '".$fetchgetHOMActivities['challenged_by_userID']."'");
         $selectChallengerData = $selectChallenger -> fetch_assoc();
         $selectChallengerName = $selectChallengerData['user_name'];
-        $selectChallengerPic = $selectChallengerData['user_profile_pic'];
+        $selectChallengerPic = !empty($selectChallengerData['user_profile_pic']) ? $selectChallengerData['user_profile_pic'] : 'user_default_avatar.png';
         $selectChallengedWhom = $conn -> query("SELECT * FROM `user_info` WHERE `user_id` = '".$fetchgetHOMActivities['challenged_whom']."'");
         $selectChallengedWhomData = $selectChallengedWhom -> fetch_assoc();
         $selectChallengedWhomName = $selectChallengedWhomData['user_name'];

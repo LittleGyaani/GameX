@@ -83,6 +83,12 @@ $url = explode('/',$_SERVER['REQUEST_URI']);
       </a>
       <!-- End Reviews -->
 
+      <!-- Activity -->
+      <a href="activityHistory" class="list-group-item list-group-item-action justify-content-between <? echo ($url[5]=='activityHistory') ? 'active': 'nope' ?>">
+          <span><i class="icon-refresh g-pos-rel g-top-1 g-mr-8"></i> My Activity History</span>
+      </a>
+      <!-- End ReActivityviews -->
+
       <!-- History -->
       <a href="challengeRequests" class="list-group-item list-group-item-action justify-content-between <? echo ($url[5]=='challengeRequests') ? 'active': 'nope' ?>">
           <span><i class="icon-fire g-pos-rel g-top-1 g-mr-8"></i> My Challenge Requests</span>
@@ -90,8 +96,8 @@ $url = explode('/',$_SERVER['REQUEST_URI']);
       <!-- End History -->
 
        <!-- Fixture -->
-      <a href="fixture" class="list-group-item list-group-item-action justify-content-between <? echo ($url[5]=='fixture') ? 'active': 'nope' ?>">
-          <span><i class="icon-game-controller g-pos-rel g-top-1 g-mr-8"></i> My Tournamnet Fixture</span>
+      <a href="tournamentFixture" class="list-group-item list-group-item-action justify-content-between <? echo ($url[5]=='tournamentFixture') ? 'active': 'nope' ?>">
+          <span><i class="icon-grid g-pos-rel g-top-1 g-mr-8"></i> Tournamnet Fixtures</span>
       </a>
       <!-- End Fixture -->
 

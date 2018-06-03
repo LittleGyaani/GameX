@@ -35,7 +35,7 @@ if(!empty($_SESSION['userID'])){
 
 <head>
   <!-- Title -->
-  <title>battlestation - Play the best of your life! | Challenge Requests</title>
+  <title>battlestation - Play the best of your life! | Activity History</title>
 
     <?php
 
@@ -202,104 +202,64 @@ if(!empty($_SESSION['userID'])){
           <!-- Profile Content -->
           <div class="col-lg-9">
 
-            <!-- User Blocks v16 -->
-                  <div class="container">
-                    <div class="text-center g-mb-50">
-                      <h2 class="h4">All your
-                        <span class="g-color-primary g-ml-5">#ChallengeRequests</span>
-                      </h2>
-
-                    <div id="shortcode16">
-                      <div class="shortcode-html">
-                        <!-- Users -->
-                        <div class="row g-mb-70">
+            <!-- Timeline Box -->
+                        <ul class="row u-timeline-v2-wrap list-unstyled">
                           <?php
-                          $getAllChallengeRequests = "SELECT * FROM `head_on_match_request` WHERE `challenged_whom` = $userID";
-                          $rungetAllChallengeRequests = $conn -> query($getAllChallengeRequests);
-                          if($rungetAllChallengeRequests -> num_rows > 0){
-                            while($getAllChallengeInfo = $rungetAllChallengeRequests -> fetch_assoc()){
 
-                              $challengedBy = $getAllChallengeInfo['challenged_by_userID'];
-                              $challengedGame = $getAllChallengeInfo['challenge_gameID'];
-
-                              $fetchAllMetaInfo = $conn -> query("SELECT * FROM `profile_platform_games` ppg JOIN `user_associated_game` uag ON uag.gameID = ppg.gameID JOIN `user_info` usi ON uag.userID = usi.user_id JOIN `head_on_match_request` hmr ON hmr.challenge_gameID = ppg.gameID WHERE usi.user_id = $challengedBy AND ppg.gameID = $challengedGame AND hmr.challenged_by_userID = $challengedBy"); //SELECT * FROM `profile_platform_games` ppg JOIN `user_associated_game` uag ON uag.gameID = ppg.gameID JOIN `user_info` usi ON uag.userID = usi.user_id JOIN `head_on_match_request` hmr ON hmr.challenge_gameID = ppg.gameID WHERE usi.user_id = $challengedBy AND ppg.gameID = $challengedGame
-                              $returnfetchAllMetaInfo = $fetchAllMetaInfo -> fetch_assoc();
-                              // print_r("SELECT * FROM `profile_platform_games` ppg JOIN `user_associated_game` uag ON uag.gameID = ppg.gameID JOIN `user_info` usi ON uag.userID = usi.user_id JOIN `head_on_match_request` hmr ON hmr.challenge_gameID = ppg.gameID WHERE usi.user_id = $challengedBy AND ppg.gameID = $challengedGame AND hmr.challenged_by_userID = $challengedBy");
-                          ?>
-
-                          <div class="col-md-4 g-mb-30">
-                            <!-- Listing - Agents -->
-                            <div class="u-shadow-v11 text-center">
-                              <div class="g-bg-white g-pa-20">
-                                <div class="g-width-90 g-height-700 mx-auto">
-                                  <img class="g-width-130 g-height-130 img-fluid g-brd-around g-brd-3 g-brd-gray-light-v3 rounded-circle" src="../../../assets/img/profilePic/<?= !empty($returnfetchAllMetaInfo['user_profile_pic']) ? $returnfetchAllMetaInfo['user_profile_pic'] : 'user_default_avatar.png';?>" alt="<?= $returnfetchAllMetaInfo['user_fullname'];?>">
-                                </div>
-                                <div class="mb-3">
-                                  <h3 class="h5"><a class="g-color-black" href="shortcode-blocks-users.html#"></a></h3>
-                                  <span class="u-label g-rounded-20 g-bg-indigo g-px-15 g-mr-10 g-mb-15">
-                                    <span class="d-block g-color-white-dark-v5 g-font-size-13 mb-1">Challenged By <strong><?=$returnfetchAllMetaInfo['user_name']?></strong></span>
-                                </span>
-                                <span class="u-label g-rounded-20 g-bg-purple g-px-15 g-mr-10 g-mb-15">
-                                  <span class="d-block g-color-white-dark-v5 g-font-size-13 mb-1">Challenge Amount <strong id="challengeRequestAmount">₹<?=$returnfetchAllMetaInfo['challenge_amount']?></strong></span>
-                                </span>
-                                <span class="u-label g-rounded-20 g-bg-black g-px-10 g-mr-10 g-mb-15">
-                                  <span class="d-block g-color-white-dark-v5 g-font-size-13 mb-1">Challenged On <strong><?=$returnfetchAllMetaInfo['request_DTStamp']?></strong></span>
-                                </span>
-                                  <br>
-                                  <img class="g-width-90 g-height-70 mx-auto" src="../../../assets/img/platforms/<?= $returnfetchAllMetaInfo['game_image'];?>" alt="<?= $returnfetchAllMetaInfo['game_name'];?>"><br>
-                                  <br>
-                                  <span class="d-inline-block u-icon-v3 u-icon-size--xl g-bg-primary g-color-white rounded-circle g-mb-30">
-                                    <i class="icon-sport-175 u-line-icon-pro"></i>
-                                  </span>
-                                  <span class="d-block g-font-weight-500 g-font-size-13">Game Name <b><?=$returnfetchAllMetaInfo['game_name']?></b></span>
-                                  <span class="d-block g-font-weight-500 g-font-size-13">Challenger <?=$returnfetchAllMetaInfo['game_placeholder_value']?> <br><b><?=$returnfetchAllMetaInfo['platform_user_name']?></b></span>
-                                </div>
+                            $getAllUserActivity = $conn -> query("SELECT * FROM `user_activity_history` WHERE `user_id` = $userID ORDER BY `user_activity_DTStamp` DESC");
+                            if($getAllUserActivity -> num_rows > 0){
+                                while($fetchAllUserActivity = $getAllUserActivity -> fetch_assoc()){
+                                  $activityTime = explode(' ',$fetchAllUserActivity['user_activity_DTStamp'])
+                           ?>
+                          <li class="col-md-12 g-mb-40">
+                            <div class="row">
+                              <!-- Timeline Date -->
+                              <div class="col-md-3 text-md-right g-pt-20--md g-pr-40--md g-mb-20">
+                                <h5 class="h6 g-font-weight-700 mb-0"><?=$activityTime[0]?></h5>
+                                <h4 class="h4 g-font-weight-300"><?=$activityTime[1]?></h4>
                               </div>
-                              <?php
-                                if($getAllChallengeInfo['has_accepted'] == 0 && $getAllChallengeInfo['game_status'] != 0){
-                               ?>
-                              <a class="acceptHeadOnChallenge btn btn-block g-color-white g-bg-indigo g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>" data-amount="<?=$returnfetchAllMetaInfo['challenge_amount']?>" href="#headonMatchModal" data-modal-target="#headonMatchModal" data-modal-effect="blur">
-                              <i class="icon icon-check"></i>  Accept Challenge Request
-                              </a>
-                              <a class="dismissHeadOnChallenge btn btn-block g-color-white g-bg-purple g-bg-secondary-dark-light-v1--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15 mt-0" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
-                              <i class="icon icon-close"></i> Decline Challenge Request</a>
-                            <?php
-                          }else if($getAllChallengeInfo['has_accepted'] == 1 && $getAllChallengeInfo['game_status'] != 0){
-                            ?>
-                            <a class="uploadscreenshot btn btn-block g-color-white g-bg-blue g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
-                            <i class="icon icon-check"></i>  Upload Result
-                            </a>
-                            <a class="claimadispute btn btn-block g-color-white g-bg-pink g-bg-secondary-dark-light-v1--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15 mt-0" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
-                            <i class="icon icon-close"></i> Raise Dispute</a>
-                          <?php
-                        }else{
-                          ?>
-                          <button class=" btn btn-block g-color-white g-bg-green g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
-                          <i class="icon icon-check"></i>  Game Finished
-                        </button>
-                        <?php
-                        }
-                          ?>
+                              <!-- End Timeline Date -->
+
+                              <!-- Timeline Content -->
+                              <div class="col-md-9 g-orientation-left g-pl-40--md">
+                                <!-- Timeline Dot -->
+                                <div class="g-hidden-sm-down u-timeline-v2__icon g-top-35">
+                                  <i class="d-block g-width-18 g-height-18 g-bg-primary g-brd-around g-brd-4 g-brd-gray-light-v4 rounded-circle"></i>
+                                </div>
+                                <!-- End Timeline Dot -->
+
+                                <article class="g-pos-rel g-bg-gray-light-v5 g-pa-12">
+                                  <!-- Timeline Arrow -->
+                                  <div class="g-hidden-sm-down u-triangle-inclusive-v1--right g-top-30 g-z-index-2">
+                                    <div class="u-triangle-inclusive-v1--right__back g-brd-gray-light-v5-right"></div>
+                                  </div>
+                                  <div class="g-hidden-md-up u-triangle-inclusive-v1--top g-left-20 g-z-index-2">
+                                    <div class="u-triangle-inclusive-v1--top__back g-brd-gray-light-v5-bottom"></div>
+                                  </div>
+                                  <!-- End Timeline Arrow -->
+
+
+                                  <p class="lead g-mb-20">
+                                    <h3 class="g-font-weight-300"><?=ucwords($fetchAllUserActivity['user_last_action'])?></h3>
+                                  </p>
+
+                                </article>
+                              </div>
+                              <!-- End Timeline Content -->
                             </div>
-                            <!-- End Listing - Agents -->
-                          </div>
+                          </li>
                           <?php
                         }
                       }else{
-                        echo 'No Challenge Requests to show at the moment.';
-                        echo 'Please challenge someone instead.';
-                      } ?>
-                        </div>
-                        <!-- End Users -->
+
+                        echo 'No activity to show.';
+
+                      }
+                      ?>
+                        </ul>
+                        <!-- End Timeline Box -->
                       </div>
-                    </div>
 
-                  </div>
-
-                </section>
-                <!-- End User Blocks v16 -->
-
-              </div>
             </div>
             <!-- End Product Table Panel -->
           </div>

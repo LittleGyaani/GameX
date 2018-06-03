@@ -90,6 +90,9 @@
 <!-- Sweet Alert 2 (SWAL2) -->
 <script src="<?php echo $baseURL; ?>assets/js/components/sweetalert2.min.js"></script>
 
+<!-- jQuery Bracket Plugin -->
+<script src="<?php echo $baseURL; ?>assets/js/components/bracket/brackets.min.js"></script>
+
 <!-- Moment js library for date_time_stamp functionality -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
 
@@ -348,7 +351,7 @@ function notificationPanel(){
 
   var notificationCount = $('#notificationCount').text();
   notificationTrigger = document.getElementById("notificationSound");
-  notificationTrigger.src = "<?php echo $baseURL; ?>assets/notification/notification-sound.wav";
+  notificationTrigger.src = "<?php echo $baseURL; ?>assets/notification/notification-sound.mp3";
 
   // $('#notificationCount').html(notificationCount);
   // alert(notificationCount);
@@ -845,16 +848,21 @@ function notificationPanel(){
 
   $(document).on('click', '.acceptHeadOnChallenge', function(){
 
+    // $('#headonMatchModal').modal('show');
     var headOnGameID = this.id;
     var requestType = 'accept';
     var CurrentWalletBalance = parseInt($('#walletBalanceArea').text());
     // var ChallengeRequestAmount = parseInt($('#challengeRequestAmount').text().replace('₹',''));
     var challengeAmount = $(this).attr('data-amount');
+    var gamejoincode = $('#gamejoincode').val();
     //alert(CurrentWalletBalance+ChallengeRequestAmount);
     // alert(challengeAmount);
 
     if(CurrentWalletBalance >= challengeAmount){
-      alert('Done');
+
+      if(gamejoincode){
+
+      //alert('Done');
         // $.ajax({
         //
         //   type:'POST',
@@ -880,6 +888,12 @@ function notificationPanel(){
         //   }
         //
         // });
+
+      }else{
+
+        alert('Please provide game join code.');
+
+      }
 
     }else{
 
@@ -1087,6 +1101,13 @@ function notificationPanel(){
     }
 
    return false;
+
+ });
+
+ $(document).on('click','.quickclose',function(){
+
+   var notificationID = $(this).attr('id');
+   alert(notificationID);
 
  });
 

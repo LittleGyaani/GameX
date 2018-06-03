@@ -493,7 +493,7 @@ if(!empty($_SESSION['userID'])){
 
                     <!-- Alert Cyan -->
                     <div class="alert fade show g-bg-cyan-opacity-0_1 g-color-cyan rounded-0 g-mb-5" role="alert">
-                      <button type="button" class="close u-alert-close--light g-ml-10 g-mt-1" data-dismiss="alert" aria-label="Close">
+                      <button type="button" class="quickclose close u-alert-close--light g-ml-10 g-mt-1" data-dismiss="alert" aria-label="Close" id="<?= $getNotficationdetails['notificationID']?>">
                         <span aria-hidden="true">&times;</span>
                       </button>
 
@@ -503,6 +503,7 @@ if(!empty($_SESSION['userID'])){
                         </div>
                         <div class="media-body">
                           <p class="m-0"><strong><?= ucwords($getNotficationdetails['notification_sent_by']);?></strong> sent you a message.</p>
+                          <p class="m-0 g-color-black"><?= $getNotficationdetails['notification_message']?></p>
                           <span class="g-font-size-12"><?=get_time_ago(strtotime($getNotficationdetails['notification_sent_DTStamp'])) ?></span>
                         </div>
                       </div>
@@ -742,7 +743,7 @@ if(!empty($_SESSION['userID'])){
                       <tr>
                         <th class="g-font-weight-200 g-color-black">Wallet Tranx. ID</th>
                         <th class="g-font-weight-200 g-color-black">Remaining Balance (CWB-/+LUB)*</th>
-                        <th class="g-font-weight-200 g-color-black">Wallet <br>Transaction <br>Type</th>
+                        <!-- <th class="g-font-weight-200 g-color-black">Wallet <br>Transaction <br>Type</th> -->
                         <th class="g-font-weight-200 g-color-black">Last Used Balance</th>
                         <th class="g-font-weight-200 g-color-black">Transaction Date & Time</th>
                         <th class="g-font-weight-200 g-color-black">Transaction Status</th>
@@ -764,11 +765,11 @@ if(!empty($_SESSION['userID'])){
                             <span>₹<b><?=$userWalletDetails['wallet_remaining_balance']?></b></span>
                         </td>
 
-                        <td class="align-middle">
+                        <!-- <td class="align-middle">
                           <span class="btn btn-block u-btn-primary g-rounded-50 g-py-5">
                             <i class="icon-check g-mr-5"></i> <?=ucwords($userWalletDetails['useType']);?>
                           </span>
-                        </td>
+                        </td> -->
 
                         <td class="align-middle text-nowrap">
                           <span class="d-block g-mb-5">

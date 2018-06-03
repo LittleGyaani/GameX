@@ -221,71 +221,39 @@ if(!empty($_SESSION['userID'])){
                   <div class="js-scrollbar card-block u-info-v1-1 g-bg-white-gradient-v1--after g-height-500 g-pa-0" style="height: 800px;width: 500px;">
 
 
-<!-- <iframe width="410" height="450" frameborder="0" src="http://www.gotbracket.com/view/dfb4be7f-1c3f-40f0-b500-5d14a815f961"></iframe>
- -->
+                <?php
 
-<iframe width="550" height="600" frameborder="0" src="http://www.gotbracket.com/view/28e73a72-bdd3-43af-a825-796dcba734a2"></iframe>
+                    $getTournamentDetails = $conn -> query("SELECT * FROM `tournament_fixture_brackets` tfb JOIN ``");
+                    while($fetchTournamentInfo = $getTournamentDetails -> fetch_assoc()){
+                    // print_r($fetchTournamentInfo);
+                    foreach ($fetchTournamentInfo as $k => $item) {
 
+                        // $team[$k+1] = $item['tournament_join_userID'];
 
-<?php
-    $team = array();
-    $pars = array();
+                        echo '</br>' . $k .'-'. $item;
 
-    $rows = "SELECT*FROM ` tournament_fixture_info` WHERE `tournament_join_userID`= $userID";
-    foreach ($rows as $k => $item) {
-        $team[$k+1] = $item['tournament_join_userID'];
-    }
+                    }
+                  }
 
-    $all_team = count($team);
-    $k = $all_team/2;
-
-    $days = range(7, 100, 2); // first half of season
-    $days2 = range(55, 100, 2); // second half
-
-    // 1 tour
-    for ($i=1; $i <= $k; $i++) {
-        $pars[] = $days[0].'|'.$team[$i].'|'.$team[($all_team-$i+1)];
-        $pars[] = $days2[0].'|'.$team[($all_team-$i+1)].'|'.$team[$i];
-    }
-
-    // Next tours
-    for($i=2; $i<$all_team; $i++)
-    {
-
-        $team2 = $team[2];
-
-        for($y=2;$y<$all_team;$y++)
-        {
-            $team[$y] = $team[$y+1];
-        }
-        $team[$all_team] = $team2;
-
-        for($j=1;$j<=$k;$j++)
-        {
-            $pars[] = $days[$i - 1].'|'.$team[$j].'|'.$team[($all_team-$j+1)];
-            $pars[] = $days2[$i - 1].'|'.$team[($all_team-$j+1)].'|'.$team[$j];
-        }
-
-    }
- ?>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</h5>
-</h5>
-</p>
-</center>
-</div>
-</div>
-</div>
-</div>
+                 ?>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </section>
+                </h5>
+                </h5>
+                </p>
+                </center>
+                </div>
+                </div>
+                </div>
+                </div>
 </head>
 
     <?php
