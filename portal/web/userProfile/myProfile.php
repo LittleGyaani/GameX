@@ -164,13 +164,13 @@ if(isset($_SESSION['userID'])){
                 <h2 class="h4 g-font-weight-300">Manage your Profile detils here.</h2>
                 <p>Below are name, email addresse, contacts and more on file for your account.</p>
 
-                <form name="upadteData">
                 <ul class="list-unstyled g-mb-30">
+                  <form name="upadteData">
                   <!-- Name -->
                   <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                     <div class="g-pr-10">
                       <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Name</strong>
-                      <span class="align-top"><input class="form-control form-control-md g-brd-right-none rounded-0" type="text" value="<?=$selectUserInformations['user_fullname']?>"></input></span>
+                      <span class="align-top"><?=$selectUserInformations['user_fullname']?></span>
                     </div>
                     <span>
                         <i class="icon-pencil g-color-gray-dark-v5 g-color-primary--hover g-cursor-pointer g-pos-rel g-top-1"></i>
@@ -218,7 +218,7 @@ if(isset($_SESSION['userID'])){
                   <li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
                     <div class="g-pr-10">
                       <strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Linked accounts</strong>
-                      <span class="align-top">Facebook</span>
+                      <span class="align-top"><?=(($selectUserInformations['channel_source']=='web')?'No Accounts Linked':ucwords($selectUserInformations['channel_source']))?></span>
                     </div>
                     <span>
                         <i class="icon-pencil g-color-gray-dark-v5 g-color-primary--hover g-cursor-pointer g-pos-rel g-top-1"></i>
@@ -269,7 +269,7 @@ if(isset($_SESSION['userID'])){
                 </div>
               </div>
               <!-- End Edit Profile -->
-            </form>
+
               <!-- Security Settings -->
               <div class="tab-pane fade" id="nav-1-1-default-hor-left-underline--2" role="tabpanel">
                 <h2 class="h4 g-font-weight-300">Security Settings</h2>
