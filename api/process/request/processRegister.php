@@ -71,6 +71,7 @@ date_default_timezone_set('Asia/Kolkata');
           $lastUserID = $conn -> insert_id;
           $firstWelcomeMessage = $conn -> query("INSERT INTO `user_notification_record`(`userID`, `sentuserID`, `notification_title`, `notification_message`, `notification_status`, `notification_type`, `notification_sent_by`, `notification_sent_DTStamp`) VALUES ($lastUserID,0,'Welcome to battlestation.','Warm greetings on joining us, $userName! Welcome to the platform, Enjoy the whole new world of batteling. Hope you will love it. Your sincere Admin!',0,'welcomemessage','admin','$now')");
           $createWalletforUser = $conn -> query("INSERT INTO `user_wallet_info`(`userID`, `walletBalance`, `created_date_time_stamp`, `lastUpdate_date_time_stamp`) VALUES ('$lastUserID',0,'$now','$now')");
+          $updateActivityHistory = $conn -> query("INSERT INTO `user_activity_history`(`user_id`, `user_last_action`, `user_activity_DTStamp`) VALUES ($userID,'user joined battlestation.','$now')");
 
             //Running the insertion query to push data to DB if the user doesn't exist
             if($runInsertUserDetails){

@@ -3,6 +3,9 @@
 //Hiding all errors and notices
 error_reporting(0);
 
+//Declaring default Date and Time Zone for Stamps
+date_default_timezone_set('Asia/Kolkata');
+
 //Including the DB file
 include '../../../includes/config/dbConnectivity.php';
 
@@ -17,6 +20,7 @@ include '../../../includes/config/dbConnectivity.php';
   $userID = $_POST['userID'];
   $requestType = $_GET['request'];
   $resp = array();
+  $now = date("d-m-Y H:i");
 
 if($requestType == 'getUserName'){
 
@@ -42,6 +46,7 @@ if($requestType == 'getUserName'){
 
 
       $updateUserID = "UPDATE `user_associated_game` SET `platform_user_name` = '$platformUSERName' WHERE `gameID` = $gamePlatformID AND `userID` = $userID";
+      $updateActivityHistory = $conn -> query("INSERT INTO `user_activity_history`(`user_id`, `user_last_action`, `user_activity_DTStamp`) VALUES ($userID,'game/platform username updated.','$now')");
       $runUpdateUserID = $conn -> query($updateUserID);
 
       if($runUpdateUserID)
@@ -61,8 +66,10 @@ if($requestType == 'getUserName'){
 
           $runMapUserName = $conn -> query("INSERT INTO `user_associated_game` (`userID`, `gameID`, `platform_user_name`) VALUES ($userID,$gamePlatformID,'$platformUSERName')");
 
-          if($runMapUserName)
+          if($runMapUserName){
             $resp = array('status' => 'DONE', 'message' => 'ADDED' );
+            $updateActivityHistory = $conn -> query("INSERT INTO `user_activity_history`(`user_id`, `user_last_action`, `user_activity_DTStamp`) VALUES ($userID,'game/platform username added.','$now')");
+          }
 
 }else{
 
@@ -71,7 +78,7 @@ if($requestType == 'getUserName'){
 }
 
 //Closing the connection now
-mysqli_close($conn);
+$conn -> close();
 
 //Printing the response obtained
 echo json_encode($resp,JSON_PRETTY_PRINT);

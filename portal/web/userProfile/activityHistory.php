@@ -206,7 +206,7 @@ if(!empty($_SESSION['userID'])){
                         <ul class="row u-timeline-v2-wrap list-unstyled">
                           <?php
 
-                            $getAllUserActivity = $conn -> query("SELECT * FROM `user_activity_history` WHERE `user_id` = $userID ORDER BY `user_activity_DTStamp` DESC");
+                            $getAllUserActivity = $conn -> query("SELECT * FROM `user_activity_history` WHERE `user_id` = $userID ORDER BY `user_activity_id` DESC");
                             if($getAllUserActivity -> num_rows > 0){
                                 while($fetchAllUserActivity = $getAllUserActivity -> fetch_assoc()){
                                   $activityTime = explode(' ',$fetchAllUserActivity['user_activity_DTStamp'])

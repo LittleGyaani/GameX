@@ -56,6 +56,7 @@ include '../../../includes/config/dbConnectivity.php';
 
              //Generting response
              $resp = array('result' => 'SUCCESS', 'resp' => 'User validated.', 'msg' => 'Redirecting you now to Dashboard.');
+             $updateActivityHistory = $conn -> query("INSERT INTO `user_activity_history`(`user_id`, `user_last_action`, `user_activity_DTStamp`) VALUES ($getUserInformations['user_id'],'user logged into the account using credentials.','$now')");
 
            }else{
 
