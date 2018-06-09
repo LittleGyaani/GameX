@@ -115,9 +115,9 @@ if(!empty($_SESSION['userID'])){
                 </div>
 
                 <!-- Form Social Icons -->
-                <button class="btn btn-block u-btn-facebook rounded text-uppercase g-py-13 g-mb-15" type="button">
+                <button onclick="FBLogin();" class="btn btn-block u-btn-facebook rounded text-uppercase g-py-13 g-mb-15" type="button" display="popup" >
                   <i class="mr-3 fa fa-facebook"></i>
-                  <span class="g-hidden-xs-down">Signup with</span> Facebook
+                  <span class="g-hidden-xs-down">Signup with Facebook</span>
                 </button>
                 <!-- End Form Social Icons -->
               </form>

@@ -6,6 +6,9 @@ error_reporting(0);
 //Initializing the session
 session_start();
 
+//Declaring default Date and Time Zone for Stamps
+date_default_timezone_set('Asia/Kolkata');
+
 //Including the DB file
 include '../../../includes/config/dbConnectivity.php';
 
@@ -20,6 +23,7 @@ include '../../../includes/config/dbConnectivity.php';
    //Declaring variables
    $userName = "";
    $userPassword = "";
+   $now = date("d-m-Y H:i");
    $resp = array();
 
    //Getting values via POST method
@@ -48,15 +52,16 @@ include '../../../includes/config/dbConnectivity.php';
            //Checking if Password matches with the stored value in Database
            if($userPassword == $getUserInformations['login_password']){
 
+             $userID = $getUserInformations['user_id'];
              //Sending session values back to page and redirect user to Dashboard page
-             $_SESSION['userID'] = $getUserInformations['user_id'];
+             $_SESSION['userID'] = $userID;
 
              //Update Login State in DB
-             //$conn -> query("UPDATE `user_info` SET `is_logged_in` = 1");
+             $conn -> query("UPDATE `user_info` SET `is_logged_in` = 1 WHERE `user_id` = $userID");
 
              //Generting response
              $resp = array('result' => 'SUCCESS', 'resp' => 'User validated.', 'msg' => 'Redirecting you now to Dashboard.');
-             $updateActivityHistory = $conn -> query("INSERT INTO `user_activity_history`(`user_id`, `user_last_action`, `user_activity_DTStamp`) VALUES ($getUserInformations['user_id'],'user logged into the account using credentials.','$now')");
+             $updateActivityHistory = $conn -> query("INSERT INTO `user_activity_history`(`user_id`, `user_last_action`, `user_activity_DTStamp`) VALUES ($userID,'user logged into the account using credentials.','$now')");
 
            }else{
 

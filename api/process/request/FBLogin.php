@@ -37,6 +37,7 @@
 
       //Updating user Activity in DB
       $updateActivityHistory = $conn -> query("INSERT INTO `user_activity_history`(`user_id`, `user_last_action`, `user_activity_DTStamp`) VALUES ($userID,'user logged in using Facebook.','$now')");
+      $conn -> query("UPDATE `user_info` SET `is_logged_in` = 1 WHERE `user_id` = $userID");
 
   }else{
 
@@ -48,5 +49,6 @@
     $firstWelcomeMessage = $conn -> query("INSERT INTO `user_notification_record`(`userID`, `sentuserID`, `notification_title`, `notification_message`, `notification_status`, `notification_type`, `notification_sent_by`, `notification_sent_DTStamp`) VALUES ($lastUserID,0,'Welcome to battlestation.','Warm greetings on joining us, $name! Welcome to the platform, Enjoy the whole new world of batteling. Hope you will love it. Your sincere Admin!',0,'welcomemessage','admin','$now')");
     $createWalletforUser = $conn -> query("INSERT INTO `user_wallet_info`(`userID`, `walletBalance`, `created_date_time_stamp`, `lastUpdate_date_time_stamp`) VALUES ('$lastUserID',0,'$now','$now')");
     $updateActivityHistory = $conn -> query("INSERT INTO `user_activity_history`(`user_id`, `user_last_action`, `user_activity_DTStamp`) VALUES ($lastUserID,'user signedup for the platform using Facebook.','$now')");
+    $conn -> query("UPDATE `user_info` SET `is_logged_in` = 1 WHERE `user_id` = $lastUserID");
 
   }
