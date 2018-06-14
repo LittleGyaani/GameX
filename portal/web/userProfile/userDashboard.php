@@ -28,7 +28,7 @@ if(!empty($_SESSION['userID'])){
 }else{
 
   echo 'You are not authorized to access the page without logging in.';
-  // header('Location:../auth/loginPage.php?redirectback=' . urlencode($_SERVER['REQUEST_URI']));
+  header('Location:../auth/loginPage.php?redirectback=' . urlencode($_SERVER['REQUEST_URI']));
 
 
 }
@@ -247,7 +247,7 @@ if(!empty($_SESSION['userID'])){
                   <div class="js-scrollbar card-block u-info-v1-1 g-bg-white-gradient-v1--after g-height-400 g-pa-0">
                     <?php
 
-                      $selectGameInfo = "SELECT * FROM `tournament_registration_meta`";
+                      $selectGameInfo = "SELECT * FROM `tournament_registration_meta` trm JOIN `profile_platform_games` ppg ON trm.platform_game_ID = ppg.gameID";
                       $runselectGameInfo = $conn -> query($selectGameInfo);
                       $participantCountRows = $runselectGameInfo -> num_rows;
                       $leftBrdColorArray = array("g-brd-red-left", "g-brd-black-left", "g-brd-yellow-left", "g-brd-green-left", "g-brd-pink-left", "g-brd-blue-left");
@@ -264,7 +264,7 @@ if(!empty($_SESSION['userID'])){
                     <ul class="list-unstyled">
                       <li class="media g-brd-around g-brd-gray-light-v4 g-brd-left-3 <?php echo $leftBrdColorArray[$i]; ?> rounded g-pa-20 g-mb-10">
                         <div class="d-flex g-mt-2 g-mr-15">
-                          <img class="g-width-40 g-height-40 rounded-circle" src="../../../assets/img-temp/100x100/img1.jpg" alt="<?=$getGameInfo['game_name']?>">
+                          <img class="g-width-40 g-height-40 rounded-circle" src="../../../assets/img/platforms/<?= $getGameInfo['game_image']; ?>" alt="<?=$getGameInfo['game_name']?>">
                         </div>
                         <div class="media-body">
                           <div class="d-flex justify-content-between">

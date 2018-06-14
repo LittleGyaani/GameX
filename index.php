@@ -47,7 +47,7 @@ if(isset($_SESSION['userID'])){
                <p>Explore the tournament and take part in the challenge.</p>
              </div>
 
-             <a class="js-go-to btn u-shadow-v33 g-hidden-md-down g-color-white g-bg-primary g-bg-main--hover g-rounded-30 g-px-35 g-py-10" href="gamePlatforms.php" data-target="#content">Play Now</a>
+             <a class="js-go-to btn u-shadow-v33 g-hidden-md-down g-color-white g-bg-primary g-bg-main--hover g-rounded-30 g-px-35 g-py-10" href="gamePlatforms" data-target="#content">Play Now</a>
            </div>
 
            <div class="col-lg-8 align-self-end">
@@ -256,8 +256,7 @@ if(isset($_SESSION['userID'])){
               <img class="u-block-hover__main--grayscale g-width-100 g-opacity-0_6" src="https://k1.midasplayer.com/images/logos/kingLogoRebrand.svg?_v=13wlhey" alt="Image description">
               <img class="u-block-hover__main--grayscale g-width-100 g-opacity-0_6" src="https://upload.wikimedia.org/wikipedia/en/4/46/Pokemon_Go.png" alt="Image description">
             </div>
-
-            <a href="#!" class="btn btn-xl u-btn-primary text-uppercase g-font-weight-600 g-font-size-12 rounded g-mr-15 g-mb-15 g-mb-0--sm">Play a Match</a>
+            <a href="portal/web/userProfile/userDashboard#quickheadOnMatch" class="btn btn-xl u-btn-primary text-uppercase g-font-weight-600 g-font-size-12 rounded g-mr-15 g-mb-15 g-mb-0--sm">Play a Match</a>
             <small class="d-block d-sm-inline-block g-color-gray-dark-v5 g-font-size-12">*Be the best and find yourself in the hall of fame.</small>
           </div>
           <!-- End Section Content -->
@@ -285,9 +284,18 @@ if(isset($_SESSION['userID'])){
               <span class="g-color-primary g-ml-5">#Numbers reflects the average figures of stats</span>
             </h2>
           </div>
+          <!-- Get All Statistical Values -->
+          <?php
+
+            $getCountOfRegisteredUsers   = $conn -> query("SELECT * FROM `user_info`");
+            $getCountOfTournamentsPlayed = $conn -> query("SELECT * FROM `tournament_registration_meta`");
+            $getCountOfHeadOnMatches     = $conn -> query("SELECT * FROM `head_on_match_request`");
+
+          ?>
+
         <div class="row text-center text-uppercase">
           <div class="col-lg-3 col-sm-6 g-brd-right g-brd-gray-light-v4 g-mb-50">
-            <div class="js-counter g-color-gray-dark-v2 g-font-size-35 g-font-weight-300 g-mb-7">52147</div>
+            <div class="js-counter g-color-gray-dark-v2 g-font-size-35 g-font-weight-300 g-mb-7"><?= $getCountOfRegisteredUsers -> num_rows ?></div>
             <h4 class="h6 g-color-gray-dark-v5">Matches Played</h4>
           </div>
 
@@ -297,13 +305,13 @@ if(isset($_SESSION['userID'])){
           </div>
 
           <div class="col-lg-3 col-sm-6 g-brd-right g-brd-gray-light-v4 g-mb-50">
-            <div class="js-counter g-color-gray-dark-v2 g-font-size-35 g-font-weight-300 g-mb-7">7348</div>
+            <div class="js-counter g-color-gray-dark-v2 g-font-size-35 g-font-weight-300 g-mb-7"><?= $getCountOfHeadOnMatches -> num_rows ?></div>
             <h4 class="h6 g-color-gray-dark-v5">Head-On Matches</h4>
           </div>
 
           <div class="col-lg-3 col-sm-6 g-mb-50">
-            <div class="js-counter g-color-gray-dark-v2 g-font-size-35 g-font-weight-300 g-mb-7">87904</div>
-            <h4 class="h6 g-color-gray-dark-v5">Live Matches</h4>
+            <div class="js-counter g-color-gray-dark-v2 g-font-size-35 g-font-weight-300 g-mb-7"><?= $getCountOfTournamentsPlayed -> num_rows ?></div>
+            <h4 class="h6 g-color-gray-dark-v5">Tournaments Played</h4>
           </div>
           <small><span class="g-color-pink">*Reflects real money as well as worth of prizes.</span></small>
         </div>
@@ -322,7 +330,7 @@ if(isset($_SESSION['userID'])){
          <?php
 
          $hoverColorArray = array("g-bg-pink--hover", "g-bg-cyan--hover", "g-bg-blue--hover", "g-bg-red--hover", "g-bg-orange--hover");
-         $selectGameInfo = "SELECT * FROM `game_registration_meta`";
+         $selectGameInfo = "SELECT * FROM `tournament_registration_meta`";
          $runselectGameInfo = $conn -> query($selectGameInfo);
          $participantCountRows = $runselectGameInfo -> num_rows;
          if($participantCountRows > 0){
@@ -341,7 +349,7 @@ if(isset($_SESSION['userID'])){
              <br/><span class="g-font-weight-600 g-font-size-17 text-uppercase"><?=$getGameInfo['game_name']?></span>
              <h3 class="h4 g-font-weight-600 mb-0">Registration Open <br> <b><?=$getGameInfo['game_registration_start_date']?></b></h3>
 
-             <a class="u-link-v2" href="#!"></a>
+             <a class="u-link-v2" href="portal/web/auth/loginPage"></a>
            </div>
            <!-- End Projects -->
          </div>
@@ -365,7 +373,7 @@ if(isset($_SESSION['userID'])){
           <p class="lead g-font-weight-400 g-mr-20--md g-mb-15 g-mb-0--md">Go ahead and <b>Play</b> the best game of your <strong>Life</strong>.</p>
         </div>
         <div class="align-self-md-center">
-          <a class="btn btn-lg u-btn-white text-uppercase g-font-weight-600 g-font-size-12" href="portal/web/auth/loginPage.php">Let's PLAY</a>
+          <a class="btn btn-lg u-btn-white text-uppercase g-font-weight-600 g-font-size-12" href="portal/web/auth/loginPage">Let's PLAY</a>
         </div>
       </div>
     </section>

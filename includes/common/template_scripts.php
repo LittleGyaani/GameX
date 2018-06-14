@@ -111,7 +111,7 @@
 
     }
 
-    //Initializing tooltip calls
+    //Initializing tooltip calls globally
     $('[data-toggle="tooltip"]').tooltip();
 
     $('.platformIDUpdate').on('click',function(){
@@ -135,6 +135,7 @@
             // $('#platformUserName').attr('placeholder',data.gamePlacehoder);
             $('#platformName').html("Change username");
             $('#gameID').val(data.gameID);
+
           }
 
         });
@@ -341,7 +342,6 @@
       setTimeout(getAllNotification, 200);
       setTimeout(globalActivities, 500);
       var userID = $('#hiddenUserID').text();
-      $('[data-toggle="tooltip"]').tooltip();
       // alert(userID);
 
 function notificationPanel(){
@@ -784,68 +784,7 @@ function notificationPanel(){
 
   });
 
-  function walletBalance(){
-
-    $.ajax({
-
-      type:'POST',
-      url:'<?php echo $baseURL; ?>api/process/request/getWalletBalance',
-      data:{userID},
-      dataType:'json',
-      success:function(data){
-
-        if(data.code == 'WBF'){
-
-          $('#walletBalanceArea').html(data.msg);
-          $('#walletBalanceHere').html(data.msg);
-          $('.walletUpdated').html(data.lastUpdatedOn);
-
-        }else{
-          console.log(data.code);
-        }
-      },complete: function() {
-
-        setTimeout(walletBalance, 3500);
-
-      }
-
-    });
-
-  }
-
-  function getAllNotification(){
-
-    $.ajax({
-
-      type:'POST',
-      url:'<?php echo $baseURL; ?>api/process/request/getAllNotifications',
-      data:{userID},
-      dataType:'html',
-      success:function(messages){
-
-        if(messages)
-          $('#notificationsBody').html(messages).fadeIn('slow').delay(300);
-        else
-          console.log('Unable to handle request');
-      },complete: function() {
-
-        setTimeout(getAllNotification, 8000);
-
-      }
-
-    });
-
-  }
-
-  // $('.dismissNotification').on('click', function(){
-  //
-  //     var notificationID = this.id;
-  //     alert(notificationID);
-  //
-  //     return false;
-  //
-  // });
-
+  //Accept Headon Match Logic
   $(document).on('click', '.acceptHeadOnChallenge', function(){
 
     // $('#headonMatchModal').modal('show');
@@ -909,6 +848,68 @@ function notificationPanel(){
     }
 
   });
+
+  function walletBalance(){
+
+    $.ajax({
+
+      type:'POST',
+      url:'<?php echo $baseURL; ?>api/process/request/getWalletBalance',
+      data:{userID},
+      dataType:'json',
+      success:function(data){
+
+        if(data.code == 'WBF'){
+
+          $('#walletBalanceArea').html(data.msg);
+          $('#walletBalanceHere').html(data.msg);
+          $('.walletUpdated').html(data.lastUpdatedOn);
+
+        }else{
+          console.log(data.code);
+        }
+      },complete: function() {
+
+        setTimeout(walletBalance, 3500);
+
+      }
+
+    });
+
+  }
+
+  function getAllNotification(){
+
+    $.ajax({
+
+      type:'POST',
+      url:'<?php echo $baseURL; ?>api/process/request/getAllNotifications',
+      data:{userID},
+      dataType:'html',
+      success:function(messages){
+
+        if(messages)
+          $('#notificationsBody').html(messages).fadeIn('slow').delay(300);
+        else
+          console.log('Unable to handle request');
+      },complete: function() {
+
+        setTimeout(getAllNotification, 8000);
+
+      }
+
+    });
+
+  }
+
+  // $('.dismissNotification').on('click', function(){
+  //
+  //     var notificationID = this.id;
+  //     alert(notificationID);
+  //
+  //     return false;
+  //
+  // });
 
   function globalActivities(){
 

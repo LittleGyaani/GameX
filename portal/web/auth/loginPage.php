@@ -64,7 +64,7 @@ if(!empty( $_SESSION['userID'])){
 
 
                   <!--Forgot Password-->
-                    <br/><p align="right" class="g-color-gray-dark-v5 g-font-size-13 mb-0">Don't remember your Password? <a class="g-font-weight-600" href="forgotPass.php">Reset now</a>
+                    <br/><p align="right" class="g-color-gray-dark-v5 g-font-size-13 mb-0">Don't remember your Password? <a class="g-font-weight-600" href="forgotPass">Reset now</a>
                     </p>
                   <!-- Forgot Password End-->
 
@@ -95,7 +95,7 @@ if(!empty( $_SESSION['userID'])){
               <!-- End Form -->
 
               <footer class="text-center">
-                <p class="g-color-gray-dark-v5 g-font-size-13 mb-0">Don't have an account? <a class="g-font-weight-600" href="signupPage.php">Signup</a>
+                <p class="g-color-gray-dark-v5 g-font-size-13 mb-0">Don't have an account? <a class="g-font-weight-600" href="signupPage">Signup</a>
                 </p>
               </footer>
             </div>
