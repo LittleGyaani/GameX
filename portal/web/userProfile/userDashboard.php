@@ -152,7 +152,7 @@ if(!empty($_SESSION['userID'])){
                     <br>
 
                     <center>  <button type="submit" class="btn btn-md u-btn-primary rounded-0" id="headonMatch">Challenge Now</button> </center>
-                    <center>  <a href="#" class="btn btn-md u-btn-red rounded-0" id="addMoney">Add Money</a> </center>
+                    <center>  <a href="walletStatistics#MoneyAddModal" class="btn btn-md u-btn-red rounded-0" id="addMoney">Add Money</a> </center>
 
                   </form>
 
@@ -215,7 +215,7 @@ if(!empty($_SESSION['userID'])){
                     <h3 class="h6 mb-0">
                         <i class="icon-exclamation g-pos-rel g-top-1 g-mr-5"></i> Open Match Notifications
                       </h3>
-                    <div class="dropdown g-mb-10 g-mb-0--md">
+                    <!-- <div class="dropdown g-mb-10 g-mb-0--md">
                       <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" rel="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="icon-options-vertical g-pos-rel g-top-1"></i>
                         </span>
@@ -239,7 +239,7 @@ if(!empty($_SESSION['userID'])){
                           <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
                         </a>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                   <!-- End Panel Header -->
 
@@ -326,7 +326,7 @@ if(!empty($_SESSION['userID'])){
                     <h3 class="h6 mb-0">
                         <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> Global Leaderboard
                       </h3>
-                    <div class="dropdown g-mb-10 g-mb-0--md">
+                    <!-- <div class="dropdown g-mb-10 g-mb-0--md">
                       <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" rel="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="icon-options-vertical g-pos-rel g-top-1"></i>
                         </span>
@@ -350,7 +350,7 @@ if(!empty($_SESSION['userID'])){
                           <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
                         </a>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
 
                   <div class="js-scrollbar card-block  u-info-v1-1 g-bg-white-gradient-v1--after g-height-400 g-pa-0">
@@ -480,7 +480,7 @@ if(!empty($_SESSION['userID'])){
 
                   <div class="js-scrollbar card-block u-info-v1-1 g-bg-white-gradient-v1--after g-height-300 g-pa-0">
                     <?php
-                      $selectUserNotifications = "SELECT * FROM `user_notification_record` WHERE `userID` = $userID ORDER BY `notification_sent_DTStamp` DESC";
+                      $selectUserNotifications = "SELECT * FROM `user_notification_record` WHERE `userID` = $userID ORDER BY `notificationID` DESC";
                       $runselectUserNotifications = $conn -> query($selectUserNotifications);
                       $colorArray = array("g-color-primary", "g-color-cyan", "g-color-orange", "g-color-purple", "g-color-lightred");
                       $iconArray = array("fa fa-wallet", "fa fa-arrow-circle");
@@ -527,7 +527,7 @@ if(!empty($_SESSION['userID'])){
                 <div class="card border-0">
                   <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
                     <h3 class="h6 mb-0">
-                        <i class="icon-energy g-pos-rel g-top-1 g-mr-5"></i> Global Activities
+                        <i class="icon-energy g-pos-rel g-top-1 g-mr-5"></i>
                       </h3>
                     <!-- <div class="dropdown g-mb-10 g-mb-0--md">
                       <span class="d-block g-color-primary--hover g-cursor-pointer g-mr-minus-5 g-pa-5" rel="dropdown" aria-haspopup="true" aria-expanded="false">

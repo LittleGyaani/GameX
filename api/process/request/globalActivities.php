@@ -60,7 +60,7 @@
 
   $getTournamentActivities = "SELECT * FROM `tournament_fixture_info` tfi JOIN `user_info` usi ON tfi.tournament_join_userID = usi.user_id JOIN `profile_platform_games` ppg ON ppg.gameID = tfi.tournament_Game_ID";
   $rungetTournamentActivities = $conn -> query($getTournamentActivities);
-  $getHOMActivities = "SELECT * FROM `head_on_match_request` hmr JOIN profile_platform_games ppg ON hmr.challenge_gameID = ppg.gameID ORDER BY hmr.request_DTStamp DESC"; //SELECT * FROM `head_on_match_request` hmr JOIN profile_platform_games ppg ON hmr.challenge_gameID = ppg.gameID JOIN `user_info` usi ON usi.user_id = hmr.challenged_by_userID WHERE usi.user_id = hmr.challenged_by_userID AND usi.user_id = hmr.challenged_whom
+  $getHOMActivities = "SELECT * FROM `head_on_match_request` hmr JOIN profile_platform_games ppg ON hmr.challenge_gameID = ppg.gameID ORDER BY hmr.headonMatchID DESC"; //SELECT * FROM `head_on_match_request` hmr JOIN profile_platform_games ppg ON hmr.challenge_gameID = ppg.gameID JOIN `user_info` usi ON usi.user_id = hmr.challenged_by_userID WHERE usi.user_id = hmr.challenged_by_userID AND usi.user_id = hmr.challenged_whom
   $rungetHOMActivities = $conn -> query($getHOMActivities);
 
   if($rungetHOMActivities -> num_rows > 0){

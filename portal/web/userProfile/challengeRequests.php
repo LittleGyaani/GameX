@@ -214,7 +214,7 @@ if(!empty($_SESSION['userID'])){
                         <!-- Users -->
                         <div class="row g-mb-70">
                           <?php
-                          $getAllChallengeRequests = "SELECT * FROM `head_on_match_request` WHERE `challenged_whom` = $userID";
+                          $getAllChallengeRequests = "SELECT * FROM `head_on_match_request` WHERE `challenged_whom` = $userID ORDER BY `headonMatchID` DESC";
                           $rungetAllChallengeRequests = $conn -> query($getAllChallengeRequests);
                           if($rungetAllChallengeRequests -> num_rows > 0){
                             while($getAllChallengeInfo = $rungetAllChallengeRequests -> fetch_assoc()){
@@ -258,7 +258,7 @@ if(!empty($_SESSION['userID'])){
                               <?php
                                 if($getAllChallengeInfo['has_accepted'] == 0 && $getAllChallengeInfo['game_status'] != 0){
                                ?>
-                              <a class="acceptHeadOnChallenge btn btn-block g-color-white g-bg-indigo g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>" data-amount="<?=$returnfetchAllMetaInfo['challenge_amount']?>" href="#headonMatchModal" data-modal-target="#headonMatchModal" data-modal-effect="blur">
+                              <a class="acceptHeadOnChallenge btn btn-block g-color-white g-bg-indigo g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>" data-amount="<?=$returnfetchAllMetaInfo['challenge_amount']?>" href="#headonMatchModal" data-modal-target="#headonMatchModal" data-modal-effect="blur">
                               <i class="icon icon-check"></i>  Accept Challenge Request
                               </a>
                               <a class="dismissHeadOnChallenge btn btn-block g-color-white g-bg-purple g-bg-secondary-dark-light-v1--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15 mt-0" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
@@ -266,11 +266,23 @@ if(!empty($_SESSION['userID'])){
                             <?php
                           }else if($getAllChallengeInfo['has_accepted'] == 1 && $getAllChallengeInfo['game_status'] != 0){
                             ?>
-                            <a class="uploadscreenshot btn btn-block g-color-white g-bg-blue g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
-                            <i class="icon icon-check"></i>  Upload Result
-                            </a>
-                            <a class="claimadispute btn btn-block g-color-white g-bg-pink g-bg-secondary-dark-light-v1--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15 mt-0" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
-                            <i class="icon icon-close"></i> Raise Dispute</a>
+                                <?php
+                                  if($getAllChallengeInfo['is_result_uploaded'] == 'n'){
+                                ?>
+                                <a class="uploadscreenshot btn btn-block g-color-white g-bg-blue g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
+                                <i class="icon icon-check"></i>  Upload Result
+                                </a>
+                                <?php
+                              }else{
+                                ?>
+                                <a class="viewresult btn btn-block g-color-white g-bg-orange g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
+                                <i class="icon icon-eye"></i>  View Result
+                                </a>
+                                <a class="claimadispute btn btn-block g-color-white g-bg-pink g-bg-secondary-dark-light-v1--hover g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15 mt-0" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
+                                <i class="icon icon-close"></i> Raise Dispute</a>
+                                <?php
+                              }
+                                ?>
                           <?php
                         }else{
                           ?>
@@ -312,7 +324,7 @@ if(!empty($_SESSION['userID'])){
 
     <!-- Headon Match Code Verification modal window -->
      <div id="headonMatchModal" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">
-       <button type="button" class="close" onclick="Custombox.modal.close();">
+       <button type="button" class="close hm-modal-close" onclick="Custombox.modal.close();">
          <i class="fa fa-close"></i>
        </button>
        <h4 class="g-mb-20">Game Joining Code</h4>
@@ -322,7 +334,7 @@ if(!empty($_SESSION['userID'])){
            <label class="g-mb-10">Enter Joining Code</label>
            <b class="tooltip tooltip-top-right u-tooltip--v1">Some helpful information</b>
            <div class="input-group g-brd-primary--focus">
-             <input id="gamejoincode" class="form-control form-control-md g-brd-right-none rounded-0" type="text" placeholder="BSLVHOMXXXXXX" data-mask="BSLVHOM999999">
+             <input id="gamejoincode" class="form-control form-control-md g-brd-right-none rounded-0" type="text" placeholder="BSLVHOMXXXXXX" data-mask="BSLVHOM999999" required>
              <div class="input-group-addon d-flex align-items-center g-color-gray-dark-v5 rounded-0">
                <i class="icon-credit-card"></i>
              </div>

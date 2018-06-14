@@ -50,7 +50,7 @@
   $userID = $_POST['userID'];
   $respArray = array();
 
-  $getNotficationinPanel = $conn -> query("SELECT * FROM `user_notification_record` WHERE `userID` = $userID AND `notification_status` = 0 ORDER BY `notification_sent_DTStamp` DESC");
+  $getNotficationinPanel = $conn -> query("SELECT * FROM `user_notification_record` WHERE `userID` = $userID AND `notification_status` = 0 ORDER BY `notificationID` DESC");
 
     if($getNotficationinPanel -> num_rows > 0){
 

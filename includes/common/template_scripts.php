@@ -758,7 +758,8 @@ function notificationPanel(){
          title: "Insufficient funds in wallet.",
          text: "Please add "+'₹'+(challengeAmount-walletBalance)+" to your wallet and retry.",
          icon: 'warning',
-         buttons: false
+         buttons: false,
+         timer: 2000
         }).then(function() {
 
           // window.setTimeout(reload(),5500);
@@ -799,40 +800,76 @@ function notificationPanel(){
 
     if(CurrentWalletBalance >= challengeAmount){
 
-      if(gamejoincode){
+      console.log('Proceed');
 
-      //alert('Done');
-        // $.ajax({
-        //
-        //   type:'POST',
-        //   url:'<?php echo $baseURL; ?>api/process/request/responseHeadOnMatch?request='+requestType,
-        //   data:{headOnGameID},
-        //   // dataType:'html',
-        //   success:function(response){
-        //
-        //     if(response.code == 'HMA'){
-        //
-        //       swal({
-        //
-        //        title: 'You have successful accepted the challenge.',
-        //        text: 'Please proceed with game play.',
-        //        icon: 'error',
-        //        buttons: false,
-        //        timer : 5000
-        //      });
-        //
-        //    }else{
-        //       alert('Error');
-        //     }
-        //   }
-        //
-        // });
+      $('#joingame').click(function(){
 
-      }else{
+        var gamejoincode = $('#gamejoincode').val();
+        // console.log(gamejoincode);
 
-        alert('Please provide game join code.');
+        if(gamejoincode == ''){
+          // alert('No');
+          swal({
+              title: 'No Game Joining Code!',
+              text: 'Please provide game join code.',
+              icon: 'warning',
+              buttons: false,
+              timer: 2000
+          });
+           $('#gamejoincode').focus();
 
-      }
+        }else{
+
+          $.ajax({
+
+            type:'POST',
+            url:'<?php echo $baseURL; ?>api/process/request/responseHeadOnMatch?request='+requestType,
+            data:{headOnGameID,gamejoincode},
+            dataType:'json',
+            success:function(response){
+              // console.log(response.msg);
+              if(response.code == 'HMA'){
+
+                swal({
+
+                 title: 'You have successful accepted the challenge.',
+                 text: 'Please proceed with game play.',
+                 icon: 'success',
+                 buttons: false,
+                 timer : 3000
+               });
+               window.location.reload();
+
+             }else if(response.code == 'IJC'){
+
+               // console.log('Error');
+
+               swal({
+
+                title: response.msg,
+                text: response.resp,
+                icon: 'error',
+                buttons: false,
+                timer : 3000
+
+              });
+              $('#gamejoincode').val("");
+              $('#gamejoincode').focus();
+
+
+              }else{
+
+                    alert('Unable to handle request at the momemnt.');
+
+              }
+
+            }
+
+          });
+
+        }
+
+      });
 
     }else{
 
@@ -844,6 +881,8 @@ function notificationPanel(){
          buttons: false,
          timer: 2000
       });
+
+      $('.hm-modal-close').click().delay(2000);
 
     }
 

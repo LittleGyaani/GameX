@@ -16,8 +16,13 @@
   //Including the DB file
   include "../../../includes/config/dbConnectivity.php";
 
+  // print_r($_POST);
+  // print_r($_GET);
+  // exit;
+
   $headOnMatchID = $_POST['headOnGameID'];
   $requestType = $_GET['request'];
+  $gameJoinCode = $_POST['gamejoincode'];
   $now = date("d-m-Y H:i");
 
   if($requestType == 'accept'){
@@ -28,43 +33,52 @@
     $challengedWhomuserID = $fetchHeadOnMatchData['challenged_whom'];
     $challengedGameID = $fetchHeadOnMatchData['challenge_gameID'];
     $challengeAmont = $fetchHeadOnMatchData['challenge_amount'];
+    $gameInvitationCode = $fetchHeadOnMatchData['invitation_code'];
 
+    if($gameInvitationCode == $gameJoinCode){
 
-    if($getHeadOnMatchData){
+      if($getHeadOnMatchData){
 
-      $insertQuickHeadOnMatchResponse = $conn -> query("INSERT INTO `head_on_match_response`(`headonMatchID`, `userID`, `gameID`, `opponentID`, `challenge_amount`, `response_DT_Stamp`, `has_accepted_flag`, `dispute_status`, `amount_hold_challenger`, `amount_hold_accepter`) VALUES ($headOnMatchID,$challengeruserID,$challengedGameID,$challengedWhomuserID,$challengeAmont,'$now',1,0,$challengeAmont,$challengeAmont)");
+        $insertQuickHeadOnMatchResponse = $conn -> query("INSERT INTO `head_on_match_response`(`headonMatchID`, `userID`, `gameID`, `opponentID`, `challenge_amount`, `response_DT_Stamp`, `has_accepted_flag`, `dispute_status`, `amount_hold_challenger`, `amount_hold_accepter`) VALUES ($headOnMatchID,$challengeruserID,$challengedGameID,$challengedWhomuserID,$challengeAmont,'$now',1,0,$challengeAmont,$challengeAmont)");
 
-      if($insertQuickHeadOnMatchResponse){
-        $updateHeadOnMatchData = $conn -> query("UPDATE `head_on_match_request` SET `game_status` = 0 WHERE `headonMatchID` = $headOnMatchID");
-        $rungetWalletInfoForChallenger = $conn -> query("SELECT * FROM `user_wallet_info` uwi JOIN `user_info` usi ON usi.user_id = uwi.userID WHERE `userID` = $challengeruserID");
-        $fetchWalletInfoForChallenger = $rungetWalletInfoForChallenger -> fetch_assoc();
-        $rungetWalletInfoForAccepter = $conn -> query("SELECT * FROM `user_wallet_info` uwi JOIN `user_info` usi ON usi.user_id = uwi.userID WHERE `userID` = $challengedWhomuserID");
-        $fetchWalletInfoForAccepter = $rungetWalletInfoForAccepter -> fetch_assoc();
-        $challengerWalletBalance = $fetchWalletInfoForChallenger['walletBalance'];
-        $AccepterWalletBalance = $fetchWalletInfoForAccepter['walletBalance'];
-        $challengerName = $fetchWalletInfoForChallenger['user_fullname'];
-        $accepterName = $fetchWalletInfoForAccepter['user_fullname'];
-        $challengerWalletID = $fetchWalletInfoForChallenger['walletID'];
-        $accepterWalletID =  $fetchWalletInfoForAccepter['walletID'];
-        $challengerREMBalance = $challengerWalletBalance-$challengeAmont;
-        $AccepterREMBalance = $AccepterWalletBalance-$challengeAmont;
-        $updateChallengerWalletBalance = $conn -> query("UPDATE `user_wallet_info` SET `walletBalance`=$challengerWalletBalance-$challengeAmont,`lastUpdate_date_time_stamp`='$now' WHERE `userID` = $challengeruserID");
-        $updateAccepterWalletBalance = $conn -> query("UPDATE `user_wallet_info` SET `walletBalance`=$AccepterWalletBalance-$challengeAmont,`lastUpdate_date_time_stamp`='$now' WHERE `userID` = $challengedWhomuserID");
-        $pushNotificationforAccepter   = $conn -> query("INSERT INTO `user_notification_record` (`userID`, `sentuserID`, `notification_title`, `notification_message`, `notification_status`, `notification_type`, `notification_sent_by`, `notification_sent_DTStamp`) VALUES('$challengedWhomuserID', '$challengeruserID','You have accepted match request id $headOnMatchID by $challengerName.', 'Your wallet is debited with ₹$challengeAmont and remaining wallet balance is ₹$AccepterREMBalance. Please proceed with gameplay.', 0, 'headONChallengeGame', '$challengerName', '$now')");
-        $pushNotificationforChallenger = $conn -> query("INSERT INTO `user_notification_record` (`userID`, `sentuserID`, `notification_title`, `notification_message`, `notification_status`, `notification_type`, `notification_sent_by`, `notification_sent_DTStamp`) VALUES('$challengeruserID','$challengedWhomuserID','Congratulations! $accepterName has accepted your challenge for match id $headOnMatchID.','Your wallet is debited with ₹$challengeAmont and remaining wallet balance is ₹$challengerREMBalance. Please proceed with gameplay.', 0, 'headONChallengeGame', '$accepterName', '$now')");
-        $pushChallengerWalletStatistics = $conn -> query ("INSERT INTO `user_wallet_transaction_info`(`userID`, `user_wallet_id`, `lastUsedBalance`, `wallet_remaining_balance`, `useType`, `transaction_status`, `date_time_stamp`) VALUES ($challengeruserID,$challengerWalletID,$challengeAmont,$challengerREMBalance,'headOnMatchPayment','completed','$now')");
-        $pushAccepterWalletStatistics = $conn -> query ("INSERT INTO `user_wallet_transaction_info`(`userID`, `user_wallet_id`, `lastUsedBalance`, `wallet_remaining_balance`, `useType`, `transaction_status`, `date_time_stamp`) VALUES ($challengedWhomuserID,$accepterWalletID,$challengeAmont,$AccepterREMBalance,'headOnMatchPayment','completed','$now')");
+          if($insertQuickHeadOnMatchResponse){
+            $updateHeadOnMatchData = $conn -> query("UPDATE `head_on_match_request` SET `game_status` = 1, `has_accepted` = 1 WHERE `headonMatchID` = $headOnMatchID");
+            $rungetWalletInfoForChallenger = $conn -> query("SELECT * FROM `user_wallet_info` uwi JOIN `user_info` usi ON usi.user_id = uwi.userID WHERE `userID` = $challengeruserID");
+            $fetchWalletInfoForChallenger = $rungetWalletInfoForChallenger -> fetch_assoc();
+            $rungetWalletInfoForAccepter = $conn -> query("SELECT * FROM `user_wallet_info` uwi JOIN `user_info` usi ON usi.user_id = uwi.userID WHERE `userID` = $challengedWhomuserID");
+            $fetchWalletInfoForAccepter = $rungetWalletInfoForAccepter -> fetch_assoc();
+            $challengerWalletBalance = $fetchWalletInfoForChallenger['walletBalance'];
+            $AccepterWalletBalance = $fetchWalletInfoForAccepter['walletBalance'];
+            $challengerName = $fetchWalletInfoForChallenger['user_fullname'];
+            $accepterName = $fetchWalletInfoForAccepter['user_fullname'];
+            $challengerWalletID = $fetchWalletInfoForChallenger['walletID'];
+            $accepterWalletID =  $fetchWalletInfoForAccepter['walletID'];
+            $challengerREMBalance = $challengerWalletBalance-$challengeAmont;
+            $AccepterREMBalance = $AccepterWalletBalance-$challengeAmont;
+            $updateChallengerWalletBalance = $conn -> query("UPDATE `user_wallet_info` SET `walletBalance`=$challengerWalletBalance-$challengeAmont,`lastUpdate_date_time_stamp`='$now' WHERE `userID` = $challengeruserID");
+            $updateAccepterWalletBalance = $conn -> query("UPDATE `user_wallet_info` SET `walletBalance`=$AccepterWalletBalance-$challengeAmont,`lastUpdate_date_time_stamp`='$now' WHERE `userID` = $challengedWhomuserID");
+            $pushNotificationforAccepter   = $conn -> query("INSERT INTO `user_notification_record` (`userID`, `sentuserID`, `notification_title`, `notification_message`, `notification_status`, `notification_type`, `notification_sent_by`, `notification_sent_DTStamp`) VALUES('$challengedWhomuserID', '$challengeruserID','You have accepted match request id $headOnMatchID by $challengerName.', 'Your wallet is debited with ₹$challengeAmont and remaining wallet balance is ₹$AccepterREMBalance. Please proceed with gameplay.', 0, 'headONChallengeGame', '$challengerName', '$now')");
+            $pushNotificationforChallenger = $conn -> query("INSERT INTO `user_notification_record` (`userID`, `sentuserID`, `notification_title`, `notification_message`, `notification_status`, `notification_type`, `notification_sent_by`, `notification_sent_DTStamp`) VALUES('$challengeruserID','$challengedWhomuserID','Congratulations! $accepterName has accepted your challenge for match id $headOnMatchID.','Your wallet is debited with ₹$challengeAmont and remaining wallet balance is ₹$challengerREMBalance. Please proceed with gameplay.', 0, 'headONChallengeGame', '$accepterName', '$now')");
+            $pushChallengerWalletStatistics = $conn -> query ("INSERT INTO `user_wallet_transaction_info`(`userID`, `user_wallet_id`, `lastUsedBalance`, `wallet_remaining_balance`, `useType`, `transaction_status`, `date_time_stamp`) VALUES ($challengeruserID,$challengerWalletID,$challengeAmont,$challengerREMBalance,'headOnMatchPayment','completed','$now')");
+            $pushAccepterWalletStatistics = $conn -> query ("INSERT INTO `user_wallet_transaction_info`(`userID`, `user_wallet_id`, `lastUsedBalance`, `wallet_remaining_balance`, `useType`, `transaction_status`, `date_time_stamp`) VALUES ($challengedWhomuserID,$accepterWalletID,$challengeAmont,$AccepterREMBalance,'headOnMatchPayment','completed','$now')");
 
-        //Generate and throw Response for functions to work
-        $respArray = array('code' => 'HMA', 'msg' => 'Head on match accepted by "'.$accepterName.'"', 'resp' => 'Please proceed with game playing.');
+            //Generate and throw Response for functions to work
+            $respArray = array('code' => 'HMA', 'msg' => 'Head on match accepted by "'.$accepterName.'"', 'resp' => 'Please proceed with game playing.');
 
-      }
+          }
 
     }else{
 
       echo 'Unable to handle request';
 
     }
+
+  }else{
+
+    //Generate and throw Response for functions to work
+    $respArray = array('code' => 'IJC', 'msg' => 'Invalid Joining Code.', 'resp' => 'Please get valid the joining code from Challenger.');
+
+  }
 
 
   }else{
