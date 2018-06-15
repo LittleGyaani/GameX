@@ -142,6 +142,8 @@ if(isset($_SESSION['userID'])){
                 <!-- Game Platform Area -->
                 <div class="col-lg-9">
 
+
+
                     <!-- Platform Box Start -->
                     <section class="g-py-100">
                         <div class="container">
@@ -150,6 +152,7 @@ if(isset($_SESSION['userID'])){
                                 <p class="lead">Add your <b>userid/username</b> associated with the <strong>games/platforms</strong> you have.</p>
                             </header>
 
+                            <input id="gameFilter" type="text" placeholder="Search..." class="btn btn-md u-btn-outline-yellow g-rounded-50 g-mr-10 g-mb-15">
 
                             <div class="row g-mb-30">
 
@@ -161,7 +164,7 @@ if(isset($_SESSION['userID'])){
 
                           ?>
 
-                             <div class="col-lg-6 g-mb-40 g-mb-0--lg">
+                             <div class="col-lg-6 g-mb-40 g-mb-0--lg" id="gamePlatformArea">
 
                                     <ul class="list-unstyled mb-0">
 
@@ -171,7 +174,7 @@ if(isset($_SESSION['userID'])){
                                             </div>
 
                                             <div class="media-body">
-                                                <a class="d-block u-link-v5 g-color-main g-color-primary--hover g-font-weight-600 g-mb-3" id ="<?=$getGameMeta['gameID'] ?>" href=""><?=$getGameMeta['game_name'] ?></a>
+                                                <a class="d-block u-link-v5 g-color-main g-color-primary--hover g-font-weight-600 g-mb-3" id ="<?=$getGameMeta['gameID'] ?>"><?=$getGameMeta['game_name'] ?></a>
                                                 <span class="g-font-size-13 g-color-green g-mr-15">
                                                   <i class="icon-location-pin g-pos-rel g-top-1 mr-1"></i> <b><?=$getGameMeta['game_sponsor']?></b> </br>
                                                 </span>

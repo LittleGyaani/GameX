@@ -269,8 +269,8 @@ if(!empty($_SESSION['userID'])){
                                 <?php
                                   if($getAllChallengeInfo['is_result_uploaded'] == 'n'){
                                 ?>
-                                <a class="uploadscreenshot btn btn-block g-color-white g-bg-blue g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="#!" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>">
-                                <i class="icon icon-check"></i>  Upload Result
+                                <a class="uploadscreenshot btn btn-block g-color-white g-bg-blue g-font-weight-600 g-font-size-12 text-uppercase rounded-0 g-px-25 g-py-15" href="#!" data-game-name="<?= $returnfetchAllMetaInfo['game_name'];?>" id="<?= $returnfetchAllMetaInfo['headonMatchID'];?>" href="#matchResultUploadModal" data-modal-target="#matchResultUploadModal" data-modal-effect="blur">
+                                <i class="icon icon-cloud-upload"></i>  Upload Result
                                 </a>
                                 <?php
                               }else{
@@ -329,7 +329,7 @@ if(!empty($_SESSION['userID'])){
        </button>
        <h4 class="g-mb-20">Game Joining Code</h4>
        <p>
-         <!-- Voucher Code Masking -->
+         <!-- Joining Code Code Masking -->
          <div class="form-group g-mb-20">
            <label class="g-mb-10">Enter Joining Code</label>
            <b class="tooltip tooltip-top-right u-tooltip--v1">Some helpful information</b>
@@ -342,10 +342,53 @@ if(!empty($_SESSION['userID'])){
            <br>
            <button class="btn btn-md u-btn-outline-darkgray g-mr-10 g-mb-15" id="joingame">Join Game</button>
          </div>
-         <!-- End Vocuher Card Masking -->
+         <!-- End Game Joining Code Masking -->
        </p>
      </div>
      <!-- Headon Match Code Verification modal window -->
+
+     <!-- Upload Screenshot modal window -->
+      <div id="matchResultUploadModal" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20" style="display: none;">
+        <button type="button" class="close hm-modal-close" onclick="Custombox.modal.close();">
+          <i class="fa fa-close"></i>
+        </button>
+        <h4 class="g-mb-20">Result Upload for Match</h4>
+        <p>
+          <!-- Start Result Upload -->
+          <center>
+            <div class="form-group g-mb-20">
+
+            <label class="g-mb-10">Upload Result for <div id="gameName"></div></label>
+
+                <div class="col-md-6">
+                  <!-- User Image -->
+                  <div class="g-mb-20">
+                    <img id ="matchScreenshot" class="img-fluid w-100 u-block-hover__main--zoom-v1" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Solid_white_bordered.svg/500px-Solid_white_bordered.svg.png" height="200px" width="200px">
+                  </div>
+
+                  <!-- User Image -->
+                </div>
+              </div>
+              <div class="col-md-12">
+              <!-- User Contact Buttons -->
+              <a class="btn btn-block u-btn-darkgray g-rounded-150 g-py-12 g-mb-10" href="javascript:void(0);" id="chooseScreenshot">
+                <i class="icon icon-screen-smartphone g-pos-rel g-top-1 g-mr-5"></i> Choose Screenshot
+              </a>
+              </div>
+              <form id="resultscreenshot" action="javascript:void(0);" method="post" enctype="multipart/form-data">
+                  <!-- <input id="matchScore" name="matchScore" class="form-control form-control-md rounded-0" type="number" value="" placeholder="Type the score" width="50" required/> -->
+                  <input id="resultgameID" type="number" value=""/ hidden>
+                  <input id="screenshotUpload" name="screenshotUpload" accept="image/*" type="file" name="result_screenshot" required="" capture hidden/>
+                  </br>
+                  <button class="btn btn-md u-btn-outline-darkgray g-mr-10 g-mb-15" id="uploadscreenshot">Upload</button>
+                  <!-- <input type="reset" value="reset"> -->
+            </form>
+            </center>
+          </div>
+          <!-- End Game Result Upload -->
+        </p>
+      </div>
+      <!-- End Screenshot modal window -->
 
 
     <?php

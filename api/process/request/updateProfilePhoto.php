@@ -51,7 +51,9 @@
 //
 //   echo 'Unable to update profile picture';
 //
-// } -->
+// }
+?>-->
+
 <?php
 
 /*This API is used for user profile picture update or change.*/
@@ -70,7 +72,7 @@
   $userName = $_GET['username'];
   $userID = $_GET['userid'];
   $imageName = $_FILES['profile_photo']['tmp_name'];
-   $fileName = 'user'.'_'.basename($_FILES["profile_photo"]["name"]);
+  $fileName = 'user'.'_'.basename($_FILES["profile_photo"]["name"]);
   $extnsn = explode(".", $_FILES["profile_photo"]["name"]);
   $newfilename = 'user_'. strtolower($fileName) . '.' . end($extnsn);
   $uploadDir = "../../../assets/img/profilePic/";

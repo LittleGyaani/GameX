@@ -888,6 +888,15 @@ function notificationPanel(){
 
   });
 
+
+
+  $("#gameFilter").on("keyup", function() {
+    var value = $(this).val();
+    $("#gamePlatformArea *").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+
   function walletBalance(){
 
     $.ajax({
@@ -1150,6 +1159,106 @@ function notificationPanel(){
    alert(notificationID);
 
  });
+
+ //ResultUpload Screenshot
+ $('#chooseScreenshot').click(function(e){
+
+   e.preventDefault();
+
+   // alert('Hi!');
+   $("#screenshotUpload").click();
+
+   return;
+ });
+
+ function fasterPreview(uploader) {
+
+   if (uploader.files && uploader.files[0]){
+
+       var x = $('#matchScreenshot').attr('src', window.URL.createObjectURL(uploader.files[0]));
+
+       }
+   }
+
+ $("#screenshotUpload").change(function(){
+
+       var image = $(this).val();
+       var img_ex = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+       var img = $(this).val();
+
+       //validate file type
+       if(!img_ex.exec(image)){
+
+           alert('Please upload only .jpg/.jpeg/.png/.gif file.');
+           $('#screenshotUpload').val('');
+           return false;
+
+       }else{
+           // $('.uploadProcess').show();
+           // $('#uploadForm').hide();
+           // $( "#picUploadForm" ).submit();
+           // alert('Upload'+img);
+           fasterPreview(this);
+           // $('#uploadimage').submit();
+
+       }
+
+
+     });
+
+    $('#gameName').html("");
+
+     $(document).on('click','.uploadscreenshot',function(){
+
+         var gameID = $(this).attr('id');
+         var gameName = $(this).attr('data-game-name');
+         $('#gameName').html('<b>'+gameName+'</b>');
+         $('#resultgameID').val(gameID);
+         $('#matchScreenshot').attr('src',"https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Solid_white_bordered.svg/500px-Solid_white_bordered.svg.png");
+         $('#matchScore').val("");
+         $('#uploadimage')[0].reset();
+
+     });
+
+     $('#resultscreenshot').submit(function(e){
+       e.preventDefault();
+       var gameID = $('#resultgameID').val();
+
+       //Calling the AJAX to update Profile Photo of User
+       $.ajax({
+
+         type:'POST',
+         url:'<?php echo $baseURL; ?>api/process/request/gameResultUpload?request='+'uploadResult'+'&gameID='+gameID,
+         // dataType:'json',
+         data: new FormData(this),
+         contentType: false,
+         cache: false,
+         processData:false,
+         success:function(uploaded){
+
+           if(uploaded == 'SUCCESS'){
+
+           swal({
+
+            title: "Successfully uploaded screenshot.",
+            text: "Please wait for the opponent to confirm.",
+            icon: 'success',
+            buttons: false,
+            timer: 2000})
+            .then(function(){
+              location.reload();
+            }
+          );
+       } else{
+             console.log('Unable to handle request');
+           }
+         }
+
+       });
+
+       return true;
+
+     });
 
 });
 </script>
