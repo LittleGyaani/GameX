@@ -1223,12 +1223,12 @@ function notificationPanel(){
      $('#resultscreenshot').submit(function(e){
        e.preventDefault();
        var gameID = $('#resultgameID').val();
-
+       var winnerID = $('#hiddenUserID').text();
        //Calling the AJAX to update Profile Photo of User
        $.ajax({
 
          type:'POST',
-         url:'<?php echo $baseURL; ?>api/process/request/gameResultUpload?request='+'uploadResult'+'&gameID='+gameID,
+         url:'<?php echo $baseURL; ?>api/process/request/gameResultUpload?request='+'uploadResult'+'&gameID='+gameID+'&winnderuserID='+winnerID,
          // dataType:'json',
          data: new FormData(this),
          contentType: false,

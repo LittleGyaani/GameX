@@ -24,6 +24,7 @@ include '../../../includes/config/dbConnectivity.php';
    // print_r($_GET);
    $requestType = $_GET['request'];
    $gameID = $_GET['gameID'];
+   $winnderID = $_GET['winnderuserID'];
    $screenshot = $_FILES['screenshotUpload']['tmp_name'];
    $fileName = basename($_FILES["screenshotUpload"]["name"]);
    $extnsn = explode(".", $_FILES["screenshotUpload"]["name"]);
@@ -36,14 +37,12 @@ include '../../../includes/config/dbConnectivity.php';
 
      if(move_uploaded_file($screenshot, $targetPath)){
 
-           //Update picture name in the database
-           //$updateProfilePicture = $conn -> query("UPDATE `user_info` SET `user_profile_pic` = '".$newfilename."' WHERE `user_name` = '$userName'");
-           //$updateActivityHistory = $conn -> query("INSERT INTO `user_activity_history`(`user_id`, `user_last_action`, `user_activity_DTStamp`) VALUES ($userID,'profile picture update','$now')");
-           //Update status
-           // if($update){
-           //     $result = 1;
-           // }
-           echo 'SUCCESS';
+           //Update Head On Match Result
+           $headOnMatchResult = $conn -> query("INSERT INTO `head_on_match_result`(`headONMatchID`, `winner_user_id`, `winning_score`, `amount_credited`, `credit_status`, `dispute_status`, `opponent_rating`, `match_result_proof`,`updated_on`) VALUES ($gameID,$winnderID,0,0,'awaiting confirmation',0,0,'$newfilename','$now')");
+           $updateHeadonMatchResult = $conn -> query("UPDATE `head_on_match_request` SET `is_result_uploaded` = 'y' WHERE `headONMatchID` = $gameID");
+           if($headOnMatchResult)
+                echo 'SUCCESS';
+
 
      }else{
 
@@ -51,5 +50,10 @@ include '../../../includes/config/dbConnectivity.php';
 
      }
 
+
+   }else{
+
+
+     echo 'No Valid Request';
 
    }

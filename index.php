@@ -290,6 +290,10 @@ if(isset($_SESSION['userID'])){
             $getCountOfRegisteredUsers   = $conn -> query("SELECT * FROM `user_info`");
             $getCountOfTournamentsPlayed = $conn -> query("SELECT * FROM `tournament_registration_meta`");
             $getCountOfHeadOnMatches     = $conn -> query("SELECT * FROM `head_on_match_request`");
+            $getCountofTotalTransactions = $conn -> query("SELECT SUM(lastUsedBalance) AS count FROM user_wallet_transaction_info");
+            $total = 0;
+            $rec  = $getCountofTotalTransactions->fetch_assoc();
+            $total = $rec['count'];
 
           ?>
 
@@ -300,8 +304,8 @@ if(isset($_SESSION['userID'])){
           </div>
 
           <div class="col-lg-3 col-sm-6 g-brd-right--lg g-brd-gray-light-v4 g-mb-50">
-            <div class="js-counter g-color-gray-dark-v2 g-font-size-35 g-font-weight-300 g-mb-7">24583<strong><span class="g-color-pink">*</span></strong></div>
-            <h4 class="h6 g-color-gray-dark-v5">Prizes Distributed</h4>
+            <div class="js-counter g-color-gray-dark-v2 g-font-size-35 g-font-weight-300 g-mb-7"><?= $total; ?><strong><span class="g-color-pink">*</span></strong></div>
+            <h4 class="h6 g-color-gray-dark-v5">Transactions Flowed</h4>
           </div>
 
           <div class="col-lg-3 col-sm-6 g-brd-right g-brd-gray-light-v4 g-mb-50">
